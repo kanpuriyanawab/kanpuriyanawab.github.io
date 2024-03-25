@@ -1,10 +1,10 @@
 [
   {
-    "objectID": "pages/talksseminarsworkshops.html",
-    "href": "pages/talksseminarsworkshops.html",
-    "title": "Talks/Seminars/Workshops",
+    "objectID": "pages/resources.html",
+    "href": "pages/resources.html",
+    "title": "Resources",
     "section": "",
-    "text": "I love to attend developer meetups, conferences, workshops and learn from them as much as I can. I sometimes talk on a range of topics that I love the most. All the slides of my talks/sessions can be found below.\n\ngiven by me\n\nKerasNLP: From Words to Wisdom, on October 7, 2023 at DevFest New Delhi’23 .\nModular NLP Workflows with KerasNLP, on September 29, 2023 at Google Developer Groups, Seattle.\nSupercharging Keras with WandB, on September 23, 2023 at TensorFlow User Group Mumbai.\nGSoC Success Secrets: Cracking the Code to Open Source Excellence, September 10, 2023 at National Institute of Technology, Warangal.\nRethinking LLM Design with KerasNLP, on August 26, 2023 at TensorFlow User Group Hyderabad.\nKerasNLP for Starters, on August 20, 2023 at TensorFlow User Group Durg\nTaking KerasNLP on GenAI Ride on July, 23, 2023 at TensorFlow User Group, Kolkata\nRe-imagining Keras in the evolving ML ecosystem on July 16, 2023 at Google I/O Extended’23 New Delhi.\n\n\n\nco-organized by me\n\nHosted Tanay Mehta, Kaggle Notebooks Grandmaster on Hey Kaggle, at NIT Warangal.\n\nNote: If you are interested to invite me as a speaker for your event, please get in touch by dropping an email at shivanshuman021@gmail.com. If you are interested in having me submit a CFP first, that is absolutely fine! Please don’t hesitate to ask that."
+    "text": "This page enlists the talks I have given, the podcasts I have appeared on and co-hosted, and other misc things.\n\nTalks / podcasts / events\nInterviews\nA bit about my formal education"
   },
   {
     "objectID": "pages/about.html",
@@ -14,11 +14,11 @@
     "text": "I work on large language models at FlipAI. For more details on my work experience, check out my LinkedIn profile.\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\nTimeline\n\n\n\n\n\n\n\n\nPosition\nCompany\nDuration\n\n\n\n\nML Engineer\nFlipAI\nJuly 2023 - Present\n\n\nTechnical Author\nWeights&Biases\nSep 2023 - Feb 2024\n\n\nData Science Intern\nBNY Mellon\nJan 2023 - June 2023\n\n\nSoftware Engineer Intern\nAmazon\nMay 2022 - July 2023\n\n\n\n\n\nSome stuff\n\nGoogle Developer Expert in Machine Learning and Google Cloud Platform (bit.ly/expert-sp)\nMentee, Google Summer of Code 2023, in TensorFlow. See my project here\nOpen Source Contributor at KerasNLP"
   },
   {
-    "objectID": "pages/resources.html",
-    "href": "pages/resources.html",
-    "title": "Resources",
+    "objectID": "pages/authoring.html",
+    "href": "pages/authoring.html",
+    "title": "Authoring",
     "section": "",
-    "text": "This page enlists the talks I have given, the podcasts I have appeared on and co-hosted, and other misc things.\n\nTalks / podcasts / events\nInterviews\nA bit about my formal education"
+    "text": "Below are the blogs, articles, and tutorials I have written on Data Science, Machine Learning, and more. I am fortunate enough to collaborate with amazing folks from all around the globe.\n\nWeights&Biases\n\nSupercharge KerasNLP Models with Wandb\nGenerating High-quality Images with SD.Next, HuggingFace Diffusers and W&B\n\n\n\nKeras\n\nData Parallel Training with KerasNLP\nSemantic Similarity with KerasNLP\nPretraining a Transformer from scratch with KerasNLP\n\n\n\nKaggle\n\nSupercharge KerasNLP Models with Wandb\nOne Stop EDA\nKaggle T4x2 multi-gpu training G2Net\nLB:0.23 Ensemble {CatBoost, XGBoost, LightGBM}\nLightGBM + Optuna Baseline\n\n\n\nMedium\n\nInterview with 2x Kaggle Grandmaster, Data Science Manager at Emirates NBD: Ravi Ramakrishnan\nFlux.jl is so flexible — Deep Learning in Julia\nKaggle x Julia : Advanced House Price Prediction : EDA"
   },
   {
     "objectID": "index.html",
@@ -28,18 +28,11 @@
     "text": "Hi there 👋. I am Anshuman Mishra (अंशुमान मिश्र). I work on large language models at Flip AI. Know more about me from here. I maintain a Google Doc answering some FAQs at length. You can check it out here.\n\n\n\nMy external articles and other publishing engagements (like books, liveProjects, etc.) are listed here. Decks from my speaking engagements are listed here. A detailed account of the things that are not directly available from the top navbar (interviews, talks etc.) can be found here.\nThe structure of this website is inspired by Sayak’s site.\nTo know about my projects, please refer to my GitHub profile."
   },
   {
-    "objectID": "pages/authoring.html",
-    "href": "pages/authoring.html",
-    "title": "Authoring",
+    "objectID": "pages/talksseminarsworkshops.html",
+    "href": "pages/talksseminarsworkshops.html",
+    "title": "Talks/Seminars/Workshops",
     "section": "",
-    "text": "Below are the blogs, articles, and tutorials I have written on Data Science, Machine Learning, and more. I am fortunate enough to collaborate with amazing folks from all around the globe.\n\nWeights&Biases\n\nSupercharge KerasNLP Models with Wandb\nGenerating High-quality Images with SD.Next, HuggingFace Diffusers and W&B\n\n\n\nKeras\n\nData Parallel Training with KerasNLP\nSemantic Similarity with KerasNLP\nPretraining a Transformer from scratch with KerasNLP\n\n\n\nKaggle\n\nSupercharge KerasNLP Models with Wandb\nOne Stop EDA\nKaggle T4x2 multi-gpu training G2Net\nLB:0.23 Ensemble {CatBoost, XGBoost, LightGBM}\nLightGBM + Optuna Baseline\n\n\n\nMedium\n\nInterview with 2x Kaggle Grandmaster, Data Science Manager at Emirates NBD: Ravi Ramakrishnan\nFlux.jl is so flexible — Deep Learning in Julia\nKaggle x Julia : Advanced House Price Prediction : EDA"
-  },
-  {
-    "objectID": "pages/education.html",
-    "href": "pages/education.html",
-    "title": "Education",
-    "section": "",
-    "text": "(The formal ones may be)\n\nB.Tech in Electronics and Communication Engineering from National Institute of Technology, Warangal (2019 - 23) (Final year dissertation: A CFS–DNN-Based Intrusion Detection System)\nIntermediate from Army Public School, Kanpur (PCM) (2017 - 19)\nHigh School from BNSD Shiksha Niketan, Kanpur (PCMC) (2006 - 17)\nCourses/certifications relevant to my subject of interest:\n\nAWS Machine Learning Foundations\nComplete Python Bootcamp : From Zero to Hero in Python\nDeep Learning Specialization (Coursera)\nFundamentals of Reinforcement Learning"
+    "text": "I love to attend developer meetups, conferences, workshops and learn from them as much as I can. I sometimes talk on a range of topics that I love the most. All the slides of my talks/sessions can be found below.\n\ngiven by me\n\nKerasNLP: From Words to Wisdom, on October 7, 2023 at DevFest New Delhi’23 .\nModular NLP Workflows with KerasNLP, on September 29, 2023 at Google Developer Groups, Seattle.\nSupercharging Keras with WandB, on September 23, 2023 at TensorFlow User Group Mumbai.\nGSoC Success Secrets: Cracking the Code to Open Source Excellence, September 10, 2023 at National Institute of Technology, Warangal.\nRethinking LLM Design with KerasNLP, on August 26, 2023 at TensorFlow User Group Hyderabad.\nKerasNLP for Starters, on August 20, 2023 at TensorFlow User Group Durg\nTaking KerasNLP on GenAI Ride on July, 23, 2023 at TensorFlow User Group, Kolkata\nRe-imagining Keras in the evolving ML ecosystem on July 16, 2023 at Google I/O Extended’23 New Delhi.\n\n\n\nco-organized by me\n\nHosted Tanay Mehta, Kaggle Notebooks Grandmaster on Hey Kaggle, at NIT Warangal.\n\nNote: If you are interested to invite me as a speaker for your event, please get in touch by dropping an email at shivanshuman021@gmail.com. If you are interested in having me submit a CFP first, that is absolutely fine! Please don’t hesitate to ask that."
   },
   {
     "objectID": "pages/interviews.html",
@@ -47,5 +40,12 @@
     "title": "Interviews",
     "section": "",
     "text": "The purpose of conducting these interviews is to mainly get insights about the real-world project experiences, perspectives on learning new things, some fun facts and thereby enriching the communities in the process. I sincerely thank the interviewees for taking the time out from their busy schedules and for agreeing to do these interviews. Here are the interviews I have done so far -\n\nAn Interview with Ravi Ramakrishnan, Kaggle Grandmaster (joint work with Abheesht Sharma)\nAn Interview with Rajaswa Patil, AI Research Associate at Postman Labs (joint work with Abheesht Sharma)\nAn Interview with Matthew Watson, Senior Software Engineer, Google (joint work with Abheesht Sharma)\nAn Interview with Aakash Kumar Nain, MLE at Merlyn Minds (joint work with Abheesht Sharma)\n\nI have had an amazing time interviewing these incredible folks and I am grateful to them. For other competing priorities, I am discontinuing the series for an indefinite period. If you enjoy reading through interviews like these, you might want to check out the Machine Learning Street Talk podcast on YouTube."
+  },
+  {
+    "objectID": "pages/education.html",
+    "href": "pages/education.html",
+    "title": "Education",
+    "section": "",
+    "text": "(The formal ones may be)\n\nB.Tech in Electronics and Communication Engineering from National Institute of Technology, Warangal (2019 - 23) (Final year dissertation: A CFS–DNN-Based Intrusion Detection System)\nIntermediate from Army Public School, Kanpur (PCM) (2017 - 19)\nHigh School from BNSD Shiksha Niketan, Kanpur (PCMC) (2006 - 17)\nCourses/certifications relevant to my subject of interest:\n\nAWS Machine Learning Foundations\nComplete Python Bootcamp : From Zero to Hero in Python\nDeep Learning Specialization (Coursera)\nFundamentals of Reinforcement Learning"
   }
 ]
