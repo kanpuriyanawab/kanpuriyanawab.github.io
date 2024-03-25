@@ -10,18 +10,18 @@ format:
     toc: true
 
 website:
-  title: "Sayak Paul"
-  site-url: "https://sayak.dev/"
-  description: "Personal site of Sayak Paul."
-  favicon: posts/favicon.ico
+  title: "Anshuman Mishra"
+  site-url: "https://shivance.github.io/"
+  description: "Personal site of Anshuman Mishra."
+  # favicon: posts/favicon.ico
   search: false
   twitter-card:
-    creator: "@RisingSayak"
+    creator: "@anshuizme"
     card-style: summary
   open-graph: true
   repo-actions: [edit, issue]
   repo-branch: "master"
-  repo-url: "https://github.com/sayakpaul/portfolio"
+  repo-url: "https://github.com/anshuizme/portfolio"
   google-analytics: "UA-163448909-1"
   navbar:
     background: primary
@@ -30,19 +30,19 @@ website:
         href: pages/about.qmd
       - text: "Authoring"
         href: pages/authoring.qmd
-      - text: "Blog"
-        href: blog.qmd
-      - text: "Research"
-        href: pages/research.qmd
+      # - text: "Blog"
+      #   href: blog.qmd
+      # - text: "Research"
+      #   href: pages/research.qmd
       - text: "Resources"
         href: pages/resources.qmd
     right:
       - icon: twitter
-        href: https://twitter.com/RisingSayak
+        href: https://twitter.com/anshuizme
       - icon: linkedin
-        href: https://www.linkedin.com/in/sayak-paul/
+        href: https://www.linkedin.com/in/anshuizme/
       - icon: github
-        href: https://github.com/sayakpaul
+        href: https://github.com/shivance
 
 execute:
   freeze: auto

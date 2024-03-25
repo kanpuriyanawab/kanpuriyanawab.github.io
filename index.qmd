@@ -1,31 +1,20 @@
 ---
-title: "Sayak Paul"
+title: "Anshuman Mishra"
 toc: false
 ---
 
-Hi there 👋. I am Sayak Paul (সায়ক পাল). I work on [🧨 diffusion models](https://hf.co/docs/diffusers) at [Hugging Face](https://hf.co). Know more about me
-from [here](https://sayak.dev/about). I maintain a Google Doc answering some FAQs at length. You can check it out [here](https://bit.ly/sayak-faqs). 
+Hi there 👋. I am Anshuman Mishra (अंशुमान मिश्र). I work on large language models at [Flip AI](https://flip.ai). Know more about me
+from [here](https://shivance.github.io/about). I maintain a Google Doc answering some FAQs at length. You can check it out [here](https://bit.ly/494KDwM). 
+
+
+<center>
+<img src="assets/pic_5.jpeg" width=350/>
+</center>
 
 My external articles and other publishing engagements (like books, liveProjects, etc.) are listed [here](pages/authoring.qmd). Decks
 from my speaking engagements are listed [here](pages/talksseminarsworkshops.qmd). A detailed account of the things that are not
 directly available from the top navbar (interviews, talks etc.) can be found [here](pages/resources.qmd).
 
-The structure of this website is inspired by [Omar's site](https://osanseviero.github.io/hackerllama/).
+The structure of this website is inspired by [Sayak's site](https://sayak.dev).
 
-<center>
-<img src="posts/carted_headshot.jpg" width=350/>
-</center>
-
-### News
-
-- [Hila Chefer](https://hila-chefer.github.io/) and I presented our tutorial **All Things ViTs: Understanding and Interpreting
-Attention in Vision** at CVPR 2023. Check out the [website](https://all-things-vits.github.io/atv/) for a recording, code samples, slides, and more.
-- New work on accelerating SDXL by 3x with pure PyTorch: [Accelerate inference of text-to-image diffusion models](https://github.com/huggingface/diffusion-fast). Post is [live on the PyTorch blog](https://pytorch.org/blog/accelerating-generative-ai-3/) too. 
-- New podcast with Varun Mayya: [Conversation with a Hugging Face developer](https://www.youtube.com/watch?v=IlIhykPDesE).
-- New work on implementing the CMMD metric in PyTorch. Check it out [here](https://github.com/sayakpaul/cmmd-pytorch).
-- New paper in collaboration with Junsong Chen, Yue Wu, Simian Luo, Enze Xie, Ping Luo, Hang Zhao, and Zhenguo Li: [PIXART-δ: Fast and Controllable Image Generation with Latent Consistency Models](https://arxiv.org/abs/2401.05252).
-
-To know about my projects, please refer to [my GitHub profile](https://github.com/sayakpaul). 
-
-Apart from the blogs [here](blog.qmd), I try to contribute to other platforms in the form of writing. Please refer [here](https://sayak.dev/authoring)
-for more details.
+To know about my projects, please refer to [my GitHub profile](https://github.com/shivance). 
