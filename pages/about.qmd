@@ -5,7 +5,7 @@ aliases:
 permalink: /about
 toc: false
 ---
-I work on large language models at [FlipAI](https://flip.ai). My day-to-day includes contributing features to [🧨 diffusers](https://github.com/huggingface/diffusers), maintaining it, training and babysitting diffusion models, documenting them, and sometimes mudding up the social media with emojis (kidding 😂). I am fortunate to have worked in different areas of machine learning (such as training and deploying BERT-sized language models[^1], scalable MLOps architectures[^2], etc.). For more details on my work experience, check out my [LinkedIn profile](https://www.linkedin.com/in/anshuizme/).
+I work on large language models at [FlipAI](https://flip.ai). For more details on my work experience, check out my [LinkedIn profile](https://www.linkedin.com/in/anshuizme/).
 
 <table>
   <tr>
@@ -22,12 +22,13 @@ I work on large language models at [FlipAI](https://flip.ai). My day-to-day incl
 |:--------------------------------------:|:---------------------------------:|:-----------------------:|
 | ML Engineer              | FlipAI                  | July 2023 - Present     |
 | Technical Author   | Weights&Biases                            | Sep 2023 - Feb 2024|
-| Mentee   | Google Summer of Code, TensorFlow                            | May 2023 - Aug 2023|
 | Data Science Intern   | BNY Mellon                            | Jan 2023 - June 2023|
 | Software Engineer Intern    | Amazon                     | May 2022 - July 2023   |
 
 ### Some stuff
 
 * Google Developer Expert in Machine Learning and Google Cloud Platform ([bit.ly/expert-sp](https://bit.ly/expert-sp))
+* Mentee, Google Summer of Code 2023, in TensorFlow. See my project [here](https://summerofcode.withgoogle.com/archive/2023/projects/X4GwVWLu)
+* Open Source Contributor at [KerasNLP](https://github.com/keras-team/keras-nlp/)
 
 
