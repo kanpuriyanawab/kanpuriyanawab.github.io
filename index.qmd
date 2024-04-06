@@ -8,7 +8,7 @@ from [here](https://shivance.github.io/about). I maintain a Google Doc answering
 
 
 <center>
-<img src="assets/pic_5.jpeg" width=350/>
+<img src="assets/tashk.jpeg" width=550/>
 </center>
 
 My external articles and other publishing engagements (like books, liveProjects, etc.) are listed [here](pages/authoring.qmd). Decks
