@@ -67,7 +67,7 @@ ul.task-list li input[type="checkbox"] {
 <body class="nav-fixed">
 
 <div id="quarto-search-results"></div>
-  <header id="quarto-header" class="headroom fixed-top">
+  <header id="quarto-header" class="headroom fixed-top quarto-banner">
     <nav class="navbar navbar-expand-lg " data-bs-theme="dark">
       <div class="navbar-container container-fluid">
       <div class="navbar-brand-container mx-auto">
@@ -125,7 +125,38 @@ ul.task-list li input[type="checkbox"] {
     </nav>
 </header>
 <!-- content -->
-<div id="quarto-content" class="quarto-container page-columns page-rows-contents page-layout-article page-navbar">
+<header id="title-block-header" class="quarto-title-block default page-columns page-full">
+  <div class="quarto-title-banner page-columns page-full">
+    <div class="quarto-title column-body">
+      <h1 class="title">Illustrated LLM OS</h1>
+                  <div>
+        <div class="description">
+          An Implementational Perspective of LLMs as Operating Systems
+        </div>
+      </div>
+                          <div class="quarto-categories">
+                <div class="quarto-category">LLMs</div>
+                <div class="quarto-category">Operating-system</div>
+              </div>
+                  </div>
+  </div>
+    
+  
+  <div class="quarto-title-meta">
+
+      
+      <div>
+      <div class="quarto-title-meta-heading">Published</div>
+      <div class="quarto-title-meta-contents">
+        <p class="date">December 3, 2023</p>
+      </div>
+    </div>
+    
+      
+    </div>
+    
+  
+  </header><div id="quarto-content" class="quarto-container page-columns page-rows-contents page-layout-article page-navbar">
 <!-- sidebar -->
 <!-- margin-sidebar -->
     <div id="quarto-margin-sidebar" class="sidebar margin-sidebar">
@@ -143,40 +174,10 @@ ul.task-list li input[type="checkbox"] {
 <div class="toc-actions"><ul><li><a href="https://github.com/anshuizme/portfolio/edit/master/posts/illustrated_llmos.qmd" class="toc-action"><i class="bi bi-github"></i>Edit this page</a></li><li><a href="https://github.com/anshuizme/portfolio/issues/new" class="toc-action"><i class="bi empty"></i>Report an issue</a></li></ul></div></nav>
     </div>
 <!-- main -->
-<main class="content" id="quarto-document-content">
-
-<header id="title-block-header" class="quarto-title-block default">
-<div class="quarto-title">
-<h1 class="title">Illustrated LLM OS</h1>
-  <div class="quarto-categories">
-    <div class="quarto-category">LLMs</div>
-    <div class="quarto-category">Operating-system</div>
-  </div>
-  </div>
-
-<div>
-  <div class="description">
-    An Implementational Perspective of LLMs as Operating Systems
-  </div>
-</div>
+<main class="content quarto-banner-title-block" id="quarto-document-content">
 
 
-<div class="quarto-title-meta">
 
-    
-    <div>
-    <div class="quarto-title-meta-heading">Published</div>
-    <div class="quarto-title-meta-contents">
-      <p class="date">December 3, 2023</p>
-    </div>
-  </div>
-  
-    
-  </div>
-  
-
-
-</header>
 
 
 <p>This blog post explores the implementation of large language models (LLMs) as operating systems, inspired by <a href="https://twitter.com/karpathy">Andrej Karpathy’s</a> vision of AI resembling an OS, akin to Jarvis from Iron Man. The focus is on practical considerations, proposing an application-level integration for LLMs within a terminal session. A novel approach involves injecting state machines into the decoding process, enabling real-time code execution and interaction. Additionally, this post proposes <strong>Reinforcement Learning by System Feedback (RLSF)</strong>,” a reinforcement learning technique applied to code generation tasks. This method leverages a reward model to evaluate code correctness through Python subprocess execution, enhancing LLM performance. The findings contribute insights into the dynamic control of LLMs and their potential applications beyond coding tasks.</p>
