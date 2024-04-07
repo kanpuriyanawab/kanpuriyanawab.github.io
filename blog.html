@@ -62,9 +62,9 @@ ul.task-list li input[type="checkbox"] {
     }
 
     const options = {
-      valueNames: [{ data: ['index'] },{ data: ['categories'] },{ data: ['listing-date-sort'] },{ data: ['listing-file-modified-sort'] }],
+      valueNames: ['listing-date','listing-title','listing-author','listing-image','listing-description',{ data: ['index'] },{ data: ['categories'] },{ data: ['listing-date-sort'] },{ data: ['listing-file-modified-sort'] }],
       
-      searchColumns: [],
+      searchColumns: ["listing-date","listing-title","listing-author","listing-image","listing-description"],
     };
 
     window['quarto-listings'] = window['quarto-listings'] || {};
@@ -215,7 +215,31 @@ window.Quarto = {
 
 <div class="quarto-listing quarto-listing-container-default" id="listing-listing">
 <div class="list quarto-listing-default">
-
+<div class="quarto-post image-right" data-index="0" data-categories="LLMs,Operating-system" data-listing-date-sort="1701541800000" data-listing-file-modified-sort="1712478657348" data-listing-date-modified-sort="NaN" data-listing-reading-time-sort="7" data-listing-word-count-sort="1240">
+<div class="thumbnail">
+<p><a href="./posts/illustrated-llmos.html" class="no-external"></a></p><a href="./posts/illustrated-llmos.html" class="no-external">
+<div class="listing-item-img-placeholder card-img-top" >&nbsp;</div>
+</a><p><a href="./posts/illustrated-llmos.html" class="no-external"></a></p>
+</div>
+<div class="body">
+<h3 class="no-anchor listing-title">
+<a href="./posts/illustrated-llmos.html" class="no-external">Illustrated LLM OS</a>
+</h3>
+<div class="listing-subtitle">
+<a href="./posts/illustrated-llmos.html" class="no-external"></a>
+</div>
+<div class="listing-description">
+<a href="./posts/illustrated-llmos.html" class="no-external">An Implementational Perspective of LLMs as Operating Systems</a>
+</div>
+</div>
+<div class="metadata">
+<a href="./posts/illustrated-llmos.html" class="no-external">
+<div class="listing-date">
+Dec 3, 2023
+</div>
+</a>
+</div>
+</div>
 </div>
 <div class="listing-no-matching d-none">
 No matching items
