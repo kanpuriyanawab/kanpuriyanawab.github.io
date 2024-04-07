@@ -6,8 +6,10 @@
 
 <meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=yes">
 
+<meta name="dcterms.date" content="2023-12-03">
+<meta name="description" content="An Implementational Perspective of LLMs as Operating Systems">
 
-<title>Anshuman Mishra - Resources</title>
+<title>Anshuman Mishra - Illustrated LLM OS</title>
 <style>
 code{white-space: pre-wrap;}
 span.smallcaps{font-variant: small-caps;}
@@ -25,7 +27,6 @@ ul.task-list li input[type="checkbox"] {
 
 <script src="../site_libs/quarto-nav/quarto-nav.js"></script>
 <script src="../site_libs/quarto-nav/headroom.min.js"></script>
-<link href="../assets/images/favicon.png" rel="icon" type="image/png">
 <script src="../site_libs/clipboard/clipboard.min.js"></script>
 <script src="../site_libs/quarto-html/quarto.js"></script>
 <script src="../site_libs/quarto-html/popper.min.js"></script>
@@ -54,19 +55,19 @@ ul.task-list li input[type="checkbox"] {
 
 
 <link rel="stylesheet" href="../styles.css">
-<meta property="og:title" content="Anshuman Mishra - Resources">
-<meta property="og:description" content="Personal site of Anshuman Mishra.">
+<meta property="og:title" content="Anshuman Mishra - Illustrated LLM OS">
+<meta property="og:description" content="An Implementational Perspective of LLMs as Operating Systems">
 <meta property="og:site_name" content="Anshuman Mishra">
-<meta name="twitter:title" content="Anshuman Mishra - Resources">
-<meta name="twitter:description" content="Personal site of Anshuman Mishra.">
+<meta name="twitter:title" content="Anshuman Mishra - Illustrated LLM OS">
+<meta name="twitter:description" content="An Implementational Perspective of LLMs as Operating Systems">
 <meta name="twitter:creator" content="@anshuizme">
 <meta name="twitter:card" content="summary">
 </head>
 
-<body class="nav-fixed fullcontent">
+<body class="nav-fixed">
 
 <div id="quarto-search-results"></div>
-  <header id="quarto-header" class="headroom fixed-top">
+  <header id="quarto-header" class="headroom fixed-top quarto-banner">
     <nav class="navbar navbar-expand-lg " data-bs-theme="dark">
       <div class="navbar-container container-fluid">
       <div class="navbar-brand-container mx-auto">
@@ -96,7 +97,7 @@ ul.task-list li input[type="checkbox"] {
 <span class="menu-text">Blog</span></a>
   </li>  
   <li class="nav-item">
-    <a class="nav-link active" href="../pages/resources.html" aria-current="page"> 
+    <a class="nav-link" href="../pages/resources.html"> 
 <span class="menu-text">Resources</span></a>
   </li>  
 </ul>
@@ -124,40 +125,132 @@ ul.task-list li input[type="checkbox"] {
     </nav>
 </header>
 <!-- content -->
-<div id="quarto-content" class="quarto-container page-columns page-rows-contents page-layout-article page-navbar">
+<header id="title-block-header" class="quarto-title-block default page-columns page-full">
+  <div class="quarto-title-banner page-columns page-full">
+    <div class="quarto-title column-body">
+      <h1 class="title">Illustrated LLM OS</h1>
+                  <div>
+        <div class="description">
+          An Implementational Perspective of LLMs as Operating Systems
+        </div>
+      </div>
+                          <div class="quarto-categories">
+                <div class="quarto-category">LLMs</div>
+                <div class="quarto-category">Operating-system</div>
+              </div>
+                  </div>
+  </div>
+    
+  
+  <div class="quarto-title-meta">
+
+      
+      <div>
+      <div class="quarto-title-meta-heading">Published</div>
+      <div class="quarto-title-meta-contents">
+        <p class="date">December 3, 2023</p>
+      </div>
+    </div>
+    
+      
+    </div>
+    
+  
+  </header><div id="quarto-content" class="quarto-container page-columns page-rows-contents page-layout-article page-navbar">
 <!-- sidebar -->
 <!-- margin-sidebar -->
-    
+    <div id="quarto-margin-sidebar" class="sidebar margin-sidebar">
+        <nav id="TOC" role="doc-toc" class="toc-active">
+    <h2 id="toc-title">On this page</h2>
+   
+  <ul>
+  <li><a href="#preliminaries" id="toc-preliminaries" class="nav-link active" data-scroll-target="#preliminaries">Preliminaries:</a></li>
+  <li><a href="#where-should-llm-sit-concerns-possibilities-and-limitations" id="toc-where-should-llm-sit-concerns-possibilities-and-limitations" class="nav-link" data-scroll-target="#where-should-llm-sit-concerns-possibilities-and-limitations">Where should LLM sit? Concerns, Possibilities, and Limitations</a></li>
+  <li><a href="#towards-implementation-injecting-a-state-machine-in-decoder" id="toc-towards-implementation-injecting-a-state-machine-in-decoder" class="nav-link" data-scroll-target="#towards-implementation-injecting-a-state-machine-in-decoder">Towards Implementation: Injecting a State Machine in Decoder</a></li>
+  <li><a href="#tuning-llms-for-os-use-case-a-rl-problem" id="toc-tuning-llms-for-os-use-case-a-rl-problem" class="nav-link" data-scroll-target="#tuning-llms-for-os-use-case-a-rl-problem">Tuning LLMs for OS use case: A RL Problem:</a></li>
+  <li><a href="#concluding-notes" id="toc-concluding-notes" class="nav-link" data-scroll-target="#concluding-notes">Concluding Notes</a></li>
+  <li><a href="#acknowledgements" id="toc-acknowledgements" class="nav-link" data-scroll-target="#acknowledgements">Acknowledgements</a></li>
+  </ul>
+<div class="toc-actions"><ul><li><a href="https://github.com/anshuizme/portfolio/edit/master/posts/illustrated_llmos.qmd" class="toc-action"><i class="bi bi-github"></i>Edit this page</a></li><li><a href="https://github.com/anshuizme/portfolio/issues/new" class="toc-action"><i class="bi empty"></i>Report an issue</a></li></ul></div></nav>
+    </div>
 <!-- main -->
-<main class="content" id="quarto-document-content">
+<main class="content quarto-banner-title-block" id="quarto-document-content">
 
-<header id="title-block-header" class="quarto-title-block default">
-<div class="quarto-title">
-<h1 class="title">Resources</h1>
+
+
+
+
+<p>This blog post explores the implementation of large language models (LLMs) as operating systems, inspired by <a href="https://twitter.com/karpathy">Andrej Karpathy’s</a> vision of AI resembling an OS, akin to Jarvis from Iron Man. The focus is on practical considerations, proposing an application-level integration for LLMs within a terminal session. A novel approach involves injecting state machines into the decoding process, enabling real-time code execution and interaction. Additionally, this post proposes <strong>Reinforcement Learning by System Feedback (RLSF)</strong>,” a reinforcement learning technique applied to code generation tasks. This method leverages a reward model to evaluate code correctness through Python subprocess execution, enhancing LLM performance. The findings contribute insights into the dynamic control of LLMs and their potential applications beyond coding tasks.</p>
+<div>
+<center>
+&lt;img src=“assets/images/illustrated_llmos/karpathy_ss.png” title=“[1hr Talk] Intro to Large Language Models by Andrej Karpathy”
+<h5 class="anchored">
+Image source: <a href="assets/images/illustrated_llmos/karpathy_ss.png">[1hr Talk] Intro to Large Language Models by Andrej Karpathy</a>
+</h5>
+</center>
 </div>
+<section id="preliminaries" class="level2">
+<h2 class="anchored" data-anchor-id="preliminaries">Preliminaries:</h2>
+<ol type="1">
+<li><p><strong>State Machines</strong>: A state machine is a mathematical abstraction used to design algorithms. A state machine reads a set of inputs and changes to a different state based on those inputs. A state is a description of the status of a system waiting to execute a transition. A transition is a set of actions to execute when a condition is fulfilled or an event is received. In a state diagram, circles represent each possible state and arrows represent transitions between states.</p></li>
+<li><p><strong>Constrained Decoding</strong>: Constrained decoding is a technique used in natural language processing and sequence generation tasks, including those involving large language models (LLMs). In constrained decoding, the generation of sequences is guided or restricted by certain constraints or conditions. This approach is particularly useful when you want to control or influence the output of a language model to meet specific requirements or criteria.</p></li>
+</ol>
+<p>A major challenge in the implementation of LLM OS is establishing a Link between the Operating System and LLM, that ensures training following the principle of Responsible AI.</p>
+</section>
+<section id="where-should-llm-sit-concerns-possibilities-and-limitations" class="level2">
+<h2 class="anchored" data-anchor-id="where-should-llm-sit-concerns-possibilities-and-limitations">Where should LLM sit? Concerns, Possibilities, and Limitations</h2>
+<p>Imagine a futuristic Jarvis-like AI. It’ll be able to search through the internet, access local files, videos, and images on the disk, and execute programs. Where should it sit? At the kernel level? At Python Level?</p>
+<p><strong>At Kernel Level</strong>: Consider integrating our advanced language model with the Linux kernel. This would provide the AI with comprehensive access to the operating system’s core functionalities. However, it’s important to recognize that large language models (LLMs) are designed for human-like interaction, not intricate coding tasks. While embedding the model at the kernel level offers the advantage of understanding and controlling detailed system operations, it raises valid security concerns. Responsible development is crucial to ensure that the AI’s evolving decision-making capabilities don’t inadvertently compromise system integrity.</p>
+<p><strong>At Application Level</strong>: Alternatively, we can position the LLM at the application level, operating seamlessly within a terminal session. Leveraging the abstractions of a programming language, such as Python, provides optimal control over the AI. This approach facilitates easy updates to the LLM OS and allows for extensive customization.</p>
+</section>
+<section id="towards-implementation-injecting-a-state-machine-in-decoder" class="level2">
+<h2 class="anchored" data-anchor-id="towards-implementation-injecting-a-state-machine-in-decoder">Towards Implementation: Injecting a State Machine in Decoder</h2>
+<p>Following is the illustration of how the generation process works in decoder-like models source.</p>
+<div>
+<center>
+&lt;img src=“assets/gif/illustrated_llmos/illustrated_gpt2.gif” title=“The Illustrated GPT-2 by Jay Alammar”
+<h5 class="anchored">
+Image source: <a href="https://jalammar.github.io/illustrated-gpt2/">The Illustrated GPT-2 by Jay Alammar</a>
+</h5>
+</center>
+</div>
+<p>The seamless interaction of a Large Language Model (LLM) with an operating system (OS) can be achieved through the strategic injection of a State Machine. By utilizing this approach, the model’s behavior can be dynamically controlled, enhancing its capability to engage with the OS. In particular, the injection of special tokens acts as triggers, facilitating interaction with the Python interpreter through subprocesses.</p>
+<p>To illustrate this concept, consider the scenario where the LLM is tasked with generating the sum of the first N natural numbers. Here, I request the model to encapsulate the generated code within designated special tokens, [CODE] and [/CODE], during its response. The State Machine is activated upon the generation of the [CODE] token, initiating the collection of the generated code in a buffer.</p>
+<p>Upon the subsequent generation of the [/CODE] token, the State Machine orchestrates a temporary pause in the generation process. This interlude allows for the invocation of a Python subprocess to execute the collected code. The output of this execution is then appended to the current cache. Resuming the generation process, this technique enables the model to dynamically learn program execution behavior in real time.</p>
+<p>In the following sections of this blog, we delve deeper into how this innovative technique empowers the model to adapt and refine its program execution understanding on the fly.</p>
+<div class="quarto-figure quarto-figure-center">
+<figure class="figure">
+<p><img src="assets/images/illustrated_llmos/chatgpt_response.png" class="img-fluid figure-img"></p>
+<figcaption>image/png</figcaption>
+</figure>
+</div>
+<p>Following is an illustration of a state machine to do various operations like db queries, accessing file systems, and even internet searches through Python subprocesses.</p>
+<div class="quarto-figure quarto-figure-center">
+<figure class="figure">
+<p><img src="assets/images/illustrated_llmos/llmos_flow_diag.png" class="img-fluid figure-img"></p>
+<figcaption>image/png</figcaption>
+</figure>
+</div>
+<p>The Python programming language boasts a robust ecosystem that opens up a multitude of possibilities, especially when harnessed through subprocesses. By utilizing subprocesses, we can seamlessly execute Shell or Programming Language codes, expanding the functionality of our applications. Python’s versatility extends to internet access, where we can leverage powerful libraries like requests and urllib. This capability allows the Large Language Model (LLM) to interact dynamically with online resources. Additionally, the integration of command line packages, such as the one offered by Google, further enhances the LLM’s capacity to fetch information from the web. Python’s sophisticated file-handling utilities provide the LLM with the capability to navigate and manipulate files and multimedia at the user’s request. This functionality extends beyond mere text-based interactions, offering a rich, multimodal experience. The inclusion of multimodal models further augments the LLM’s ability to interpret and respond to a diverse range of user inputs.</p>
+</section>
+<section id="tuning-llms-for-os-use-case-a-rl-problem" class="level2">
+<h2 class="anchored" data-anchor-id="tuning-llms-for-os-use-case-a-rl-problem">Tuning LLMs for OS use case: A RL Problem:</h2>
+<p>Imagine confronting a challenging programming problem and enlisting the assistance of the Large Language Model (LLM) to generate a solution. Traditionally, the process involves articulating the problem to the LLM, receiving the generated code, manual inspection for correctness, and iterative feedback for bug resolution.</p>
+<p>Now, let’s recast this procedure as a Reinforcement Learning (RL) challenge, casting our LLM as an agent navigating a realm of computer processes. In this RL framework, the agent’s objective is to generate code, subject to correctness scrutiny.</p>
+<p>To enhance this code generation process, we leverage a fundamental concept in RL — the reward model. This model quantifies the quality of generated code based on execution results. Through training the reward model, the LLM is systematically penalized for generating incorrect code, eliminating the need for manual intervention.</p>
+<p>I call this technique <strong>Reinforcement Learning by System Feedback (RLSF)</strong>. This technique can not only be applied to improving LLMs on code generation tasks but to a variety of tasks as shown in the state machine diagram.</p>
+</section>
+<section id="concluding-notes" class="level2">
+<h2 class="anchored" data-anchor-id="concluding-notes">Concluding Notes</h2>
+<p>The reason I published this blog post is because I think the discussion of integrating LLMs with Operating Systems should be Open. It should be developed responsibly in an Open Source Environment. If there is an initiative like this in the future, I would love to collaborate on it! At this stage, I couldn’t get a working prototype of the approaches I discussed due to a lack of computing resources.</p>
+<p>Just Imagine an operating system built on HuggingFace transformer’s LLM pipelines. This setup not only accommodates the effortless integration of new models but also ensures the system remains adaptable to the latest advancements in the field. LLMs can add a new layer of accessibility to our Operating System by acting as smart interfaces.</p>
+</section>
+<section id="acknowledgements" class="level2">
+<h2 class="anchored" data-anchor-id="acknowledgements">Acknowledgements</h2>
+<p><a href="https://www.linkedin.com/in/ravindra-m-a2751914/">Ravindra Majumdar</a> and <a href="https://www.linkedin.com/in/sunil-mallya-91a88320/">Sunil Mallya</a> for introducing me to the concept of constrained decoding.</p>
 
 
-
-<div class="quarto-title-meta">
-
-    
-  
-    
-  </div>
-  
-
-
-</header>
-
-
-<p>This page enlists the talks I have given, the podcasts I have appeared on and co-hosted, and other misc things.</p>
-<ul>
-<li><a href="../pages/talksseminarsworkshops.html">Talks / podcasts / events</a></li>
-<li><a href="../pages/interviews.html">Interviews</a></li>
-<li><a href="../pages/education.html">A bit about my formal education</a></li>
-</ul>
-
-
+</section>
 
 </main> <!-- /main -->
 <script id="quarto-html-after-body" type="application/javascript">
@@ -574,4 +667,4 @@ window.document.addEventListener("DOMContentLoaded", function (event) {
 
 
 
-<footer class="footer"><div class="nav-footer"><div class="nav-footer-center"><div class="toc-actions"><ul><li><a href="https://github.com/anshuizme/portfolio/edit/master/pages/resources.qmd" class="toc-action"><i class="bi bi-github"></i>Edit this page</a></li><li><a href="https://github.com/anshuizme/portfolio/issues/new" class="toc-action"><i class="bi empty"></i>Report an issue</a></li></ul></div></div></div></footer></body></html>
+<footer class="footer"><div class="nav-footer"><div class="nav-footer-center"><div class="toc-actions d-sm-block d-md-none"><ul><li><a href="https://github.com/anshuizme/portfolio/edit/master/posts/illustrated_llmos.qmd" class="toc-action"><i class="bi bi-github"></i>Edit this page</a></li><li><a href="https://github.com/anshuizme/portfolio/issues/new" class="toc-action"><i class="bi empty"></i>Report an issue</a></li></ul></div></div></div></footer></body></html>

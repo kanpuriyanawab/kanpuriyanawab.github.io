@@ -9,8 +9,8 @@
 <link>https://shivance.github.io/portfolio/blog.html</link>
 <atom:link href="https://shivance.github.io/portfolio/blog.xml" rel="self" type="application/rss+xml"/>
 <description>Personal site of Anshuman Mishra.</description>
-<generator>quarto-1.4.553</generator>
-<lastBuildDate>Sun, 03 Dec 2023 00:00:00 GMT</lastBuildDate>
+<generator>quarto-1.4.551</generator>
+<lastBuildDate>Sat, 02 Dec 2023 18:30:00 GMT</lastBuildDate>
 <item>
   <title>Illustrated LLM OS</title>
   <link>https://shivance.github.io/portfolio/posts/illustrated_llmos.html</link>
@@ -84,7 +84,7 @@
   <category>LLMs</category>
   <category>Operating-system</category>
   <guid>https://shivance.github.io/portfolio/posts/illustrated_llmos.html</guid>
-  <pubDate>Sun, 03 Dec 2023 00:00:00 GMT</pubDate>
+  <pubDate>Sat, 02 Dec 2023 18:30:00 GMT</pubDate>
 </item>
 </channel>
 </rss>
