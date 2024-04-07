@@ -1,7 +1,7 @@
 ---
 aliases:
-- /illustrated-llmos
-permalink: /illustrated-llmos
+- /illustrated_llmos
+permalink: /illustrated_llmos
 badges: false
 toc: true
 categories:
@@ -10,7 +10,7 @@ categories:
 date: '2023-12-03'
 description: An Implementational Perspective of LLMs as Operating Systems
 hide: false
-output-file: illustrated-llmos.html
+output-file: illustrated_llmos.html
 search_exclude: false
 title: 'Illustrated LLM OS'
 ---
@@ -22,14 +22,9 @@ This blog post explores the implementation of large language models (LLMs) as op
 
 
 
-<div>
-<center>
-  <img src="https://cdn-uploads.huggingface.co/production/uploads/63657b0898da81987e23b15b/QHkGindVk3lbBVoMZCdBq.png" title="[1hr Talk] Intro to Large Language Models by Andrej Karpathy"
-  <h5>
-  Image source: <a href="https://cdn-uploads.huggingface.co/production/uploads/63657b0898da81987e23b15b/QHkGindVk3lbBVoMZCdBq.png">[1hr Talk] Intro to Large Language Models by Andrej Karpathy</a>
-    </h5>
-</center>
-</div>
+![](assets/illustrated_llmos/karpathy_ss.png)
+
+*Image source: [[1hr Talk] Intro to Large Language Models by Andrej Karpathy](assets/illustrated_llmos/karpathy_ss.png)*
 
 
 ## Preliminaries:
@@ -54,14 +49,10 @@ While embedding the model at the kernel level offers the advantage of understand
 
 Following is the illustration of how the generation process works in decoder-like models source.
 
-<div>
-<center>
-  <img src="https://cdn-uploads.huggingface.co/production/uploads/63657b0898da81987e23b15b/6pI9MNfhLa-32Mb7pQr_o.gif" title="The Illustrated GPT-2 by Jay Alammar"
-  <h5>
-  Image source: <a href="https://jalammar.github.io/illustrated-gpt2/">The Illustrated GPT-2 by Jay Alammar</a>
-    </h5>
-</center>
-</div>
+![](assets/illustrated_llmos/illustrated_gpt2.gif)
+
+*Image source: [The Illustrated GPT-2 by Jay Alammar](https://jalammar.github.io/illustrated-gpt2/)*
+
 
 
 The seamless interaction of a Large Language Model (LLM) with an operating system (OS) can be achieved through the strategic injection of a State Machine. By utilizing this approach, the model's behavior can be dynamically controlled, enhancing its capability to engage with the OS. In particular, the injection of special tokens acts as triggers, facilitating interaction with the Python interpreter through subprocesses.
@@ -73,12 +64,12 @@ Upon the subsequent generation of the [/CODE] token, the State Machine orchestra
 In the following sections of this blog, we delve deeper into how this innovative technique empowers the model to adapt and refine its program execution understanding on the fly.
 
 
-![image/png](https://cdn-uploads.huggingface.co/production/uploads/63657b0898da81987e23b15b/_91s6Ed4Lou56-TTN9H7s.png)
+![image/png](assets/illustrated_llmos/chatgpt_response.png)
 
 Following is an illustration of a state machine to do various operations like db queries, accessing file systems, and even internet searches through Python subprocesses.
 
 
-![image/png](https://cdn-uploads.huggingface.co/production/uploads/63657b0898da81987e23b15b/n2crZvVAni1uPynsWIpGB.png)
+![image/png](assets/illustrated_llmos/llmos_flow_diag.png)
 
 The Python programming language boasts a robust ecosystem that opens up a multitude of possibilities, especially when harnessed through subprocesses. By utilizing subprocesses, we can seamlessly execute Shell or Programming Language codes, expanding the functionality of our applications. Python's versatility extends to internet access, where we can leverage powerful libraries like requests and urllib. This capability allows the Large Language Model (LLM) to interact dynamically with online resources. Additionally, the integration of command line packages, such as the one offered by Google, further enhances the LLM's capacity to fetch information from the web. Python's sophisticated file-handling utilities provide the LLM with the capability to navigate and manipulate files and multimedia at the user's request. This functionality extends beyond mere text-based interactions, offering a rich, multimodal experience. The inclusion of multimodal models further augments the LLM's ability to interpret and respond to a diverse range of user inputs.
 
