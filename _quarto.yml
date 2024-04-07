@@ -9,7 +9,7 @@ format:
 
 website:
   title: "Anshuman Mishra"
-  site-url: "https://shivance.github.io/portfolio"
+  site-url: "https://shivance.github.io/"
   description: "Personal site of Anshuman Mishra."
   favicon: assets/images/favicon.png
   search: false
@@ -19,7 +19,7 @@ website:
   open-graph: true
   repo-actions: [edit, issue]
   repo-branch: "master"
-  repo-url: "https://github.com/anshuizme/portfolio"
+  repo-url: "https://github.com/anshuizme/"
   navbar:
     background: primary
     left:
