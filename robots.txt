@@ -1,1 +1,1 @@
-Sitemap: https://shivance.github.io/portfolio/sitemap.xml
+Sitemap: https://shivance.github.io/sitemap.xml
