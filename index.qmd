@@ -8,8 +8,9 @@ from [here](https://shivance.github.io/about). I maintain a Google Doc answering
 
 
 <center>
-<img src="assets/images/tashk.jpeg" width=550/>
+<img src="assets/images/pic_5.jpeg" style="width: 350px; height: 350px; border-radius: 50%;" />
 </center>
+
 
 My external articles and other publishing engagements (like books, liveProjects, etc.) are listed [here](pages/authoring.qmd). Decks
 from my speaking engagements are listed [here](pages/talksseminarsworkshops.qmd). A detailed account of the things that are not
