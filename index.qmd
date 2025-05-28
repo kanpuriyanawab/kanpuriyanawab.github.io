@@ -3,8 +3,7 @@ title: "Anshuman Mishra"
 toc: false
 ---
 
-Hi there 👋. I am Anshuman Mishra (अंशुमान मिश्र). I work on large language models at [Flip AI](https://flip.ai). Know more about me
-from [here](https://shivance.github.io/about). I maintain a Google Doc answering some FAQs at length. You can check it out [here](https://bit.ly/494KDwM). 
+Hi there 👋. I am Anshuman Mishra. I work on large language models yet I like to call myself a software engineer.
 
 
 <center>

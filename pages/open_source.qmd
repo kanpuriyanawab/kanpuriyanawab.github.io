@@ -8,6 +8,9 @@ toc: false
 
 ### [Highlights]
 
+- [KerasHub - Add Qwen 2.5 ](https://github.com/keras-team/keras-hub/pull/2088)
+- [KerasHub - Add Qwen 1.5 Moe](https://github.com/keras-team/keras-hub/pull/2163)
+- [KerasHub - Add Mixtral](https://github.com/keras-team/keras-hub/pull/2196)
 - [KerasNLP - Add Llama Backbone](https://github.com/keras-team/keras-nlp/pull/1203)
 - [KerasNLP - Port GPTNeoX to KerasCore](https://github.com/keras-team/keras-nlp/pull/1137)
 - [KerasNLP - Adding GPTNeoXBackbone](https://github.com/keras-team/keras-nlp/pull/1056)
@@ -22,6 +25,9 @@ toc: false
 
 #### [keras-nlp](https://github.com/keras-team/keras-nlp)
 
+- [Add Qwen 2.5 ](https://github.com/keras-team/keras-hub/pull/2088)
+- [Add Qwen 1.5 Moe](https://github.com/keras-team/keras-hub/pull/2163)
+- [Add Mixtral](https://github.com/keras-team/keras-hub/pull/2196)
 - [Fix RotaryEmbedding import](https://github.com/keras-team/keras-nlp/pull/1217)
 - [Fix Autograph error with perplexity metric](https://github.com/keras-team/keras-nlp/pull/1211)
 - [Fix ModuleNotFoundError keras_nlp.models.xlnet](https://github.com/keras-team/keras-nlp/pull/1204)
