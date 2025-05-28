@@ -10,17 +10,17 @@ format:
 
 website:
   title: "Anshuman Mishra"
-  site-url: "https://shivance.github.io/"
+  site-url: "https://kanpuriyanawab.github.io/"
   description: "Personal site of Anshuman Mishra."
   favicon: assets/images/favicon.png
   search: false
   twitter-card:
-    creator: "@anshuizme"
+    creator: "@kanpuriyanawab"
     card-style: summary
   open-graph: true
   repo-actions: [edit, issue]
   repo-branch: "master"
-  repo-url: "https://github.com/anshuizme/"
+  repo-url: "https://github.com/kanpuriyanawab/"
   navbar:
     background: primary
     left:
@@ -36,11 +36,11 @@ website:
         href: pages/resources.qmd
     right:
       - icon: twitter
-        href: https://twitter.com/anshuizme
+        href: https://twitter.com/kanpuriyanawab
       - icon: linkedin
-        href: https://www.linkedin.com/in/anshuizme/
+        href: https://www.linkedin.com/in/kanpuriyanawab/
       - icon: github
-        href: https://github.com/shivance
+        href: https://github.com/kanpuriyanawab
 
 execute:
   freeze: auto

@@ -5,13 +5,13 @@ aliases:
 permalink: /about
 toc: false
 ---
-I work on large language models at [FlipAI](https://flip.ai). For more details on my work experience, check out my [LinkedIn profile](https://www.linkedin.com/in/anshuizme/).
+I work on large language models at [FlipAI](https://flip.ai). For more details on my work experience, check out my [LinkedIn profile](https://www.linkedin.com/in/kanpuriyanawab/).
 
 <table>
   <tr>
-    <td><a href="https://github.com/shivance"><img src="https://img.shields.io/github/followers/shivance.svg?label=GitHub&style=social" alt="GitHub"></a></td>
-    <td><a href="https://twitter.com/anshuizme"><img src="https://img.shields.io/twitter/follow/anshuizme?label=Twitter&style=social" alt="Twitter"></a></td>
-    <td><a href="https://www.linkedin.com/in/anshuizme"><img src="https://img.shields.io/badge/LinkedIn--_.svg?style=social&logo=linkedin" alt="LinkedIn"></a></td>
+    <td><a href="https://github.com/kanpuriyanawab"><img src="https://img.shields.io/github/followers/kanpuriyanawab.svg?label=GitHub&style=social" alt="GitHub"></a></td>
+    <td><a href="https://twitter.com/kanpuriyanawab"><img src="https://img.shields.io/twitter/follow/kanpuriyanawab?label=Twitter&style=social" alt="Twitter"></a></td>
+    <td><a href="https://www.linkedin.com/in/kanpuriyanawab"><img src="https://img.shields.io/badge/LinkedIn--_.svg?style=social&logo=linkedin" alt="LinkedIn"></a></td>
     <td><a href="mailto:shivanshuman021@gmail.com"><img src="https://img.shields.io/badge/Gmail--_.svg?style=social&logo=gmail" alt="Gmail"></a></td>
   </tr>
 </table>

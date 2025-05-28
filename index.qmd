@@ -15,6 +15,4 @@ My external articles and other publishing engagements (like books, liveProjects,
 from my speaking engagements are listed [here](pages/talksseminarsworkshops.qmd). A detailed account of the things that are not
 directly available from the top navbar (interviews, talks etc.) can be found [here](pages/resources.qmd).
 
-The structure of this website is inspired by [Sayak's site](https://sayak.dev).
-
-To know about my projects, please refer to [my GitHub profile](https://github.com/shivance). 
+To know about my projects, please refer to [my GitHub profile](https://github.com/kanpuriyanawab). 

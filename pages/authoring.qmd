@@ -10,7 +10,7 @@ to collaborate with  amazing folks from all around the globe.
 
 ### [Weights&Biases](https://wandb.ai/)
 
--   [Supercharge KerasNLP Models with Wandb](https://wandb.ai/shivance/keras-nlp-x-wandb/reports/Supercharge-KerasNLP-Models-with-Wandb--Vmlldzo1Mjk1NjI2)
+-   [Supercharge KerasNLP Models with Wandb](https://wandb.ai/kanpuriyanawab/keras-nlp-x-wandb/reports/Supercharge-KerasNLP-Models-with-Wandb--Vmlldzo1Mjk1NjI2)
 -   [Generating High-quality Images with SD.Next, HuggingFace Diffusers and W&B](https://wandb.ai/ml-colabs/automatic/reports/Generating-High-quality-Images-with-SD-Next-HuggingFace-Diffusers-and-W-B--Vmlldzo1NTYzMzQy)
 
 ### [Keras](https://www.keras.io/)
@@ -29,9 +29,9 @@ to collaborate with  amazing folks from all around the globe.
 
 ### [Medium](https://medium.com)
 
--   [Interview with 2x Kaggle Grandmaster, Data Science Manager at Emirates NBD: Ravi Ramakrishnan](https://shivance.medium.com/interview-with-2x-kaggle-grandmaster-data-science-manager-at-emirates-nbd-ravi-ramakrishnan-3308a3936c07)
+-   [Interview with 2x Kaggle Grandmaster, Data Science Manager at Emirates NBD: Ravi Ramakrishnan](https://kanpuriyanawab.medium.com/interview-with-2x-kaggle-grandmaster-data-science-manager-at-emirates-nbd-ravi-ramakrishnan-3308a3936c07)
 -   [Flux.jl is so flexible — Deep Learning in Julia](https://juliazoid.com/fluxible-unet-c71e411c8b2d)
--   [Kaggle x Julia : Advanced House Price Prediction : EDA](https://shivance.medium.com/kaggle-x-julia-advanced-house-price-prediction-eda-1124b9a96f97)
+-   [Kaggle x Julia : Advanced House Price Prediction : EDA](https://kanpuriyanawab.medium.com/kaggle-x-julia-advanced-house-price-prediction-eda-1124b9a96f97)
 
 
 

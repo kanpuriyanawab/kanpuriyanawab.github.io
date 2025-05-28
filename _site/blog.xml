@@ -6,14 +6,14 @@
       version="2.0">
 <channel>
 <title>Anshuman Mishra</title>
-<link>https://shivance.github.io/blog.html</link>
-<atom:link href="https://shivance.github.io/blog.xml" rel="self" type="application/rss+xml"/>
+<link>https://kanpuriyanawab.github.io/blog.html</link>
+<atom:link href="https://kanpuriyanawab.github.io/blog.xml" rel="self" type="application/rss+xml"/>
 <description>Personal site of Anshuman Mishra.</description>
 <generator>quarto-1.4.551</generator>
 <lastBuildDate>Sat, 02 Dec 2023 18:30:00 GMT</lastBuildDate>
 <item>
   <title>Illustrated LLM OS</title>
-  <link>https://shivance.github.io/posts/illustrated_llmos.html</link>
+  <link>https://kanpuriyanawab.github.io/posts/illustrated_llmos.html</link>
   <description><![CDATA[ 
 
 
@@ -21,7 +21,7 @@
 
 
 <p>This blog post explores the implementation of large language models (LLMs) as operating systems, inspired by <a href="https://twitter.com/karpathy">Andrej Karpathy’s</a> vision of AI resembling an OS, akin to Jarvis from Iron Man. The focus is on practical considerations, proposing an application-level integration for LLMs within a terminal session. A novel approach involves injecting state machines into the decoding process, enabling real-time code execution and interaction. Additionally, this post proposes <strong>Reinforcement Learning by System Feedback (RLSF)</strong>,” a reinforcement learning technique applied to code generation tasks. This method leverages a reward model to evaluate code correctness through Python subprocess execution, enhancing LLM performance. The findings contribute insights into the dynamic control of LLMs and their potential applications beyond coding tasks.</p>
-<p><img src="https://shivance.github.io/posts/assets/illustrated_llmos/karpathy_ss.png" class="img-fluid"></p>
+<p><img src="https://kanpuriyanawab.github.io/posts/assets/illustrated_llmos/karpathy_ss.png" class="img-fluid"></p>
 <p><em>Image source: <a href="assets/illustrated_llmos/karpathy_ss.png">[1hr Talk] Intro to Large Language Models by Andrej Karpathy</a></em></p>
 <section id="preliminaries" class="level2">
 <h2 class="anchored" data-anchor-id="preliminaries">Preliminaries:</h2>
@@ -40,7 +40,7 @@
 <section id="towards-implementation-injecting-a-state-machine-in-decoder" class="level2">
 <h2 class="anchored" data-anchor-id="towards-implementation-injecting-a-state-machine-in-decoder">Towards Implementation: Injecting a State Machine in Decoder</h2>
 <p>Following is the illustration of how the generation process works in decoder-like models source.</p>
-<p><img src="https://shivance.github.io/posts/assets/illustrated_llmos/illustrated_gpt2.gif" class="img-fluid"></p>
+<p><img src="https://kanpuriyanawab.github.io/posts/assets/illustrated_llmos/illustrated_gpt2.gif" class="img-fluid"></p>
 <p><em>Image source: <a href="https://jalammar.github.io/illustrated-gpt2/">The Illustrated GPT-2 by Jay Alammar</a></em></p>
 <p>The seamless interaction of a Large Language Model (LLM) with an operating system (OS) can be achieved through the strategic injection of a State Machine. By utilizing this approach, the model’s behavior can be dynamically controlled, enhancing its capability to engage with the OS. In particular, the injection of special tokens acts as triggers, facilitating interaction with the Python interpreter through subprocesses.</p>
 <p>To illustrate this concept, consider the scenario where the LLM is tasked with generating the sum of the first N natural numbers. Here, I request the model to encapsulate the generated code within designated special tokens, [CODE] and [/CODE], during its response. The State Machine is activated upon the generation of the [CODE] token, initiating the collection of the generated code in a buffer.</p>
@@ -48,14 +48,14 @@
 <p>In the following sections of this blog, we delve deeper into how this innovative technique empowers the model to adapt and refine its program execution understanding on the fly.</p>
 <div class="quarto-figure quarto-figure-center">
 <figure class="figure">
-<p><img src="https://shivance.github.io/posts/assets/illustrated_llmos/chatgpt_response.png" class="img-fluid figure-img"></p>
+<p><img src="https://kanpuriyanawab.github.io/posts/assets/illustrated_llmos/chatgpt_response.png" class="img-fluid figure-img"></p>
 <figcaption>image/png</figcaption>
 </figure>
 </div>
 <p>Following is an illustration of a state machine to do various operations like db queries, accessing file systems, and even internet searches through Python subprocesses.</p>
 <div class="quarto-figure quarto-figure-center">
 <figure class="figure">
-<p><img src="https://shivance.github.io/posts/assets/illustrated_llmos/llmos_flow_diag.png" class="img-fluid figure-img"></p>
+<p><img src="https://kanpuriyanawab.github.io/posts/assets/illustrated_llmos/llmos_flow_diag.png" class="img-fluid figure-img"></p>
 <figcaption>image/png</figcaption>
 </figure>
 </div>
@@ -83,7 +83,7 @@
  ]]></description>
   <category>LLMs</category>
   <category>Operating-system</category>
-  <guid>https://shivance.github.io/posts/illustrated_llmos.html</guid>
+  <guid>https://kanpuriyanawab.github.io/posts/illustrated_llmos.html</guid>
   <pubDate>Sat, 02 Dec 2023 18:30:00 GMT</pubDate>
 </item>
 </channel>

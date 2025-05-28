@@ -12,10 +12,10 @@ I love to attend developer meetups, conferences, workshops and learn from them a
 -   [Modular NLP Workflows with KerasNLP](https://x.com/margaretmz/status/1706717545007546491?s=20), on September 29, 2023 at Google Developer Groups, Seattle.
 -   [Supercharging Keras with WandB](https://twitter.com/tfugmumbai/status/1705456979756613978?s=20), on September 23, 2023 at TensorFlow User Group Mumbai.
 -   [GSoC Success Secrets: Cracking the Code to Open Source Excellence](https://www.linkedin.com/feed/update/urn:li:activity:7105945831630938112/), September 10, 2023 at National Institute of Technology, Warangal.
--   [Rethinking LLM Design with KerasNLP](https://twitter.com/anshuizme/status/1694540731783028926?s=20), on August 26, 2023 at TensorFlow User Group Hyderabad.
+-   [Rethinking LLM Design with KerasNLP](https://twitter.com/kanpuriyanawab/status/1694540731783028926?s=20), on August 26, 2023 at TensorFlow User Group Hyderabad.
 -   [KerasNLP for Starters](https://www.youtube.com/watch?v=KinLN4lA6Bg&t=3450s), on August 20, 2023 at TensorFlow User Group Durg
 -   [Taking KerasNLP on GenAI Ride]() on July, 23, 2023 at TensorFlow User Group, Kolkata
--   [Re-imagining Keras in the evolving ML ecosystem](https://www.linkedin.com/posts/anshuizme_event-developercommunity-congratulations-activity-7086588533510934528-dS2y) on July 16, 2023 at Google I/O Extended'23 New Delhi.
+-   [Re-imagining Keras in the evolving ML ecosystem](https://www.linkedin.com/posts/kanpuriyanawab_event-developercommunity-congratulations-activity-7086588533510934528-dS2y) on July 16, 2023 at Google I/O Extended'23 New Delhi.
 
 ### co-organized by me
 
