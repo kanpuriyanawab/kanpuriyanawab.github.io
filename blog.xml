@@ -10,7 +10,76 @@
 <atom:link href="https://kanpuriyanawab.github.io/blog.xml" rel="self" type="application/rss+xml"/>
 <description>Personal site of Anshuman Mishra.</description>
 <generator>quarto-1.7.31</generator>
-<lastBuildDate>Sun, 03 Dec 2023 00:00:00 GMT</lastBuildDate>
+<lastBuildDate>Fri, 22 Dec 2023 00:00:00 GMT</lastBuildDate>
+<item>
+  <title>Interview with Aakash Kumar Nain, MLE at Merlyn Minds</title>
+  <link>https://kanpuriyanawab.github.io/posts/interview_aakash.html</link>
+  <description><![CDATA[ 
+
+
+
+
+
+<p>by Anshuman Mishra and Abheesht Sharma</p>
+<p><img src="https://kanpuriyanawab.github.io/posts/assets/interview/interview_aakash.webp" class="img-fluid"></p>
+<p>The AI world is brimming with talent. Folks in the AI industry and the research world are continuously pushing the boundaries of innovation. With this interview series, we want to focus on bringing these inspiring (and possibly unheard-of) stories out into the world — their struggles, their triumphs, and their journey. We will be conversing with people we have looked up to and still look up to for their unparalleled contributions to the AI world. We call this interview series AI Chronicles.</p>
+<p>The two of us with Aakash in Uzbekistan! Aakash Kumar Nain — open source legend, MLE extraordinaire, Delhi lover, mountain climber. We had the privilege of meeting Aakash in Tashkent at the Google ML Community Summit and were taken aback by how laidback and easygoing he was. Looking at how meticulous he is with his work, we were expecting him to be the “serious kind”. The three of us instantly hit it off.</p>
+<p>When we say Aakash is an open source legend, we kid you not. Aakash started contributing to DL open source in 2016, and has never looked back since then. He is a TensorFlow-Addons maintainer. He is a core contributor to Keras 3.0, the new multi-backend Keras. Our favourite open source work of his is, however, Annotated Papers, where he breaks down ML/DL papers into simple explanations. Aakash is a huge proponent of JAX. Safe to say, he has inspired folks like us to take to open source.</p>
+<p>On top of his impressive open source work, he has 7 years of experience in the industry as an ML Engineer/Researcher, starting his career at Parallel Dots and then working at Ola, H2O.ai and now Merlyn Minds where he is working on building an AI assistant for education. Despite having spent 7 years in the industry, he has lost none of his inquisitiveness and curiosity.</p>
+<p>We can keep raving on and on about Aakash’s technical accomplishments, but to us, what separates Aakash from the rest is his approach to life. Read on to find out more about the man!</p>
+<p>Hi, Aakash! Thank you for doing this.</p>
+<p>Thank you for having me here today.</p>
+<p>Q: Could you discuss any machine learning projects or applications that you’ve found personally rewarding, either in terms of impact or the technical challenges involved?</p>
+<p>Though all the open-source projects I worked on were rewarding, contributing to TensorFlow-Addons, Keras, JAX, and Keras Core created the biggest impact. Although I have been a TF user since 2016, my open-source journey started with TF-addons in 2019. Once you start exploring the low-level bits of a library or a framework, your understanding of the mental model improves automatically. I wrote many code examples for keras.io where I showcased the flexibility of the Keras API to build very complex models. The motivation for writing those code examples was to help people understand the mental model behind tf.keras</p>
+<p>I consider myself a power Keras user. I have always wanted to contribute to the core Keras engine. This year, I finally got an opportunity to collaborate with Francois Chollet and the team to rewrite the entire Keras codebase with multi-backend support, including but not limited to TensorFlow, JAX, and PyTorch. It is one of my biggest open-source collaborations with the highest impact.</p>
+<p>Q: The field of machine learning is continually evolving. Are there any emerging trends or developments that particularly excite you or that you believe will have a significant impact in the near future?</p>
+<p>Diffusion models are one of the things that have gotten me excited about the future of generative AI after a long time. Though generative machine learning algorithms are nothing new, it’s just that the underlying algorithm for Diffusion models feels more natural. The other thing that I am looking forward to is the successor of the Transformer architecture. CNNs to transformers was a big leap. I hope the next set of algorithms is equally revolutionary.</p>
+<p>Q: How do you approach maintaining a balance between your athletic interests, such as being a footballer, and your demanding career in data science? Do you find any synergies between these seemingly different pursuits?</p>
+<p>Ever heard of the phrase “Too much of anything is good for nothing”? If you like/love doing something, that doesn’t mean you should devote your entire time to it. Of course, it’s a biased opinion, but to me, there is way more to life than just work. So, I distribute my time among all the things I enjoy doing. It doesn’t mean that it should be like that for anyone else in any sense. It’s a personal choice how much time one wants to dedicate to different aspects of life. Also, I am a firm believer that health is the true wealth. To ensure that I am physically fit, I go to the gym and play football regularly.</p>
+<p>Q: Many aspiring data scientists grapple with imposter syndrome. Have you ever experienced such feelings, and if so, how did you overcome them?</p>
+<p>Oh absolutely! Though many people may suffer from imposter syndrome at different stages, I think it’s way more common during the early years. When working in a fast-moving field like ML, it is natural to feel lagging, seeing the incredible progress in ML and AI daily. The best way to overcome such feelings is to understand that you don’t have to follow every other trend. Fundamentals matter the most in the long run. If you have a solid understanding of the fundamentals, things will always be easy.</p>
+<p>Q: As a maintainer of TensorFlow addons and contributor to multi-backend Keras, can you give us some insights into the open-source development process, including the joys and challenges of contributing to these projects?</p>
+<p>Contributing to open-source is a commitment. It’s not a one-time thing. If you are working on an open-source project, ideally you expect that the community will use it, and that too for a long period. Developing something that people are eager to use needs well-defined goals. The development of the project has to align with these goals.</p>
+<p>The best part of OSS is that you get to collaborate with many talented people. Once you start developing things in collaboration, you get more clarity about the modalities (using the word modality loosely in this context). You start to optimize for maximum coverage-minimal maintenance. Talking about the challenges, I think the biggest challenge is commitment. Many people do OSS just to make it a bullet point in their resume, but some of us do it because we enjoy solving complex problems for a larger audience. If you have a full-time job, then working on OSS means cutting down on other things to find time for the project.</p>
+<p>Q: How do you stay updated with the latest developments in the field of machine learning? Are there specific resources or communities you recommend for those looking to stay informed?</p>
+<p>Reading research papers is the easiest way. The problem, nowadays, is that it is very hard to filter out good papers from the “pile” of research papers being dumped on arXiv every day. Earlier I used to use arXiv-sanity for filtering paper, but recent changes made to it made it somewhat less usable for me (asking Karpathy to bring back the top-rated filter). Now I rely mainly on my Twitter feed for filtering papers. It’s not that good, but it works.</p>
+<p>To answer your question about communities and resources, I think Twitter and Kaggle are hands down the best. If you constantly use the two, you pretty much are aware of the latest research trends and the things that work in practice.</p>
+<p>Q: If you had to offer a single piece of advice to aspiring data scientists or machine learning enthusiasts, what would it be, and why do you consider it so valuable?</p>
+<p>As I said earlier, the most important thing is to learn the fundamental concepts. The biggest mistake I see people making, especially people starting their careers or those in the early stage, is that they get influenced(pun intended!) by the noise on social media. Also, learning “how” to use an algorithm and learning “when” to use an algorithm are two very different things.</p>
+<p>One other unusual thing that I want to emphasize is that if you can afford higher education, go for it without a doubt. Degrees may not matter for your work, but they definitely help in your job search. I am not saying that you can’t do good without degrees, but you will get more opportunities easily if you have one. I couldn’t afford to apply for a master’s program after graduation, but if you can, you definitely should.</p>
+<p>Q: When you are given a problem statement, how do you devise AI solutions for it? What do you look for in a proposed solution?</p>
+<p>The first thing I do before attempting anything else at all is to go through the data thoroughly. People naively jump on model building, but I tend to spend a lot of time with the data at hand. Once I understand the dataset, I look for a trivial solution that can be considered as a baseline. Defining metrics for a model and defining metrics that align with the business are two different aspects. We can’t ignore the latter. Putting models into production means adjusting to the constraints in the production environment. Blatantly scaling up/down doesn’t work for most of the scenarios.</p>
+<p>Q: You’ve always been bullish on JAX, the framework. What is it about JAX that you like? Why would you use JAX over say, TensorFlow or PyTorch? When you look at an ML framework, what attributes are you looking for?</p>
+<p>Almost everything. Reproducibility is a first-class citizen, and so is parallelism in JAX. Have you tried sharding in JAX? I don’t think any other framework (past and present included) had such a good API design for implementing parallelism.</p>
+<p>I would use JAX over any other framework because it is efficient and much easier to optimize. People keep focusing on compilers for programming languages but don’t focus enough on the need for a compiler for deep learning workflows. In my opinion, Python is the perfect language, XLA is a great compiler, and JAX is the best framework for deep learning.</p>
+<p>If I were to choose a framework today from a given list, here are the following things that I use as a checklist for evaluation:</p>
+<ol type="1">
+<li><p>Mental model</p></li>
+<li><p>Ease of reproducibility</p></li>
+<li><p>Ease of parallelism</p></li>
+<li><p>The balance between low-level and high-level</p></li>
+<li><p>The ecosystem</p></li>
+</ol>
+<p>I think the ecosystem is the part where JAX is lacking in a big way, but I hope with Keras 3, more people will contribute to the ecosystem, and it will catch up.</p>
+<p>Q: Can’t have an interview without asking this question to the Annotated Papers guy 😂: what is one research paper you’ve read recently which gave you that “aha” feeling? Basically, a paper which blew your mind!</p>
+<p>I wouldn’t say that I came across any paper in the last few months that blew my mind, but the latest paper from Apple titled MobileCLIP was a refreshing one. Deploying deep learning models on mobile devices is always a challenge, and requires a bit of rethinking, and modifications on the architectural side which aren’t that obvious when you are deploying things on a server. In that way, I think MobileCLIP is a must-read for anyone interested in those kinds of details.</p>
+<p>Q: Your open source work has mostly focused on vision. Has your work in the industry focused around vision as well? Or have you dabbled in different fields?</p>
+<p>Haha yes, my open-source work has mostly been focused on vision, but in terms of industrial experience, I have a T-shaped knowledge graph where I consider the depth of expertise in vision and width for other areas of Machine Learning. From 2017 to date, I have worked on business problems focused on traditional machine learning, time series, vision, speech, and NLP. I have been on the other side of ML as well, where I have focused on MLOPs along with my research work.</p>
+<p>Computer Vision is my favorite field, and the biggest reason for that is that when I focus on vision problems, I have a sense of “what’s happening” inside my pipelines. I find vision more mature compared to other fields, and I absolutely love working with images.</p>
+<p>Q: You’ve been in the industry for 6–7 years, and yet, manage to take time out to contribute to open source. What motivates you to keep contributing to open source?</p>
+<p>Two major things. First, during my initial career phase, OSS played a big role in my learning and growth curves. Second, I consider solving problems in OSS as a mental exercise. The more you do it, the better you become. Your code being used by thousands of other developers is a true test of the logic baked in that code.</p>
+<p>Q: What’s the next big thing for Aakash Nain? :) What are you planning to work on next in open source? If you have any big announcements to make, this is the best place to make them 😂</p>
+<p>For now, I will be focusing on making some tutorials for large-scale training using Keras and JAX. At some point, I will also develop another library based on JAX purely for fun, mostly focused on the vision side, given if I get enough time.</p>
+<p>Anshuman &amp; Abheesht: Thank you, Aakash! It’s been great talking to you!</p>
+<p>And that concludes the fourth interview of our “AI Chronicles” series! This series is a joint effort of Anshuman Mishra and Abheesht Sharma. Anshuman is currently working at Flip as a Machine Learning Engineer. Abheesht is an Applied Scientist at Amazon, where he works on detecting advertisement bots. Both of them contribute extensively to ML open-source software and have been involved in developing KerasNLP.</p>
+
+
+
+ ]]></description>
+  <category>Interview</category>
+  <guid>https://kanpuriyanawab.github.io/posts/interview_aakash.html</guid>
+  <pubDate>Fri, 22 Dec 2023 00:00:00 GMT</pubDate>
+</item>
 <item>
   <title>Illustrated LLM OS</title>
   <link>https://kanpuriyanawab.github.io/posts/illustrated_llmos.html</link>
@@ -85,6 +154,500 @@
   <category>Operating-system</category>
   <guid>https://kanpuriyanawab.github.io/posts/illustrated_llmos.html</guid>
   <pubDate>Sun, 03 Dec 2023 00:00:00 GMT</pubDate>
+</item>
+<item>
+  <title>Interview with Matthew Watson, Keras Team, Google</title>
+  <link>https://kanpuriyanawab.github.io/posts/interview_matt.html</link>
+  <description><![CDATA[ 
+
+
+
+
+
+<p><img src="https://kanpuriyanawab.github.io/posts/assets/interview/interview_matt.webp" class="img-fluid"></p>
+<p>by Anshuman Mishra &amp; Abheesht Sharma</p>
+<p>The AI world is brimming with talent. Folks in the AI industry and the research world are continuously pushing the boundaries of innovation. With this interview series, we want to focus on bringing these inspiring (and possibly unheard-of) stories out into the world — their struggles, their triumphs, and their journey. We will be conversing with people we have looked up to and still look up to for their unparalleled contributions to the AI world. We call this interview series AI Chronicles.</p>
+<p>In this installment of our series, we sit down with Matthew Watson for a chat. Matt, a Stanford CS alumnus, is a software engineer with the Keras team at Google, where he works on KerasNLP, Keras’ native NLP offering. He has also been instrumental in developing Keras 3 (its announcement created significant buzz on Twitter!), a multi-backend Keras that can run on TensorFlow, JAX, and PyTorch. In the past decade or so, Matt has already had a wonderfully diverse career — he started off with literature in his undergrad, before developing a love for CS (more on this in the interview!).</p>
+<p>All words seem inadequate when one sets out to describe Matt. Matt is one of those “10x” engineers/researchers and always has a solution to every problem. We have always found his intuition to be bang on target. Matt has played a pivotal role in both of our careers; he has mentored us during (and after) Google Summer of Code. But one needs to look beyond just his technical expertise. Matt has infinite patience; we’ve spent late-night debugging sessions with him, and he has always been super-helpful and giving. Matt is an “open source stan”, and you can see his love for open source in every response of his on GitHub, and in every meticulously drafted PR (Pull Request). Safe to say, Matt has influenced us like no one else.</p>
+<p>Let’s begin!</p>
+<p>Anshuman &amp; Abheesht: Welcome, Matt! Thanks for doing this.</p>
+<p>Matt: Hi Anshuman and Abheesht! And thanks for putting this whole series together. I should probably quickly note that opinions here are my own; I’m not speaking on behalf of Google or any organization.</p>
+<p>Anshuman: Can you tell us about your journey in the field of natural language processing (NLP) and how you became involved with the Keras team at Google?</p>
+<p>Matt: Honestly I have taken a meandering path, but two consistent threads I can pick out of the last decade of my career are a love of language and of open-source software.</p>
+<p>I started my undergraduate studies with a focus on literature before getting lured to Computer Science by some really fantastic teachers. Through that switch, I have remained fascinated with the intersection of language and math. My first hands-on experience with NLP was helping with a research project at my university extracting information from Wikipedia via support vector machines written in Java (times have changed!). I started using Keras in 2017 when everyone was discovering text generation with LSTMs.</p>
+<p>I’ve had the chance to spend most of my career so far working in open source (first in the Linux community and now ML) and have always been so grateful for it. So joining Keras honestly felt like a no-brainer; it was a chance to do open work on my interests with a library I already loved.</p>
+<p>Abheesht: I’d like to talk a bit more about the career pivots you’ve done. In school/college, you say that you were interested in literature, post which you pivoted to Computer Science. Even in the field of Computer Science, you started off with Computer Graphics, started working on building an operating system at Endless Computers, and worked in the Firebase team, before joining Keras. How much did learning/working in different “disciplines/fields” help you? Were there any opportunities for “cross-discipline” learning, say, something you learned from discipline A which helped you in discipline B?</p>
+<p>Matt: I’m really glad I got a start in the humanities because writing is so important for almost every field. Being able to articulate a thought clearly and concisely is an important skill we underplay too often in the hard sciences.</p>
+<p>Computer graphics and the ML work I’m doing today feel closely intertwined. My advisor for my Master’s degree, Pat Hanrahan, was a driving force behind programmable shading language, and that blows my mind to this day. The early days of GPUs were all about these fixed-function pipelines for creating and rasterizing triangles. Then came the idea to write these domain-specific shading languages that added a ton of expressivity to the process. And from that came the idea of general-purpose GPU computations, and things like CUDA, and here we are today! ML as a field has probably been moved forward literal decades thanks to ideas from the graphics world.</p>
+<p>I’m grateful for my time in the Linux open-source world for quite different reasons. I can’t say there’s much overlap in subject matter, but it was a wonderful start in the world of open source. It definitely made me a bit of a tinkerer, with everything from my OS to shell to IDE. Linux is built around supporting that. But it’s something I think equally applies to the world of ML. The deeper you get into these big deep-learning frameworks the more clear it becomes they all have bugs. You gain so much as an ML developer when you can get into the weeds of a library and start changing things.</p>
+<p>Anyway, that’s a long-winded way of saying I’m quite glad my career hasn’t been a straight line.</p>
+<p>Anshuman: Given your interest in English literature, which novels are you currently reading? What’s on your to-read list? Do you have any writing aspirations?</p>
+<p>Matt: Hah, for any attempt to read literature with a capital “L” in school, my reading diet since I was 10 has been mostly sci-fi and fantasy. Ursula K. Le Guin is a big hero of mine. I recently read Klara and the Sun, a dystopian novel narrated by an “autonomous friend” that certainly feels relevant to all the work we do.</p>
+<p>I would love to try my hand at fiction someday, but most of my writing is technical these days.</p>
+<p>Abheesht: What are the focal attributes of KerasNLP that make it different from other NLP libraries out there?</p>
+<p>Matt: One thing that makes Keras unique is a detailed and strict style guide for any new API. Our top-level APIs should be accessible to a very broad audience. We achieve flexibility underneath this top level with a focus on modular components and layered abstractions.</p>
+<p>This gives KerasNLP a somewhat unique positioning among “pre-trained modeling” libraries. When we port a model from a research codebase, we tend to heavily rewrite the forward pass so it matches our conventions and uses common building blocks.</p>
+<p>This has some neat side effects. For one, it’s a great library to learn from–you can define a transformer from scratch with our base layers in about 20 lines of code. It also gives a very uniform experience of slicing and dicing our models. That’s a big one given how many real-world workflows, from PEFT strategies to interpretability techniques, require reaching into model internals.</p>
+<p>Abheesht: How do you see the current landscape of NLP and deep learning evolving, and how does KerasNLP fit into this evolving landscape?</p>
+<p>Matt: It’s dizzying how fast the field is changing these days. There is a ton of energy in open-source NLP development. There are so many valid concerns with how all this new technology is being used. At a broad level, I keep trying to remind myself what a massive period of flux this is for the field. We should all hold our opinions lightly and stay curious.</p>
+<p>I think multi-backend Keras 3 is really a game changer for how KerasNLP fits it. On the KerasNLP side, we can take a pre-trained model, write our numerics once, and distribute our weights once. You can fine-tune a model in any of TensorFlow, Jax, or Torch, and use Keras’ save format as a way to seamlessly move between frameworks. I think this is a new tool we are putting in ML developer’s toolboxes, and I am excited to see what people do with it.</p>
+<p>Anshuman: Could you share some real-world applications or projects where KerasNLP has been particularly instrumental or innovative?</p>
+<p>Matt: One of the first projects to use KerasNLP is the AutoKeras library, and I really love how it fits into the Keras broader Keras ecosystem. It’s a super accessible, code-first library. You can just define your data and problem and it will handle choosing an architecture, optimizer, and hyperparameters. Or you can define your own much more complex and tailored workflow as you get deeper in.</p>
+<p>I think there is a huge opportunity to take a similar approach to generative problems going forward. Meet people with accessible, understandable, code-first flows that still give you full control over an underlying language model when you need it. I haven’t quite seen an “auto ML” offering on the generative modeling front that has really blown me away, but I would bet it’s just a matter of time.</p>
+<p>Abheesht: Natural language understanding and generation have seen remarkable advancements. What do you think are the key challenges and opportunities in NLP today?</p>
+<p>Matt: There’s a huge amount of opportunity here. We are far from understanding all the ways we can put the emergent properties of LLMs to use. Given the amount of investment and attention, I am not particularly worried about the field suddenly losing steam.</p>
+<p>An obvious challenge is the reliability of language models. If you had a service where a fellow human would often give you helpful advice, and occasionally confidently lie to your face, people would be out there flipping tables.</p>
+<p>I think there are two things we could do here. First, keep working on the engineering problem of reliable models that can, at least, indicate uncertainty when present. Second, don’t oversell these things! There are a lot of unsolved problems with LLMs, and there is a persistent, magnetic attraction towards anthropomorphizing something that appears to understand language. Everyone working in this space needs to be careful with how we describe these systems, and continually flag the obvious limitations of these tools.</p>
+<p>Abheesht: One thing I’ve seen with the Keras team is the collaborative culture that has been fostered. All members of the Keras team are very helpful to the outside community. Evidence of this is seen in the number of students who contribute to the Keras ecosystem. Can you provide insights into the collaborative development process within the Keras team at Google and outside contributors and how it contributes to the library’s success?</p>
+<p>Matt: A huge reason I was attracted to the Keras team was that everyone on it really cares about open-source tools, not as an afterthought or a way to boost your profile, but as an end unto itself.</p>
+<p>The vast majority of my work is out in the open on GitHub, and I think that is true of the whole Keras ecosystem. Most real discussion about new APIs is happening on issues and pull requests.</p>
+<p>I think everyone on the team really believes in the virtuous cycle here. There is far more knowledge and skill in the large pool of Keras users than just the Keras team at Google.</p>
+<p>Anshuman: In the ever-evolving field of AI, staying updated is crucial. How do you personally keep up with the latest developments and trends in NLP and deep learning?</p>
+<p>Matt: It’s a mix right now of Twitter, word of mouth, and anything that naturally comes up in my work. There is just no way for anyone to ingest all the research in this space. I constantly try to curate a short list of concepts to understand deeply, rather than attempting to ingest the whole fire hose.</p>
+<p>If I encounter a new claim that breaks an assumption I was holding, or a bug in my code I can’t effectively explain, it’s almost always worth digging in. ML as a field I think really rewards going deep on unknowns and constantly leveling up your understanding.</p>
+<p>Anshuman: You’ve done your Bachelor’s and Master’s from Stanford, widely regarded as one of the best universities in the world. How was your time at Stanford? How do you think your education has shaped your career as an engineer over the past decade? What makes Stanford Stanford; what does Stanford do differently from other universities that makes it the best? Is it the faculty? Is it the peer group?</p>
+<p>Matt: The main thing I think Stanford provided was this massive playground to go out and build your own understanding. They give a lot of resources and freedom to students, and there’s a lot of bright people trying weird stuff you can talk to. There’s definite energy in that environment.</p>
+<p>Stanford also killed it with the introductory Computer Science courses. The lecturers and teaching assistants were really supportive and focused on sparking curiosity about what computers can do. That is for sure what lured me out of the social sciences.</p>
+<p>I wouldn’t put too much stock into any one place though. The best coworkers in my working life have truly come from all sorts of educational backgrounds; I cannot pick out a pattern. People who teach themselves and even get a bit irritated by things they don’t yet understand tend to make great engineers. And open source in particular is one of the most accessible ways to wade into real problems from anywhere in the world.</p>
+<p>Abheesht: What, do you think, is the future for KerasNLP? Where do you see it going? What are some exciting developments that are planned in the near future?</p>
+<p>Matt: The near future for KerasNLP is all about sticking the landing with Keras 3 (multi-backend Keras). We want to make sure we have the models people are most excited about (e.g.&nbsp;LLama 2 and Falcon), but equally important is a good ecosystem of tools to scale these models up and down.</p>
+<p>On the scaling down front, we want a good multi-backend workflow for LoRA, and for scaling up, we are working on some dead simple model parallelism (think sharding individual matrices across GPUs). It’s definitely a lot to execute on, but that’s kinda fun. We are all heads down on our projects till the release of Keras 3 later this year.</p>
+<p>Abheesht: Having talked to you before, I know how bullish you are on open-source software. Is open source the way forward with LLMs? The upsides are obvious; the downsides include potential misuse, etc. What are your views on this?</p>
+<p>Matt: I think the biggest thing we can all do is stay open to changing our viewpoints. We are way out in uncharted territory in terms of model capability, so the most accurate (and maybe unhelpful) thing we can say is that we don’t know what the biggest risks are or how to mitigate them.</p>
+<p>I should probably just recuse myself from any conversations of existential risk from language models; I don’t know enough. I am glad some people out there are thinking about it, but personally, I am much more worried about the more immediate societal issues–bias, misuse, misinformation, disruption from automation, etc. These I feel strongly need to be addressed in the public square, and open models will be an essential tool.</p>
+<p>First, with an open model, you can crowdsource finding all the issues and fail states. More people probing a model will do a much more thorough job of making it “misbehave.” Second, if we really open up the whole training recipe (what data is going in?!), we can have a much more open conversation about equitable outcomes with this new tech.</p>
+<p>I think we have a ways to go as a field, particularly with opening up details on training data. We also need to avoid a “race to the bottom,” just throwing more in more compute and data to beat benchmarks without understanding what we are scaling to. But if we want this new tech to do right by society at large, I think open models have a large role to play.</p>
+<p>Abheesht: Keras 3, i..e, multi-backend Keras which allows users to switch backends (TensorFlow, JAX, and PyTorch) was released to much hubbub and fanfare a couple of months ago. What do you think are some of the most exciting use cases of a multi-backend Keras? Why should people be excited about it?</p>
+<p>Matt: Maybe a bit abstract, but I think Keras has the opportunity to become a “lingua franca” for modeling problems for a lot more people with Keras 3. Keras is a familiar API to basically everyone in the ML field–even if you don’t realize it, its fingerprints are all over abstractions in so many deep learning toolkits.</p>
+<p>With Keras 3, you can start with a backend agnostic modeling flow, and “lower” it into TensorFlow, JAX, or PyTorch anytime you need. There’s no transpilation, all layers/metrics/optimizers are using backend native calls for the selected framework. So basically Keras just becomes an incredibly efficient thing to learn. You can use it as a diving off point for basically any ML problem, and have the expressivity of a low-level framework as soon as you need it.</p>
+<p>Abheesht: What is one research paper you’ve read recently that gave you that “aha” feeling? Basically, a paper that blew your mind!</p>
+<p>Matt: A while ago I was in a paper reading group digging into graph neural networks. I found the notions of message passing and permutation invariance among graph vertices to be this big lightbulb moment where a lot of disparate notions in my head suddenly coalesced.</p>
+<p>Basically, you can think of CNNs and Transformers, and RNNs as graph networks. A convolution is just a message passing among neighboring pixels. Transformers are quite literally densely connected graph attention networks, with positional information added in.</p>
+<p>Framing everything as a graph gives you this uniform lens to look across the whole field of deep learning, which is so cool. This article is a good introduction to the idea.</p>
+<p>Anshuman &amp; Abheesht: Thank you, Matt! It’s been great talking to you!</p>
+<p>And that concludes the third interview of our “AI Chronicles” series! This series is a joint effort of Anshuman Mishra and Abheesht Sharma. Anshuman is currently working at Flip as a Machine Learning Engineer. Abheesht is an ML Research Scientist at Amazon, where he works on detecting advertisement bots. Both of them contribute extensively to ML open-source software and have been involved in developing KerasNLP.</p>
+<p>Best regards and happy learning!</p>
+
+
+
+ ]]></description>
+  <category>Interview</category>
+  <guid>https://kanpuriyanawab.github.io/posts/interview_matt.html</guid>
+  <pubDate>Wed, 11 Oct 2023 00:00:00 GMT</pubDate>
+</item>
+<item>
+  <title>Interview with Rajaswa Patil, AI Researcher at Postman Labs</title>
+  <link>https://kanpuriyanawab.github.io/posts/interview_rajaswa.html</link>
+  <description><![CDATA[ 
+
+
+
+
+
+<p><img src="https://kanpuriyanawab.github.io/posts/assets/interview/interview_rajaswa.webp" class="img-fluid"></p>
+<p>by Anshuman Mishra and Abheesht Sharma</p>
+<p>The AI world is brimming with talent. Folks in the AI industry and the research world are continuously pushing the boundaries of innovation. With this interview series, we want to focus on bringing these inspiring (and possibly unheard of) stories out into the world — their struggles, their triumphs and their journey. We will be conversing with people we have looked up to, and still look up to for their unparalleled contributions to the AI world. We call this interview series AI Chronicles.</p>
+<p>Rajaswa’s Stellar Profile Today, we are honored to have Rajaswa Patil with us. Rajaswa, who graduated in 2021 from BITS Goa, has already had a chequered career so far. He started with a Pre-doctoral position at TCS Research, before working at Microsoft as a Research Fellow. He now works at Postman Labs as an AI Research Associate. Rajaswa is leveraging Generative AI and Large Language Models (LLMs) to build “Postbot” at Postman.</p>
+<p>Rajaswa is one of those people with whom you can never have a meaningless conversation. He is a cornucopia of knowledge, and always has tidbits of useful information to give out, not just restricted to AI or tech. Before he joined the industry, Rajaswa introduced a research culture in NLP at BITS Goa. He is one of the reasons why I, Abheesht, was able to get out of my initial failures in research and actually get some papers published during my undergrad.</p>
+<p>Let’s begin!</p>
+<p>Anshuman &amp; Abheesht: Hello, Rajaswa! Thank you for doing this!</p>
+<p>Rajaswa: Hi, thanks for having me!</p>
+<p>Abheesht: Before we even start this interview, I want to get one heavy question out of the way 😂. What is your opinion on whether LLMs are sentient? Do you think LLMs are intelligent? Which side of the debate are you on?</p>
+<p>Rajaswa: I don’t have a strong opinion on this matter, as I find it challenging to provide precise definitions for terms like “sentient” and “intelligent.” The complexity deepens when we consider the broader concept of Artificial General Intelligence (AGI).</p>
+<p>To gain a more informed perspective on sentience and AGI, I’ve been delving into a book called “Superintelligence” by Nick Bostrom. I highly recommend this book to anyone curious about these questions. It offers valuable insights into the subject.</p>
+<p>One point we can generally agree upon is the potential for computational modeling of human-like intelligence in the future. Human intelligence is the result of millions of years of evolutionary computation, providing us with a relatively intelligent blank slate at birth, which then undergoes further training to reach adult human-level intelligence. In many ways, we’re already making significant strides in engineering computational systems that can provide a head start equivalent to millions of years of evolution in just a month of model pre-training.</p>
+<p>However, there are still significant challenges to overcome. Limitations in computational power, data availability, data modalities (which may require more sophisticated model architectures), and other factors are currently hindering our progress. Nevertheless, we’re making rapid advancements toward achieving human-level intelligence in machines.</p>
+<p>Anshuman: You’ve done your Bachelor’s in Electrical Engineering. What brought you to data science and ML? Please tell the reader about your Machine Learning journey!</p>
+<p>Rajaswa: My journey in engineering began in 2017, and my passion for Computer Science was evident from the start. However, despite my enthusiasm, I couldn’t secure a spot in a prestigious Computer Science program at any institute. I faced a difficult choice between the branch of study and the quality of peers and the prevailing “coding culture.” In the end, I made the decision to pursue Electrical Engineering at BITS Goa over Computer Science/Information Technology programs at institutions like COEP Pune and IIIT Delhi. What influenced my choice was BITS Goa’s remarkable achievement of having the highest number of Google Summer of Code (GSoC) selections across the country in 2017, with many of those selections coming from students with non-CS backgrounds. This spoke volumes about the thriving tech culture at BITS Goa.</p>
+<p>The year 2017 marked the rapid rise of Machine Learning and Deep Learning among the tech community. Platforms like Kaggle and Google Colab were emerging, creating new opportunities. Two key factors drew me towards Data Science and Machine Learning during this period. First, there were on-campus courses and bootcamps taught by senior students through programs like CTE or QSTP, which provided valuable insights into these fields. Second, my brother served as a project mentor for Udacity’s Self-Driving Car Nanodegree program, introducing me to the fascinating world of AI and its potential for lucrative careers. This initial exposure piqued my interest, and as I explored further, my fascination with these fields deepened.</p>
+<p>I made a bold decision during this time by forgoing a summer internship offered by BITS in favor of a Summer Internship at IIT Bombay, where I worked on Information Retrieval and Natural Language Processing (NLP). This experience opened my eyes to the significance of research papers in the field of AI, and I learned about prestigious conferences like ACL and EMNLP. I returned from IIT Bombay with a strong determination to publish my own research and started participating in shared-tasks like SemEval. In 2020, our efforts resulted in the publication of three papers. This success led to the establishment of the Language Research Group (LRG) at BITS Goa.</p>
+<p>NLP was not a popular choice at the time, as it was more challenging to program compared to some other fields, and it lacked the visual appeal of areas like Computer Vision with GANs and Image Segmentation. However, our unique focus on NLP gave us a distinct advantage. The Language Research Group thrived, and we all built impressive profiles for ourselves in the field, thanks to our work in NLP.</p>
+<p>Abheesht: In my conversations with you back in 2021, I remember how eager you were to take up a PhD in Computational Linguistics. What made you change your mind? Why did you decide to ply your trade in the tech industry over choosing a career in academia? Have you completely closed the door on doing a PhD in the future?</p>
+<p>Rajaswa: Indeed, I had been contemplating pursuing a PhD since my sophomore year. Teaching has always been a passion of mine, and I could envision myself in academia. However, I made the choice to remain in the industry for several reasons, a mix of personal and professional considerations.</p>
+<p>On a personal level, I had originally envisioned a future where I would build my academic career in the West while also starting a family. Unfortunately, a series of unforeseen events led me to reconsider and ultimately give up on that dream. It became clear to me that academia, regardless of the location, would impose significant limitations on both my social and financial freedom. This realization played a significant role in shaping my decision to remain in the industry.</p>
+<p>When I turned 23, my friends gifted me “The Almanack Of Naval Ravikant”, and within its pages, I stumbled upon a quote that left a profound impact on me, particularly concerning Applied Scientists:</p>
+<p>Society, business &amp; money are downstream of technology, which is itself downstream of science. Science applied is the engine of humanity.</p>
+<p>Corollary: Applied Scientists are the most powerful people in the world. This will be more obvious in coming years.</p>
+<p>It doesn’t take a genius to recognize that AI is poised to become one of the most significant advancements of the 21st century. This quote forced me to reevaluate how I could position myself in the midst of this historic progression. At the time, I had been immersed in the AI4Code domain since my graduation, and it was evident that this field was already undergoing substantial transformations with the emergence of groundbreaking tools like Copilot during the Large Language Model era. The evidence was right before my eyes, affirming the relevance and power of applied scientists in shaping the future.</p>
+<p>During that period, I was actively preparing for my PhD applications, juggling tasks like publishing papers at TCS Research and taking exams like GRE and TOEFL. It was during this time that Sumit Gulwani, a luminary in the field of AI4Code, approached me with an intriguing opportunity: a Research Fellowship at his team, Microsoft PROSE. This offer presented an industry alternative to pursuing a PhD. It entailed the possibility of joining the team as a Research Fellow, followed by a role as a Research Associate for 3–4 years, with a smooth transition into a full-time Scientist position, all without the need for a Master’s or PhD. This proposal put me in a considerable dilemma because, by then, I had more or less ruled out the traditional academic path and was leaning towards an industry career. Pursuing a PhD for an industry position seemed less attractive in comparison to this enticing offer.</p>
+<p>Despite my confusion, I sought counsel from a wide range of individuals with diverse backgrounds and varying levels of experience. However, even after these discussions, I found it challenging to make a decision. Eventually, I chose to move forward with an industry career primarily because it offered greater flexibility compared to the commitment required for a PhD.</p>
+<p>My perspective, then and now, is that the industry holds immense potential for value creation. I believe this trend will continue for the next few years. With substantial investments from Big Tech companies, investors, and governments pouring into AI, there is no doubt that the industry is where the action is. Many top AI/non-AI academics worldwide are either launching startups, contributing to open-source projects, or collaborating with big tech firms and governments to apply AI in practical contexts. It’s evident that most major advancements, whether theoretical or practical, are emerging from the industry. This is because the industry boasts the necessary resources and motivation.</p>
+<p>As of today, this is where I want to be. However, I haven’t entirely abandoned my PhD aspirations. I do envision pursuing a PhD at some point, but it will likely be a part-time endeavor and may not necessarily be in Computer Science, although it will remain closely related to AI. I anticipate that this plan will materialize several years down the line, possibly 5 to 6 years from now, at the earliest.</p>
+<p>Abheesht: Your journey so far has been inspirational. You come from a third tier town, and did not have the opportunities one has in bustling, metropolitan cities. You fought all the odds, made it to a reputable college, performed research and now work at an enviable position at Postman. Tell us a bit more about your struggles, say, the culture shock you faced when you joined college, or how you gained the confidence to rub shoulders with the best in the business.</p>
+<p>Rajaswa: Honestly, I’ve been incredibly fortunate in my life journey. Despite hailing from a Tier-3 city, I’ve had the privilege of a strong educational foundation — a bit like being a big fish in a small pond. My father holds a PhD in Biotechnology, and my mother earned a Master’s degree in Organic Chemistry. Moreover, my older brother, who is five years my senior, has always been a trailblazer for me. Whether it was excelling in the Joint Entrance Examination (JEE) or venturing into Software Engineering and Machine Learning, he led the way, providing me with invaluable guidance based on his experiences.</p>
+<p>However, when I entered college, especially during my first year, I experienced a significant culture shock. I quickly realized that people judged you based on your manner of speaking, your choice of clothing, and various other factors. BITS Goa was not home to many Tier-3 city students. In fact, I’m quite certain that over 70% of the student body came from India’s major metropolitan areas, with a notably Westernized mindset. This was a stark departure from the slightly more conservative culture I was accustomed to in Tier-3 cities in India. I was also highly introverted during this phase. In fact, during my first semester, I hardly left the campus at all. For the initial couple of months, I didn’t even venture across to the A-wing of the campus. I didn’t have much disposable income, I didn’t indulge in drinking or openly participate in parties and celebrations — factors that significantly impacted my social life. To compound matters, I missed my mid-semester examinations due to a family medical emergency and found myself falling behind in all my courses.</p>
+<p>It was an undeniably challenging period. However, things began to change when I made the decision to forego a summer internship opportunity and instead pursued an off-campus internship that allowed me to return, publish research papers, and start earning money through internship or project stipends. This shift helped me gain recognition on campus. Part of it stemmed from the fact that I became known as the person who could assist in securing research papers for MS applications or help others connect with top professors for projects and reading courses. With the establishment of the Language Research Group (LRG) and my role in teaching ML courses at CTE and QSTP, my social life improved, as did my self-confidence. Over time, I ended up assisting numerous individuals, making my on-campus experience quite rewarding. It became common for people to greet me with a smile of acknowledgment as we passed one another on walkways and in corridors.</p>
+<p>Even today, when I’m out in Bengaluru, it’s a delightful surprise to be recognized by people, primarily BITSian juniors, who remember me from somewhere, despite the fact that I believe I haven’t achieved anything extraordinary to warrant such recognition.</p>
+<p>Abheesht: I want to talk a bit more about how giving you’ve been to the community. You’ve never “gatekept” the knowledge you’ve had. A good example of this is when you formed the Language Research Group (LRG) at BITS Goa. What motivates you to keep giving back to the community?</p>
+<p>Rajaswa: My passion for teaching is quite straightforward. Additionally, I am a staunch advocate of the “Feynman Technique.” I truly solidified my understanding of Machine Learning theory when I had the opportunity to teach it to my junior peers. Notably, my first significant paper was published with me as the last author, serving as a supervisor without direct contributions. This teaching and mentoring role has proven to be an invaluable professional growth experience for me, providing a natural incentive to continue.</p>
+<p>In a broader context, I view education as an arena where one can achieve “low-effort high-impact” outcomes. Consequently, I consistently invest my time and resources in educational pursuits, whether it’s for the betterment of society or to serve my own personal interests. I actively engage in both aspects, finding them equally rewarding and fulfilling.</p>
+<p>Anshuman: Could you tell us more about your role at Postman Labs and how a day looks like?</p>
+<p>Rajaswa: My current role is nothing short of incredible. I’m a part of the Labs team, where we operate in a zero-to-one environment, emphasizing rapid experimentation and swift product deployment. At present, I’m the sole core-AI specialist within the team, which is composed of remarkable talents who inspire me daily. Among them are Abhijit Kane, the co-founder of Postman, and Shamasis Bhattacharya, who serves as my manager and is the Head of Labs. Alongside these brilliant minds, we have a dedicated team of engineers, designers, and data analysts. In many ways, I have all the essential elements within my team to transform the product of my imagination into a reality.</p>
+<p>My role is exceptionally diverse, allowing me to engage in various facets of the product development process, including research, design, analytics, and even occasional contributions to our backend services. Given my unique position as the sole core-AI member, I also play a crucial role in cultivating an AI culture within Postman. This involves sharing daily updates on AI developments, organizing invited talks, and facilitating communication with external teams.</p>
+<p>The discussions we have within the team are remarkably ambitious, challenging me to adopt new perspectives and ways of thinking to achieve goals on a larger scale. My work primarily involves researching new directions for our product, particularly Postbot, and I take great pride in contributing to Postman’s broader objectives.</p>
+<p>Abheesht: LLMs are prone to hallucination, prompt injection, etc. How do you deal with these issues? Are LLMs reliable enough in production?</p>
+<p>Rajaswa: To mitigate potential attacks or abuses of the product, it’s essential to engineer specific guardrails that closely monitor either the input or output to the system, as well as user behavior patterns. It’s worth noting that large language models (LLMs) are susceptible to generating incorrect or “hallucinated” content, which can occur periodically in most products. While there isn’t a perfect solution available at this time, one temporary measure is to make the system as human-in-the-loop (HITL) as possible. This entails providing the system with capabilities for recording consent, gathering user feedback, and enabling correction mechanisms. The primary objective is not to create a flashy system but to develop a practical and usable one, doing so as quickly as possible.</p>
+<p>Anshuman : AI is moving at breakneck pace. How do you stay up to date with cutting edge?</p>
+<p>Rajaswa: To be honest, I don’t exert an immense effort to stay updated, but I have some effective strategies in place. I maintain a dedicated Twitter list focused on AI development, which I monitor daily. My LinkedIn feed has also become a valuable source of relevant updates. I subscribe to several newsletters and mailing lists, primarily related to the research community. Additionally, I’m an active participant in various communities on platforms like WhatsApp, Slack, and Discord. These communities provide valuable insights, and I engage actively in discussions within some of them.</p>
+<p>Abheesht: You’ve worked in several research labs. How has working in research labs been like for you? How do labs in India compare with labs in the US?</p>
+<p>Rajaswa: My experience with Indian research labs, in general, has been less than stellar, and I’ve noticed that many of my peers share similar sentiments. However, it’s worth noting that one potential upside to these experiences is that the learning curve can often be steeper, which can ultimately benefit you in the long term. I haven’t had the opportunity to work with any research labs in the United States, so I can’t provide a direct comparison in that regard.</p>
+<p>Abheesht: What suggestions/advice would you give someone who has just started learning/working on ML?</p>
+<p>Rajaswa: Begin your AI journey by diving into building. Today, with the abundance of APIs available, you can construct and showcase an end-to-end working system swiftly. Simultaneously, explore the intricacies of machine learning on the side.</p>
+<p>I firmly believe that with your programming skills, you can assemble roughly 80% of any practical AI system. The remaining 20% can be tackled with in-depth ML knowledge, which will empower you to debug and optimize your creations. However, given the rapid pace of AI development, I don’t think your primary objective should be focusing on that final 20%. Instead, prioritize getting started with building as soon as possible.</p>
+<p>Anshuman &amp; Abheesht: Thank you, Rajaswa! It’s been great talking to you!</p>
+<p>And that concludes the second interview of our “AI Chronicles” series! This series is a joint effort of Anshuman Mishra and Abheesht Sharma. Anshuman is currently working at Flip as a Machine Learning Engineer. Abheesht is an ML Research Scientist at Amazon, where he works on detecting advertisement bots. Both of them contribute extensively to ML open-source software and have been involved in developing KerasNLP.</p>
+
+
+
+ ]]></description>
+  <category>Interview</category>
+  <guid>https://kanpuriyanawab.github.io/posts/interview_rajaswa.html</guid>
+  <pubDate>Mon, 25 Sep 2023 00:00:00 GMT</pubDate>
+</item>
+<item>
+  <title>Deep Learning in Julia</title>
+  <link>https://kanpuriyanawab.github.io/posts/flux_is_so_flexible.html</link>
+  <description><![CDATA[ 
+
+
+
+
+
+<p><a href="https://fluxml.ai/">Flux</a> is amazing and it’s far more than just an ML framework. Differentiable programming &amp; Zygote, first class GPU support are features that set it apart among ML systems. The best thing I love about flux is mixing neural nets with differential equations, to get the best of black box and mechanistic modelling, this is what <a href="https://sciml.ai/">SciML</a> doing.</p>
+<p>Flux is fairly new, and needs attention of community&nbsp;! In this article we’ll learn about how to implement a model in Flux.jl&nbsp;. We’ll walkthrough UNet implementation, which I’ve been <a href="https://github.com/shivance/Metalhead.jl/blob/ba54cf0219cc247a732c1710925a4eef7a2c70c7/src/convnets/unet.jl">working</a> on lately to contribute to flux’s model zoo <strong>Metalhead.jl.</strong></p>
+<p><strong>After reading this article you’ll learn about</strong></p>
+<ol type="1">
+<li>What is UNet?</li>
+<li>A brief overview of Flux API</li>
+<li>Reimplementing PyTorch Models in Julia</li>
+</ol>
+<div style="text-align: center; margin-top: 25px; margin-bottom: 25px;">
+<p><a href="https://fullstackagents.substack.com" class="btn btn-primary" target="_blank" title="Subscribe"> Subscribe </a></p>
+</div>
+<section id="unet" class="level2">
+<h2 class="anchored" data-anchor-id="unet">UNet 🥅</h2>
+<p>UNet is a deep learning model which was released in the paper <a href="https://arxiv.org/pdf/1505.04597v1">U-Net: Convolutional Networks for Biomedical Image Segmentation</a>. The architecture of the network looks like&nbsp;: Fig. 1 ( Source: UNet&nbsp;Paper)We’ll not go into detail about UNet theory, as the paper explains it in best way, and explaination here would be redundant anyway.</p>
+<div class="quarto-figure quarto-figure-center">
+<figure class="figure">
+<p><img src="https://kanpuriyanawab.github.io/posts/assets/flux_is_flexible/unet_full.png" class="img-fluid figure-img"></p>
+<figcaption>Source: UNet Paper</figcaption>
+</figure>
+</div>
+<p>This tutorial will focus on implementation.</p>
+<p>Let’s dive into code rightaway&nbsp;! The article is written presuming that you have knowledge of implementing a neural networks in PyTorch&nbsp;! We simply create a class that inherits nn.Module&nbsp;. We now create layers and assign it to class with self&nbsp;. When this model is instantiated, these layers will become attribute of the model object.</p>
+<script src="https://gist.github.com/kanpuriyanawab/c66010357e03ddcd21862c633162efb9.js"></script>
+<pre><code>&gt;&gt;&gt; exec(open("basic_model.py").read())
+torch.Size([1, 5, 8, 8])</code></pre>
+<p>Let’s see how it looks like in Julia.</p>
+<script src="https://gist.github.com/kanpuriyanawab/e0e278c4fcdd26ef998a2393b9e4bb9d.js"></script>
+<pre><code>julia&gt; include("basic_model.jl");
+(8, 8, 5, 1)</code></pre>
+<p>Some Key things to note here are&nbsp;:</p>
+<ol type="1">
+<li>Flux follows (H, W, C, N) standard for images while PyTorch uses (N, C, H, W)</li>
+<li>Chain function is similar to nn.Sequential method from PyTorch</li>
+<li>Julia implements Multiple Dispatch unlike PyThon which is designed on Single Dispatch paradigm. In short multiple dispatch allows us to implement a single method for different combination of different type arguments, unlike python which restricts the methods to be bound to a single object and reimplemented for different classes. Read more about multiple dispatch here&nbsp;.</li>
+</ol>
+<p>Let’s see how <a href="https://medium.com/r/?url=https%3A%2F%2Fgithub.com%2Fmateuszbuda%2Fbrain-segmentation-pytorch%2Fblob%2Fd45f8908ab2f0246ba204c702a6161c9eb25f902%2Funet.py%23L1">official UNet implementation</a> from Torchhub looks like</p>
+<p>The author of original implementation (hereon referred just as “author”) created a helper method to create a convolutional block&nbsp;. This is a good practise called as DRY ( Do not Repeat Yourself).</p>
+<div class="quarto-figure quarto-figure-center">
+<figure class="figure">
+<p><img src="https://kanpuriyanawab.github.io/posts/assets/flux_is_flexible/unet.png" class="img-fluid figure-img"></p>
+<figcaption>Source: UNet Paper</figcaption>
+</figure>
+</div>
+<p>This allows us to create these conv blocks (fig.&nbsp;2 zooms into fig.&nbsp;1 to show these conv blocks) just by passing input and output channels. To implement it with Flux, we reuse our knowledge from gist 1&nbsp;:</p>
+<script src="https://gist.github.com/kanpuriyanawab/6b63cf078466fda41cc5912b36ded6b2.js"></script>
+<p>This allows us to create these conv blocks (fig.&nbsp;2 zooms into fig.&nbsp;1 to show these conv blocks) just by passing input and output channels.</p>
+<p>Pretty simple isn’t it&nbsp;?</p>
+<p>One thing to note here is, Flux doesn’t allow us to name the layers explicitly, the reason can be found in <a href="https://github.com/FluxML/Flux.jl/issues/2142">this</a> github issue. Now let’s go ahead and see how layers were created by author.</p>
+<p>Now we see that we have an encoder, bottleneck, decoder and an upconv layer. 1. Encoder&nbsp;: The four downstairs in Fig. 1 form the encoder block, and it encodes image by successive convolutions 2. Bottleneck&nbsp;: The layer between encoder and decoder is called bottleneck. The output of decoder is passed on to decoder &amp; upconv block. 3. Decoder &amp; Upconv block&nbsp;: The upconv block upsamples the input matrix, i.e.&nbsp;deconvolves the input to output with bigger size ( H x W ) than input. Decoder follows upconv layer and increases channels by performing convolution.</p>
+<p>Let’s create the model class in Flux first. Julia doesn’t have classes, it has structs&nbsp;. So model struct would look like this.</p>
+<script src="https://gist.github.com/kanpuriyanawab/8e5eb8ed5722f6a574ae90558b5ab42e.js"></script>
+<p>To reduce the redundancy in code I’ll implement the layers as array of layers, it’ll allow us to write a clean forward pass later. Don’t forget to notice the relation between number of channels of different blocks of UNet model.</p>
+<p>The unet_block is the convolutional block that we defined earlier is a simple chain of Convolutional and BatchNorm layers. We further chain these blocks keeping in mind the input &amp; output features using the Chain function. See&nbsp;! How easy it is to create a model in Flux. Now we have one last thing remaining, the forward pass&nbsp;. We do it like</p>
+<script src="https://gist.github.com/kanpuriyanawab/4771bb348755b488597b461ab9868aa5.js"></script>
+<p>in PyTorch. The cat operation orchestrates the connection between encoder and decoder demonstrated by copy and crop represented by gray arrow in Fig. 1.</p>
+<p>But don’t you find the code above messy&nbsp;? That’s where our definition of layers of arrays comes in. Let’s see how the forward pass is written for UNet.</p>
+<script src="https://gist.github.com/kanpuriyanawab/9e3c6b8ee5cf77c3e29ec62e71ea49fc.js"></script>
+<p>Pretty simple &amp; clean, we managed to keep the entire logic same.</p>
+<p>Some key points to be noted here:</p>
+<ol type="1">
+<li>σ is nothing else but sigmoid function&nbsp;! Julia allows us to use all the mathematical symbols as variables&nbsp;. Thus, flux defined sigmoid as σ rather than sigmoid()</li>
+<li>Julia uses matlab like syntax for ranges (see 1:4 for iterating over 1, 2, 3, 4 and 4:-1:1 for 4, 3, 2, 1).</li>
+<li>Julia uses 1 based indexing.</li>
+<li>Any Julia function with a trailing&nbsp;! tells that operation will be inplace ( remember pass by reference from C++ using &amp; operation).</li>
+<li>The <code>return</code> keyword in last line is redundant, simply writing σ(u.final_conv(out)) would work as Julia always returns the output of last line of code, from any code block.</li>
+</ol>
+<p>That brings us to the end of this tutorial. Thanks for reading&nbsp;!</p>
+<p>This is the second article of my first blog series Julia For the Win. You can find the previous article Kaggle x Julia&nbsp;: Advanced House Price Prediction&nbsp;: EDA.</p>
+
+
+</section>
+
+ ]]></description>
+  <category>Model Architecture</category>
+  <category>Julia</category>
+  <guid>https://kanpuriyanawab.github.io/posts/flux_is_so_flexible.html</guid>
+  <pubDate>Sat, 31 Dec 2022 00:00:00 GMT</pubDate>
+</item>
+<item>
+  <title>Comprehensive data exploration with Julia</title>
+  <link>https://kanpuriyanawab.github.io/posts/julia_house_price_prediction.html</link>
+  <description><![CDATA[ 
+
+
+
+
+
+<p>Source&nbsp;: Analytics India&nbsp;MagazineIn this tutorial, we’ll learn using Julia for exploratory data analysis. This is my first blog post ever and first article of my series Julia For The Win. Please feel free to give feedback&nbsp;! Let’s get started. In this tutorial we’ll be reproducing <a href="https://www.kaggle.com/code/pmarcelino/comprehensive-data-exploration-with-python">Comprehensive data exploration with Python</a> notebook, but in Julia.</p>
+<p>Dataset used in this tutorial can be found <a href="https://www.kaggle.com/competitions/house-prices-advanced-regression-techniques">here</a>.</p>
+<div style="text-align: center; margin-top: 25px; margin-bottom: 25px;">
+<p><a href="https://fullstackagents.substack.com" class="btn btn-primary" target="_blank" title="Subscribe"> Subscribe </a></p>
+</div>
+<p>We’ll be using following packages:</p>
+<ol type="1">
+<li>PlotlyJS.jl&nbsp;: A Julia interface to Plotly.js</li>
+<li>JuliaPlots/Plots.jl</li>
+<li>PairPlots.jl</li>
+<li>CSV.jl</li>
+<li>JuliaStats/StatsBase.jl</li>
+</ol>
+<p>Above packages can be installed by using the following block of code (we take PlotlyJS for example)</p>
+<pre><code>using Pkg;
+Pkg.add("PlotlyJS");</code></pre>
+<blockquote class="blockquote">
+<p>The most difficult thing in life is to know yourself</p>
+</blockquote>
+<p>This quote belongs to Thales of Miletus. Thales was a Greek/Phonecian philosopher, mathematician and astronomer, which is recognised as the first individual in Western civilisation known to have entertained and engaged in scientific thought (source: https://en.wikipedia.org/wiki/Thales)</p>
+<p>I wouldn’t say that knowing your data is the most difficult thing in data science, but it is time-consuming. Therefore, it’s easy to overlook this initial step and jump too soon into the water.</p>
+<p>So I tried to learn how to swim before jumping into the water. Based on <a href="https://amzn.to/2JuDmvo">Hair et al.</a> (2013), chapter ‘Examining your data’, I did my best to follow a comprehensive, but not exhaustive, analysis of the data. I’m far from reporting a rigorous study in this kernel, but I hope that it can be useful for the community, so I’m sharing how I applied some of those data analysis principles to this problem.</p>
+<p>Despite the strange names I gave to the chapters, what we are doing in this kernel is something like:</p>
+<ol type="1">
+<li><strong>Understand the problem.</strong> We’ll look at each variable and do a philosophical analysis about their meaning and importance for this problem.</li>
+<li><strong>Univariable study.</strong> We’ll just focus on the dependent variable (‘SalePrice’) and try to know a little bit more about it.</li>
+<li><strong>Multivariate study.</strong> We’ll try to understand how the dependent variable and independent variables relate.</li>
+<li><strong>Basic cleaning.</strong> We’ll clean the dataset and handle the missing data, outliers and categorical variables.</li>
+<li><strong>Test assumptions.</strong> We’ll check if our data meets the assumptions required by most multivariate techniques.</li>
+</ol>
+<p>Now, it’s time to have fun!</p>
+<p>DataFrames.jl is the stable alternative of Pandas in Julia. Its design and functionality are similar to those of pandas (in Python) and data.frame, data.table and dplyr (in R), making it a great general purpose data science tool.</p>
+<pre><code>using CSV
+using DataFrames
+
+df_train = CSV.read("./train.csv", DataFrame, stringtype=String);</code></pre>
+<p>To peek into the dataframe, Julia alternative of head() method is first</p>
+<pre><code>first(df_train, 5) 
+# displays first 5 value of dataframe</code></pre>
+<p><img src="https://kanpuriyanawab.github.io/posts/assets/julia_house_price_prediction/img_1.png" class="img-fluid"></p>
+<div style="text-align: center; margin-top: 25px; margin-bottom: 25px;">
+<p><a href="https://fullstackagents.substack.com" class="btn btn-primary" target="_blank" title="Subscribe"> Subscribe </a></p>
+</div>
+<section id="so-what-can-we-expect" class="level2">
+<h2 class="anchored" data-anchor-id="so-what-can-we-expect">So… What can we&nbsp;expect?</h2>
+<p>In order to understand our data, we can look at each variable and try to understand their meaning and relevance to this problem. I know this is time-consuming, but it will give us the flavour of our dataset.</p>
+<p>In order to have some discipline in our analysis, we can create an Excel spreadsheet with the following columns:</p>
+<ul>
+<li><strong>Variable</strong> - Variable name.</li>
+<li><strong>Type</strong> - Identification of the variables’ type. There are two possible values for this field: ‘numerical’ or ‘categorical’. By ‘numerical’ we mean variables for which the values are numbers, and by ‘categorical’ we mean variables for which the values are categories.</li>
+<li><strong>Segment</strong> - Identification of the variables’ segment. We can define three possible segments building, space or location. When we say ‘building’, we mean a variable that relates to the physical characteristics of the building (e.g.&nbsp;‘OverallQual’). When we say ‘space’, we mean a variable that reports space properties of the house (e.g.&nbsp;‘TotalBsmtSF’). Finally, when we say a ‘location’, we mean a variable that gives information about the place where the house is located (e.g.&nbsp;‘Neighborhood’).</li>
+<li><strong>Expectation</strong> - Our expectation about the variable influence in ‘SalePrice’. We can use a categorical scale with ‘High’, ‘Medium’ and ‘Low’ as possible values.</li>
+<li><strong>Conclusion</strong> - Our conclusions about the importance of the variable, after we give a quick look at the data. We can keep with the same categorical scale as in ‘Expectation’.</li>
+<li><strong>Comments</strong> - Any general comments that occured to us.</li>
+</ul>
+<p>While ‘Type’ and ‘Segment’ is just for possible future reference, the column ‘Expectation’ is important because it will help us develop a ‘sixth sense’. To fill this column, we should read the description of all the variables and, one by one, ask ourselves:</p>
+<ul>
+<li>Do we think about this variable when we are buying a house? (e.g.&nbsp;When we think about the house of our dreams, do we care about its ‘Masonry veneer type’?).</li>
+<li>If so, how important would this variable be? (e.g.&nbsp;What is the impact of having ‘Excellent’ material on the exterior instead of ‘Poor’? And of having ‘Excellent’ instead of ‘Good’?).</li>
+<li>Is this information already described in any other variable? (e.g.&nbsp;If ‘LandContour’ gives the flatness of the property, do we really need to know the ‘LandSlope’?).</li>
+</ul>
+<p>After this daunting exercise, we can filter the spreadsheet and look carefully to the variables with ‘High’ ‘Expectation’. Then, we can rush into some scatter plots between those variables and ‘SalePrice’, filling in the ‘Conclusion’ column which is just the correction of our expectations.</p>
+<p>I went through this process and concluded that the following variables can play an important role in this problem:</p>
+<ul>
+<li>OverallQual (which is a variable that I don’t like because I don’t know how it was computed; a funny exercise would be to predict ‘OverallQual’ using all the other variables available).</li>
+<li>YearBuilt.</li>
+<li>TotalBsmtSF.</li>
+<li>GrLivArea.</li>
+</ul>
+<p>I ended up with two ‘building’ variables (‘OverallQual’ and ‘YearBuilt’) and two ‘space’ variables (‘TotalBsmtSF’ and ‘GrLivArea’). This might be a little bit unexpected as it goes against the real estate mantra that all that matters is ‘location, location and location’. It is possible that this quick data examination process was a bit harsh for categorical variables. For example, I expected the ‘Neigborhood’ variable to be more relevant, but after the data examination I ended up excluding it. Maybe this is related to the use of scatter plots instead of boxplots, which are more suitable for categorical variables visualization. The way we visualize data often influences our conclusions.</p>
+<p>However, the main point of this exercise was to think a little about our data and expectactions, so I think we achieved our goal. Now it’s time for ‘a little less conversation, a little more action please’. Let’s shake it!</p>
+<div style="text-align: center; margin-top: 25px; margin-bottom: 25px;">
+<p><a href="https://fullstackagents.substack.com" class="btn btn-primary" target="_blank" title="Subscribe"> Subscribe </a></p>
+</div>
+</section>
+<section id="analysing-saleprice" class="level2">
+<h2 class="anchored" data-anchor-id="analysing-saleprice">Analysing SalePrice</h2>
+<p>‘SalePrice’ is the reason of our quest. It’s like when we’re going to a party. We always have a reason to be there. Usually, women are that reason. (disclaimer: adapt it to men, dancing or alcohol, according to your preferences)</p>
+<p>Using the women analogy, let’s build a little story, the story of ‘How we met ’SalePrice’.</p>
+<p><em>Everything started in our Kaggle party, when we were looking for a dance partner. After a while searching in the dance floor, we saw a girl, near the bar, using dance shoes. That’s a sign that she’s there to dance. We spend much time doing predictive modelling and participating in analytics competitions, so talking with girls is not one of our super powers. Even so, we gave it a try:</em></p>
+<p><em>‘Hi, I’m Kaggly! And you? ’SalePrice’? What a beautiful name! You know ‘SalePrice’, could you give me some data about you? I just developed a model to calculate the probability of a successful relationship between two people. I’d like to apply it to us!’</em></p>
+<pre><code>describe(df_train, cols=:SalePrice)</code></pre>
+<p><img src="https://kanpuriyanawab.github.io/posts/assets/julia_house_price_prediction/img_2.png" class="img-fluid"></p>
+<p>Very well… It seems that your minimum price is larger than zero. Excellent! You don’t have one of those personal traits that would destroy my model! Do you have any picture that you can send me? I don’t know… like, you in the beach… or maybe a selfie in the gym?</p>
+<pre><code>plot(df_train, x=:SalePrice, kind="histogram")</code></pre>
+<p><img src="https://kanpuriyanawab.github.io/posts/assets/julia_house_price_prediction/img_3.png" class="img-fluid"></p>
+<p>Ah! I see you that you use seaborn makeup when you’re going out… That’s so elegant! I also see that you:</p>
+<ul>
+<li>Deviate from the normal distribution</li>
+<li>Have appreciable positive skewness</li>
+<li>Show peakedness</li>
+</ul>
+<p>This is getting interesting! ‘SalePrice’, could you give me your body measures?</p>
+<pre><code>using StatsBase
+skw, kurt = skewness(collect(df_train.SalePrice)), kurtosis(collect(df_train.SalePrice))
+println("Skewness: $skw \nKurtosis: $kurt")</code></pre>
+<p>This prints:</p>
+<pre><code>Skewness: 1.8809407460340335 
+Kurtosis: 6.509812011089398</code></pre>
+<p>Amazing! If my love calculator is correct, our success probability is 97.834657%. I think we should meet again! Please, keep my number and give me a call if you’re free next Friday. See you in a while, crocodile!</p>
+<p><strong>‘SalePrice’, her buddies and her interests</strong></p>
+<p>It is military wisdom to choose the terrain where you will fight. As soon as ‘SalePrice’ walked away, we went to Facebook. Yes, now this is getting serious. Notice that this is not stalking. It’s just an intense research of an individual, if you know what I mean.</p>
+<p>According to her profile, we have some common friends. Besides Chuck Norris, we both know ‘GrLivArea’ and ‘TotalBsmtSF’. Moreover, we also have common interests such as ‘OverallQual’ and ‘YearBuilt’. This looks promising!</p>
+<p>To take the most out of our research, we will start by looking carefully at the profiles of our common friends and later we will focus on our common interests. Relationship with numerical variables</p>
+<pre><code>plot(scatter(df_train, x=:GrLivArea, y=:SalePrice, mode="markers"))</code></pre>
+<p><img src="https://kanpuriyanawab.github.io/posts/assets/julia_house_price_prediction/img_4.png" class="img-fluid"></p>
+<p>Hmmm… It seems that ‘SalePrice’ and ‘GrLivArea’ are really old friends, with a linear relationship.</p>
+<p>And what about ‘TotalBsmtSF’?</p>
+<pre><code>plot(scatter(df_train, x=:TotalBsmtSF, y=:SalePrice, mode="markers"))</code></pre>
+<p><img src="https://kanpuriyanawab.github.io/posts/assets/julia_house_price_prediction/img_5.png" class="img-fluid"></p>
+<p>‘TotalBsmtSF’ is also a great friend of ‘SalePrice’ but this seems a much more emotional relationship! Everything is ok and suddenly, in a strong linear (exponential?) reaction, everything changes. Moreover, it’s clear that sometimes ‘TotalBsmtSF’ closes in itself and gives zero credit to ‘SalePrice’.</p>
+</section>
+<section id="relationship-with-categorical-features" class="level2">
+<h2 class="anchored" data-anchor-id="relationship-with-categorical-features">Relationship with categorical features</h2>
+<pre><code>plot(df_train, x=:OverallQual, y=:SalePrice, color=:OverallQual, kind="box")</code></pre>
+<p><img src="https://kanpuriyanawab.github.io/posts/assets/julia_house_price_prediction/img_6.png" class="img-fluid"></p>
+<p>Like all the pretty girls, ‘SalePrice’ enjoys ‘OverallQual’. Note to self: consider whether McDonald’s is suitable for the first date.</p>
+<pre><code>plot(df_train, x=:YearBuilt, y=:SalePrice, color=:OverallQual, kind="box")</code></pre>
+<p><img src="https://kanpuriyanawab.github.io/posts/assets/julia_house_price_prediction/img_7.png" class="img-fluid"></p>
+<p>Although it’s not a strong tendency, I’d say that ‘SalePrice’ is more prone to spend more money in new stuff than in old relics.</p>
+<p>Note: we don’t know if ‘SalePrice’ is in constant prices. Constant prices try to remove the effect of inflation. If ‘SalePrice’ is not in constant prices, it should be, so than prices are comparable over the years.</p>
+<div style="text-align: center; margin-top: 25px; margin-bottom: 25px;">
+<p><a href="https://fullstackagents.substack.com" class="btn btn-primary" target="_blank" title="Subscribe"> Subscribe </a></p>
+</div>
+</section>
+<section id="in-summary" class="level2">
+<h2 class="anchored" data-anchor-id="in-summary">In summary</h2>
+<p>Stories aside, we can conclude that: - ‘GrLivArea’ and ‘TotalBsmtSF’ seem to be linearly related with ‘SalePrice’. Both relationships are positive, which means that as one variable increases, the other also increases. In the case of ‘TotalBsmtSF’, we can see that the slope of the linear relationship is particularly high. - ‘OverallQual’ and ‘YearBuilt’ also seem to be related with ‘SalePrice’. The relationship seems to be stronger in the case of ‘OverallQual’, where the box plot shows how sales prices increase with the overall quality.</p>
+<p>We just analysed four variables, but there are many other that we should analyse. The trick here seems to be the choice of the right features (feature selection) and not the definition of complex relationships between them (feature engineering).</p>
+<p>That said, let’s separate the wheat from the chaff.</p>
+<p>As an engineer, I don’t feel comfortable with this approach. All my education was about developing a disciplined mind, able to withstand the winds of subjectivity. There’s a reason for that. Try to be subjective in structural engineering and you will see physics making things fall down. It can hurt.</p>
+<p>So, let’s overcome inertia and do a more objective analysis.</p>
+<p>The ‘plasma soup’</p>
+<p>‘In the very beginning there was nothing except for a plasma soup. What is known of these brief moments in time, at the start of our study of cosmology, is largely conjectural. However, science has devised some sketch of what probably happened, based on what is known about the universe today.’ (source: http://umich.edu/~gs265/bigbang.htm)</p>
+<p>To explore the universe, we will start with some practical recipes to make sense of our ‘plasma soup’:</p>
+<ul>
+<li>Correlation matrix (heatmap style).</li>
+<li>‘SalePrice’ correlation matrix (zoomed heatmap style).</li>
+<li>Scatter plots between the most correlated variables (move like Jagger style).</li>
+</ul>
+<p>For heatmaps, I found JuliaPlots to be more userfriendly than PlotlyJS.jl</p>
+<pre><code>import Plots.heatmap as ht 
+# alias because Plotly namescope conflicts with Plots.jl
+
+using Statistics: cor 
+# correlation matrix
+
+avoid = names(df_train, String)
+
+# avoiding columns with string values : raises error
+df_non_str = select(df_train, Not(avoid));
+co = cor(Matrix(df_non_str));
+
+not_avoid = names(df_train, Not(avoid));
+
+ht(co, xticks=(1:35, not_avoid), yticks=(1:35, not_avoid), 
+    aspect_ratio=:equal, fill_z=co, xrotation=90, xtickfontsize=5, 
+    ytickfontsize=5)</code></pre>
+<p><img src="https://kanpuriyanawab.github.io/posts/assets/julia_house_price_prediction/img_8.png" class="img-fluid"></p>
+<p>According to our crystal ball, these are the variables most correlated with ‘SalePrice’. My thoughts on this:</p>
+<ul>
+<li>‘OverallQual’, ‘GrLivArea’ and ‘TotalBsmtSF’ are strongly correlated with ‘SalePrice’. Check!</li>
+<li>‘GarageCars’ and ‘GarageArea’ are also some of the most strongly correlated variables. However, as we discussed in the last sub-point, the number of cars that fit into the garage is a consequence of the garage area. ‘GarageCars’ and ‘GarageArea’ are like twin brothers. You’ll never be able to distinguish them. Therefore, we just need one of these variables in our analysis (we can keep ‘GarageCars’ since its correlation with ‘SalePrice’ is higher).</li>
+<li>‘TotalBsmtSF’ and ‘1stFloor’ also seem to be twin brothers. We can keep ‘TotalBsmtSF’ just to say that our first guess was right (re-read ‘So… What can we expect?’).</li>
+<li>‘FullBath’?? Really?</li>
+<li>‘TotRmsAbvGrd’ and ‘GrLivArea’, twin brothers again. Is this dataset from Chernobyl?</li>
+<li>Ah… ‘YearBuilt’… It seems that ‘YearBuilt’ is slightly correlated with ‘SalePrice’. Honestly, it scares me to think about ‘YearBuilt’ because I start feeling that we should do a little bit of time-series analysis to get this right. I’ll leave this as a homework for you.</li>
+</ul>
+<p>Let’s proceed to the pair plots.</p>
+<p>Pair plots between ‘SalePrice’ and correlated variables (move like Jagger style)</p>
+<pre><code>corner(df_train[:, cols])</code></pre>
+<p><img src="https://kanpuriyanawab.github.io/posts/assets/julia_house_price_prediction/img_9.jpg" class="img-fluid"></p>
+<p>Although we already know some of the main figures, this mega scatter plot gives us a reasonable idea about variables relationships.</p>
+<p>One of the figures we may find interesting is the one between ‘TotalBsmtSF’ and ‘GrLiveArea’. In this figure we can see the dots drawing a linear line, which almost acts like a border. It totally makes sense that the majority of the dots stay below that line. Basement areas can be equal to the above ground living area, but it is not expected a basement area bigger than the above ground living area (unless you’re trying to buy a bunker).</p>
+<p>The plot concerning ‘SalePrice’ and ‘YearBuilt’ can also make us think. In the bottom of the ‘dots cloud’, we see what almost appears to be a shy exponential function (be creative). We can also see this same tendency in the upper limit of the ‘dots cloud’ (be even more creative). Also, notice how the set of dots regarding the last years tend to stay above this limit (I just wanted to say that prices are increasing faster now).</p>
+<p>Pheww&nbsp;! That’s it for today. Today we took a look at how cool Julia is and why can it rescue data scientists just in case Python disappears from this earth&nbsp;!</p>
+<p><img src="https://kanpuriyanawab.github.io/posts/assets/julia_house_price_prediction/img_10.jpg" class="img-fluid"></p>
+<div style="text-align: center; margin-top: 25px; margin-bottom: 25px;">
+<p><a href="https://fullstackagents.substack.com" class="btn btn-primary" target="_blank" title="Subscribe"> Subscribe </a></p>
+</div>
+
+
+</section>
+
+ ]]></description>
+  <category>LLMs</category>
+  <category>Operating-system</category>
+  <guid>https://kanpuriyanawab.github.io/posts/julia_house_price_prediction.html</guid>
+  <pubDate>Thu, 22 Dec 2022 00:00:00 GMT</pubDate>
+</item>
+<item>
+  <title>Interview with 2x Kaggle Grandmaster, Data Science Manager at Emirates NBD - Ravi Ramakrishnan</title>
+  <link>https://kanpuriyanawab.github.io/posts/interview_rrk.html</link>
+  <description><![CDATA[ 
+
+
+
+
+
+<p><img src="https://kanpuriyanawab.github.io/posts/assets/interview/interview_rrk.webp" class="img-fluid"></p>
+<p>by Anshuman Mishra &amp; Abheesht Sharma</p>
+<p>The AI world is brimming with talent. Folks in the AI industry and the research world are continuously pushing the boundaries of innovation. With this interview series, we want to focus on bringing these inspiring (and possibly unheard of) stories out into the world — their struggles, their triumphs and their journey. We will be conversing with people we have looked up to, and still look up to for their unparalleled contributions to the AI world. We call this interview series AI Chronicles.</p>
+<p>Kaggle Profile of 2xGrandmaster Ravi Ramakrishnan Today, we are honored to have Ravi Ramakrishnan with us. Ravi is a Data Science Manager-Credit Risk at Emirates NBD. Prior to Emirates NBD, he used to work at the Commercial Bank of Dubai as a Data Scientist, and has 8+ years of experience in the industry. He holds a Bachelor’s degree in Electronics, and completed his MBA in Finance from NMIMS. Ravi contributes extensively on Kaggle, and is a Notebooks Grandmaster (ranked #23) and a Discussions Grandmaster (ranked #2) on Kaggle.</p>
+<p>Anshuman &amp; Abheesht : Namaste, Grandmaster! Thank you for taking the time to do this.</p>
+<p>Ravi: Hello, Anshuman and Abheesht. Thanks for inviting me to do this. Saadar pranaam!</p>
+<p>Anshuman: You’ve done your Bachelor’s in Electrical Engineering, post which you did an MBA. What brought you to data science and ML? Please tell the reader about your Machine Learning journey!</p>
+<p>Ravi: Absolutely, I’d be happy to share my journey. While my academic background is in electrical engineering (BE) and I later pursued an MBA, my entry into the world of data science was somewhat serendipitous. Back in 2015, during a visit to Dubai for my CFA Level 3 exam, I had the opportunity to attend interviews with my previous employer, who was in the process of establishing a central analytics structure known as BICC. To my surprise, I was selected for the role of a data scientist, even though my previous focus had been on finance and investment banking. I decided to take up the challenge, giving myself a year to assess my career path. My initial days in this role were demanding as I had to bridge the gap in my knowledge of data science tools like SQL, SAS, MATLAB, SPSS, EDW, and CRM development. However, with dedication, guidance from colleagues, and consistent learning, I quickly overcome these challenges.</p>
+<p>Over the years, I became deeply involved in model development across various domains, including customer segmentation, CRM lead management, IFRS9 PD-LGD model development, ECL calculation engine development, and campaign management. This journey of hands-on experience and continuous learning led me to discover my passion for data science.</p>
+<p>When I look back, I believe that my career in data science found me rather than the other way around. It’s been a rewarding journey of almost a decade, and I’m excited about what the future holds. I hope my experience can inspire others to explore and embrace this dynamic field of data science and machine learning.</p>
+<p>Anshuman: Given your serendipitous journey into data science and your passion for continuous learning, I’m curious to know: what specifically inspired you to pick up Kaggle and dive into the world of machine learning competitions?</p>
+<p>Ravi: My yester manager introduced me to Kaggle in 2020 during the lockdown. I was busy with some certifications in fitness then and promised him to have a look at it after passing those exams. I eventually joined Kaggle in September 2021 after completing my Orthopedics specialization. I thank him for introducing me to Kaggle as I feel I would have missed out on a very important component of my learning journey had I not joined Kaggle. I perused the tiers on this platform slowly and steadily and established a learning and development plan for myself akin to a fitness plan. I usually advise my patrons to follow a macro-meso-micro fitness periodization cycle with planned gains and achievements all along the journey. I followed my fitness regimen in Kaggle, focussing on small but consistent efforts on a daily basis. I set realistic goals for myself and consistently achieved them, else reset the goals apropos to contemporary situations, keeping a balance between Kaggle, fitness, running and office commitments.</p>
+<p>Abheesht: What was your motivation behind starting with the discussions track as opposed to say, the competitions track on Kaggle?</p>
+<p>Ravi: My motivation to excel in the discussions track on Kaggle, ultimately achieving the status of Grandmaster, was driven by several factors. Firstly, discussions on Kaggle offer a unique platform for knowledge exchange and collaboration with fellow machine learning enthusiasts. I was drawn to the open and creative environment that discussions provided, offering an opportunity to engage meaningfully with the community. Additionally, active participation in discussions allowed me to continuously learn and stay updated with the latest trends and techniques in the field. It was a way for me to both contribute to the community and absorb insights from others, contributing to my own growth as a data scientist.</p>
+<p>Finally, achieving Grandmaster status in discussions represented a significant milestone in my Kaggle journey, reflecting my commitment to mastering various aspects of Kaggle. It served as a testament to my dedication to sharing knowledge, fostering collaboration, and contributing to the thriving Kaggle community.</p>
+<p>Abheesht: Given your demanding role as a Data Science manager, how do you effectively allocate time to maintain an active presence on Kaggle? This is something I struggle a bit with — managing time between work, and open source.</p>
+<p>Ravi: Managing my role as a Data Science manager at Emirates Bank while maintaining an active presence on Kaggle requires effective time management and discipline. I’ve structured my daily routine to strike a balance between work and Kaggle activities.</p>
+<p>My day is divided into distinct parts: 1. Morning (6 am — 8 am): Dedicated to exercise, ensuring physical well-being. 2. 8:30 am — 6 pm: Focused on my responsibilities at the bank. 3. 6 pm — 9:30 pm: Allocated for Kaggle activities, where I participate in discussions, competitions, and kernels. 4. 9:30 pm — 10:00 pm: Reserved for meditation and mindfulness activities to maintain mental clarity.</p>
+<p>This disciplined approach allows me to optimize my time efficiently. I also prioritize health through mindfulness practices, exercise, and a balanced diet, which helps maintain physical and mental well-being. By adhering to this routine, I can effectively manage my demanding work and Kaggle commitments.</p>
+<p>Anshuman: People participating in the discussion track on Kaggle are very opinionated, and most competition grandmasters, from time to time, appeal to remove it from a ranking tier. What is your opinion on this?</p>
+<p>Ravi: I respect their opinions but wish to mention that the discussion track is akin to a glue that binds the community together. Everyone can’t be a competition participant but quite a few wish to learn as well. The discussion track posits some valuable information regarding general ML practices, MLOps, coding elements, competition solutions, resources, career advice, progression appreciation and key industry updates and provides valuable information for one and all, especially beginners to onboard, learn and develop appropriately. I wish to opine that we have 300+ competition GMs as on date and 66–67 discussion GMs too. It is far more difficult to progress in this tier than people’s general fads. One needs to be good at communication and present one’s content well to secure any form of progress in this tier.</p>
+<p>Anshuman: Could you please share a few occasions when you made valuable connections or benefitted in great deal from it?</p>
+<p>Ravi: I have learnt a lot from elite Kaggle users throughout my tryst with Kaggle. Users like AmbrosM, Marialla Pratta, Dr.&nbsp;Chris Deotte, Laurent Purchout, Dr.&nbsp;Carl McBridde Ellis, Sanyam Bhutani, Parul Pandey, SRK, Rohan Rao, etc. will always be my inspiration on Kaggle and even otherwise. I have learnt a lot from their Kaggle and other work and will consider them my mentors always. I wish to thank you as well for connecting with me and providing me a chance to elicit my thoughts on this topic.</p>
+<p>Abheesht: You are very fond of Kaggle’s playground series. Why do you prefer it over other competitions on Kaggle?</p>
+<p>Ravi: I like to participate in the playground series due to the below reasons-</p>
+<p>This series offers room to experiment with feature engineering and models to a great extent. Datasets are simpler than featured competitions and hardware requirements are tepid. One could ace these competitions using the freely available resources on Kaggle and Colab without any undue advantage based on hardware. I opine that the select few participants in other featured competitions category using professional login Ids and having access to premium resources do carry a sizable advantage over the rest, rendering these competitions a no-so-level-playing-field. This issue is circumvented in this series almost entirely. I like ML model development on tabular data and these competitions offer me opportunities exactly matching my interests. These competitions are well spaced through the year with a 2–3 week cycle. This offers time to develop models within a limited time frame and move onto subsequent challenges swiftly. I somehow fail to align with a longer duration of 3 months elsewhere without any major reward for 90% participants elsewhere on the platform. I admire the extent of insightful discussions and kernels shared in the forums as we don’t have any predisposed inhibitions arising from medal attributions herewith. I have learnt a lot from these forums and contribute to my best extent too, keeping a few tricks private. Most of the playground competitions have 1000+ participants making them liquid from a LB perspective. I have performed well in quite a few episodes and am receiving consistent results nowadays, making my participation more lucrative. Anshuman: Do you feel the Kaggle competitions are related to your work?</p>
+<p>Ravi: I do not think that this series is particularly linked to my work tasks but opine that it mirrors my interest areas greatly. I can manage my daily routine perfectly with this series as one may spend a couple of hours daily to secure a good score in these competitions. This enables me to invest time in other activities keeping my Kaggle participation to a best feasible optimum.</p>
+<p>Anshuman: What kind of challenges do you look for today? How do you decide if the competition is worth your time?</p>
+<p>Ravi: I wish to expand my horizons in featured competitions in the medium run of the next 1–2 years. In choosing Kaggle challenges today, my focus has evolved over time. I’m increasingly interested in featured competitions as I aspire to expand my horizons in this area over the next 1–2 years. Additionally, I aim to maintain a balance by contributing to the Kaggle playground series, which aligns well with my interests.</p>
+<p>When deciding if a competition is worth my time, I consider several factors:</p>
+<p>Data Size: I assess the data size; smaller datasets can be appealing as they allow for quicker code completion and often align with simpler models. However, I consider the complexity of handling small datasets with numerous columns. CV Score Stability: I examine the standard deviation of the CV (cross-validation) score to gauge model stability across iterations and folds. Consistent CV scores are typically more appealing. CV-PLB Relations: I look for competitions where there’s a meaningful relationship between CV scores and the public leaderboard (PLB). This helps in making informed final submissions. Time Availability: Personal and professional commitments play a significant role. I avoid challenges where I may not be able to devote sufficient time toward the end, instead opting for competitions that align better with my schedule. Balancing these considerations helps me make informed choices about which competitions to participate in, ensuring that my time is well-invested and aligned with my goals.</p>
+<p>Abheesht: For noobs like me who haven’t dabbled much in Kaggle competitions and discussions, what would be your best advice?</p>
+<p>Ravi: I may suggest a few points based on my experience on the platform-</p>
+<p>Keep learning as cynosure of all your activities on Kaggle and otherwise. This is a much more satisfying experience than aiming for medals. Till date, I never aimed to become a GM but aimed to become a better ML enthusiast. Stay consistent in any life and personal endeavor. This stems from 2 elements- interest in the activity and realistic goal setting. I believe in SMART goal planning and periodization and have implemented it across all walks of life. This is an open secret to my success on Kaggle and in other walks of life too. Leann to be modestly assertive. Saying a no without being rude is a very important skill that requires some training and experience. This will help one and all at work I have deep respect for time. I value my time a lot and respect it a lot. I try and be punctual and leave on time. I don’t believe in late work practices and to this day, have mostly avoided this to good effect and lots of professional success too. Develop a life-work balance — this becomes important as one ages, as one delves into multiple commitments too. One needs to balance multiple life events in parallel and one’s planning and execution skills are put to a rigorous test. Balancing various life and routine events is key to success in multiple facets of one’s personality Take structured breaks from one activity at a time rather than a complete break from all ongoing activities. I usually take structured breaks from the office (only) followed by a break from my fitness practice and then a break from Kaggle amortized over a span of 6–8 weeks. This keeps me motivated for a longer period of time, enabling me to render a fine balance across multiple events of almost equal priority Try and automate as much code as possible- this is specifically useful for competitions and repetitive tasks like curating baseline models, feature processing, preprocessing and general training. One may then edit the general pipeline to add assignment specifics. This is likely to save time and enable greater productivity Team up well and plan your strategy. Teaming up with friends helps a lot across all 4 tiers. Collective endeavor elicits significant synergy based power. Avoid dubious practices that could harm your reputation. This may hinder your progress a lot. Use Kaggle free resources to good effect. 50 GPU + TPU hours is significant and is available at your disposal per week. Post content consistently on Kaggle and share ideas, Inhibition is the enemy of collaboration and collaboration is a good route to success. Try and learn new skills/ improve existing skills periodically. Also try and match your current learning patterns with your long run learning goals periodically. If you digress from your long run goals, you may be better with either rebalancing the long run goal/ current activity. Develop an all-round profile outside of Kaggle too. ML is an ocean of opportunities and Kaggle is one of the ways to attain success. Stay active elsewhere as well, including but not limited to Analytics vidya, YouTube, GitHub, medium.com and any other community you find suitable. Hugging Face competitions are also good to learn and grow in this regard. I encourage one and all to participate in hackathons and any local competitions and conclaves that offer networking opportunities too. Remember that networking is as important as learning as the industry relies a lot on this aspect for referrals and job opportunities. Enjoy the journey and derive value from every step of your journey. I suggest one could break down a long run problem into a series of structured and achievable micro-goals that could eventually lead him/ her to success. I usually do this to good effect (with some meticulous planning and experience) and encourage others to follow suit. Keep others updated with your successes. LinkedIn is a good place to post about your professional successes including Kaggle progression, ranks and competition approaches too. Abheesht: When you are given a problem statement, how do you devise AI solutions for it? Do you mostly use classical ML models, since most of the data you use is tabular? What do you look for in a proposed solution?</p>
+<p>I predominantly work in credit risk areas that do not involve AI models to any extent. I think this is a huge drawback of this career path as Financial Regulators refrain from accepting results from AI models and latest advancements in this field of knowledge. Most of our models are classical ML models with emphasis on tabular data and simple algorithms.</p>
+<p>I usually devise my work assignment into the below steps for convenience and project planning-</p>
+<p>I understand the end-user’s requirement and the assignment’s long run usage before starting work on the project. Usually I am involved in assignments that necessitate continual usage and a user-friendly and clean data and model production pipeline. I break down the assignment into several micro-goals spanning over a 1–2 week period. I plan these goals with emphasis on data wrangling as a primary task spanning over 80% of the overall time invested. I usually automate the data pipeline efficiently, working towards a production and deployment all through the development process. This eases the production and deployment process substantially and improves stakeholder satisfaction. I usually conduct a catch-up meeting with the team and the end user at the end of every micro-goal. Most of our projects and assignments are internally and externally validated. I ensure that all our data processes are completely reproducible and are validated before we commence with the model development. Hence, I engage the internal validation team early in the project, facilitating timely comments and concerns addressing them immediately. Once we zero in on the development data, we conduct a bigger meeting with senior management, explaining the key data challenges and assumptions in the data pipeline. We also demonstrate the feature shortlisting processes (we have built several internal automated tools for the same) and revert to feedback from key stakeholders. This enables us to build models freely thereafter without any adverse comments later in the project lifecycle. We document the minutes of this meeting and circulate to Steering committees and auditors to ensure a 4-eye check on the progress and results. We then build a simple baseline model and showcase the selected variables to the key end-users, accepting their feedback and working on the same. Finally, we tune our models, ensemble results (if needed) and prepare the final model and submit it to the business team for review. As a standard practice, I build 10–15 candidate options and deploy them simultaneously to elicit an end-state result. This may perhaps posit a provision forecast/ NPA value/ default rate prediction/ PPNR per model selected. Business teams are highly comfortable discussing the model along with the result in this manner rather than a percentage result usually generated from the model. We then engage the internal and external validators and ensure our project is well documented. This is highly important in my area of work as Regulators usually peruse our model documents in detail. As a final step, we engage the IT and deployment teams to deploy the model in production integrating the model results into a report and entering controls as deemed necessary. This is a lengthy process and has to be facilitated with several UAT rounds and stake-holder approvals. This usually spans across a couple of quarters after the model is internally validated. As a final step, we are also supposed to document the IT implementation reports in a prescribed format and send them to the Regulator upon instructions. The model governance process along with these documents and code are thoroughly scrutinized regularly by the Regulator as part of their regular audits and reviews. Considering the sensitivity of the results involved, we usually select a simple model with explainable features as our chosen model for an assignment. We are particularly careful about production specific costs and time involvement to deploy the model and usually do not choose variables that otherwise perform well in the training period but are difficult to curate in production. We usually consult domain experts (economic research teams, credit underwriters and credit policy experts) to ratify and opine on the model development process and consider their subjective inputs as part of model governance.</p>
+<p>Abheesht: For the initial years of your career, you must have been an Individual Contributor (IC), before you transitioned to a managerial role. What are the major changes one has to make, to succeed in a managerial role? Which role do you like more?</p>
+<p>My role in my team is a combination of an individual contributor and a manager. As a manager, I have the freedom to design my project plan to good effect based on the overall resources available in the team and the budgets involved. I usually resort to the below norm while working on several assignments-</p>
+<p>I prefer to perform data wrangling individually if the project spans over a longer duration. I opine that this provides me more control on an important aspect of the project helping me to automate and design the pipeline to my strengths and weaknesses. I also engage the stakeholders to my schedule and am more comfortable engaging the validator in this process. Once the data is finalized, I hand it over to junior colleagues to build a model. This fosters a win-win for all colleagues involved and often results in a timely completion. In some cases, I individually complete the entire assignment on my own, including data and models too and hand over the results to others to deploy. Other projects often require collaboration. As an example, IFRS9 models for PD-LGD are long run assignments that span over a year. We usually split the project into 3–4 managers, with each manager responsible for a set of products/ business entities. Our bank is a large international conglomerate, hence we need to engage foreign teams too (this is an interesting challenge in itself). I usually collaborate with my team and foreign teams in such assignments and demarcate roles for each participant with strict timelines. We usually split the overall assignment into micro-cycles and plan them properly to ensure smooth and effective progress. I usually assign tasks to junior colleagues based on their strengths and weaknesses and often ensure a well documented peer review. This ensures correctness and smooth progress through the project. I usually liaise with external stakeholders and internal validators and often defend our assumptions in meetings. This requires some negotiation skills in my opinion. I leant this from my seniors in my 2 employers and feel that I am adept at this aspect of project management currently. My role in my previous employer was an individual contributor while my current role involves both aspects of project management. I opine that one needs to be highly diligent at time and resource management and set and plan goals efficiently as a manager/ lead. One’s technical skills are seldom tested while managing assignments, but one’s negotiation skills, ability to work under tight timelines and strict budgets, handling escalations are tested to a greater extent as a lead. I think soft skills are more important herewith and this is gained with experience and inputs from senior colleagues. I have a good network in the industry and I use this to good effect to learn and improve myself over time. I usually do not have a preference for a role type, but given the overall career progression paths in the industry, I may perhaps choose to progress as a lead / senior lead with collaborative skills and roles going ahead.</p>
+<p>Best regards and happy learning!</p>
+<p>That’s it. This was the very first interview of our new blog series AI Chronicles ! This series is a joint effort of Anshuman Mishra and Abheesht Sharma. Anshuman is currently working at Flip as a Machine Learning Engineer. Abheesht is an ML Research Scientist at Amazon, where he works on detecting advertisement bots. Both of them contribute extensively to ML open-source software and have been involved in developing KerasNLP.</p>
+
+
+
+ ]]></description>
+  <category>Interview</category>
+  <guid>https://kanpuriyanawab.github.io/posts/interview_rrk.html</guid>
+  <pubDate>Mon, 12 Sep 2022 00:00:00 GMT</pubDate>
 </item>
 </channel>
 </rss>

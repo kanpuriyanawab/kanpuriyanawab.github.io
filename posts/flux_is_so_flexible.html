@@ -6,8 +6,10 @@
 
 <meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=yes">
 
+<meta name="dcterms.date" content="2022-12-31">
+<meta name="description" content="Implementing ML models in Flux, the Julia Deep Learning&nbsp;Package!">
 
-<title>Interviews – Anshuman Mishra</title>
+<title>Deep Learning in&nbsp;Julia – Anshuman Mishra</title>
 <style>
 code{white-space: pre-wrap;}
 span.smallcaps{font-variant: small-caps;}
@@ -55,19 +57,25 @@ ul.task-list li input[type="checkbox"] {
 
 
 <link rel="stylesheet" href="../styles.css">
-<meta property="og:title" content="Interviews – Anshuman Mishra">
-<meta property="og:description" content="Personal site of Anshuman Mishra.">
+<meta property="og:title" content="Deep Learning in&nbsp;Julia – Anshuman Mishra">
+<meta property="og:description" content="Implementing ML models in Flux, the Julia Deep Learning&nbsp;Package!">
+<meta property="og:image" content="https://kanpuriyanawab.github.io/posts/assets/flux_is_flexible/unet_full.png">
 <meta property="og:site_name" content="Anshuman Mishra">
-<meta name="twitter:title" content="Interviews – Anshuman Mishra">
-<meta name="twitter:description" content="Personal site of Anshuman Mishra.">
+<meta property="og:image:height" content="609">
+<meta property="og:image:width" content="842">
+<meta name="twitter:title" content="Deep Learning in&nbsp;Julia – Anshuman Mishra">
+<meta name="twitter:description" content="Implementing ML models in Flux, the Julia Deep Learning&nbsp;Package!">
+<meta name="twitter:image" content="https://kanpuriyanawab.github.io/posts/assets/flux_is_flexible/unet_full.png">
 <meta name="twitter:creator" content="@kanpuriyanawab">
 <meta name="twitter:card" content="summary">
+<meta name="twitter:image-height" content="609">
+<meta name="twitter:image-width" content="842">
 </head>
 
-<body class="nav-fixed fullcontent quarto-light">
+<body class="nav-fixed quarto-light">
 
 <div id="quarto-search-results"></div>
-  <header id="quarto-header" class="headroom fixed-top">
+  <header id="quarto-header" class="headroom fixed-top quarto-banner">
     <nav class="navbar navbar-expand-lg " data-bs-theme="dark">
       <div class="navbar-container container-fluid">
       <div class="navbar-brand-container mx-auto">
@@ -81,24 +89,16 @@ ul.task-list li input[type="checkbox"] {
           <div class="collapse navbar-collapse" id="navbarCollapse">
             <ul class="navbar-nav navbar-nav-scroll me-auto">
   <li class="nav-item">
-    <a class="nav-link" href="../pages/about.html"> 
-<span class="menu-text">About Me</span></a>
-  </li>  
-  <li class="nav-item">
-    <a class="nav-link" href="../pages/authoring.html"> 
-<span class="menu-text">Authoring</span></a>
-  </li>  
-  <li class="nav-item">
-    <a class="nav-link" href="../pages/open_source.html"> 
-<span class="menu-text">Open Source Contributions</span></a>
+    <a class="nav-link" href="../pages/work.html"> 
+<span class="menu-text">Work</span></a>
   </li>  
   <li class="nav-item">
     <a class="nav-link" href="../blog.html"> 
 <span class="menu-text">Blog</span></a>
   </li>  
   <li class="nav-item">
-    <a class="nav-link" href="../pages/resources.html"> 
-<span class="menu-text">Resources</span></a>
+    <a class="nav-link" href="../pages/things.html"> 
+<span class="menu-text">Things</span></a>
   </li>  
 </ul>
             <ul class="navbar-nav navbar-nav-scroll ms-auto">
@@ -125,42 +125,127 @@ ul.task-list li input[type="checkbox"] {
     </nav>
 </header>
 <!-- content -->
-<div id="quarto-content" class="quarto-container page-columns page-rows-contents page-layout-article page-navbar">
+<header id="title-block-header" class="quarto-title-block default page-columns page-full">
+  <div class="quarto-title-banner page-columns page-full">
+    <div class="quarto-title column-body">
+      <h1 class="title">Deep Learning in&nbsp;Julia</h1>
+                  <div>
+        <div class="description">
+          Implementing ML models in Flux, the Julia Deep Learning&nbsp;Package!
+        </div>
+      </div>
+                          <div class="quarto-categories">
+                <div class="quarto-category">Model Architecture</div>
+                <div class="quarto-category">Julia</div>
+              </div>
+                  </div>
+  </div>
+    
+  
+  <div class="quarto-title-meta">
+
+      
+      <div>
+      <div class="quarto-title-meta-heading">Published</div>
+      <div class="quarto-title-meta-contents">
+        <p class="date">December 31, 2022</p>
+      </div>
+    </div>
+    
+      
+    </div>
+    
+  
+  </header><div id="quarto-content" class="quarto-container page-columns page-rows-contents page-layout-article page-navbar">
 <!-- sidebar -->
 <!-- margin-sidebar -->
-    
+    <div id="quarto-margin-sidebar" class="sidebar margin-sidebar">
+        <nav id="TOC" role="doc-toc" class="toc-active">
+    <h2 id="toc-title">On this page</h2>
+   
+  <ul>
+  <li><a href="#unet" id="toc-unet" class="nav-link active" data-scroll-target="#unet">UNet 🥅</a></li>
+  </ul>
+<div class="toc-actions"><ul><li><a href="https://github.com/kanpuriyanawab/edit/master/posts/flux_is_so_flexible.qmd" class="toc-action"><i class="bi bi-github"></i>Edit this page</a></li><li><a href="https://github.com/kanpuriyanawab/issues/new" class="toc-action"><i class="bi empty"></i>Report an issue</a></li></ul></div></nav>
+    </div>
 <!-- main -->
-<main class="content" id="quarto-document-content">
+<main class="content quarto-banner-title-block" id="quarto-document-content">
 
-<header id="title-block-header" class="quarto-title-block default">
-<div class="quarto-title">
-<h1 class="title">Interviews</h1>
+
+
+
+
+<p><a href="https://fluxml.ai/">Flux</a> is amazing and it’s far more than just an ML framework. Differentiable programming &amp; Zygote, first class GPU support are features that set it apart among ML systems. The best thing I love about flux is mixing neural nets with differential equations, to get the best of black box and mechanistic modelling, this is what <a href="https://sciml.ai/">SciML</a> doing.</p>
+<p>Flux is fairly new, and needs attention of community&nbsp;! In this article we’ll learn about how to implement a model in Flux.jl&nbsp;. We’ll walkthrough UNet implementation, which I’ve been <a href="https://github.com/shivance/Metalhead.jl/blob/ba54cf0219cc247a732c1710925a4eef7a2c70c7/src/convnets/unet.jl">working</a> on lately to contribute to flux’s model zoo <strong>Metalhead.jl.</strong></p>
+<p><strong>After reading this article you’ll learn about</strong></p>
+<ol type="1">
+<li>What is UNet?</li>
+<li>A brief overview of Flux API</li>
+<li>Reimplementing PyTorch Models in Julia</li>
+</ol>
+<div style="text-align: center; margin-top: 25px; margin-bottom: 25px;">
+<p><a href="https://fullstackagents.substack.com" class="btn btn-primary" target="_blank" title="Subscribe"> Subscribe </a></p>
 </div>
+<section id="unet" class="level2">
+<h2 class="anchored" data-anchor-id="unet">UNet 🥅</h2>
+<p>UNet is a deep learning model which was released in the paper <a href="https://arxiv.org/pdf/1505.04597v1">U-Net: Convolutional Networks for Biomedical Image Segmentation</a>. The architecture of the network looks like&nbsp;: Fig. 1 ( Source: UNet&nbsp;Paper)We’ll not go into detail about UNet theory, as the paper explains it in best way, and explaination here would be redundant anyway.</p>
+<div class="quarto-figure quarto-figure-center">
+<figure class="figure">
+<p><img src="assets/flux_is_flexible/unet_full.png" class="img-fluid figure-img"></p>
+<figcaption>Source: UNet Paper</figcaption>
+</figure>
+</div>
+<p>This tutorial will focus on implementation.</p>
+<p>Let’s dive into code rightaway&nbsp;! The article is written presuming that you have knowledge of implementing a neural networks in PyTorch&nbsp;! We simply create a class that inherits nn.Module&nbsp;. We now create layers and assign it to class with self&nbsp;. When this model is instantiated, these layers will become attribute of the model object.</p>
+<script src="https://gist.github.com/kanpuriyanawab/c66010357e03ddcd21862c633162efb9.js"></script>
+<pre><code>&gt;&gt;&gt; exec(open("basic_model.py").read())
+torch.Size([1, 5, 8, 8])</code></pre>
+<p>Let’s see how it looks like in Julia.</p>
+<script src="https://gist.github.com/kanpuriyanawab/e0e278c4fcdd26ef998a2393b9e4bb9d.js"></script>
+<pre><code>julia&gt; include("basic_model.jl");
+(8, 8, 5, 1)</code></pre>
+<p>Some Key things to note here are&nbsp;:</p>
+<ol type="1">
+<li>Flux follows (H, W, C, N) standard for images while PyTorch uses (N, C, H, W)</li>
+<li>Chain function is similar to nn.Sequential method from PyTorch</li>
+<li>Julia implements Multiple Dispatch unlike PyThon which is designed on Single Dispatch paradigm. In short multiple dispatch allows us to implement a single method for different combination of different type arguments, unlike python which restricts the methods to be bound to a single object and reimplemented for different classes. Read more about multiple dispatch here&nbsp;.</li>
+</ol>
+<p>Let’s see how <a href="https://medium.com/r/?url=https%3A%2F%2Fgithub.com%2Fmateuszbuda%2Fbrain-segmentation-pytorch%2Fblob%2Fd45f8908ab2f0246ba204c702a6161c9eb25f902%2Funet.py%23L1">official UNet implementation</a> from Torchhub looks like</p>
+<p>The author of original implementation (hereon referred just as “author”) created a helper method to create a convolutional block&nbsp;. This is a good practise called as DRY ( Do not Repeat Yourself).</p>
+<div class="quarto-figure quarto-figure-center">
+<figure class="figure">
+<p><img src="assets/flux_is_flexible/unet.png" class="img-fluid figure-img"></p>
+<figcaption>Source: UNet Paper</figcaption>
+</figure>
+</div>
+<p>This allows us to create these conv blocks (fig.&nbsp;2 zooms into fig.&nbsp;1 to show these conv blocks) just by passing input and output channels. To implement it with Flux, we reuse our knowledge from gist 1&nbsp;:</p>
+<script src="https://gist.github.com/kanpuriyanawab/6b63cf078466fda41cc5912b36ded6b2.js"></script>
+<p>This allows us to create these conv blocks (fig.&nbsp;2 zooms into fig.&nbsp;1 to show these conv blocks) just by passing input and output channels.</p>
+<p>Pretty simple isn’t it&nbsp;?</p>
+<p>One thing to note here is, Flux doesn’t allow us to name the layers explicitly, the reason can be found in <a href="https://github.com/FluxML/Flux.jl/issues/2142">this</a> github issue. Now let’s go ahead and see how layers were created by author.</p>
+<p>Now we see that we have an encoder, bottleneck, decoder and an upconv layer. 1. Encoder&nbsp;: The four downstairs in Fig. 1 form the encoder block, and it encodes image by successive convolutions 2. Bottleneck&nbsp;: The layer between encoder and decoder is called bottleneck. The output of decoder is passed on to decoder &amp; upconv block. 3. Decoder &amp; Upconv block&nbsp;: The upconv block upsamples the input matrix, i.e.&nbsp;deconvolves the input to output with bigger size ( H x W ) than input. Decoder follows upconv layer and increases channels by performing convolution.</p>
+<p>Let’s create the model class in Flux first. Julia doesn’t have classes, it has structs&nbsp;. So model struct would look like this.</p>
+<script src="https://gist.github.com/kanpuriyanawab/8e5eb8ed5722f6a574ae90558b5ab42e.js"></script>
+<p>To reduce the redundancy in code I’ll implement the layers as array of layers, it’ll allow us to write a clean forward pass later. Don’t forget to notice the relation between number of channels of different blocks of UNet model.</p>
+<p>The unet_block is the convolutional block that we defined earlier is a simple chain of Convolutional and BatchNorm layers. We further chain these blocks keeping in mind the input &amp; output features using the Chain function. See&nbsp;! How easy it is to create a model in Flux. Now we have one last thing remaining, the forward pass&nbsp;. We do it like</p>
+<script src="https://gist.github.com/kanpuriyanawab/4771bb348755b488597b461ab9868aa5.js"></script>
+<p>in PyTorch. The cat operation orchestrates the connection between encoder and decoder demonstrated by copy and crop represented by gray arrow in Fig. 1.</p>
+<p>But don’t you find the code above messy&nbsp;? That’s where our definition of layers of arrays comes in. Let’s see how the forward pass is written for UNet.</p>
+<script src="https://gist.github.com/kanpuriyanawab/9e3c6b8ee5cf77c3e29ec62e71ea49fc.js"></script>
+<p>Pretty simple &amp; clean, we managed to keep the entire logic same.</p>
+<p>Some key points to be noted here:</p>
+<ol type="1">
+<li>σ is nothing else but sigmoid function&nbsp;! Julia allows us to use all the mathematical symbols as variables&nbsp;. Thus, flux defined sigmoid as σ rather than sigmoid()</li>
+<li>Julia uses matlab like syntax for ranges (see 1:4 for iterating over 1, 2, 3, 4 and 4:-1:1 for 4, 3, 2, 1).</li>
+<li>Julia uses 1 based indexing.</li>
+<li>Any Julia function with a trailing&nbsp;! tells that operation will be inplace ( remember pass by reference from C++ using &amp; operation).</li>
+<li>The <code>return</code> keyword in last line is redundant, simply writing σ(u.final_conv(out)) would work as Julia always returns the output of last line of code, from any code block.</li>
+</ol>
+<p>That brings us to the end of this tutorial. Thanks for reading&nbsp;!</p>
+<p>This is the second article of my first blog series Julia For the Win. You can find the previous article Kaggle x Julia&nbsp;: Advanced House Price Prediction&nbsp;: EDA.</p>
 
 
-
-<div class="quarto-title-meta">
-
-    
-  
-    
-  </div>
-  
-
-
-</header>
-
-
-<p>The purpose of conducting these interviews is to mainly <strong>get insights about the real-world project experiences, perspectives on learning new things</strong>, some fun facts and thereby enriching the communities in the process. I sincerely thank the interviewees for taking the time out from their busy schedules and for agreeing to do these interviews. Here are the interviews I have done so far -</p>
-<ul>
-<li><a href="https://kanpuriyanawab.medium.com/interview-with-2x-kaggle-grandmaster-data-science-manager-at-emirates-nbd-ravi-ramakrishnan-3308a3936c07">An Interview with <strong>Ravi Ramakrishnan</strong>, Kaggle Grandmaster</a> (joint work with <a href="https://www.linkedin.com/in/kanpuriyanawab/">Abheesht Sharma</a>)</li>
-<li><a href="https://medium.com/@sharmabhee/interview-with-rajaswa-patil-ai-researcher-at-postman-labs-4c4537f98ee">An Interview with <strong>Rajaswa Patil</strong>, AI Research Associate at Postman Labs</a> (joint work with <a href="https://www.linkedin.com/in/kanpuriyanawab/">Abheesht Sharma</a>)</li>
-<li><a href="https://kanpuriyanawab.medium.com/interview-with-matthew-watson-keras-team-google-a5df3913ab95">An Interview with <strong>Matthew Watson</strong>, Senior Software Engineer, Google</a> (joint work with <a href="https://www.linkedin.com/in/kanpuriyanawab/">Abheesht Sharma</a>)</li>
-<li><a href="https://medium.com/ai-chronicles/interview-with-aakash-kumar-nain-mle-at-merlyn-minds-785f0f2e147b">An Interview with Aakash Kumar Nain, MLE at Merlyn Minds</a> (joint work with <a href="https://www.linkedin.com/in/kanpuriyanawab/">Abheesht Sharma</a>)</li>
-</ul>
-<p>I have had an amazing time interviewing these incredible folks and I am grateful to them. For other competing priorities, I am discontinuing the series for an indefinite period. If you enjoy reading through interviews like these, you might want to check out the <a href="https://www.youtube.com/channel/UCMLtBahI5DMrt0NPvDSoIRQ"><strong>Machine Learning Street Talk</strong></a> podcast on YouTube.</p>
-
-
+</section>
 
 </main> <!-- /main -->
 <script id="quarto-html-after-body" type="application/javascript">
@@ -567,4 +652,4 @@ ul.task-list li input[type="checkbox"] {
 
 
 
-<footer class="footer"><div class="nav-footer"><div class="nav-footer-center"><div class="toc-actions"><ul><li><a href="https://github.com/kanpuriyanawab/edit/master/pages/interviews.qmd" class="toc-action"><i class="bi bi-github"></i>Edit this page</a></li><li><a href="https://github.com/kanpuriyanawab/issues/new" class="toc-action"><i class="bi empty"></i>Report an issue</a></li></ul></div></div></div></footer></body></html>
+<footer class="footer"><div class="nav-footer"><div class="nav-footer-center"><div class="toc-actions d-sm-block d-md-none"><ul><li><a href="https://github.com/kanpuriyanawab/edit/master/posts/flux_is_so_flexible.qmd" class="toc-action"><i class="bi bi-github"></i>Edit this page</a></li><li><a href="https://github.com/kanpuriyanawab/issues/new" class="toc-action"><i class="bi empty"></i>Report an issue</a></li></ul></div></div></div></footer></body></html>

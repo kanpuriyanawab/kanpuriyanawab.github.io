@@ -6,10 +6,9 @@
 
 <meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=yes">
 
-<meta name="dcterms.date" content="2023-12-03">
-<meta name="description" content="An Implementational Perspective of LLMs as Operating Systems">
+<meta name="dcterms.date" content="2023-10-11">
 
-<title>Illustrated LLM OS – Anshuman Mishra</title>
+<title>Interview with Matthew Watson, Keras Team, Google – Anshuman Mishra</title>
 <style>
 code{white-space: pre-wrap;}
 span.smallcaps{font-variant: small-caps;}
@@ -57,19 +56,15 @@ ul.task-list li input[type="checkbox"] {
 
 
 <link rel="stylesheet" href="../styles.css">
-<meta property="og:title" content="Illustrated LLM OS – Anshuman Mishra">
-<meta property="og:description" content="An Implementational Perspective of LLMs as Operating Systems">
-<meta property="og:image" content="https://kanpuriyanawab.github.io/posts/assets/illustrated_llmos/karpathy_ss.png">
+<meta property="og:title" content="Interview with Matthew Watson, Keras Team, Google – Anshuman Mishra">
+<meta property="og:description" content="Personal site of Anshuman Mishra.">
+<meta property="og:image" content="https://kanpuriyanawab.github.io/posts/assets/interview/interview_matt.webp">
 <meta property="og:site_name" content="Anshuman Mishra">
-<meta property="og:image:height" content="1252">
-<meta property="og:image:width" content="2880">
-<meta name="twitter:title" content="Illustrated LLM OS – Anshuman Mishra">
-<meta name="twitter:description" content="An Implementational Perspective of LLMs as Operating Systems">
-<meta name="twitter:image" content="https://kanpuriyanawab.github.io/posts/assets/illustrated_llmos/karpathy_ss.png">
+<meta name="twitter:title" content="Interview with Matthew Watson, Keras Team, Google – Anshuman Mishra">
+<meta name="twitter:description" content="Personal site of Anshuman Mishra.">
+<meta name="twitter:image" content="https://kanpuriyanawab.github.io/posts/assets/interview/interview_matt.webp">
 <meta name="twitter:creator" content="@kanpuriyanawab">
 <meta name="twitter:card" content="summary">
-<meta name="twitter:image-height" content="1252">
-<meta name="twitter:image-width" content="2880">
 </head>
 
 <body class="nav-fixed quarto-light">
@@ -128,15 +123,9 @@ ul.task-list li input[type="checkbox"] {
 <header id="title-block-header" class="quarto-title-block default page-columns page-full">
   <div class="quarto-title-banner page-columns page-full">
     <div class="quarto-title column-body">
-      <h1 class="title">Illustrated LLM OS</h1>
-                  <div>
-        <div class="description">
-          An Implementational Perspective of LLMs as Operating Systems
-        </div>
-      </div>
-                          <div class="quarto-categories">
-                <div class="quarto-category">LLMs</div>
-                <div class="quarto-category">Operating-system</div>
+      <h1 class="title">Interview with Matthew Watson, Keras Team, Google</h1>
+                                <div class="quarto-categories">
+                <div class="quarto-category">Interview</div>
               </div>
                   </div>
   </div>
@@ -148,7 +137,7 @@ ul.task-list li input[type="checkbox"] {
       <div>
       <div class="quarto-title-meta-heading">Published</div>
       <div class="quarto-title-meta-contents">
-        <p class="date">December 3, 2023</p>
+        <p class="date">October 11, 2023</p>
       </div>
     </div>
     
@@ -159,19 +148,8 @@ ul.task-list li input[type="checkbox"] {
   </header><div id="quarto-content" class="quarto-container page-columns page-rows-contents page-layout-article page-navbar">
 <!-- sidebar -->
 <!-- margin-sidebar -->
-    <div id="quarto-margin-sidebar" class="sidebar margin-sidebar">
-        <nav id="TOC" role="doc-toc" class="toc-active">
-    <h2 id="toc-title">On this page</h2>
-   
-  <ul>
-  <li><a href="#preliminaries" id="toc-preliminaries" class="nav-link active" data-scroll-target="#preliminaries">Preliminaries:</a></li>
-  <li><a href="#where-should-llm-sit-concerns-possibilities-and-limitations" id="toc-where-should-llm-sit-concerns-possibilities-and-limitations" class="nav-link" data-scroll-target="#where-should-llm-sit-concerns-possibilities-and-limitations">Where should LLM sit? Concerns, Possibilities, and Limitations</a></li>
-  <li><a href="#towards-implementation-injecting-a-state-machine-in-decoder" id="toc-towards-implementation-injecting-a-state-machine-in-decoder" class="nav-link" data-scroll-target="#towards-implementation-injecting-a-state-machine-in-decoder">Towards Implementation: Injecting a State Machine in Decoder</a></li>
-  <li><a href="#tuning-llms-for-os-use-case-a-rl-problem" id="toc-tuning-llms-for-os-use-case-a-rl-problem" class="nav-link" data-scroll-target="#tuning-llms-for-os-use-case-a-rl-problem">Tuning LLMs for OS use case: A RL Problem:</a></li>
-  <li><a href="#concluding-notes" id="toc-concluding-notes" class="nav-link" data-scroll-target="#concluding-notes">Concluding Notes</a></li>
-  <li><a href="#acknowledgements" id="toc-acknowledgements" class="nav-link" data-scroll-target="#acknowledgements">Acknowledgements</a></li>
-  </ul>
-<div class="toc-actions"><ul><li><a href="https://github.com/kanpuriyanawab/edit/master/posts/illustrated_llmos.qmd" class="toc-action"><i class="bi bi-github"></i>Edit this page</a></li><li><a href="https://github.com/kanpuriyanawab/issues/new" class="toc-action"><i class="bi empty"></i>Report an issue</a></li></ul></div></nav>
+    <div id="quarto-margin-sidebar" class="sidebar margin-sidebar zindex-bottom">
+        
     </div>
 <!-- main -->
 <main class="content quarto-banner-title-block" id="quarto-document-content">
@@ -180,65 +158,71 @@ ul.task-list li input[type="checkbox"] {
 
 
 
-<p>This blog post explores the implementation of large language models (LLMs) as operating systems, inspired by <a href="https://twitter.com/karpathy">Andrej Karpathy’s</a> vision of AI resembling an OS, akin to Jarvis from Iron Man. The focus is on practical considerations, proposing an application-level integration for LLMs within a terminal session. A novel approach involves injecting state machines into the decoding process, enabling real-time code execution and interaction. Additionally, this post proposes <strong>Reinforcement Learning by System Feedback (RLSF)</strong>,” a reinforcement learning technique applied to code generation tasks. This method leverages a reward model to evaluate code correctness through Python subprocess execution, enhancing LLM performance. The findings contribute insights into the dynamic control of LLMs and their potential applications beyond coding tasks.</p>
-<p><img src="assets/illustrated_llmos/karpathy_ss.png" class="img-fluid"></p>
-<p><em>Image source: <a href="assets/illustrated_llmos/karpathy_ss.png">[1hr Talk] Intro to Large Language Models by Andrej Karpathy</a></em></p>
-<section id="preliminaries" class="level2">
-<h2 class="anchored" data-anchor-id="preliminaries">Preliminaries:</h2>
-<ol type="1">
-<li><p><strong>State Machines</strong>: A state machine is a mathematical abstraction used to design algorithms. A state machine reads a set of inputs and changes to a different state based on those inputs. A state is a description of the status of a system waiting to execute a transition. A transition is a set of actions to execute when a condition is fulfilled or an event is received. In a state diagram, circles represent each possible state and arrows represent transitions between states.</p></li>
-<li><p><strong>Constrained Decoding</strong>: Constrained decoding is a technique used in natural language processing and sequence generation tasks, including those involving large language models (LLMs). In constrained decoding, the generation of sequences is guided or restricted by certain constraints or conditions. This approach is particularly useful when you want to control or influence the output of a language model to meet specific requirements or criteria.</p></li>
-</ol>
-<p>A major challenge in the implementation of LLM OS is establishing a Link between the Operating System and LLM, that ensures training following the principle of Responsible AI.</p>
-</section>
-<section id="where-should-llm-sit-concerns-possibilities-and-limitations" class="level2">
-<h2 class="anchored" data-anchor-id="where-should-llm-sit-concerns-possibilities-and-limitations">Where should LLM sit? Concerns, Possibilities, and Limitations</h2>
-<p>Imagine a futuristic Jarvis-like AI. It’ll be able to search through the internet, access local files, videos, and images on the disk, and execute programs. Where should it sit? At the kernel level? At Python Level?</p>
-<p><strong>At Kernel Level</strong>: Consider integrating our advanced language model with the Linux kernel. This would provide the AI with comprehensive access to the operating system’s core functionalities. However, it’s important to recognize that large language models (LLMs) are designed for human-like interaction, not intricate coding tasks. While embedding the model at the kernel level offers the advantage of understanding and controlling detailed system operations, it raises valid security concerns. Responsible development is crucial to ensure that the AI’s evolving decision-making capabilities don’t inadvertently compromise system integrity.</p>
-<p><strong>At Application Level</strong>: Alternatively, we can position the LLM at the application level, operating seamlessly within a terminal session. Leveraging the abstractions of a programming language, such as Python, provides optimal control over the AI. This approach facilitates easy updates to the LLM OS and allows for extensive customization.</p>
-</section>
-<section id="towards-implementation-injecting-a-state-machine-in-decoder" class="level2">
-<h2 class="anchored" data-anchor-id="towards-implementation-injecting-a-state-machine-in-decoder">Towards Implementation: Injecting a State Machine in Decoder</h2>
-<p>Following is the illustration of how the generation process works in decoder-like models source.</p>
-<p><img src="assets/illustrated_llmos/illustrated_gpt2.gif" class="img-fluid"></p>
-<p><em>Image source: <a href="https://jalammar.github.io/illustrated-gpt2/">The Illustrated GPT-2 by Jay Alammar</a></em></p>
-<p>The seamless interaction of a Large Language Model (LLM) with an operating system (OS) can be achieved through the strategic injection of a State Machine. By utilizing this approach, the model’s behavior can be dynamically controlled, enhancing its capability to engage with the OS. In particular, the injection of special tokens acts as triggers, facilitating interaction with the Python interpreter through subprocesses.</p>
-<p>To illustrate this concept, consider the scenario where the LLM is tasked with generating the sum of the first N natural numbers. Here, I request the model to encapsulate the generated code within designated special tokens, [CODE] and [/CODE], during its response. The State Machine is activated upon the generation of the [CODE] token, initiating the collection of the generated code in a buffer.</p>
-<p>Upon the subsequent generation of the [/CODE] token, the State Machine orchestrates a temporary pause in the generation process. This interlude allows for the invocation of a Python subprocess to execute the collected code. The output of this execution is then appended to the current cache. Resuming the generation process, this technique enables the model to dynamically learn program execution behavior in real time.</p>
-<p>In the following sections of this blog, we delve deeper into how this innovative technique empowers the model to adapt and refine its program execution understanding on the fly.</p>
-<div class="quarto-figure quarto-figure-center">
-<figure class="figure">
-<p><img src="assets/illustrated_llmos/chatgpt_response.png" class="img-fluid figure-img"></p>
-<figcaption>image/png</figcaption>
-</figure>
-</div>
-<p>Following is an illustration of a state machine to do various operations like db queries, accessing file systems, and even internet searches through Python subprocesses.</p>
-<div class="quarto-figure quarto-figure-center">
-<figure class="figure">
-<p><img src="assets/illustrated_llmos/llmos_flow_diag.png" class="img-fluid figure-img"></p>
-<figcaption>image/png</figcaption>
-</figure>
-</div>
-<p>The Python programming language boasts a robust ecosystem that opens up a multitude of possibilities, especially when harnessed through subprocesses. By utilizing subprocesses, we can seamlessly execute Shell or Programming Language codes, expanding the functionality of our applications. Python’s versatility extends to internet access, where we can leverage powerful libraries like requests and urllib. This capability allows the Large Language Model (LLM) to interact dynamically with online resources. Additionally, the integration of command line packages, such as the one offered by Google, further enhances the LLM’s capacity to fetch information from the web. Python’s sophisticated file-handling utilities provide the LLM with the capability to navigate and manipulate files and multimedia at the user’s request. This functionality extends beyond mere text-based interactions, offering a rich, multimodal experience. The inclusion of multimodal models further augments the LLM’s ability to interpret and respond to a diverse range of user inputs.</p>
-</section>
-<section id="tuning-llms-for-os-use-case-a-rl-problem" class="level2">
-<h2 class="anchored" data-anchor-id="tuning-llms-for-os-use-case-a-rl-problem">Tuning LLMs for OS use case: A RL Problem:</h2>
-<p>Imagine confronting a challenging programming problem and enlisting the assistance of the Large Language Model (LLM) to generate a solution. Traditionally, the process involves articulating the problem to the LLM, receiving the generated code, manual inspection for correctness, and iterative feedback for bug resolution.</p>
-<p>Now, let’s recast this procedure as a Reinforcement Learning (RL) challenge, casting our LLM as an agent navigating a realm of computer processes. In this RL framework, the agent’s objective is to generate code, subject to correctness scrutiny.</p>
-<p>To enhance this code generation process, we leverage a fundamental concept in RL — the reward model. This model quantifies the quality of generated code based on execution results. Through training the reward model, the LLM is systematically penalized for generating incorrect code, eliminating the need for manual intervention.</p>
-<p>I call this technique <strong>Reinforcement Learning by System Feedback (RLSF)</strong>. This technique can not only be applied to improving LLMs on code generation tasks but to a variety of tasks as shown in the state machine diagram.</p>
-</section>
-<section id="concluding-notes" class="level2">
-<h2 class="anchored" data-anchor-id="concluding-notes">Concluding Notes</h2>
-<p>The reason I published this blog post is because I think the discussion of integrating LLMs with Operating Systems should be Open. It should be developed responsibly in an Open Source Environment. If there is an initiative like this in the future, I would love to collaborate on it! At this stage, I couldn’t get a working prototype of the approaches I discussed due to a lack of computing resources.</p>
-<p>Just Imagine an operating system built on HuggingFace transformer’s LLM pipelines. This setup not only accommodates the effortless integration of new models but also ensures the system remains adaptable to the latest advancements in the field. LLMs can add a new layer of accessibility to our Operating System by acting as smart interfaces.</p>
-</section>
-<section id="acknowledgements" class="level2">
-<h2 class="anchored" data-anchor-id="acknowledgements">Acknowledgements</h2>
-<p><a href="https://www.linkedin.com/in/ravindra-m-a2751914/">Ravindra Majumdar</a> and <a href="https://www.linkedin.com/in/sunil-mallya-91a88320/">Sunil Mallya</a> for introducing me to the concept of constrained decoding.</p>
+<p><img src="assets/interview/interview_matt.webp" class="img-fluid"></p>
+<p>by Anshuman Mishra &amp; Abheesht Sharma</p>
+<p>The AI world is brimming with talent. Folks in the AI industry and the research world are continuously pushing the boundaries of innovation. With this interview series, we want to focus on bringing these inspiring (and possibly unheard-of) stories out into the world — their struggles, their triumphs, and their journey. We will be conversing with people we have looked up to and still look up to for their unparalleled contributions to the AI world. We call this interview series AI Chronicles.</p>
+<p>In this installment of our series, we sit down with Matthew Watson for a chat. Matt, a Stanford CS alumnus, is a software engineer with the Keras team at Google, where he works on KerasNLP, Keras’ native NLP offering. He has also been instrumental in developing Keras 3 (its announcement created significant buzz on Twitter!), a multi-backend Keras that can run on TensorFlow, JAX, and PyTorch. In the past decade or so, Matt has already had a wonderfully diverse career — he started off with literature in his undergrad, before developing a love for CS (more on this in the interview!).</p>
+<p>All words seem inadequate when one sets out to describe Matt. Matt is one of those “10x” engineers/researchers and always has a solution to every problem. We have always found his intuition to be bang on target. Matt has played a pivotal role in both of our careers; he has mentored us during (and after) Google Summer of Code. But one needs to look beyond just his technical expertise. Matt has infinite patience; we’ve spent late-night debugging sessions with him, and he has always been super-helpful and giving. Matt is an “open source stan”, and you can see his love for open source in every response of his on GitHub, and in every meticulously drafted PR (Pull Request). Safe to say, Matt has influenced us like no one else.</p>
+<p>Let’s begin!</p>
+<p>Anshuman &amp; Abheesht: Welcome, Matt! Thanks for doing this.</p>
+<p>Matt: Hi Anshuman and Abheesht! And thanks for putting this whole series together. I should probably quickly note that opinions here are my own; I’m not speaking on behalf of Google or any organization.</p>
+<p>Anshuman: Can you tell us about your journey in the field of natural language processing (NLP) and how you became involved with the Keras team at Google?</p>
+<p>Matt: Honestly I have taken a meandering path, but two consistent threads I can pick out of the last decade of my career are a love of language and of open-source software.</p>
+<p>I started my undergraduate studies with a focus on literature before getting lured to Computer Science by some really fantastic teachers. Through that switch, I have remained fascinated with the intersection of language and math. My first hands-on experience with NLP was helping with a research project at my university extracting information from Wikipedia via support vector machines written in Java (times have changed!). I started using Keras in 2017 when everyone was discovering text generation with LSTMs.</p>
+<p>I’ve had the chance to spend most of my career so far working in open source (first in the Linux community and now ML) and have always been so grateful for it. So joining Keras honestly felt like a no-brainer; it was a chance to do open work on my interests with a library I already loved.</p>
+<p>Abheesht: I’d like to talk a bit more about the career pivots you’ve done. In school/college, you say that you were interested in literature, post which you pivoted to Computer Science. Even in the field of Computer Science, you started off with Computer Graphics, started working on building an operating system at Endless Computers, and worked in the Firebase team, before joining Keras. How much did learning/working in different “disciplines/fields” help you? Were there any opportunities for “cross-discipline” learning, say, something you learned from discipline A which helped you in discipline B?</p>
+<p>Matt: I’m really glad I got a start in the humanities because writing is so important for almost every field. Being able to articulate a thought clearly and concisely is an important skill we underplay too often in the hard sciences.</p>
+<p>Computer graphics and the ML work I’m doing today feel closely intertwined. My advisor for my Master’s degree, Pat Hanrahan, was a driving force behind programmable shading language, and that blows my mind to this day. The early days of GPUs were all about these fixed-function pipelines for creating and rasterizing triangles. Then came the idea to write these domain-specific shading languages that added a ton of expressivity to the process. And from that came the idea of general-purpose GPU computations, and things like CUDA, and here we are today! ML as a field has probably been moved forward literal decades thanks to ideas from the graphics world.</p>
+<p>I’m grateful for my time in the Linux open-source world for quite different reasons. I can’t say there’s much overlap in subject matter, but it was a wonderful start in the world of open source. It definitely made me a bit of a tinkerer, with everything from my OS to shell to IDE. Linux is built around supporting that. But it’s something I think equally applies to the world of ML. The deeper you get into these big deep-learning frameworks the more clear it becomes they all have bugs. You gain so much as an ML developer when you can get into the weeds of a library and start changing things.</p>
+<p>Anyway, that’s a long-winded way of saying I’m quite glad my career hasn’t been a straight line.</p>
+<p>Anshuman: Given your interest in English literature, which novels are you currently reading? What’s on your to-read list? Do you have any writing aspirations?</p>
+<p>Matt: Hah, for any attempt to read literature with a capital “L” in school, my reading diet since I was 10 has been mostly sci-fi and fantasy. Ursula K. Le Guin is a big hero of mine. I recently read Klara and the Sun, a dystopian novel narrated by an “autonomous friend” that certainly feels relevant to all the work we do.</p>
+<p>I would love to try my hand at fiction someday, but most of my writing is technical these days.</p>
+<p>Abheesht: What are the focal attributes of KerasNLP that make it different from other NLP libraries out there?</p>
+<p>Matt: One thing that makes Keras unique is a detailed and strict style guide for any new API. Our top-level APIs should be accessible to a very broad audience. We achieve flexibility underneath this top level with a focus on modular components and layered abstractions.</p>
+<p>This gives KerasNLP a somewhat unique positioning among “pre-trained modeling” libraries. When we port a model from a research codebase, we tend to heavily rewrite the forward pass so it matches our conventions and uses common building blocks.</p>
+<p>This has some neat side effects. For one, it’s a great library to learn from–you can define a transformer from scratch with our base layers in about 20 lines of code. It also gives a very uniform experience of slicing and dicing our models. That’s a big one given how many real-world workflows, from PEFT strategies to interpretability techniques, require reaching into model internals.</p>
+<p>Abheesht: How do you see the current landscape of NLP and deep learning evolving, and how does KerasNLP fit into this evolving landscape?</p>
+<p>Matt: It’s dizzying how fast the field is changing these days. There is a ton of energy in open-source NLP development. There are so many valid concerns with how all this new technology is being used. At a broad level, I keep trying to remind myself what a massive period of flux this is for the field. We should all hold our opinions lightly and stay curious.</p>
+<p>I think multi-backend Keras 3 is really a game changer for how KerasNLP fits it. On the KerasNLP side, we can take a pre-trained model, write our numerics once, and distribute our weights once. You can fine-tune a model in any of TensorFlow, Jax, or Torch, and use Keras’ save format as a way to seamlessly move between frameworks. I think this is a new tool we are putting in ML developer’s toolboxes, and I am excited to see what people do with it.</p>
+<p>Anshuman: Could you share some real-world applications or projects where KerasNLP has been particularly instrumental or innovative?</p>
+<p>Matt: One of the first projects to use KerasNLP is the AutoKeras library, and I really love how it fits into the Keras broader Keras ecosystem. It’s a super accessible, code-first library. You can just define your data and problem and it will handle choosing an architecture, optimizer, and hyperparameters. Or you can define your own much more complex and tailored workflow as you get deeper in.</p>
+<p>I think there is a huge opportunity to take a similar approach to generative problems going forward. Meet people with accessible, understandable, code-first flows that still give you full control over an underlying language model when you need it. I haven’t quite seen an “auto ML” offering on the generative modeling front that has really blown me away, but I would bet it’s just a matter of time.</p>
+<p>Abheesht: Natural language understanding and generation have seen remarkable advancements. What do you think are the key challenges and opportunities in NLP today?</p>
+<p>Matt: There’s a huge amount of opportunity here. We are far from understanding all the ways we can put the emergent properties of LLMs to use. Given the amount of investment and attention, I am not particularly worried about the field suddenly losing steam.</p>
+<p>An obvious challenge is the reliability of language models. If you had a service where a fellow human would often give you helpful advice, and occasionally confidently lie to your face, people would be out there flipping tables.</p>
+<p>I think there are two things we could do here. First, keep working on the engineering problem of reliable models that can, at least, indicate uncertainty when present. Second, don’t oversell these things! There are a lot of unsolved problems with LLMs, and there is a persistent, magnetic attraction towards anthropomorphizing something that appears to understand language. Everyone working in this space needs to be careful with how we describe these systems, and continually flag the obvious limitations of these tools.</p>
+<p>Abheesht: One thing I’ve seen with the Keras team is the collaborative culture that has been fostered. All members of the Keras team are very helpful to the outside community. Evidence of this is seen in the number of students who contribute to the Keras ecosystem. Can you provide insights into the collaborative development process within the Keras team at Google and outside contributors and how it contributes to the library’s success?</p>
+<p>Matt: A huge reason I was attracted to the Keras team was that everyone on it really cares about open-source tools, not as an afterthought or a way to boost your profile, but as an end unto itself.</p>
+<p>The vast majority of my work is out in the open on GitHub, and I think that is true of the whole Keras ecosystem. Most real discussion about new APIs is happening on issues and pull requests.</p>
+<p>I think everyone on the team really believes in the virtuous cycle here. There is far more knowledge and skill in the large pool of Keras users than just the Keras team at Google.</p>
+<p>Anshuman: In the ever-evolving field of AI, staying updated is crucial. How do you personally keep up with the latest developments and trends in NLP and deep learning?</p>
+<p>Matt: It’s a mix right now of Twitter, word of mouth, and anything that naturally comes up in my work. There is just no way for anyone to ingest all the research in this space. I constantly try to curate a short list of concepts to understand deeply, rather than attempting to ingest the whole fire hose.</p>
+<p>If I encounter a new claim that breaks an assumption I was holding, or a bug in my code I can’t effectively explain, it’s almost always worth digging in. ML as a field I think really rewards going deep on unknowns and constantly leveling up your understanding.</p>
+<p>Anshuman: You’ve done your Bachelor’s and Master’s from Stanford, widely regarded as one of the best universities in the world. How was your time at Stanford? How do you think your education has shaped your career as an engineer over the past decade? What makes Stanford Stanford; what does Stanford do differently from other universities that makes it the best? Is it the faculty? Is it the peer group?</p>
+<p>Matt: The main thing I think Stanford provided was this massive playground to go out and build your own understanding. They give a lot of resources and freedom to students, and there’s a lot of bright people trying weird stuff you can talk to. There’s definite energy in that environment.</p>
+<p>Stanford also killed it with the introductory Computer Science courses. The lecturers and teaching assistants were really supportive and focused on sparking curiosity about what computers can do. That is for sure what lured me out of the social sciences.</p>
+<p>I wouldn’t put too much stock into any one place though. The best coworkers in my working life have truly come from all sorts of educational backgrounds; I cannot pick out a pattern. People who teach themselves and even get a bit irritated by things they don’t yet understand tend to make great engineers. And open source in particular is one of the most accessible ways to wade into real problems from anywhere in the world.</p>
+<p>Abheesht: What, do you think, is the future for KerasNLP? Where do you see it going? What are some exciting developments that are planned in the near future?</p>
+<p>Matt: The near future for KerasNLP is all about sticking the landing with Keras 3 (multi-backend Keras). We want to make sure we have the models people are most excited about (e.g.&nbsp;LLama 2 and Falcon), but equally important is a good ecosystem of tools to scale these models up and down.</p>
+<p>On the scaling down front, we want a good multi-backend workflow for LoRA, and for scaling up, we are working on some dead simple model parallelism (think sharding individual matrices across GPUs). It’s definitely a lot to execute on, but that’s kinda fun. We are all heads down on our projects till the release of Keras 3 later this year.</p>
+<p>Abheesht: Having talked to you before, I know how bullish you are on open-source software. Is open source the way forward with LLMs? The upsides are obvious; the downsides include potential misuse, etc. What are your views on this?</p>
+<p>Matt: I think the biggest thing we can all do is stay open to changing our viewpoints. We are way out in uncharted territory in terms of model capability, so the most accurate (and maybe unhelpful) thing we can say is that we don’t know what the biggest risks are or how to mitigate them.</p>
+<p>I should probably just recuse myself from any conversations of existential risk from language models; I don’t know enough. I am glad some people out there are thinking about it, but personally, I am much more worried about the more immediate societal issues–bias, misuse, misinformation, disruption from automation, etc. These I feel strongly need to be addressed in the public square, and open models will be an essential tool.</p>
+<p>First, with an open model, you can crowdsource finding all the issues and fail states. More people probing a model will do a much more thorough job of making it “misbehave.” Second, if we really open up the whole training recipe (what data is going in?!), we can have a much more open conversation about equitable outcomes with this new tech.</p>
+<p>I think we have a ways to go as a field, particularly with opening up details on training data. We also need to avoid a “race to the bottom,” just throwing more in more compute and data to beat benchmarks without understanding what we are scaling to. But if we want this new tech to do right by society at large, I think open models have a large role to play.</p>
+<p>Abheesht: Keras 3, i..e, multi-backend Keras which allows users to switch backends (TensorFlow, JAX, and PyTorch) was released to much hubbub and fanfare a couple of months ago. What do you think are some of the most exciting use cases of a multi-backend Keras? Why should people be excited about it?</p>
+<p>Matt: Maybe a bit abstract, but I think Keras has the opportunity to become a “lingua franca” for modeling problems for a lot more people with Keras 3. Keras is a familiar API to basically everyone in the ML field–even if you don’t realize it, its fingerprints are all over abstractions in so many deep learning toolkits.</p>
+<p>With Keras 3, you can start with a backend agnostic modeling flow, and “lower” it into TensorFlow, JAX, or PyTorch anytime you need. There’s no transpilation, all layers/metrics/optimizers are using backend native calls for the selected framework. So basically Keras just becomes an incredibly efficient thing to learn. You can use it as a diving off point for basically any ML problem, and have the expressivity of a low-level framework as soon as you need it.</p>
+<p>Abheesht: What is one research paper you’ve read recently that gave you that “aha” feeling? Basically, a paper that blew your mind!</p>
+<p>Matt: A while ago I was in a paper reading group digging into graph neural networks. I found the notions of message passing and permutation invariance among graph vertices to be this big lightbulb moment where a lot of disparate notions in my head suddenly coalesced.</p>
+<p>Basically, you can think of CNNs and Transformers, and RNNs as graph networks. A convolution is just a message passing among neighboring pixels. Transformers are quite literally densely connected graph attention networks, with positional information added in.</p>
+<p>Framing everything as a graph gives you this uniform lens to look across the whole field of deep learning, which is so cool. This article is a good introduction to the idea.</p>
+<p>Anshuman &amp; Abheesht: Thank you, Matt! It’s been great talking to you!</p>
+<p>And that concludes the third interview of our “AI Chronicles” series! This series is a joint effort of Anshuman Mishra and Abheesht Sharma. Anshuman is currently working at Flip as a Machine Learning Engineer. Abheesht is an ML Research Scientist at Amazon, where he works on detecting advertisement bots. Both of them contribute extensively to ML open-source software and have been involved in developing KerasNLP.</p>
+<p>Best regards and happy learning!</p>
 
 
-</section>
 
 </main> <!-- /main -->
 <script id="quarto-html-after-body" type="application/javascript">
@@ -645,4 +629,4 @@ ul.task-list li input[type="checkbox"] {
 
 
 
-<footer class="footer"><div class="nav-footer"><div class="nav-footer-center"><div class="toc-actions d-sm-block d-md-none"><ul><li><a href="https://github.com/kanpuriyanawab/edit/master/posts/illustrated_llmos.qmd" class="toc-action"><i class="bi bi-github"></i>Edit this page</a></li><li><a href="https://github.com/kanpuriyanawab/issues/new" class="toc-action"><i class="bi empty"></i>Report an issue</a></li></ul></div></div></div></footer></body></html>
+<footer class="footer"><div class="nav-footer"><div class="nav-footer-center"><div class="toc-actions"><ul><li><a href="https://github.com/kanpuriyanawab/edit/master/posts/interview_matt.qmd" class="toc-action"><i class="bi bi-github"></i>Edit this page</a></li><li><a href="https://github.com/kanpuriyanawab/issues/new" class="toc-action"><i class="bi empty"></i>Report an issue</a></li></ul></div></div></div></footer></body></html>
