@@ -6,14 +6,14 @@
       version="2.0">
 <channel>
 <title>Anshuman Mishra</title>
-<link>https://kanpuriyanawab.github.io/blog.html</link>
-<atom:link href="https://kanpuriyanawab.github.io/blog.xml" rel="self" type="application/rss+xml"/>
+<link>https://www.heyyanshuman.com/blog.html</link>
+<atom:link href="https://www.heyyanshuman.com/blog.xml" rel="self" type="application/rss+xml"/>
 <description>Personal site of Anshuman Mishra.</description>
 <generator>quarto-1.7.31</generator>
 <lastBuildDate>Fri, 22 Dec 2023 00:00:00 GMT</lastBuildDate>
 <item>
   <title>Interview with Aakash Kumar Nain, MLE at Merlyn Minds</title>
-  <link>https://kanpuriyanawab.github.io/posts/interview_aakash.html</link>
+  <link>https://www.heyyanshuman.com/posts/interview_aakash.html</link>
   <description><![CDATA[ 
 
 
@@ -21,7 +21,7 @@
 
 
 <p>by Anshuman Mishra and Abheesht Sharma</p>
-<p><img src="https://kanpuriyanawab.github.io/posts/assets/interview/interview_aakash.webp" class="img-fluid"></p>
+<p><img src="https://www.heyyanshuman.com/posts/assets/interview/interview_aakash.webp" class="img-fluid"></p>
 <p>The AI world is brimming with talent. Folks in the AI industry and the research world are continuously pushing the boundaries of innovation. With this interview series, we want to focus on bringing these inspiring (and possibly unheard-of) stories out into the world — their struggles, their triumphs, and their journey. We will be conversing with people we have looked up to and still look up to for their unparalleled contributions to the AI world. We call this interview series AI Chronicles.</p>
 <p>The two of us with Aakash in Uzbekistan! Aakash Kumar Nain — open source legend, MLE extraordinaire, Delhi lover, mountain climber. We had the privilege of meeting Aakash in Tashkent at the Google ML Community Summit and were taken aback by how laidback and easygoing he was. Looking at how meticulous he is with his work, we were expecting him to be the “serious kind”. The three of us instantly hit it off.</p>
 <p>When we say Aakash is an open source legend, we kid you not. Aakash started contributing to DL open source in 2016, and has never looked back since then. He is a TensorFlow-Addons maintainer. He is a core contributor to Keras 3.0, the new multi-backend Keras. Our favourite open source work of his is, however, Annotated Papers, where he breaks down ML/DL papers into simple explanations. Aakash is a huge proponent of JAX. Safe to say, he has inspired folks like us to take to open source.</p>
@@ -77,12 +77,12 @@
 
  ]]></description>
   <category>Interview</category>
-  <guid>https://kanpuriyanawab.github.io/posts/interview_aakash.html</guid>
+  <guid>https://www.heyyanshuman.com/posts/interview_aakash.html</guid>
   <pubDate>Fri, 22 Dec 2023 00:00:00 GMT</pubDate>
 </item>
 <item>
   <title>Illustrated LLM OS</title>
-  <link>https://kanpuriyanawab.github.io/posts/illustrated_llmos.html</link>
+  <link>https://www.heyyanshuman.com/posts/illustrated_llmos.html</link>
   <description><![CDATA[ 
 
 
@@ -90,7 +90,7 @@
 
 
 <p>This blog post explores the implementation of large language models (LLMs) as operating systems, inspired by <a href="https://twitter.com/karpathy">Andrej Karpathy’s</a> vision of AI resembling an OS, akin to Jarvis from Iron Man. The focus is on practical considerations, proposing an application-level integration for LLMs within a terminal session. A novel approach involves injecting state machines into the decoding process, enabling real-time code execution and interaction. Additionally, this post proposes <strong>Reinforcement Learning by System Feedback (RLSF)</strong>,” a reinforcement learning technique applied to code generation tasks. This method leverages a reward model to evaluate code correctness through Python subprocess execution, enhancing LLM performance. The findings contribute insights into the dynamic control of LLMs and their potential applications beyond coding tasks.</p>
-<p><img src="https://kanpuriyanawab.github.io/posts/assets/illustrated_llmos/karpathy_ss.png" class="img-fluid"></p>
+<p><img src="https://www.heyyanshuman.com/posts/assets/illustrated_llmos/karpathy_ss.png" class="img-fluid"></p>
 <p><em>Image source: <a href="assets/illustrated_llmos/karpathy_ss.png">[1hr Talk] Intro to Large Language Models by Andrej Karpathy</a></em></p>
 <section id="preliminaries" class="level2">
 <h2 class="anchored" data-anchor-id="preliminaries">Preliminaries:</h2>
@@ -109,7 +109,7 @@
 <section id="towards-implementation-injecting-a-state-machine-in-decoder" class="level2">
 <h2 class="anchored" data-anchor-id="towards-implementation-injecting-a-state-machine-in-decoder">Towards Implementation: Injecting a State Machine in Decoder</h2>
 <p>Following is the illustration of how the generation process works in decoder-like models source.</p>
-<p><img src="https://kanpuriyanawab.github.io/posts/assets/illustrated_llmos/illustrated_gpt2.gif" class="img-fluid"></p>
+<p><img src="https://www.heyyanshuman.com/posts/assets/illustrated_llmos/illustrated_gpt2.gif" class="img-fluid"></p>
 <p><em>Image source: <a href="https://jalammar.github.io/illustrated-gpt2/">The Illustrated GPT-2 by Jay Alammar</a></em></p>
 <p>The seamless interaction of a Large Language Model (LLM) with an operating system (OS) can be achieved through the strategic injection of a State Machine. By utilizing this approach, the model’s behavior can be dynamically controlled, enhancing its capability to engage with the OS. In particular, the injection of special tokens acts as triggers, facilitating interaction with the Python interpreter through subprocesses.</p>
 <p>To illustrate this concept, consider the scenario where the LLM is tasked with generating the sum of the first N natural numbers. Here, I request the model to encapsulate the generated code within designated special tokens, [CODE] and [/CODE], during its response. The State Machine is activated upon the generation of the [CODE] token, initiating the collection of the generated code in a buffer.</p>
@@ -117,14 +117,14 @@
 <p>In the following sections of this blog, we delve deeper into how this innovative technique empowers the model to adapt and refine its program execution understanding on the fly.</p>
 <div class="quarto-figure quarto-figure-center">
 <figure class="figure">
-<p><img src="https://kanpuriyanawab.github.io/posts/assets/illustrated_llmos/chatgpt_response.png" class="img-fluid figure-img"></p>
+<p><img src="https://www.heyyanshuman.com/posts/assets/illustrated_llmos/chatgpt_response.png" class="img-fluid figure-img"></p>
 <figcaption>image/png</figcaption>
 </figure>
 </div>
 <p>Following is an illustration of a state machine to do various operations like db queries, accessing file systems, and even internet searches through Python subprocesses.</p>
 <div class="quarto-figure quarto-figure-center">
 <figure class="figure">
-<p><img src="https://kanpuriyanawab.github.io/posts/assets/illustrated_llmos/llmos_flow_diag.png" class="img-fluid figure-img"></p>
+<p><img src="https://www.heyyanshuman.com/posts/assets/illustrated_llmos/llmos_flow_diag.png" class="img-fluid figure-img"></p>
 <figcaption>image/png</figcaption>
 </figure>
 </div>
@@ -152,19 +152,19 @@
  ]]></description>
   <category>LLMs</category>
   <category>Operating-system</category>
-  <guid>https://kanpuriyanawab.github.io/posts/illustrated_llmos.html</guid>
+  <guid>https://www.heyyanshuman.com/posts/illustrated_llmos.html</guid>
   <pubDate>Sun, 03 Dec 2023 00:00:00 GMT</pubDate>
 </item>
 <item>
   <title>Interview with Matthew Watson, Keras Team, Google</title>
-  <link>https://kanpuriyanawab.github.io/posts/interview_matt.html</link>
+  <link>https://www.heyyanshuman.com/posts/interview_matt.html</link>
   <description><![CDATA[ 
 
 
 
 
 
-<p><img src="https://kanpuriyanawab.github.io/posts/assets/interview/interview_matt.webp" class="img-fluid"></p>
+<p><img src="https://www.heyyanshuman.com/posts/assets/interview/interview_matt.webp" class="img-fluid"></p>
 <p>by Anshuman Mishra &amp; Abheesht Sharma</p>
 <p>The AI world is brimming with talent. Folks in the AI industry and the research world are continuously pushing the boundaries of innovation. With this interview series, we want to focus on bringing these inspiring (and possibly unheard-of) stories out into the world — their struggles, their triumphs, and their journey. We will be conversing with people we have looked up to and still look up to for their unparalleled contributions to the AI world. We call this interview series AI Chronicles.</p>
 <p>In this installment of our series, we sit down with Matthew Watson for a chat. Matt, a Stanford CS alumnus, is a software engineer with the Keras team at Google, where he works on KerasNLP, Keras’ native NLP offering. He has also been instrumental in developing Keras 3 (its announcement created significant buzz on Twitter!), a multi-backend Keras that can run on TensorFlow, JAX, and PyTorch. In the past decade or so, Matt has already had a wonderfully diverse career — he started off with literature in his undergrad, before developing a love for CS (more on this in the interview!).</p>
@@ -232,19 +232,19 @@
 
  ]]></description>
   <category>Interview</category>
-  <guid>https://kanpuriyanawab.github.io/posts/interview_matt.html</guid>
+  <guid>https://www.heyyanshuman.com/posts/interview_matt.html</guid>
   <pubDate>Wed, 11 Oct 2023 00:00:00 GMT</pubDate>
 </item>
 <item>
   <title>Interview with Rajaswa Patil, AI Researcher at Postman Labs</title>
-  <link>https://kanpuriyanawab.github.io/posts/interview_rajaswa.html</link>
+  <link>https://www.heyyanshuman.com/posts/interview_rajaswa.html</link>
   <description><![CDATA[ 
 
 
 
 
 
-<p><img src="https://kanpuriyanawab.github.io/posts/assets/interview/interview_rajaswa.webp" class="img-fluid"></p>
+<p><img src="https://www.heyyanshuman.com/posts/assets/interview/interview_rajaswa.webp" class="img-fluid"></p>
 <p>by Anshuman Mishra and Abheesht Sharma</p>
 <p>The AI world is brimming with talent. Folks in the AI industry and the research world are continuously pushing the boundaries of innovation. With this interview series, we want to focus on bringing these inspiring (and possibly unheard of) stories out into the world — their struggles, their triumphs and their journey. We will be conversing with people we have looked up to, and still look up to for their unparalleled contributions to the AI world. We call this interview series AI Chronicles.</p>
 <p>Rajaswa’s Stellar Profile Today, we are honored to have Rajaswa Patil with us. Rajaswa, who graduated in 2021 from BITS Goa, has already had a chequered career so far. He started with a Pre-doctoral position at TCS Research, before working at Microsoft as a Research Fellow. He now works at Postman Labs as an AI Research Associate. Rajaswa is leveraging Generative AI and Large Language Models (LLMs) to build “Postbot” at Postman.</p>
@@ -301,12 +301,12 @@
 
  ]]></description>
   <category>Interview</category>
-  <guid>https://kanpuriyanawab.github.io/posts/interview_rajaswa.html</guid>
+  <guid>https://www.heyyanshuman.com/posts/interview_rajaswa.html</guid>
   <pubDate>Mon, 25 Sep 2023 00:00:00 GMT</pubDate>
 </item>
 <item>
   <title>Deep Learning in Julia</title>
-  <link>https://kanpuriyanawab.github.io/posts/flux_is_so_flexible.html</link>
+  <link>https://www.heyyanshuman.com/posts/flux_is_so_flexible.html</link>
   <description><![CDATA[ 
 
 
@@ -329,7 +329,7 @@
 <p>UNet is a deep learning model which was released in the paper <a href="https://arxiv.org/pdf/1505.04597v1">U-Net: Convolutional Networks for Biomedical Image Segmentation</a>. The architecture of the network looks like&nbsp;: Fig. 1 ( Source: UNet&nbsp;Paper)We’ll not go into detail about UNet theory, as the paper explains it in best way, and explaination here would be redundant anyway.</p>
 <div class="quarto-figure quarto-figure-center">
 <figure class="figure">
-<p><img src="https://kanpuriyanawab.github.io/posts/assets/flux_is_flexible/unet_full.png" class="img-fluid figure-img"></p>
+<p><img src="https://www.heyyanshuman.com/posts/assets/flux_is_flexible/unet_full.png" class="img-fluid figure-img"></p>
 <figcaption>Source: UNet Paper</figcaption>
 </figure>
 </div>
@@ -352,7 +352,7 @@ torch.Size([1, 5, 8, 8])</code></pre>
 <p>The author of original implementation (hereon referred just as “author”) created a helper method to create a convolutional block&nbsp;. This is a good practise called as DRY ( Do not Repeat Yourself).</p>
 <div class="quarto-figure quarto-figure-center">
 <figure class="figure">
-<p><img src="https://kanpuriyanawab.github.io/posts/assets/flux_is_flexible/unet.png" class="img-fluid figure-img"></p>
+<p><img src="https://www.heyyanshuman.com/posts/assets/flux_is_flexible/unet.png" class="img-fluid figure-img"></p>
 <figcaption>Source: UNet Paper</figcaption>
 </figure>
 </div>
@@ -388,12 +388,12 @@ torch.Size([1, 5, 8, 8])</code></pre>
  ]]></description>
   <category>Model Architecture</category>
   <category>Julia</category>
-  <guid>https://kanpuriyanawab.github.io/posts/flux_is_so_flexible.html</guid>
+  <guid>https://www.heyyanshuman.com/posts/flux_is_so_flexible.html</guid>
   <pubDate>Sat, 31 Dec 2022 00:00:00 GMT</pubDate>
 </item>
 <item>
   <title>Comprehensive data exploration with Julia</title>
-  <link>https://kanpuriyanawab.github.io/posts/julia_house_price_prediction.html</link>
+  <link>https://www.heyyanshuman.com/posts/julia_house_price_prediction.html</link>
   <description><![CDATA[ 
 
 
@@ -439,7 +439,7 @@ df_train = CSV.read("./train.csv", DataFrame, stringtype=String);</code></pre>
 <p>To peek into the dataframe, Julia alternative of head() method is first</p>
 <pre><code>first(df_train, 5) 
 # displays first 5 value of dataframe</code></pre>
-<p><img src="https://kanpuriyanawab.github.io/posts/assets/julia_house_price_prediction/img_1.png" class="img-fluid"></p>
+<p><img src="https://www.heyyanshuman.com/posts/assets/julia_house_price_prediction/img_1.png" class="img-fluid"></p>
 <div style="text-align: center; margin-top: 25px; margin-bottom: 25px;">
 <p><a href="https://fullstackagents.substack.com" class="btn btn-primary" target="_blank" title="Subscribe"> Subscribe </a></p>
 </div>
@@ -482,10 +482,10 @@ df_train = CSV.read("./train.csv", DataFrame, stringtype=String);</code></pre>
 <p><em>Everything started in our Kaggle party, when we were looking for a dance partner. After a while searching in the dance floor, we saw a girl, near the bar, using dance shoes. That’s a sign that she’s there to dance. We spend much time doing predictive modelling and participating in analytics competitions, so talking with girls is not one of our super powers. Even so, we gave it a try:</em></p>
 <p><em>‘Hi, I’m Kaggly! And you? ’SalePrice’? What a beautiful name! You know ‘SalePrice’, could you give me some data about you? I just developed a model to calculate the probability of a successful relationship between two people. I’d like to apply it to us!’</em></p>
 <pre><code>describe(df_train, cols=:SalePrice)</code></pre>
-<p><img src="https://kanpuriyanawab.github.io/posts/assets/julia_house_price_prediction/img_2.png" class="img-fluid"></p>
+<p><img src="https://www.heyyanshuman.com/posts/assets/julia_house_price_prediction/img_2.png" class="img-fluid"></p>
 <p>Very well… It seems that your minimum price is larger than zero. Excellent! You don’t have one of those personal traits that would destroy my model! Do you have any picture that you can send me? I don’t know… like, you in the beach… or maybe a selfie in the gym?</p>
 <pre><code>plot(df_train, x=:SalePrice, kind="histogram")</code></pre>
-<p><img src="https://kanpuriyanawab.github.io/posts/assets/julia_house_price_prediction/img_3.png" class="img-fluid"></p>
+<p><img src="https://www.heyyanshuman.com/posts/assets/julia_house_price_prediction/img_3.png" class="img-fluid"></p>
 <p>Ah! I see you that you use seaborn makeup when you’re going out… That’s so elegant! I also see that you:</p>
 <ul>
 <li>Deviate from the normal distribution</li>
@@ -505,20 +505,20 @@ Kurtosis: 6.509812011089398</code></pre>
 <p>According to her profile, we have some common friends. Besides Chuck Norris, we both know ‘GrLivArea’ and ‘TotalBsmtSF’. Moreover, we also have common interests such as ‘OverallQual’ and ‘YearBuilt’. This looks promising!</p>
 <p>To take the most out of our research, we will start by looking carefully at the profiles of our common friends and later we will focus on our common interests. Relationship with numerical variables</p>
 <pre><code>plot(scatter(df_train, x=:GrLivArea, y=:SalePrice, mode="markers"))</code></pre>
-<p><img src="https://kanpuriyanawab.github.io/posts/assets/julia_house_price_prediction/img_4.png" class="img-fluid"></p>
+<p><img src="https://www.heyyanshuman.com/posts/assets/julia_house_price_prediction/img_4.png" class="img-fluid"></p>
 <p>Hmmm… It seems that ‘SalePrice’ and ‘GrLivArea’ are really old friends, with a linear relationship.</p>
 <p>And what about ‘TotalBsmtSF’?</p>
 <pre><code>plot(scatter(df_train, x=:TotalBsmtSF, y=:SalePrice, mode="markers"))</code></pre>
-<p><img src="https://kanpuriyanawab.github.io/posts/assets/julia_house_price_prediction/img_5.png" class="img-fluid"></p>
+<p><img src="https://www.heyyanshuman.com/posts/assets/julia_house_price_prediction/img_5.png" class="img-fluid"></p>
 <p>‘TotalBsmtSF’ is also a great friend of ‘SalePrice’ but this seems a much more emotional relationship! Everything is ok and suddenly, in a strong linear (exponential?) reaction, everything changes. Moreover, it’s clear that sometimes ‘TotalBsmtSF’ closes in itself and gives zero credit to ‘SalePrice’.</p>
 </section>
 <section id="relationship-with-categorical-features" class="level2">
 <h2 class="anchored" data-anchor-id="relationship-with-categorical-features">Relationship with categorical features</h2>
 <pre><code>plot(df_train, x=:OverallQual, y=:SalePrice, color=:OverallQual, kind="box")</code></pre>
-<p><img src="https://kanpuriyanawab.github.io/posts/assets/julia_house_price_prediction/img_6.png" class="img-fluid"></p>
+<p><img src="https://www.heyyanshuman.com/posts/assets/julia_house_price_prediction/img_6.png" class="img-fluid"></p>
 <p>Like all the pretty girls, ‘SalePrice’ enjoys ‘OverallQual’. Note to self: consider whether McDonald’s is suitable for the first date.</p>
 <pre><code>plot(df_train, x=:YearBuilt, y=:SalePrice, color=:OverallQual, kind="box")</code></pre>
-<p><img src="https://kanpuriyanawab.github.io/posts/assets/julia_house_price_prediction/img_7.png" class="img-fluid"></p>
+<p><img src="https://www.heyyanshuman.com/posts/assets/julia_house_price_prediction/img_7.png" class="img-fluid"></p>
 <p>Although it’s not a strong tendency, I’d say that ‘SalePrice’ is more prone to spend more money in new stuff than in old relics.</p>
 <p>Note: we don’t know if ‘SalePrice’ is in constant prices. Constant prices try to remove the effect of inflation. If ‘SalePrice’ is not in constant prices, it should be, so than prices are comparable over the years.</p>
 <div style="text-align: center; margin-top: 25px; margin-bottom: 25px;">
@@ -558,7 +558,7 @@ not_avoid = names(df_train, Not(avoid));
 ht(co, xticks=(1:35, not_avoid), yticks=(1:35, not_avoid), 
     aspect_ratio=:equal, fill_z=co, xrotation=90, xtickfontsize=5, 
     ytickfontsize=5)</code></pre>
-<p><img src="https://kanpuriyanawab.github.io/posts/assets/julia_house_price_prediction/img_8.png" class="img-fluid"></p>
+<p><img src="https://www.heyyanshuman.com/posts/assets/julia_house_price_prediction/img_8.png" class="img-fluid"></p>
 <p>According to our crystal ball, these are the variables most correlated with ‘SalePrice’. My thoughts on this:</p>
 <ul>
 <li>‘OverallQual’, ‘GrLivArea’ and ‘TotalBsmtSF’ are strongly correlated with ‘SalePrice’. Check!</li>
@@ -571,12 +571,12 @@ ht(co, xticks=(1:35, not_avoid), yticks=(1:35, not_avoid),
 <p>Let’s proceed to the pair plots.</p>
 <p>Pair plots between ‘SalePrice’ and correlated variables (move like Jagger style)</p>
 <pre><code>corner(df_train[:, cols])</code></pre>
-<p><img src="https://kanpuriyanawab.github.io/posts/assets/julia_house_price_prediction/img_9.jpg" class="img-fluid"></p>
+<p><img src="https://www.heyyanshuman.com/posts/assets/julia_house_price_prediction/img_9.jpg" class="img-fluid"></p>
 <p>Although we already know some of the main figures, this mega scatter plot gives us a reasonable idea about variables relationships.</p>
 <p>One of the figures we may find interesting is the one between ‘TotalBsmtSF’ and ‘GrLiveArea’. In this figure we can see the dots drawing a linear line, which almost acts like a border. It totally makes sense that the majority of the dots stay below that line. Basement areas can be equal to the above ground living area, but it is not expected a basement area bigger than the above ground living area (unless you’re trying to buy a bunker).</p>
 <p>The plot concerning ‘SalePrice’ and ‘YearBuilt’ can also make us think. In the bottom of the ‘dots cloud’, we see what almost appears to be a shy exponential function (be creative). We can also see this same tendency in the upper limit of the ‘dots cloud’ (be even more creative). Also, notice how the set of dots regarding the last years tend to stay above this limit (I just wanted to say that prices are increasing faster now).</p>
 <p>Pheww&nbsp;! That’s it for today. Today we took a look at how cool Julia is and why can it rescue data scientists just in case Python disappears from this earth&nbsp;!</p>
-<p><img src="https://kanpuriyanawab.github.io/posts/assets/julia_house_price_prediction/img_10.jpg" class="img-fluid"></p>
+<p><img src="https://www.heyyanshuman.com/posts/assets/julia_house_price_prediction/img_10.jpg" class="img-fluid"></p>
 <div style="text-align: center; margin-top: 25px; margin-bottom: 25px;">
 <p><a href="https://fullstackagents.substack.com" class="btn btn-primary" target="_blank" title="Subscribe"> Subscribe </a></p>
 </div>
@@ -587,19 +587,19 @@ ht(co, xticks=(1:35, not_avoid), yticks=(1:35, not_avoid),
  ]]></description>
   <category>LLMs</category>
   <category>Operating-system</category>
-  <guid>https://kanpuriyanawab.github.io/posts/julia_house_price_prediction.html</guid>
+  <guid>https://www.heyyanshuman.com/posts/julia_house_price_prediction.html</guid>
   <pubDate>Thu, 22 Dec 2022 00:00:00 GMT</pubDate>
 </item>
 <item>
   <title>Interview with 2x Kaggle Grandmaster, Data Science Manager at Emirates NBD - Ravi Ramakrishnan</title>
-  <link>https://kanpuriyanawab.github.io/posts/interview_rrk.html</link>
+  <link>https://www.heyyanshuman.com/posts/interview_rrk.html</link>
   <description><![CDATA[ 
 
 
 
 
 
-<p><img src="https://kanpuriyanawab.github.io/posts/assets/interview/interview_rrk.webp" class="img-fluid"></p>
+<p><img src="https://www.heyyanshuman.com/posts/assets/interview/interview_rrk.webp" class="img-fluid"></p>
 <p>by Anshuman Mishra &amp; Abheesht Sharma</p>
 <p>The AI world is brimming with talent. Folks in the AI industry and the research world are continuously pushing the boundaries of innovation. With this interview series, we want to focus on bringing these inspiring (and possibly unheard of) stories out into the world — their struggles, their triumphs and their journey. We will be conversing with people we have looked up to, and still look up to for their unparalleled contributions to the AI world. We call this interview series AI Chronicles.</p>
 <p>Kaggle Profile of 2xGrandmaster Ravi Ramakrishnan Today, we are honored to have Ravi Ramakrishnan with us. Ravi is a Data Science Manager-Credit Risk at Emirates NBD. Prior to Emirates NBD, he used to work at the Commercial Bank of Dubai as a Data Scientist, and has 8+ years of experience in the industry. He holds a Bachelor’s degree in Electronics, and completed his MBA in Finance from NMIMS. Ravi contributes extensively on Kaggle, and is a Notebooks Grandmaster (ranked #23) and a Discussions Grandmaster (ranked #2) on Kaggle.</p>
@@ -646,7 +646,7 @@ ht(co, xticks=(1:35, not_avoid), yticks=(1:35, not_avoid),
 
  ]]></description>
   <category>Interview</category>
-  <guid>https://kanpuriyanawab.github.io/posts/interview_rrk.html</guid>
+  <guid>https://www.heyyanshuman.com/posts/interview_rrk.html</guid>
   <pubDate>Mon, 12 Sep 2022 00:00:00 GMT</pubDate>
 </item>
 </channel>
