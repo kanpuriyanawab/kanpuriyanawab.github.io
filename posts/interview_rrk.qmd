@@ -7,7 +7,7 @@ toc: true
 categories:
 - Interview
 date: '2022-09-12'
-description: Interview with 2x Kaggle Grandmaster, Data Science Manager at Emirates NBD- Ravi Ramakrishnan
+description: joint work with Abheesht Sharma
 hide: false
 output-file: interview_rrk.html
 search_exclude: false

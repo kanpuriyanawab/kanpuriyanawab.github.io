@@ -7,7 +7,7 @@ toc: true
 categories:
 - Interview
 date: '2023-09-25'
-# description: Interview with Rajaswa Patil, AI Researcher at Postman Labs
+description: joint work with Abheesht Sharma
 hide: false
 output-file: interview_rajaswa.html
 search_exclude: false

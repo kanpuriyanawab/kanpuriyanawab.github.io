@@ -7,14 +7,13 @@ toc: true
 categories:
 - Interview
 date: '2023-12-22'
-# description: 
+description: joint work with Abheesht Sharma
 hide: false
 output-file: interview_aakash.html
 search_exclude: false
 title: Interview with Aakash Kumar Nain, MLE at Merlyn Minds
 ---
 
-by Anshuman Mishra and Abheesht Sharma
 
 ![](assets/interview/interview_aakash.webp)
 

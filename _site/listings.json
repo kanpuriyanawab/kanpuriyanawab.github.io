@@ -2,6 +2,8 @@
   {
     "listing": "/blog.html",
     "items": [
+      "/posts/text2sql_agent.html",
+      "/posts/agent_memory_101.html",
       "/posts/interview_aakash.html",
       "/posts/illustrated_llmos.html",
       "/posts/interview_matt.html",

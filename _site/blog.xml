@@ -10,7 +10,342 @@
 <atom:link href="https://www.heyyanshuman.com/blog.xml" rel="self" type="application/rss+xml"/>
 <description>Personal site of Anshuman Mishra.</description>
 <generator>quarto-1.7.31</generator>
-<lastBuildDate>Thu, 21 Dec 2023 18:30:00 GMT</lastBuildDate>
+<lastBuildDate>Thu, 05 Jun 2025 18:30:00 GMT</lastBuildDate>
+<item>
+  <title>Building Production Ready Text-to-SQL Agent from Scratch</title>
+  <link>https://www.heyyanshuman.com/posts/text2sql_agent.html</link>
+  <description><![CDATA[ 
+
+
+
+
+
+<p>Let me be honest… I don’t like writing SQL queries. And I always wished if someone could do it for me. Well that’s exactly what we are going to do today!</p>
+<p>We are going to build an intelligent agent that does just that, using Google’s Gemini model and creating a neat web interface with Gradio.</p>
+<p>Traditional Text-to-SQL pipelines can sometimes be a bit like a black box. You give them a question, they spit out a SQL query, and you hope for the best.</p>
+<p>What’s the advantage of building something more “agent-like,” even in a simplified form?</p>
+<p>A standard text-to-sql pipeline can be brittle. The generated SQL query might be incorrect. Even worse, an incorrect query could run without errors but give you wrong or useless results, and you might not even realize it!</p>
+<p>👉 While a full-fledged agent system might involve complex reasoning and self-correction, our approach today focuses on building a robust pipeline with clear steps, good error handling when talking to the Large Language Model (LLM), and a way to learn from the process. This lays the foundation for more advanced agentic behavior later.</p>
+<p>Let’s build this agent! 💪</p>
+<p>And by the way, all the code related to this guide can be found here on my github.</p>
+<section id="the-big-picture-our-agents-workflow" class="level2">
+<h2 class="anchored" data-anchor-id="the-big-picture-our-agents-workflow">The Big Picture: Our Agent’s Workflow</h2>
+<p>Before we dive into code, let’s look at the overall flow of our system. It’s a simple, logical sequence: a user’s question comes in one end, and an answer from the database comes out the other.</p>
+<p><img src="https://www.heyyanshuman.com/posts/assets/text2sql_agent/db_schema.png" class="img-fluid"></p>
+</section>
+<section id="setting-the-stage---our-database" class="level2">
+<h2 class="anchored" data-anchor-id="setting-the-stage---our-database">Setting the Stage - Our Database</h2>
+<p>First things first, every SQL agent needs a database to talk to! For this tutorial, we’ll use SQLite, which is super convenient because it’s a file-based database and doesn’t require a separate server.</p>
+<p>Our Data: We’ll imagine a simple company database with two main tables:</p>
+<ul>
+<li><p>departments: Stores information about different departments.</p></li>
+<li><p>employees: Stores information about employees and which department they belong to.</p></li>
+</ul>
+<p>Here’s the structure (schema) we’ll aim for:</p>
+<p><img src="https://www.heyyanshuman.com/posts/assets/text2sql_agent/workflow.webp" class="img-fluid"></p>
+<p>This setup allows us to ask interesting questions like “Which employees work in Engineering?” or “What’s the average salary in the HR department?”.</p>
+<p>To bring this to life, we need a script to create and populate this database. This ensures our agent always has a consistent environment to work in.</p>
+<p>For those who want to see exactly how the database is created, you can check out the <a href="https://github.com/kanpuriyanawab/awesome-ai-agents/blob/main/agents/text2sql/setup_db.py">database_setup.py</a> file in the GitHub repo. It’s a straightforward Python script using the sqlite3 library.</p>
+<p>This script, when called by our UI application, will ensure we always have a fresh database with this structure and data for our agent to work with.</p>
+</section>
+<section id="architecting-our-agent" class="level2">
+<h2 class="anchored" data-anchor-id="architecting-our-agent">Architecting Our Agent</h2>
+<p>Now let’s make our agent! Since the goal of our repository is to build several different kinds of agents from scratch, we need a clean, reusable structure.</p>
+<p><strong>Why a Base Class?</strong> We use a base class to define a common “contract” or interface. This ensures all our agents, whether for Text-to-SQL or another task, have a consistent design. It’s like saying every vehicle must have a run method, even if a car and a motorcycle implement it differently. This makes our project scalable and easy to understand.</p>
+<p>We’ll define a simple Agent base class in agents/base_agent.py that requires every agent to have a run method.</p>
+<pre><code># agents/base_agent.py
+from abc import ABC, abstractmethod
+
+class Agent(ABC):
+    def __init__(self, name: str):
+        self._internal_name = name
+
+    @abstractmethod
+    def run(self, user_input: str, history: list[tuple[str, str]] = None) -&gt; str:
+        pass
+
+    @property
+    def name(self) -&gt; str:
+        return self._internal_name
+</code></pre>
+<p>Our <strong>Text2SQLAgent</strong> will inherit from this, guaranteeing it fits into our agent framework.</p>
+</section>
+<section id="the-core-logic-of-our-text2sql-agent" class="level2">
+<h2 class="anchored" data-anchor-id="the-core-logic-of-our-text2sql-agent">The Core Logic of our Text2SQL Agent</h2>
+<p>Our agent’s job can be broken down into a few key steps. Let’s look at the concepts behind the main methods.</p>
+<ol type="1">
+<li><p><strong>Getting the Database Schema</strong> For an LLM to generate correct SQL, it must know the structure of your database. We need a method, let’s call it _get_database_schema, that connects to our SQLite file and programmatically extracts all table names, column names, and their data types. This schema is then passed to the LLM as part of the context.</p></li>
+<li><p><strong>Generating the SQL Query</strong> This is the heart of the agent, where we talk to Gemini. The process is called prompt engineering. We need to write a very clear set of instructions (a “prompt”) for the model.</p></li>
+</ol>
+<p>Our prompt includes:</p>
+<ul>
+<li><p>The Role: “You are an expert SQLite SQL query generator.”</p></li>
+<li><p>The Context: The full database schema we just extracted.</p></li>
+<li><p>The Task: The user’s question.</p></li>
+<li><p>The Constraints: “Output ONLY the SQL query. No extra text or markdown.”</p></li>
+</ul>
+<p>We then wrap this prompt and send it to the Gemini API using Google’s Python SDK.</p>
+<pre><code># A conceptual look at the prompt structure inside the _generate_sql_with_gemini method
+
+system_instruction_text = "You are an expert SQLite SQL query generator."
+
+prompt_for_task = f"""
+Database Schema:
+---
+{self.schema} 
+---
+Task: ...
+Constraints: ...
+
+User Question: {question}
+
+SQL Query:
+"""
+full_prompt_for_gemini = f"{system_instruction_text}\n\n{prompt_for_task}"
+response = self.gemini_model.generate_content(full_prompt_for_gemini, ...)</code></pre>
+<p>Full code can be found <a href="https://github.com/kanpuriyanawab/awesome-ai-agents/blob/main/agents/text2sql/agent.py">here</a>.</p>
+<ol start="3" type="1">
+<li><strong>Executing the Query</strong> Once Gemini returns what we hope is a valid SQL query, our agent needs to run it. A method _execute_sql_query connects to the database, executes the string, and fetches the results.</li>
+</ol>
+<p>A quick note on security: In a real-world application, directly running LLM-generated SQL can be risky. For this educational project, we’re keeping it simple, but in production, you would add validation layers or use read-only database permissions.</p>
+<p>Our Adventure with Gemini: From Bugs to Best Practices</p>
+<p>Working with powerful LLMs is an iterative process. It’s rarely perfect on the first try! Here are some real challenges we faced and the key lessons learned.</p>
+<p><strong>Best Practices We Adopted:</strong></p>
+<ul>
+<li><p>Clear, Instructive Prompts: Be explicit about the role, context, task, and constraints.</p></li>
+<li><p>Configuration for Determinism: Using temperature=0.0 for SQL generation tells the model to be predictable and factual, not creative.</p></li>
+<li><p>Handling API Responses Carefully: Never assume the LLM’s response will be perfect. Always check for errors, finish_reason, and empty content before processing the output.</p></li>
+</ul>
+<p><strong>Bugs Along the Way (and How We Squashed Them!):</strong></p>
+<ol type="1">
+<li><p>The “Empty Schema” Mystery: At first, our agent wasn’t sending the schema! Gemini received an empty prompt and couldn’t work. By meticulously printing the exact prompt string before sending it, we found the bug in our schema-loading logic and fixed it.</p></li>
+<li><p>The MAX_TOKENS Puzzle: Even with the schema, our first model (a preview version) would often fail with finish_reason: MAX_TOKENS and no output. It seemed to be getting confused by the long, complex prompt.</p></li>
+</ol>
+<ul>
+<li><p>The “Aha!” Moment: We used the “Extreme Prompt Simplification Test” we replaced our complex prompt with a simple question like “What is the capital of France?”. When that worked, it proved our API setup was fine and the issue was with how that specific model handled our complex prompt.</p></li>
+<li><p>The Fix: Increasing max_output_tokens resolved this!</p></li>
+</ul>
+<ol start="3" type="1">
+<li>The response.text Trap: Using response.text to get the output can fail if the model’s response is blocked or empty. We learned to robustly parse response.candidates[0].content.parts instead.</li>
+</ol>
+<p><strong><strong>Key Takeaway: Debugging LLM interactions is an art. Log your inputs (prompts) and its outputs (raw responses) very carefully!</strong></strong></p>
+</section>
+<section id="bringing-our-agent-to-life-with-gradio" class="level2">
+<h2 class="anchored" data-anchor-id="bringing-our-agent-to-life-with-gradio">Bringing Our Agent to Life with Gradio</h2>
+<p>Now, let’s build a cool UI! We want a chat window with clickable question suggestions on the side. For this custom layout, we’ll use Gradio’s gr.Blocks().</p>
+<p>(Here you could insert a screenshot of the final Gradio UI)</p>
+<p>The UI has three main parts:</p>
+<ol type="1">
+<li><p><strong>The Chatbot Display:</strong> A gr.Chatbot component shows the history of the conversation.</p></li>
+<li><p><strong>The Suggestion Column:</strong> We create a gr.Column and loop through a list of example questions, creating a gr.Button for each. The magic happens in the .click() event handler for each button, which updates the main input box.</p></li>
+<li><p><strong>The Input Area:</strong> A gr.Textbox for typing messages and a “Send” gr.Button. Both are wired to a single function, handle_chat_submission, which orchestrates the interaction with our agent.</p></li>
+</ol>
+<p>This function takes the user’s message and the chat history, passes them to our agent’s .run() method, gets the result, and updates the chat display.</p>
+<p>For the specific code that wires up these Gradio components, feel free to check out ui/app_text2sql.py in the repository.</p>
+</section>
+<section id="how-good-is-our-agent-a-note-on-evaluation" class="level2">
+<h2 class="anchored" data-anchor-id="how-good-is-our-agent-a-note-on-evaluation">How Good is Our Agent? A Note on Evaluation</h2>
+<p>Creating an agent is just the first step. To know if it’s truly useful, especially for production, we need to evaluate it.</p>
+<p><strong>Key Evaluation Metrics for Text-to-SQL:</strong></p>
+<ul>
+<li><p>Execution Accuracy: This is the most important one. Does the generated SQL run without errors and produce the correct answer? You’d need a test dataset of questions and their known correct answers to verify this.</p></li>
+<li><p>Query Match: Does the generated SQL query exactly match a “golden” or reference SQL query? This is very strict and often not necessary, as multiple different SQL queries can produce the same correct result.</p></li>
+<li><p>Robustness: How well does the agent handle ambiguous questions, questions about things not in the schema, or slightly malformed inputs?</p></li>
+</ul>
+<p>For a real project, you would build a “test suite” of many question-query-answer triplets and run your agent against it to calculate these metrics automatically. This helps track improvements as you refine your prompts or change models.</p>
+</section>
+<section id="conclusion" class="level2">
+<h2 class="anchored" data-anchor-id="conclusion">Conclusion</h2>
+<p>And there you have it! We’ve journeyed from understanding the need for a robust Text-to-SQL solution, setting up our database, architecting a scalable agent structure, and diving deep into the logic using Gemini. We navigated some tricky debugging and wrapped it all in a user-friendly Gradio interface.</p>
+<p>You’ve now built a functional Text-to-SQL agent from scratch! This project covers many important concepts: OOP, database interaction, LLM prompting, debugging, and web UI creation.</p>
+<p>This project touches on many important concepts:</p>
+<ul>
+<li>Object-Oriented Programming (base classes, inheritance)</li>
+<li>Database Interaction (SQLite)</li>
+<li>LLM Prompt Engineering and API Usage (Gemini)</li>
+<li>Debugging and Iterative Development</li>
+<li>Web UI Creation (Gradio)</li>
+</ul>
+<p>Feel free to experiment further:</p>
+<ul>
+<li>Make the agent use conversation history for follow-up questions.</li>
+<li>Add more error handling or self-correction attempts if the SQL fails.</li>
+<li>Try different LLMs or prompting strategies.</li>
+<li>Expand the Gradio UI with more features!</li>
+</ul>
+<p>Happy coding, and keep building amazing things!</p>
+
+
+</section>
+
+ ]]></description>
+  <category>LLMs</category>
+  <category>Agents</category>
+  <guid>https://www.heyyanshuman.com/posts/text2sql_agent.html</guid>
+  <pubDate>Thu, 05 Jun 2025 18:30:00 GMT</pubDate>
+</item>
+<item>
+  <title>The AI Memory Layer Will Change Everything</title>
+  <link>https://www.heyyanshuman.com/posts/agent_memory_101.html</link>
+  <description><![CDATA[ 
+
+
+
+
+
+<p>In my opinion, the next major advancement in Applied AI won’t come from larger models or more training data, but from agents that can actually learn from experience. For that to happen, a robust memory layer is absolutely essential. In this blog, we’ll delve into why agents need such a memory layer and explore the exciting possibilities this unlocks. But first, to set the context, let’s understand the limitations of current agents:</p>
+<section id="context-window-bottleneck" class="level2">
+<h2 class="anchored" data-anchor-id="context-window-bottleneck">Context Window Bottleneck:</h2>
+<p>The most simplest mental model to understand Context window is:</p>
+<blockquote class="blockquote">
+<p>Computer is to RAM as an LLM is to its context window.</p>
+</blockquote>
+<blockquote class="blockquote">
+<p>Just as RAM determines how much data a computer can actively work with at any given moment, the context window limits how much information a large language model (LLM) can “see” and process at once.</p>
+</blockquote>
+<p>It acts as AI’s active short-term memory. In more simple words - it’s the amount of information - text/audio/video, that AI can “look at” or consider at any given point of time when generating a response. While you chat with an AI, your conversation history, up to a certain limit, fits into this window.</p>
+<p>The trouble is, this window is finite. Remember those “maximum limit reached” alerts in Claude or ChatGPT, well we are talking about exactly that! While it’s true that these windows have been expanding (Gemini models having 10M context length), they are still fundamentally limited. This poses a huge challenge for:</p>
+<p>→ <strong>Extended Conversations</strong> - Chats that go on for days, weeks, or months will inevitably exceed the window size.</p>
+<p>→ <strong>Complex Document Analysis</strong> - Trying to understand or summarize very long documents, like a detailed research paper or a lengthy legal contract, becomes problematic if the whole thing doesn’t fit.</p>
+<p>→ <strong>Long-Term Tasks</strong> - Any project or goal that requires consistent input and understanding over a long period is hampered if the AI keeps forgetting earlier stages.</p>
+</section>
+<section id="why-cant-we-just-have-infinite-context" class="level2">
+<h2 class="anchored" data-anchor-id="why-cant-we-just-have-infinite-context">Why Can’t We Just Have Infinite Context?</h2>
+<p>A fair question! The technical reason, as I understand it, is largely tied to the underlying <a href="https://arxiv.org/abs/1706.03762">transformer</a> architecture that powers many of these LLMs. The self-attention mechanism, which allows the model to weigh the importance of different parts of the input, generally has a computational and memory cost that increases quadratically with the length of the input sequence. Simply put, making the context window vastly larger makes the AI much, much slower and more expensive to run. While there’s ongoing research into more efficient architectures, just scaling up the current approach indefinitely isn’t practical.</p>
+<section id="lost-in-the-middle-even-big-windows-have-blind-spots" class="level3">
+<h3 class="anchored" data-anchor-id="lost-in-the-middle-even-big-windows-have-blind-spots">“Lost in the Middle”: Even Big Windows Have Blind Spots</h3>
+<p>Even if we had incredibly long context windows, there’s another curious problem: LLMs don’t always use all the information within their context window equally well. Research, like the paper <a href="https://arxiv.org/abs/2307.03172">Lost in the Middle: How Language Models Use Long Contexts</a> has shown a fascinating U-shaped performance curve. This means:</p>
+<ul>
+<li><p>Models are often best at recalling and using information that appears at the <strong>very beginning</strong> of their input context (primacy bias).</p></li>
+<li><p>They are also quite good with information at the <strong>very end</strong> of the context (recency bias).</p></li>
+<li><p>However, performance can significantly <strong>degrade</strong> when they need to access and use information located somewhere in the <strong>middle</strong> of a long context.</p></li>
+</ul>
+<p><em>Imagine feeding an AI 20 documents to answer a question, and the key document is the 10th one. The AI might struggle to find or correctly use that key document more than if it were the 1st or the 20th. In some cases, performance when information is in the middle can be worse than if the AI had no documents at all and was just relying on its pre-trained knowledge! This phenomenon is seen even in models specifically designed for long contexts.</em></p>
+<p><img src="https://www.heyyanshuman.com/posts/assets/agent_memory_101/memory_1.jpg" class="img-fluid"></p>
+<p>The consequence of these limitations is that many AI agents today are essentially stateless. Each interaction is largely isolated, leading to a lack of true personalization, repeated questions, and inconsistent behavior. It’s like having a brilliant personal assistant who, unfortunately, gets their memory wiped clean every morning.</p>
+</section>
+</section>
+<section id="defining-memory-in-ai-more-than-just-recent-chat-history" class="level2">
+<h2 class="anchored" data-anchor-id="defining-memory-in-ai-more-than-just-recent-chat-history">Defining “Memory” in AI: More Than Just Recent Chat History</h2>
+<p>When I talk about building AI agents with memory, I’m envisioning something far more sophisticated than just extending the context window. I’m talking about the AI’s capacity to <strong>retain, recall, and utilize relevant information across extended periods, diverse tasks, and numerous interactions.</strong> This is what allows an AI to transition from being a stateless tool to a <strong>stateful companion</strong> – one that truly learns and evolves alongside its user.</p>
+<p>I think it’s helpful to consider different types of memory, drawing inspiration from human cognition, which some AI memory systems are starting to model:</p>
+<ul>
+<li><p>Short-Term/Working Memory: This is the AI’s immediate “scratchpad,” analogous to the current context window. It holds what’s actively being processed.</p></li>
+<li><p>Long-Term Memory: This is the persistent store of information. We can break this down further:</p>
+<ul>
+<li><p>Episodic Memory: Memories of specific events or interactions. For an AI, this would mean remembering past conversations with you, the specific advice it gave, or the tasks you worked on together.</p></li>
+<li><p>Semantic Memory: General knowledge and facts. This includes the AI’s vast pre-trained knowledge, but also, crucially, facts it learns specifically about you (your preferences, goals, style) or about a particular domain you’re working in.</p></li>
+<li><p>Procedural Memory: Knowledge of how to do things. For an AI, this could be remembering a multi-step process you often use, or learning the best way to present information to you.</p></li>
+</ul></li>
+</ul>
+<p>I have a strong opinion here. The Dotcom era Dotcom era enabled businesses to move online - and Apps emerged, I think AI is going to bring hyper-personalization to these apps. And for that to happen this much depth of memory so crucial. Moreover, Agent memory is going to play very important role in maintaining coherence and consistency in its interactions. It will enable an agent to Learn and adapt from past successes and failures.</p>
+</section>
+<section id="another-challenge---llms-lack-focus" class="level2">
+<h2 class="anchored" data-anchor-id="another-challenge---llms-lack-focus">Another challenge - LLMs lack focus!</h2>
+<p>Beyond the context window size and the “lost in the middle” problem, there’s another tricky aspect: distractibility. I think this is a crucial point – it’s not just about how much the AI can see, but how clearly it can see it. If the important details are surrounded by noise, the AI can get sidetracked.</p>
+<p>The paper <a href="https://arxiv.org/abs/2302.00093">Large Language Models Can Be Easily Distracted by Irrelevant Context</a> really drives this home. They created a special dataset called Grade-School Math with Irrelevant Context (GSM-IC) where math problems were intentionally mixed with useless information. What they found was that the performance of cutting-edge LLMs dropped dramatically when this irrelevant information was present. Even if all the necessary information is within the context window, adding just one irrelevant sentence could throw the model off. This tells me that even with larger context windows, we still need to be smart about how information is presented and processed.</p>
+<p>The consequence of all these limitations – finite windows and “lost in the middle” effects – is that many AI agents today are essentially stateless. This is a really important concept, so let’s dive into it.</p>
+</section>
+<section id="stateless-agents" class="level2">
+<h2 class="anchored" data-anchor-id="stateless-agents">Stateless Agents</h2>
+<p>A stateless AI, in simple terms, is an AI that treats (almost) every interaction as a brand new one. It doesn’t have a persistent memory of your past conversations, preferences, or history beyond what fits in its immediate, fleeting context window.</p>
+<p>Think about these scenarios, which I’m sure many of us have experienced:</p>
+<p>→ <strong>The “Who Are You Again?” Syndrome</strong>: You’re in a long work session with an AI, perhaps coding or drafting a document. You’ve already told it your project name, your specific requirements, and your preferred style. Half an hour later, you ask it a follow-up question, and it responds as if it has no idea what project you’re even talking about.</p>
+<p>→ <strong>Groundhog Day Problem-Solving</strong>: You’re working through a multi-step problem with an AI. It helps you with step 1. When you move to step 2, it seems to have forgotten the conclusions or data from step 1, forcing you to re-explain or re-feed information.</p>
+<p>→ <strong>The Dietary Déjà Vu</strong>: You tell your AI assistant, “I’m a vegetarian.” It acknowledges this. The next day, you ask for dinner ideas, and it enthusiastically suggests a steakhouse. The “Mem0” paper has a great illustration of this exact problem (Figure 1 in their paper). Frustrating, right? That’s a stateless agent forgetting a critical piece of information once it falls out of the immediate context.</p>
+<p>This statelessness is the arch-nemesis of hyper-personalization. It leads to inefficient interactions, repeated explanations, and a feeling that the AI, despite its power, doesn’t really “get” you or your ongoing needs. It’s like having that brilliant assistant I mentioned earlier, but one who gets their memory wiped clean every single morning.</p>
+<p><img src="https://www.heyyanshuman.com/posts/assets/agent_memory_101/memory_2.jpg" class="img-fluid"></p>
+</section>
+<section id="stateful-agents" class="level2">
+<h2 class="anchored" data-anchor-id="stateful-agents">Stateful Agents</h2>
+<p>Now, imagine the opposite: a stateful AI agent. This is an AI designed with a memory system that allows it to maintain a persistent, evolving understanding of you, your interactions, your preferences, and the facts relevant to your shared tasks, across multiple sessions and over long periods.</p>
+<p>This isn’t just about remembering your name; it’s about building a continuous thread of understanding.</p>
+<p>What could a truly stateful agent do?</p>
+<ul>
+<li><p>Remember Your Preferences, Proactively: It wouldn’t just avoid suggesting steak after you say you’re vegetarian; it might proactively say, “Since you’re vegetarian, how about this new pasta dish?” or “I found some great vegetarian recipes that align with your goal of eating healthier, which you mentioned last week.”</p></li>
+<li><p>Recall Your Work Context: When you resume a coding project, it would remember your preferred coding style, the libraries you commonly use, the overall architecture of your project, and the specific problem you were trying to solve last time.</p></li>
+<li><p>Build on Past Interactions: It could reference a discussion you had weeks ago, saying, “Remember when we were talking about marketing strategies for X? I found an article that expands on that idea.”</p></li>
+<li><p>Learn Your Style: Over time, it would adapt to your communication style, the level of detail you prefer, and even your sense of humor, making interactions feel more natural and efficient.</p></li>
+<li><p>Enable True Learning and Adaptation: A stateful agent can learn from its mistakes. If it gave you a suggestion that didn’t work out, it could store that “outcome” and avoid similar errors in the future. This is crucial for agents that need to perform complex tasks or make decisions.</p></li>
+</ul>
+<p>This statefulness transforms an AI from a generic tool into a genuine assistant, a collaborator, or even a companion that grows and learns with you.</p>
+<p>I believe the next wave of killer apps won’t just be smart; they’ll be smart about you. And the engine driving this hyper-personalization will be these advanced memory systems. Think about how this could transform the apps we use every day:</p>
+<table class="caption-top table">
+<colgroup>
+<col style="width: 5%">
+<col style="width: 33%">
+<col style="width: 61%">
+</colgroup>
+<thead>
+<tr class="header">
+<th style="text-align: left;">Category</th>
+<th style="text-align: left;">Stateless</th>
+<th style="text-align: left;">Stateful (with Memory)</th>
+</tr>
+</thead>
+<tbody>
+<tr class="odd">
+<td style="text-align: left;"><strong>E-commerce &amp; Shopping</strong></td>
+<td style="text-align: left;">You search for “running shoes” and get a generic list. Next week, it treats you like a new customer.</td>
+<td style="text-align: left;">The AI remembers your shoe size, brand preference, and past purchases. When you search for “running gear,” it suggests compatible items like socks or running belts and might even recommend accessories in complementary colors to items you previously bought.</td>
+</tr>
+<tr class="even">
+<td style="text-align: left;"><strong>Productivity &amp; Work</strong></td>
+<td style="text-align: left;">You ask your AI coding assistant to write a Python function. For the next request, it might use a completely different style, forgetting your preferences for comments or error handling.</td>
+<td style="text-align: left;">The AI coding assistant remembers your common coding patterns (e.g., preference for async functions, using black for formatting) and provides suggestions that fit seamlessly into your existing codebase and personal style.</td>
+</tr>
+<tr class="odd">
+<td style="text-align: left;"><strong>Learning &amp; Education</strong></td>
+<td style="text-align: left;">An AI tutor gives you a lesson on fractions. The next day, it starts from scratch, unaware of the specific concepts you struggled with previously.</td>
+<td style="text-align: left;">The AI tutor remembers you found a specific concept (e.g., improper fractions) tricky. It starts the next session with a recap of that point, offers a different explanation, or provides tailored practice problems before moving on.</td>
+</tr>
+<tr class="even">
+<td style="text-align: left;"><strong>Healthcare &amp; Wellness</strong></td>
+<td style="text-align: left;">You ask for help to reduce stress, and the app provides a generic meditation exercise.</td>
+<td style="text-align: left;">The AI remembers your specific stressors (e.g., work deadlines) and preferred calming activities (e.g., nature walks). It suggests a targeted 10-minute meditation for deadline pressure or recommends a short walk, making the advice highly relevant.</td>
+</tr>
+<tr class="odd">
+<td style="text-align: left;"><strong>Personal Assistants</strong></td>
+<td style="text-align: left;">A chatbot that can answer questions but has no memory of you, your preferences, or your past interactions.</td>
+<td style="text-align: left;">An AI that remembers your goals, important names, favorite music, and even your mood patterns. It can offer encouragement and make suggestions that are truly relevant because they are rooted in a shared, remembered history.</td>
+</tr>
+</tbody>
+</table>
+</section>
+<section id="current-approaches-for-agentic-memory-layer" class="level2">
+<h2 class="anchored" data-anchor-id="current-approaches-for-agentic-memory-layer">Current Approaches for Agentic Memory layer</h2>
+<ul>
+<li><strong>MemGPT (now part of LettaAI)’s LlmOS-Inspired Approach:</strong> The <a href="https://arxiv.org/abs/2310.08560">MemGPT: Towards LLMs as Operating Systems</a> paper introduces “virtual context management,” where the LLM itself acts like an operating system for its memory. It intelligently manages a hierarchical memory system, with a limited “main context” (like RAM) for active processing and a larger “external context” (like disk storage, including archival and recall storage) for long-term information. The LLM uses function calls to page data between these tiers, effectively giving it an extended memory to handle tasks like large document analysis and multi-session chats where context far exceeds its physical window</li>
+</ul>
+<p><img src="https://www.heyyanshuman.com/posts/assets/agent_memory_101/memory_3.png" class="img-fluid"></p>
+<ul>
+<li><strong>Mem0’s Approach to Dynamic Memory:</strong> The <a href="https://arxiv.org/abs/2504.19413">Mem0: Building Production-Ready AI Agents with Scalable Long-Term Memory</a> paper outlines a scalable, memory-centric architecture designed for real-world applications. Memo’s system dynamically extracts salient information from conversations in an extraction phase (using historical context like summaries and recent messages) and then, in an update phase, uses an LLM with tool-calling capabilities to evaluate these new “candidate memories” against existing ones, deciding whether to ADD, UPDATE, DELETE, or take NOOP (no operation) to maintain a coherent knowledge base.</li>
+</ul>
+<p><img src="https://www.heyyanshuman.com/posts/assets/agent_memory_101/memory_4.jpg" class="img-fluid"></p>
+</section>
+<section id="the-human-element-feeling-understood" class="level2">
+<h2 class="anchored" data-anchor-id="the-human-element-feeling-understood">The Human Element: Feeling Understood</h2>
+<p>There’s something deeply human about being remembered. When a friend recalls a small detail from a conversation months ago, it makes us feel valued and heard. I believe that as AI agents develop more sophisticated memory, our interactions with them will start to feel more meaningful.</p>
+<p>It’s not about replacing human connection, of course. But for the tasks we delegate to AI, or the ways we use AI for support and companionship, memory will be key to building trust and fostering a sense of being genuinely understood. When an AI can consistently recall your context, preferences, and history, it reduces friction, saves you time, and makes the collaboration feel much more natural and effective.</p>
+<p><strong>A Note on the Research That Inspired This Post:</strong></p>
+<p>Throughout this piece, I’ve drawn inspiration and information from the work of many talented researchers and writers exploring the frontiers of AI memory. If you’re interested in digging deeper, here are some of the key resources I found particularly insightful:</p>
+<ul>
+<li><p>For understanding the challenges with how LLMs use long contexts, the paper <a href="https://arxiv.org/abs/2307.03172">Lost in the Middle: How Language Models Use Long Contexts (Liu et al., 2023)</a> is a must-read.</p></li>
+<li><p>The concept of LLMs being easily sidetracked is well-explored in <a href="https://arxiv.org/abs/2302.00093">Large Language Models Can Be Easily Distracted by Irrelevant Context (Shi et al., 2023)</a>.</p></li>
+<li><p>For an OS-inspired approach to memory management, check out “MemGPT: Towards LLMs as Operating Systems” (Packer et al., 2023).</p></li>
+<li><p>The <a href="https://arxiv.org/abs/2504.19413">Mem0: Building Production-Ready AI Agents with Scalable Long-Term Memory</a> paper (Chhikara et al., 2025) offers a look at a production-focused system with impressive results and graph-based memory.</p></li>
+<li><p>The blogs from Letta (on RAG vs.&nbsp;Agent Memory, Memory Blocks, and Stateful Agents) and Mem0.ai (on Types of Memory, Making AI Companions Truly Personal, and Memory in Agents) provide excellent conceptual overviews and insights into building more personal AI.</p></li>
+</ul>
+
+
+</section>
+
+ ]]></description>
+  <category>LLMs</category>
+  <category>Agents</category>
+  <guid>https://www.heyyanshuman.com/posts/agent_memory_101.html</guid>
+  <pubDate>Mon, 02 Jun 2025 18:30:00 GMT</pubDate>
+</item>
 <item>
   <title>Interview with Aakash Kumar Nain, MLE at Merlyn Minds</title>
   <link>https://www.heyyanshuman.com/posts/interview_aakash.html</link>
@@ -20,7 +355,6 @@
 
 
 
-<p>by Anshuman Mishra and Abheesht Sharma</p>
 <p><img src="https://www.heyyanshuman.com/posts/assets/interview/interview_aakash.webp" class="img-fluid"></p>
 <p>The AI world is brimming with talent. Folks in the AI industry and the research world are continuously pushing the boundaries of innovation. With this interview series, we want to focus on bringing these inspiring (and possibly unheard-of) stories out into the world — their struggles, their triumphs, and their journey. We will be conversing with people we have looked up to and still look up to for their unparalleled contributions to the AI world. We call this interview series AI Chronicles.</p>
 <p>The two of us with Aakash in Uzbekistan! Aakash Kumar Nain — open source legend, MLE extraordinaire, Delhi lover, mountain climber. We had the privilege of meeting Aakash in Tashkent at the Google ML Community Summit and were taken aback by how laidback and easygoing he was. Looking at how meticulous he is with his work, we were expecting him to be the “serious kind”. The three of us instantly hit it off.</p>

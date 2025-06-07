@@ -6,10 +6,10 @@
 
 <meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=yes">
 
-<meta name="dcterms.date" content="2023-10-11">
-<meta name="description" content="joint work with Abheesht Sharma">
+<meta name="dcterms.date" content="2025-06-06">
+<meta name="description" content="Tired of Writing SQL? Let’s Build an AI That Does It For You.">
 
-<title>Interview with Matthew Watson, Keras Team, Google – Anshuman Mishra</title>
+<title>Building Production Ready Text-to-SQL Agent from Scratch – Anshuman Mishra</title>
 <style>
 code{white-space: pre-wrap;}
 span.smallcaps{font-variant: small-caps;}
@@ -57,15 +57,19 @@ ul.task-list li input[type="checkbox"] {
 
 
 <link rel="stylesheet" href="../styles.css">
-<meta property="og:title" content="Interview with Matthew Watson, Keras Team, Google – Anshuman Mishra">
-<meta property="og:description" content="joint work with Abheesht Sharma">
-<meta property="og:image" content="https://www.heyyanshuman.com/posts/assets/interview/interview_matt.webp">
+<meta property="og:title" content="Building Production Ready Text-to-SQL Agent from Scratch – Anshuman Mishra">
+<meta property="og:description" content="Tired of Writing SQL? Let’s Build an AI That Does It For You.">
+<meta property="og:image" content="https://www.heyyanshuman.com/posts/assets/text2sql_agent/db_schema.png">
 <meta property="og:site_name" content="Anshuman Mishra">
-<meta name="twitter:title" content="Interview with Matthew Watson, Keras Team, Google – Anshuman Mishra">
-<meta name="twitter:description" content="joint work with Abheesht Sharma">
-<meta name="twitter:image" content="https://www.heyyanshuman.com/posts/assets/interview/interview_matt.webp">
+<meta property="og:image:height" content="2048">
+<meta property="og:image:width" content="2048">
+<meta name="twitter:title" content="Building Production Ready Text-to-SQL Agent from Scratch – Anshuman Mishra">
+<meta name="twitter:description" content="Tired of Writing SQL? Let’s Build an AI That Does It For You.">
+<meta name="twitter:image" content="https://www.heyyanshuman.com/posts/assets/text2sql_agent/db_schema.png">
 <meta name="twitter:creator" content="@kanpuriyanawab">
 <meta name="twitter:card" content="summary">
+<meta name="twitter:image-height" content="2048">
+<meta name="twitter:image-width" content="2048">
 </head>
 
 <body class="nav-fixed quarto-light">
@@ -124,14 +128,15 @@ ul.task-list li input[type="checkbox"] {
 <header id="title-block-header" class="quarto-title-block default page-columns page-full">
   <div class="quarto-title-banner page-columns page-full">
     <div class="quarto-title column-body">
-      <h1 class="title">Interview with Matthew Watson, Keras Team, Google</h1>
+      <h1 class="title">Building Production Ready Text-to-SQL Agent from Scratch</h1>
                   <div>
         <div class="description">
-          joint work with Abheesht Sharma
+          Tired of Writing SQL? Let’s Build an AI That Does It For You.
         </div>
       </div>
                           <div class="quarto-categories">
-                <div class="quarto-category">Interview</div>
+                <div class="quarto-category">LLMs</div>
+                <div class="quarto-category">Agents</div>
               </div>
                   </div>
   </div>
@@ -143,7 +148,7 @@ ul.task-list li input[type="checkbox"] {
       <div>
       <div class="quarto-title-meta-heading">Published</div>
       <div class="quarto-title-meta-contents">
-        <p class="date">October 11, 2023</p>
+        <p class="date">June 6, 2025</p>
       </div>
     </div>
     
@@ -154,8 +159,20 @@ ul.task-list li input[type="checkbox"] {
   </header><div id="quarto-content" class="quarto-container page-columns page-rows-contents page-layout-article page-navbar">
 <!-- sidebar -->
 <!-- margin-sidebar -->
-    <div id="quarto-margin-sidebar" class="sidebar margin-sidebar zindex-bottom">
-        
+    <div id="quarto-margin-sidebar" class="sidebar margin-sidebar">
+        <nav id="TOC" role="doc-toc" class="toc-active">
+    <h2 id="toc-title">On this page</h2>
+   
+  <ul>
+  <li><a href="#the-big-picture-our-agents-workflow" id="toc-the-big-picture-our-agents-workflow" class="nav-link active" data-scroll-target="#the-big-picture-our-agents-workflow">The Big Picture: Our Agent’s Workflow</a></li>
+  <li><a href="#setting-the-stage---our-database" id="toc-setting-the-stage---our-database" class="nav-link" data-scroll-target="#setting-the-stage---our-database">Setting the Stage - Our Database</a></li>
+  <li><a href="#architecting-our-agent" id="toc-architecting-our-agent" class="nav-link" data-scroll-target="#architecting-our-agent">Architecting Our Agent</a></li>
+  <li><a href="#the-core-logic-of-our-text2sql-agent" id="toc-the-core-logic-of-our-text2sql-agent" class="nav-link" data-scroll-target="#the-core-logic-of-our-text2sql-agent">The Core Logic of our Text2SQL Agent</a></li>
+  <li><a href="#bringing-our-agent-to-life-with-gradio" id="toc-bringing-our-agent-to-life-with-gradio" class="nav-link" data-scroll-target="#bringing-our-agent-to-life-with-gradio">Bringing Our Agent to Life with Gradio</a></li>
+  <li><a href="#how-good-is-our-agent-a-note-on-evaluation" id="toc-how-good-is-our-agent-a-note-on-evaluation" class="nav-link" data-scroll-target="#how-good-is-our-agent-a-note-on-evaluation">How Good is Our Agent? A Note on Evaluation</a></li>
+  <li><a href="#conclusion" id="toc-conclusion" class="nav-link" data-scroll-target="#conclusion">Conclusion</a></li>
+  </ul>
+<div class="toc-actions"><ul><li><a href="https://github.com/kanpuriyanawab/edit/master/posts/text2sql_agent.qmd" class="toc-action"><i class="bi bi-github"></i>Edit this page</a></li><li><a href="https://github.com/kanpuriyanawab/issues/new" class="toc-action"><i class="bi empty"></i>Report an issue</a></li></ul></div></nav>
     </div>
 <!-- main -->
 <main class="content quarto-banner-title-block" id="quarto-document-content">
@@ -164,71 +181,163 @@ ul.task-list li input[type="checkbox"] {
 
 
 
-<p><img src="assets/interview/interview_matt.webp" class="img-fluid"></p>
-<p>by Anshuman Mishra &amp; Abheesht Sharma</p>
-<p>The AI world is brimming with talent. Folks in the AI industry and the research world are continuously pushing the boundaries of innovation. With this interview series, we want to focus on bringing these inspiring (and possibly unheard-of) stories out into the world — their struggles, their triumphs, and their journey. We will be conversing with people we have looked up to and still look up to for their unparalleled contributions to the AI world. We call this interview series AI Chronicles.</p>
-<p>In this installment of our series, we sit down with Matthew Watson for a chat. Matt, a Stanford CS alumnus, is a software engineer with the Keras team at Google, where he works on KerasNLP, Keras’ native NLP offering. He has also been instrumental in developing Keras 3 (its announcement created significant buzz on Twitter!), a multi-backend Keras that can run on TensorFlow, JAX, and PyTorch. In the past decade or so, Matt has already had a wonderfully diverse career — he started off with literature in his undergrad, before developing a love for CS (more on this in the interview!).</p>
-<p>All words seem inadequate when one sets out to describe Matt. Matt is one of those “10x” engineers/researchers and always has a solution to every problem. We have always found his intuition to be bang on target. Matt has played a pivotal role in both of our careers; he has mentored us during (and after) Google Summer of Code. But one needs to look beyond just his technical expertise. Matt has infinite patience; we’ve spent late-night debugging sessions with him, and he has always been super-helpful and giving. Matt is an “open source stan”, and you can see his love for open source in every response of his on GitHub, and in every meticulously drafted PR (Pull Request). Safe to say, Matt has influenced us like no one else.</p>
-<p>Let’s begin!</p>
-<p>Anshuman &amp; Abheesht: Welcome, Matt! Thanks for doing this.</p>
-<p>Matt: Hi Anshuman and Abheesht! And thanks for putting this whole series together. I should probably quickly note that opinions here are my own; I’m not speaking on behalf of Google or any organization.</p>
-<p>Anshuman: Can you tell us about your journey in the field of natural language processing (NLP) and how you became involved with the Keras team at Google?</p>
-<p>Matt: Honestly I have taken a meandering path, but two consistent threads I can pick out of the last decade of my career are a love of language and of open-source software.</p>
-<p>I started my undergraduate studies with a focus on literature before getting lured to Computer Science by some really fantastic teachers. Through that switch, I have remained fascinated with the intersection of language and math. My first hands-on experience with NLP was helping with a research project at my university extracting information from Wikipedia via support vector machines written in Java (times have changed!). I started using Keras in 2017 when everyone was discovering text generation with LSTMs.</p>
-<p>I’ve had the chance to spend most of my career so far working in open source (first in the Linux community and now ML) and have always been so grateful for it. So joining Keras honestly felt like a no-brainer; it was a chance to do open work on my interests with a library I already loved.</p>
-<p>Abheesht: I’d like to talk a bit more about the career pivots you’ve done. In school/college, you say that you were interested in literature, post which you pivoted to Computer Science. Even in the field of Computer Science, you started off with Computer Graphics, started working on building an operating system at Endless Computers, and worked in the Firebase team, before joining Keras. How much did learning/working in different “disciplines/fields” help you? Were there any opportunities for “cross-discipline” learning, say, something you learned from discipline A which helped you in discipline B?</p>
-<p>Matt: I’m really glad I got a start in the humanities because writing is so important for almost every field. Being able to articulate a thought clearly and concisely is an important skill we underplay too often in the hard sciences.</p>
-<p>Computer graphics and the ML work I’m doing today feel closely intertwined. My advisor for my Master’s degree, Pat Hanrahan, was a driving force behind programmable shading language, and that blows my mind to this day. The early days of GPUs were all about these fixed-function pipelines for creating and rasterizing triangles. Then came the idea to write these domain-specific shading languages that added a ton of expressivity to the process. And from that came the idea of general-purpose GPU computations, and things like CUDA, and here we are today! ML as a field has probably been moved forward literal decades thanks to ideas from the graphics world.</p>
-<p>I’m grateful for my time in the Linux open-source world for quite different reasons. I can’t say there’s much overlap in subject matter, but it was a wonderful start in the world of open source. It definitely made me a bit of a tinkerer, with everything from my OS to shell to IDE. Linux is built around supporting that. But it’s something I think equally applies to the world of ML. The deeper you get into these big deep-learning frameworks the more clear it becomes they all have bugs. You gain so much as an ML developer when you can get into the weeds of a library and start changing things.</p>
-<p>Anyway, that’s a long-winded way of saying I’m quite glad my career hasn’t been a straight line.</p>
-<p>Anshuman: Given your interest in English literature, which novels are you currently reading? What’s on your to-read list? Do you have any writing aspirations?</p>
-<p>Matt: Hah, for any attempt to read literature with a capital “L” in school, my reading diet since I was 10 has been mostly sci-fi and fantasy. Ursula K. Le Guin is a big hero of mine. I recently read Klara and the Sun, a dystopian novel narrated by an “autonomous friend” that certainly feels relevant to all the work we do.</p>
-<p>I would love to try my hand at fiction someday, but most of my writing is technical these days.</p>
-<p>Abheesht: What are the focal attributes of KerasNLP that make it different from other NLP libraries out there?</p>
-<p>Matt: One thing that makes Keras unique is a detailed and strict style guide for any new API. Our top-level APIs should be accessible to a very broad audience. We achieve flexibility underneath this top level with a focus on modular components and layered abstractions.</p>
-<p>This gives KerasNLP a somewhat unique positioning among “pre-trained modeling” libraries. When we port a model from a research codebase, we tend to heavily rewrite the forward pass so it matches our conventions and uses common building blocks.</p>
-<p>This has some neat side effects. For one, it’s a great library to learn from–you can define a transformer from scratch with our base layers in about 20 lines of code. It also gives a very uniform experience of slicing and dicing our models. That’s a big one given how many real-world workflows, from PEFT strategies to interpretability techniques, require reaching into model internals.</p>
-<p>Abheesht: How do you see the current landscape of NLP and deep learning evolving, and how does KerasNLP fit into this evolving landscape?</p>
-<p>Matt: It’s dizzying how fast the field is changing these days. There is a ton of energy in open-source NLP development. There are so many valid concerns with how all this new technology is being used. At a broad level, I keep trying to remind myself what a massive period of flux this is for the field. We should all hold our opinions lightly and stay curious.</p>
-<p>I think multi-backend Keras 3 is really a game changer for how KerasNLP fits it. On the KerasNLP side, we can take a pre-trained model, write our numerics once, and distribute our weights once. You can fine-tune a model in any of TensorFlow, Jax, or Torch, and use Keras’ save format as a way to seamlessly move between frameworks. I think this is a new tool we are putting in ML developer’s toolboxes, and I am excited to see what people do with it.</p>
-<p>Anshuman: Could you share some real-world applications or projects where KerasNLP has been particularly instrumental or innovative?</p>
-<p>Matt: One of the first projects to use KerasNLP is the AutoKeras library, and I really love how it fits into the Keras broader Keras ecosystem. It’s a super accessible, code-first library. You can just define your data and problem and it will handle choosing an architecture, optimizer, and hyperparameters. Or you can define your own much more complex and tailored workflow as you get deeper in.</p>
-<p>I think there is a huge opportunity to take a similar approach to generative problems going forward. Meet people with accessible, understandable, code-first flows that still give you full control over an underlying language model when you need it. I haven’t quite seen an “auto ML” offering on the generative modeling front that has really blown me away, but I would bet it’s just a matter of time.</p>
-<p>Abheesht: Natural language understanding and generation have seen remarkable advancements. What do you think are the key challenges and opportunities in NLP today?</p>
-<p>Matt: There’s a huge amount of opportunity here. We are far from understanding all the ways we can put the emergent properties of LLMs to use. Given the amount of investment and attention, I am not particularly worried about the field suddenly losing steam.</p>
-<p>An obvious challenge is the reliability of language models. If you had a service where a fellow human would often give you helpful advice, and occasionally confidently lie to your face, people would be out there flipping tables.</p>
-<p>I think there are two things we could do here. First, keep working on the engineering problem of reliable models that can, at least, indicate uncertainty when present. Second, don’t oversell these things! There are a lot of unsolved problems with LLMs, and there is a persistent, magnetic attraction towards anthropomorphizing something that appears to understand language. Everyone working in this space needs to be careful with how we describe these systems, and continually flag the obvious limitations of these tools.</p>
-<p>Abheesht: One thing I’ve seen with the Keras team is the collaborative culture that has been fostered. All members of the Keras team are very helpful to the outside community. Evidence of this is seen in the number of students who contribute to the Keras ecosystem. Can you provide insights into the collaborative development process within the Keras team at Google and outside contributors and how it contributes to the library’s success?</p>
-<p>Matt: A huge reason I was attracted to the Keras team was that everyone on it really cares about open-source tools, not as an afterthought or a way to boost your profile, but as an end unto itself.</p>
-<p>The vast majority of my work is out in the open on GitHub, and I think that is true of the whole Keras ecosystem. Most real discussion about new APIs is happening on issues and pull requests.</p>
-<p>I think everyone on the team really believes in the virtuous cycle here. There is far more knowledge and skill in the large pool of Keras users than just the Keras team at Google.</p>
-<p>Anshuman: In the ever-evolving field of AI, staying updated is crucial. How do you personally keep up with the latest developments and trends in NLP and deep learning?</p>
-<p>Matt: It’s a mix right now of Twitter, word of mouth, and anything that naturally comes up in my work. There is just no way for anyone to ingest all the research in this space. I constantly try to curate a short list of concepts to understand deeply, rather than attempting to ingest the whole fire hose.</p>
-<p>If I encounter a new claim that breaks an assumption I was holding, or a bug in my code I can’t effectively explain, it’s almost always worth digging in. ML as a field I think really rewards going deep on unknowns and constantly leveling up your understanding.</p>
-<p>Anshuman: You’ve done your Bachelor’s and Master’s from Stanford, widely regarded as one of the best universities in the world. How was your time at Stanford? How do you think your education has shaped your career as an engineer over the past decade? What makes Stanford Stanford; what does Stanford do differently from other universities that makes it the best? Is it the faculty? Is it the peer group?</p>
-<p>Matt: The main thing I think Stanford provided was this massive playground to go out and build your own understanding. They give a lot of resources and freedom to students, and there’s a lot of bright people trying weird stuff you can talk to. There’s definite energy in that environment.</p>
-<p>Stanford also killed it with the introductory Computer Science courses. The lecturers and teaching assistants were really supportive and focused on sparking curiosity about what computers can do. That is for sure what lured me out of the social sciences.</p>
-<p>I wouldn’t put too much stock into any one place though. The best coworkers in my working life have truly come from all sorts of educational backgrounds; I cannot pick out a pattern. People who teach themselves and even get a bit irritated by things they don’t yet understand tend to make great engineers. And open source in particular is one of the most accessible ways to wade into real problems from anywhere in the world.</p>
-<p>Abheesht: What, do you think, is the future for KerasNLP? Where do you see it going? What are some exciting developments that are planned in the near future?</p>
-<p>Matt: The near future for KerasNLP is all about sticking the landing with Keras 3 (multi-backend Keras). We want to make sure we have the models people are most excited about (e.g.&nbsp;LLama 2 and Falcon), but equally important is a good ecosystem of tools to scale these models up and down.</p>
-<p>On the scaling down front, we want a good multi-backend workflow for LoRA, and for scaling up, we are working on some dead simple model parallelism (think sharding individual matrices across GPUs). It’s definitely a lot to execute on, but that’s kinda fun. We are all heads down on our projects till the release of Keras 3 later this year.</p>
-<p>Abheesht: Having talked to you before, I know how bullish you are on open-source software. Is open source the way forward with LLMs? The upsides are obvious; the downsides include potential misuse, etc. What are your views on this?</p>
-<p>Matt: I think the biggest thing we can all do is stay open to changing our viewpoints. We are way out in uncharted territory in terms of model capability, so the most accurate (and maybe unhelpful) thing we can say is that we don’t know what the biggest risks are or how to mitigate them.</p>
-<p>I should probably just recuse myself from any conversations of existential risk from language models; I don’t know enough. I am glad some people out there are thinking about it, but personally, I am much more worried about the more immediate societal issues–bias, misuse, misinformation, disruption from automation, etc. These I feel strongly need to be addressed in the public square, and open models will be an essential tool.</p>
-<p>First, with an open model, you can crowdsource finding all the issues and fail states. More people probing a model will do a much more thorough job of making it “misbehave.” Second, if we really open up the whole training recipe (what data is going in?!), we can have a much more open conversation about equitable outcomes with this new tech.</p>
-<p>I think we have a ways to go as a field, particularly with opening up details on training data. We also need to avoid a “race to the bottom,” just throwing more in more compute and data to beat benchmarks without understanding what we are scaling to. But if we want this new tech to do right by society at large, I think open models have a large role to play.</p>
-<p>Abheesht: Keras 3, i..e, multi-backend Keras which allows users to switch backends (TensorFlow, JAX, and PyTorch) was released to much hubbub and fanfare a couple of months ago. What do you think are some of the most exciting use cases of a multi-backend Keras? Why should people be excited about it?</p>
-<p>Matt: Maybe a bit abstract, but I think Keras has the opportunity to become a “lingua franca” for modeling problems for a lot more people with Keras 3. Keras is a familiar API to basically everyone in the ML field–even if you don’t realize it, its fingerprints are all over abstractions in so many deep learning toolkits.</p>
-<p>With Keras 3, you can start with a backend agnostic modeling flow, and “lower” it into TensorFlow, JAX, or PyTorch anytime you need. There’s no transpilation, all layers/metrics/optimizers are using backend native calls for the selected framework. So basically Keras just becomes an incredibly efficient thing to learn. You can use it as a diving off point for basically any ML problem, and have the expressivity of a low-level framework as soon as you need it.</p>
-<p>Abheesht: What is one research paper you’ve read recently that gave you that “aha” feeling? Basically, a paper that blew your mind!</p>
-<p>Matt: A while ago I was in a paper reading group digging into graph neural networks. I found the notions of message passing and permutation invariance among graph vertices to be this big lightbulb moment where a lot of disparate notions in my head suddenly coalesced.</p>
-<p>Basically, you can think of CNNs and Transformers, and RNNs as graph networks. A convolution is just a message passing among neighboring pixels. Transformers are quite literally densely connected graph attention networks, with positional information added in.</p>
-<p>Framing everything as a graph gives you this uniform lens to look across the whole field of deep learning, which is so cool. This article is a good introduction to the idea.</p>
-<p>Anshuman &amp; Abheesht: Thank you, Matt! It’s been great talking to you!</p>
-<p>And that concludes the third interview of our “AI Chronicles” series! This series is a joint effort of Anshuman Mishra and Abheesht Sharma. Anshuman is currently working at Flip as a Machine Learning Engineer. Abheesht is an ML Research Scientist at Amazon, where he works on detecting advertisement bots. Both of them contribute extensively to ML open-source software and have been involved in developing KerasNLP.</p>
-<p>Best regards and happy learning!</p>
+<p>Let me be honest… I don’t like writing SQL queries. And I always wished if someone could do it for me. Well that’s exactly what we are going to do today!</p>
+<p>We are going to build an intelligent agent that does just that, using Google’s Gemini model and creating a neat web interface with Gradio.</p>
+<p>Traditional Text-to-SQL pipelines can sometimes be a bit like a black box. You give them a question, they spit out a SQL query, and you hope for the best.</p>
+<p>What’s the advantage of building something more “agent-like,” even in a simplified form?</p>
+<p>A standard text-to-sql pipeline can be brittle. The generated SQL query might be incorrect. Even worse, an incorrect query could run without errors but give you wrong or useless results, and you might not even realize it!</p>
+<p>👉 While a full-fledged agent system might involve complex reasoning and self-correction, our approach today focuses on building a robust pipeline with clear steps, good error handling when talking to the Large Language Model (LLM), and a way to learn from the process. This lays the foundation for more advanced agentic behavior later.</p>
+<p>Let’s build this agent! 💪</p>
+<p>And by the way, all the code related to this guide can be found here on my github.</p>
+<section id="the-big-picture-our-agents-workflow" class="level2">
+<h2 class="anchored" data-anchor-id="the-big-picture-our-agents-workflow">The Big Picture: Our Agent’s Workflow</h2>
+<p>Before we dive into code, let’s look at the overall flow of our system. It’s a simple, logical sequence: a user’s question comes in one end, and an answer from the database comes out the other.</p>
+<p><img src="assets/text2sql_agent/db_schema.png" class="img-fluid"></p>
+</section>
+<section id="setting-the-stage---our-database" class="level2">
+<h2 class="anchored" data-anchor-id="setting-the-stage---our-database">Setting the Stage - Our Database</h2>
+<p>First things first, every SQL agent needs a database to talk to! For this tutorial, we’ll use SQLite, which is super convenient because it’s a file-based database and doesn’t require a separate server.</p>
+<p>Our Data: We’ll imagine a simple company database with two main tables:</p>
+<ul>
+<li><p>departments: Stores information about different departments.</p></li>
+<li><p>employees: Stores information about employees and which department they belong to.</p></li>
+</ul>
+<p>Here’s the structure (schema) we’ll aim for:</p>
+<p><img src="assets/text2sql_agent/workflow.webp" class="img-fluid"></p>
+<p>This setup allows us to ask interesting questions like “Which employees work in Engineering?” or “What’s the average salary in the HR department?”.</p>
+<p>To bring this to life, we need a script to create and populate this database. This ensures our agent always has a consistent environment to work in.</p>
+<p>For those who want to see exactly how the database is created, you can check out the <a href="https://github.com/kanpuriyanawab/awesome-ai-agents/blob/main/agents/text2sql/setup_db.py">database_setup.py</a> file in the GitHub repo. It’s a straightforward Python script using the sqlite3 library.</p>
+<p>This script, when called by our UI application, will ensure we always have a fresh database with this structure and data for our agent to work with.</p>
+</section>
+<section id="architecting-our-agent" class="level2">
+<h2 class="anchored" data-anchor-id="architecting-our-agent">Architecting Our Agent</h2>
+<p>Now let’s make our agent! Since the goal of our repository is to build several different kinds of agents from scratch, we need a clean, reusable structure.</p>
+<p><strong>Why a Base Class?</strong> We use a base class to define a common “contract” or interface. This ensures all our agents, whether for Text-to-SQL or another task, have a consistent design. It’s like saying every vehicle must have a run method, even if a car and a motorcycle implement it differently. This makes our project scalable and easy to understand.</p>
+<p>We’ll define a simple Agent base class in agents/base_agent.py that requires every agent to have a run method.</p>
+<pre><code># agents/base_agent.py
+from abc import ABC, abstractmethod
+
+class Agent(ABC):
+    def __init__(self, name: str):
+        self._internal_name = name
+
+    @abstractmethod
+    def run(self, user_input: str, history: list[tuple[str, str]] = None) -&gt; str:
+        pass
+
+    @property
+    def name(self) -&gt; str:
+        return self._internal_name
+</code></pre>
+<p>Our <strong>Text2SQLAgent</strong> will inherit from this, guaranteeing it fits into our agent framework.</p>
+</section>
+<section id="the-core-logic-of-our-text2sql-agent" class="level2">
+<h2 class="anchored" data-anchor-id="the-core-logic-of-our-text2sql-agent">The Core Logic of our Text2SQL Agent</h2>
+<p>Our agent’s job can be broken down into a few key steps. Let’s look at the concepts behind the main methods.</p>
+<ol type="1">
+<li><p><strong>Getting the Database Schema</strong> For an LLM to generate correct SQL, it must know the structure of your database. We need a method, let’s call it _get_database_schema, that connects to our SQLite file and programmatically extracts all table names, column names, and their data types. This schema is then passed to the LLM as part of the context.</p></li>
+<li><p><strong>Generating the SQL Query</strong> This is the heart of the agent, where we talk to Gemini. The process is called prompt engineering. We need to write a very clear set of instructions (a “prompt”) for the model.</p></li>
+</ol>
+<p>Our prompt includes:</p>
+<ul>
+<li><p>The Role: “You are an expert SQLite SQL query generator.”</p></li>
+<li><p>The Context: The full database schema we just extracted.</p></li>
+<li><p>The Task: The user’s question.</p></li>
+<li><p>The Constraints: “Output ONLY the SQL query. No extra text or markdown.”</p></li>
+</ul>
+<p>We then wrap this prompt and send it to the Gemini API using Google’s Python SDK.</p>
+<pre><code># A conceptual look at the prompt structure inside the _generate_sql_with_gemini method
+
+system_instruction_text = "You are an expert SQLite SQL query generator."
+
+prompt_for_task = f"""
+Database Schema:
+---
+{self.schema} 
+---
+Task: ...
+Constraints: ...
+
+User Question: {question}
+
+SQL Query:
+"""
+full_prompt_for_gemini = f"{system_instruction_text}\n\n{prompt_for_task}"
+response = self.gemini_model.generate_content(full_prompt_for_gemini, ...)</code></pre>
+<p>Full code can be found <a href="https://github.com/kanpuriyanawab/awesome-ai-agents/blob/main/agents/text2sql/agent.py">here</a>.</p>
+<ol start="3" type="1">
+<li><strong>Executing the Query</strong> Once Gemini returns what we hope is a valid SQL query, our agent needs to run it. A method _execute_sql_query connects to the database, executes the string, and fetches the results.</li>
+</ol>
+<p>A quick note on security: In a real-world application, directly running LLM-generated SQL can be risky. For this educational project, we’re keeping it simple, but in production, you would add validation layers or use read-only database permissions.</p>
+<p>Our Adventure with Gemini: From Bugs to Best Practices</p>
+<p>Working with powerful LLMs is an iterative process. It’s rarely perfect on the first try! Here are some real challenges we faced and the key lessons learned.</p>
+<p><strong>Best Practices We Adopted:</strong></p>
+<ul>
+<li><p>Clear, Instructive Prompts: Be explicit about the role, context, task, and constraints.</p></li>
+<li><p>Configuration for Determinism: Using temperature=0.0 for SQL generation tells the model to be predictable and factual, not creative.</p></li>
+<li><p>Handling API Responses Carefully: Never assume the LLM’s response will be perfect. Always check for errors, finish_reason, and empty content before processing the output.</p></li>
+</ul>
+<p><strong>Bugs Along the Way (and How We Squashed Them!):</strong></p>
+<ol type="1">
+<li><p>The “Empty Schema” Mystery: At first, our agent wasn’t sending the schema! Gemini received an empty prompt and couldn’t work. By meticulously printing the exact prompt string before sending it, we found the bug in our schema-loading logic and fixed it.</p></li>
+<li><p>The MAX_TOKENS Puzzle: Even with the schema, our first model (a preview version) would often fail with finish_reason: MAX_TOKENS and no output. It seemed to be getting confused by the long, complex prompt.</p></li>
+</ol>
+<ul>
+<li><p>The “Aha!” Moment: We used the “Extreme Prompt Simplification Test” we replaced our complex prompt with a simple question like “What is the capital of France?”. When that worked, it proved our API setup was fine and the issue was with how that specific model handled our complex prompt.</p></li>
+<li><p>The Fix: Increasing max_output_tokens resolved this!</p></li>
+</ul>
+<ol start="3" type="1">
+<li>The response.text Trap: Using response.text to get the output can fail if the model’s response is blocked or empty. We learned to robustly parse response.candidates[0].content.parts instead.</li>
+</ol>
+<p><strong><strong>Key Takeaway: Debugging LLM interactions is an art. Log your inputs (prompts) and its outputs (raw responses) very carefully!</strong></strong></p>
+</section>
+<section id="bringing-our-agent-to-life-with-gradio" class="level2">
+<h2 class="anchored" data-anchor-id="bringing-our-agent-to-life-with-gradio">Bringing Our Agent to Life with Gradio</h2>
+<p>Now, let’s build a cool UI! We want a chat window with clickable question suggestions on the side. For this custom layout, we’ll use Gradio’s gr.Blocks().</p>
+<p>(Here you could insert a screenshot of the final Gradio UI)</p>
+<p>The UI has three main parts:</p>
+<ol type="1">
+<li><p><strong>The Chatbot Display:</strong> A gr.Chatbot component shows the history of the conversation.</p></li>
+<li><p><strong>The Suggestion Column:</strong> We create a gr.Column and loop through a list of example questions, creating a gr.Button for each. The magic happens in the .click() event handler for each button, which updates the main input box.</p></li>
+<li><p><strong>The Input Area:</strong> A gr.Textbox for typing messages and a “Send” gr.Button. Both are wired to a single function, handle_chat_submission, which orchestrates the interaction with our agent.</p></li>
+</ol>
+<p>This function takes the user’s message and the chat history, passes them to our agent’s .run() method, gets the result, and updates the chat display.</p>
+<p>For the specific code that wires up these Gradio components, feel free to check out ui/app_text2sql.py in the repository.</p>
+</section>
+<section id="how-good-is-our-agent-a-note-on-evaluation" class="level2">
+<h2 class="anchored" data-anchor-id="how-good-is-our-agent-a-note-on-evaluation">How Good is Our Agent? A Note on Evaluation</h2>
+<p>Creating an agent is just the first step. To know if it’s truly useful, especially for production, we need to evaluate it.</p>
+<p><strong>Key Evaluation Metrics for Text-to-SQL:</strong></p>
+<ul>
+<li><p>Execution Accuracy: This is the most important one. Does the generated SQL run without errors and produce the correct answer? You’d need a test dataset of questions and their known correct answers to verify this.</p></li>
+<li><p>Query Match: Does the generated SQL query exactly match a “golden” or reference SQL query? This is very strict and often not necessary, as multiple different SQL queries can produce the same correct result.</p></li>
+<li><p>Robustness: How well does the agent handle ambiguous questions, questions about things not in the schema, or slightly malformed inputs?</p></li>
+</ul>
+<p>For a real project, you would build a “test suite” of many question-query-answer triplets and run your agent against it to calculate these metrics automatically. This helps track improvements as you refine your prompts or change models.</p>
+</section>
+<section id="conclusion" class="level2">
+<h2 class="anchored" data-anchor-id="conclusion">Conclusion</h2>
+<p>And there you have it! We’ve journeyed from understanding the need for a robust Text-to-SQL solution, setting up our database, architecting a scalable agent structure, and diving deep into the logic using Gemini. We navigated some tricky debugging and wrapped it all in a user-friendly Gradio interface.</p>
+<p>You’ve now built a functional Text-to-SQL agent from scratch! This project covers many important concepts: OOP, database interaction, LLM prompting, debugging, and web UI creation.</p>
+<p>This project touches on many important concepts:</p>
+<ul>
+<li>Object-Oriented Programming (base classes, inheritance)</li>
+<li>Database Interaction (SQLite)</li>
+<li>LLM Prompt Engineering and API Usage (Gemini)</li>
+<li>Debugging and Iterative Development</li>
+<li>Web UI Creation (Gradio)</li>
+</ul>
+<p>Feel free to experiment further:</p>
+<ul>
+<li>Make the agent use conversation history for follow-up questions.</li>
+<li>Add more error handling or self-correction attempts if the SQL fails.</li>
+<li>Try different LLMs or prompting strategies.</li>
+<li>Expand the Gradio UI with more features!</li>
+</ul>
+<p>Happy coding, and keep building amazing things!</p>
 
 
+</section>
 
 </main> <!-- /main -->
 <script id="quarto-html-after-body" type="application/javascript">
@@ -635,4 +744,4 @@ ul.task-list li input[type="checkbox"] {
 
 
 
-<footer class="footer"><div class="nav-footer"><div class="nav-footer-center"><div class="toc-actions"><ul><li><a href="https://github.com/kanpuriyanawab/edit/master/posts/interview_matt.qmd" class="toc-action"><i class="bi bi-github"></i>Edit this page</a></li><li><a href="https://github.com/kanpuriyanawab/issues/new" class="toc-action"><i class="bi empty"></i>Report an issue</a></li></ul></div></div></div></footer></body></html>
+<footer class="footer"><div class="nav-footer"><div class="nav-footer-center"><div class="toc-actions d-sm-block d-md-none"><ul><li><a href="https://github.com/kanpuriyanawab/edit/master/posts/text2sql_agent.qmd" class="toc-action"><i class="bi bi-github"></i>Edit this page</a></li><li><a href="https://github.com/kanpuriyanawab/issues/new" class="toc-action"><i class="bi empty"></i>Report an issue</a></li></ul></div></div></div></footer></body></html>

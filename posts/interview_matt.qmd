@@ -7,7 +7,7 @@ toc: true
 categories:
 - Interview
 date: '2023-10-11'
-# description: Interview with Matthew Watson, Keras Team, Google
+description: joint work with Abheesht Sharma
 hide: false
 output-file: interview_matt.html
 search_exclude: false
