@@ -35,13 +35,6 @@
     "text": "2022\n\nCNN From Tensorflow to Pytorch\nDeepchem - Porting CNN from TF ➡️ PyTorch\n\n\nNeuralODE\nDeepchem - Neural ODE tutorial 📚\n\n\nh2o-llmstudio\nadd: safe serialization while pushing to hf\n\n\nDeepmind - optax\n\nadded typing to linear_algebra.py\n\n\n\nMisc Bug fixes\n:octocat: Fixed potential bug in deepchem’s CNN implementation\nFixing load_qm7_from_mat() not found\n\n\nKaggle\nKaggle T4x2 multi-gpu training G2Net\n\n\nKaggle\nLB:0.23 Ensemble {CatBoost, XGBoost, LightGBM}\n\n\nKaggle\nLightGBM + Optuna Baseline"
   },
   {
-    "objectID": "pages/work.html#interviews",
-    "href": "pages/work.html#interviews",
-    "title": "Anshuman Mishra",
-    "section": "interviews",
-    "text": "interviews\n\nAn Interview with Ravi Ramakrishnan, Kaggle Grandmaster (joint work with Abheesht Sharma)\nAn Interview with Rajaswa Patil, AI Research Associate at Postman Labs (joint work with Abheesht Sharma)\nAn Interview with Matthew Watson, Senior Software Engineer, Google (joint work with Abheesht Sharma)\nAn Interview with Aakash Kumar Nain, MLE at Merlyn Minds (joint work with Abheesht Sharma)\n\nI have had an amazing time interviewing these incredible folks and I am grateful to them. For other competing priorities, I am discontinuing the series for an indefinite period. If you enjoy reading through interviews like these, you might want to check out the Machine Learning Street Talk podcast on YouTube."
-  },
-  {
     "objectID": "posts/julia_house_price_prediction.html",
     "href": "posts/julia_house_price_prediction.html",
     "title": "Comprehensive data exploration with Julia",
