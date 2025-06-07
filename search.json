@@ -4,14 +4,14 @@
     "href": "pages/work.html",
     "title": "Anshuman Mishra",
     "section": "",
-    "text": "TLDR\n\n\nAdd Qwen 2.5 to KerasHub 🚀 Contribution to KerasHub Led the integration of the powerful Qwen 2.5 language model. This involved implementing the core backbone, attention mechanisms, and checkpoint conversion, making a state-of-the-art model accessible to the Keras community.\n\n\n\nKerasHub - Add Qwen 1.5 Moe\n\n\n\nKerasHub - Add Mixtral"
+    "text": "TLDR\n\n\nI did this work while working as consultant for Keras team. Contributed the model to KerasHub. This involved implementing the core backbone, attention mechanisms, and checkpoint conversion, making the state-of-the-art model accessible to the Keras community.\n\n\n\nThis work involved implementing the core backbone, attention mechanisms, and checkpoint conversion, making Qwen-1.5-Mixture-of-Experts model model accessible to the Keras community.\n\n\n\nThrough this work I developed support for Mixtral model in Keras Hub, making it accessible to community."
   },
   {
     "objectID": "pages/work.html#section",
     "href": "pages/work.html#section",
     "title": "Anshuman Mishra",
     "section": "",
-    "text": "TLDR\n\n\nAdd Qwen 2.5 to KerasHub 🚀 Contribution to KerasHub Led the integration of the powerful Qwen 2.5 language model. This involved implementing the core backbone, attention mechanisms, and checkpoint conversion, making a state-of-the-art model accessible to the Keras community.\n\n\n\nKerasHub - Add Qwen 1.5 Moe\n\n\n\nKerasHub - Add Mixtral"
+    "text": "TLDR\n\n\nI did this work while working as consultant for Keras team. Contributed the model to KerasHub. This involved implementing the core backbone, attention mechanisms, and checkpoint conversion, making the state-of-the-art model accessible to the Keras community.\n\n\n\nThis work involved implementing the core backbone, attention mechanisms, and checkpoint conversion, making Qwen-1.5-Mixture-of-Experts model model accessible to the Keras community.\n\n\n\nThrough this work I developed support for Mixtral model in Keras Hub, making it accessible to community."
   },
   {
     "objectID": "pages/work.html#section-1",
@@ -165,7 +165,7 @@
     "href": "index.html",
     "title": "Anshuman Mishra",
     "section": "",
-    "text": "Hi there 👋. I am Anshuman Mishra. I work on large language models yet I like to call myself a software engineer.\n\nTo know about my projects, please refer to my GitHub profile.\nI work on large language models at FlipAI. For more details on my work experience, check out my LinkedIn profile.\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\nTimeline\n\n\n\n\n\n\n\n\nPosition\nCompany\nDuration\n\n\n\n\nML Engineer\nFlipAI\nJuly 2023 - Present\n\n\nTechnical Author\nWeights&Biases\nSep 2023 - Feb 2024\n\n\nData Science Intern\nBNY Mellon\nJan 2023 - June 2023\n\n\nSoftware Engineer Intern\nAmazon\nMay 2022 - July 2023\n\n\n\n\n\nSome stuff\n\nGoogle Developer Expert in Machine Learning and Google Cloud Platform (bit.ly/expert-sp)\nMentee, Google Summer of Code 2023, in TensorFlow. See my project here\nOpen Source Contributor at KerasNLP"
+    "text": "Hi there 👋. I am Anshuman Mishra. I work on large language models yet I like to call myself a software engineer.\n\nI work on large language models at FlipAI.\n\nProfessional Experience\n\nIndependent AI Consultant, Google\n\nFeb 2025 - Present\nWorking with Keras team\n\nML Engineer, FlipAI\n\nJuly 2023 - May 2025\nIn my current role, I am responsible for designing, building, and deploying machine learning models in a fast-paced production environment. My work involves the end-to-end ML lifecycle, from data preprocessing and model training to deployment and monitoring of core AI features.\n\nGoogle Summer of Code Mentee, Google\n\nJuly 2023 - May 2025\nWorked with Keras team.\n\nTechnical Author, Weights & Biases\n\nSeptember 2023 - February 2024\nDuring my time as a Technical Author, I focused on creating clear and compelling educational content for the machine learning community. I wrote in-depth articles, tutorials, and guides explaining complex ML concepts and demonstrating best practices using the W&B platform.\n\nData Science Intern, BNY Mellon\n\nJanuary 2023 - June 2023\nAs a Data Science Intern, I gained hands-on experience within the financial services industry. My responsibilities included analyzing large datasets to uncover insights, building predictive models, and presenting my findings to support data-driven decision-making.\n\nSoftware Engineer Intern, Amazon\n\nMay 2022 - July 2022\nDuring my internship at Amazon, I contributed to a team responsible for developing large-scale software systems. This experience provided a strong foundation in the software development lifecycle, including coding, debugging, and working with cloud infrastructure to deliver a project feature.\n\n\n\n\nSome stuff\n\nGoogle Developer Expert in Machine Learning and Google Cloud Platform (bit.ly/expert-sp)\nMentee, Google Summer of Code 2023, in TensorFlow. See my project here\nOpen Source Contributor at KerasNLP"
   },
   {
     "objectID": "blog.html",
@@ -294,10 +294,17 @@
     "text": "Conclusion\nAnd there you have it! We’ve journeyed from understanding the need for a robust Text-to-SQL solution, setting up our database, architecting a scalable agent structure, and diving deep into the logic using Gemini. We navigated some tricky debugging and wrapped it all in a user-friendly Gradio interface.\nYou’ve now built a functional Text-to-SQL agent from scratch! This project covers many important concepts: OOP, database interaction, LLM prompting, debugging, and web UI creation.\nThis project touches on many important concepts:\n\nObject-Oriented Programming (base classes, inheritance)\nDatabase Interaction (SQLite)\nLLM Prompt Engineering and API Usage (Gemini)\nDebugging and Iterative Development\nWeb UI Creation (Gradio)\n\nFeel free to experiment further:\n\nMake the agent use conversation history for follow-up questions.\nAdd more error handling or self-correction attempts if the SQL fails.\nTry different LLMs or prompting strategies.\nExpand the Gradio UI with more features!\n\nHappy coding, and keep building amazing things!"
   },
   {
-    "objectID": "pages/things.html",
-    "href": "pages/things.html",
-    "title": "Things",
+    "objectID": "pages/life.html",
+    "href": "pages/life.html",
+    "title": "Life",
     "section": "",
-    "text": "My Strava: https://www.strava.com/athletes/141188010"
+    "text": "&lt;img src=“../assets/images/life/mysore-road\n\n\n\n\nMy Strava: https://www.strava.com/athletes/141188010"
+  },
+  {
+    "objectID": "pages/life.html#rasta-cafe-126-km",
+    "href": "pages/life.html#rasta-cafe-126-km",
+    "title": "Life",
+    "section": "",
+    "text": "&lt;img src=“../assets/images/life/mysore-road\n\n\n\n\nMy Strava: https://www.strava.com/athletes/141188010"
   }
 ]
