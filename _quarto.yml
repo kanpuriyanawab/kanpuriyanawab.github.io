@@ -34,9 +34,13 @@ website:
       - icon: twitter
         href: https://twitter.com/kanpuriyanawab
       - icon: linkedin
-        href: https://www.linkedin.com/in/kanpuriyanawab/
+        href: https://www.linkedin.com/in/anshuizme/
       - icon: github
         href: https://github.com/kanpuriyanawab
+      - icon: youtube
+        href: https://youtube.com/@1smollcoder
+      - icon: substack
+        href: https://fullstackagents.substack.com
 
 execute:
   freeze: auto

@@ -25,6 +25,8 @@ Through this work I developed support for [Mixtral](https://github.com/keras-tea
 
 ## 2024
 
+*In 2024 I worked as Consultant for Growth Team of Weights & Biases writing reports for Wandb Fully Connected. I also spent some time trying out Youtube.*
+
 ### Weights & Biases
 [Supercharge KerasNLP Models with Wandb](https://wandb.ai/kanpuriyanawab/keras-nlp-x-wandb/reports/Supercharge-KerasNLP-Models-with-Wandb--Vmlldzo1Mjk1NjI2)
 
@@ -35,7 +37,7 @@ Through this work I developed support for [Mixtral](https://github.com/keras-tea
 
 ## 2023
 
-tl;dr - how many talks, open source contributions
+*I contributed to open source (mainly Keras) heavily throught the year. Gave a lot of talks travelling across the country.*
 
 ### Llama
 
@@ -153,6 +155,8 @@ https://github.com/keras-team/keras-io/blob/master/guides/keras_hub/transformer_
 [FluxML - Adding UNet Model](https://github.com/FluxML/Metalhead.jl/pull/210)
 
 ## 2022
+
+*This year I mainly focused on Kaggling. It also marked my venture into Open Source world.*
 
 ### CNN From Tensorflow to Pytorch
 

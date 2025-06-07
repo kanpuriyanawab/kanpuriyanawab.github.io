@@ -1,6 +1,7 @@
 ---
 # title: "Anshuman Mishra"
 toc: false
+# page-layout: full
 ---
 
 Hi there 👋. I am Anshuman Mishra. I work on large language models yet I like to call myself a software engineer.
