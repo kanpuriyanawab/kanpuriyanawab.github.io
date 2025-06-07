@@ -1,43 +1,47 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9">
   <url>
-    <loc>https://kanpuriyanawab.github.io/blog.html</loc>
-    <lastmod>2025-04-06T12:13:58.995Z</lastmod>
-  </url>
-  <url>
-    <loc>https://kanpuriyanawab.github.io/pages/education.html</loc>
-    <lastmod>2025-04-06T12:13:58.996Z</lastmod>
-  </url>
-  <url>
-    <loc>https://kanpuriyanawab.github.io/pages/interviews.html</loc>
-    <lastmod>2025-04-06T12:13:58.996Z</lastmod>
-  </url>
-  <url>
-    <loc>https://kanpuriyanawab.github.io/pages/open_source.html</loc>
-    <lastmod>2025-04-06T12:13:58.996Z</lastmod>
-  </url>
-  <url>
     <loc>https://kanpuriyanawab.github.io/index.html</loc>
-    <lastmod>2025-04-06T12:13:58.995Z</lastmod>
+    <lastmod>2025-06-07T13:48:34.429Z</lastmod>
+  </url>
+  <url>
+    <loc>https://kanpuriyanawab.github.io/blog.html</loc>
+    <lastmod>2025-06-07T13:20:19.637Z</lastmod>
+  </url>
+  <url>
+    <loc>https://kanpuriyanawab.github.io/pages/work.html</loc>
+    <lastmod>2025-06-07T13:33:33.152Z</lastmod>
+  </url>
+  <url>
+    <loc>https://kanpuriyanawab.github.io/posts/interview_aakash.html</loc>
+    <lastmod>2025-06-07T13:46:25.454Z</lastmod>
+  </url>
+  <url>
+    <loc>https://kanpuriyanawab.github.io/posts/julia_house_price_prediction.html</loc>
+    <lastmod>2025-06-07T11:21:44.204Z</lastmod>
   </url>
   <url>
     <loc>https://kanpuriyanawab.github.io/posts/illustrated_llmos.html</loc>
-    <lastmod>2025-04-06T12:13:59.003Z</lastmod>
+    <lastmod>2025-06-07T10:59:19.774Z</lastmod>
   </url>
   <url>
-    <loc>https://kanpuriyanawab.github.io/pages/talksseminarsworkshops.html</loc>
-    <lastmod>2025-04-06T12:13:58.996Z</lastmod>
+    <loc>https://kanpuriyanawab.github.io/posts/flux_is_so_flexible.html</loc>
+    <lastmod>2025-06-07T13:33:31.548Z</lastmod>
   </url>
   <url>
-    <loc>https://kanpuriyanawab.github.io/pages/authoring.html</loc>
-    <lastmod>2025-04-06T12:13:58.996Z</lastmod>
+    <loc>https://kanpuriyanawab.github.io/posts/interview_rrk.html</loc>
+    <lastmod>2025-06-07T13:47:27.110Z</lastmod>
   </url>
   <url>
-    <loc>https://kanpuriyanawab.github.io/pages/about.html</loc>
-    <lastmod>2025-04-06T12:13:58.995Z</lastmod>
+    <loc>https://kanpuriyanawab.github.io/posts/interview_rajaswa.html</loc>
+    <lastmod>2025-06-07T13:47:33.402Z</lastmod>
   </url>
   <url>
-    <loc>https://kanpuriyanawab.github.io/pages/resources.html</loc>
-    <lastmod>2025-04-06T12:13:58.996Z</lastmod>
+    <loc>https://kanpuriyanawab.github.io/posts/interview_matt.html</loc>
+    <lastmod>2025-06-07T13:46:56.656Z</lastmod>
+  </url>
+  <url>
+    <loc>https://kanpuriyanawab.github.io/pages/things.html</loc>
+    <lastmod>2025-06-07T13:47:36.396Z</lastmod>
   </url>
 </urlset>

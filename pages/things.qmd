@@ -1,0 +1,9 @@
+---
+title: "Things"
+aliases: 
+  - /things
+toc: false
+---
+
+
+My Strava: https://www.strava.com/athletes/141188010

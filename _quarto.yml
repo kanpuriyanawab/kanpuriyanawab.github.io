@@ -24,16 +24,12 @@ website:
   navbar:
     background: primary
     left:
-      - text: "About Me"
-        href: pages/about.qmd
-      - text: "Authoring"
-        href: pages/authoring.qmd
-      - text: "Open Source Contributions"
-        href: pages/open_source.qmd
+      - text: "Work"
+        href: pages/work.qmd
       - text: "Blog"
         href: blog.qmd
-      - text: "Resources"
-        href: pages/resources.qmd
+      - text: "Things"
+        href: pages/things.qmd
     right:
       - icon: twitter
         href: https://twitter.com/kanpuriyanawab

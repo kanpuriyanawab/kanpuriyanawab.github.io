@@ -1,18 +1,43 @@
 ---
-title: "Anshuman Mishra"
+# title: "Anshuman Mishra"
 toc: false
 ---
 
 Hi there 👋. I am Anshuman Mishra. I work on large language models yet I like to call myself a software engineer.
 
-
+<!-- 
 <center>
 <img src="assets/images/pic_5.jpeg" style="width: 350px; height: 350px; border-radius: 50%;" />
-</center>
+</center> -->
 
 
-My external articles and other publishing engagements (like books, liveProjects, etc.) are listed [here](pages/authoring.qmd). Decks
-from my speaking engagements are listed [here](pages/talksseminarsworkshops.qmd). A detailed account of the things that are not
-directly available from the top navbar (interviews, talks etc.) can be found [here](pages/resources.qmd).
 
 To know about my projects, please refer to [my GitHub profile](https://github.com/kanpuriyanawab). 
+
+I work on large language models at [FlipAI](https://flip.ai). For more details on my work experience, check out my [LinkedIn profile](https://www.linkedin.com/in/kanpuriyanawab/).
+
+<table>
+  <tr>
+    <td><a href="https://github.com/kanpuriyanawab"><img src="https://img.shields.io/github/followers/kanpuriyanawab.svg?label=GitHub&style=social" alt="GitHub"></a></td>
+    <td><a href="https://twitter.com/kanpuriyanawab"><img src="https://img.shields.io/twitter/follow/kanpuriyanawab?label=Twitter&style=social" alt="Twitter"></a></td>
+    <td><a href="https://www.linkedin.com/in/kanpuriyanawab"><img src="https://img.shields.io/badge/LinkedIn--_.svg?style=social&logo=linkedin" alt="LinkedIn"></a></td>
+    <td><a href="mailto:shivanshuman021@gmail.com"><img src="https://img.shields.io/badge/Gmail--_.svg?style=social&logo=gmail" alt="Gmail"></a></td>
+  </tr>
+</table>
+
+### Timeline
+
+| Position                               | Company                           | Duration                |
+|:--------------------------------------:|:---------------------------------:|:-----------------------:|
+| ML Engineer              | FlipAI                  | July 2023 - Present     |
+| Technical Author   | Weights&Biases                            | Sep 2023 - Feb 2024|
+| Data Science Intern   | BNY Mellon                            | Jan 2023 - June 2023|
+| Software Engineer Intern    | Amazon                     | May 2022 - July 2023   |
+
+### Some stuff
+
+* Google Developer Expert in Machine Learning and Google Cloud Platform ([bit.ly/expert-sp](https://bit.ly/expert-sp))
+* Mentee, Google Summer of Code 2023, in TensorFlow. See my project [here](https://summerofcode.withgoogle.com/archive/2023/projects/X4GwVWLu)
+* Open Source Contributor at [KerasNLP](https://github.com/keras-team/keras-nlp/)
+
+
