@@ -6,10 +6,10 @@
 
 <meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=yes">
 
-<meta name="dcterms.date" content="2023-12-22">
-<meta name="description" content="joint work with Abheesht Sharma">
+<meta name="dcterms.date" content="2025-06-06">
+<meta name="description" content="Tired of Writing SQL? Let’s Build an AI That Does It For You.">
 
-<title>Interview with Aakash Kumar Nain, MLE at Merlyn Minds – Anshuman Mishra</title>
+<title>Building Production Ready Text-to-SQL Agent from Scratch – Anshuman Mishra</title>
 <style>
 code{white-space: pre-wrap;}
 span.smallcaps{font-variant: small-caps;}
@@ -57,15 +57,19 @@ ul.task-list li input[type="checkbox"] {
 
 
 <link rel="stylesheet" href="../styles.css">
-<meta property="og:title" content="Interview with Aakash Kumar Nain, MLE at Merlyn Minds – Anshuman Mishra">
-<meta property="og:description" content="joint work with Abheesht Sharma">
-<meta property="og:image" content="https://www.heyyanshuman.com/posts/assets/interview/interview_aakash.webp">
+<meta property="og:title" content="Building Production Ready Text-to-SQL Agent from Scratch – Anshuman Mishra">
+<meta property="og:description" content="Tired of Writing SQL? Let’s Build an AI That Does It For You.">
+<meta property="og:image" content="https://www.heyyanshuman.com/posts/assets/text2sql_agent/db_schema.png">
 <meta property="og:site_name" content="Anshuman Mishra">
-<meta name="twitter:title" content="Interview with Aakash Kumar Nain, MLE at Merlyn Minds – Anshuman Mishra">
-<meta name="twitter:description" content="joint work with Abheesht Sharma">
-<meta name="twitter:image" content="https://www.heyyanshuman.com/posts/assets/interview/interview_aakash.webp">
+<meta property="og:image:height" content="2048">
+<meta property="og:image:width" content="2048">
+<meta name="twitter:title" content="Building Production Ready Text-to-SQL Agent from Scratch – Anshuman Mishra">
+<meta name="twitter:description" content="Tired of Writing SQL? Let’s Build an AI That Does It For You.">
+<meta name="twitter:image" content="https://www.heyyanshuman.com/posts/assets/text2sql_agent/db_schema.png">
 <meta name="twitter:creator" content="@kanpuriyanawab">
 <meta name="twitter:card" content="summary">
+<meta name="twitter:image-height" content="2048">
+<meta name="twitter:image-width" content="2048">
 </head>
 
 <body class="nav-fixed quarto-light">
@@ -124,14 +128,15 @@ ul.task-list li input[type="checkbox"] {
 <header id="title-block-header" class="quarto-title-block default page-columns page-full">
   <div class="quarto-title-banner page-columns page-full">
     <div class="quarto-title column-body">
-      <h1 class="title">Interview with Aakash Kumar Nain, MLE at Merlyn Minds</h1>
+      <h1 class="title">Building Production Ready Text-to-SQL Agent from Scratch</h1>
                   <div>
         <div class="description">
-          joint work with Abheesht Sharma
+          Tired of Writing SQL? Let’s Build an AI That Does It For You.
         </div>
       </div>
                           <div class="quarto-categories">
-                <div class="quarto-category">Interview</div>
+                <div class="quarto-category">LLMs</div>
+                <div class="quarto-category">Agents</div>
               </div>
                   </div>
   </div>
@@ -143,7 +148,7 @@ ul.task-list li input[type="checkbox"] {
       <div>
       <div class="quarto-title-meta-heading">Published</div>
       <div class="quarto-title-meta-contents">
-        <p class="date">December 22, 2023</p>
+        <p class="date">June 6, 2025</p>
       </div>
     </div>
     
@@ -154,8 +159,20 @@ ul.task-list li input[type="checkbox"] {
   </header><div id="quarto-content" class="quarto-container page-columns page-rows-contents page-layout-article page-navbar">
 <!-- sidebar -->
 <!-- margin-sidebar -->
-    <div id="quarto-margin-sidebar" class="sidebar margin-sidebar zindex-bottom">
-        
+    <div id="quarto-margin-sidebar" class="sidebar margin-sidebar">
+        <nav id="TOC" role="doc-toc" class="toc-active">
+    <h2 id="toc-title">On this page</h2>
+   
+  <ul>
+  <li><a href="#the-big-picture-our-agents-workflow" id="toc-the-big-picture-our-agents-workflow" class="nav-link active" data-scroll-target="#the-big-picture-our-agents-workflow">The Big Picture: Our Agent’s Workflow</a></li>
+  <li><a href="#setting-the-stage---our-database" id="toc-setting-the-stage---our-database" class="nav-link" data-scroll-target="#setting-the-stage---our-database">Setting the Stage - Our Database</a></li>
+  <li><a href="#architecting-our-agent" id="toc-architecting-our-agent" class="nav-link" data-scroll-target="#architecting-our-agent">Architecting Our Agent</a></li>
+  <li><a href="#the-core-logic-of-our-text2sql-agent" id="toc-the-core-logic-of-our-text2sql-agent" class="nav-link" data-scroll-target="#the-core-logic-of-our-text2sql-agent">The Core Logic of our Text2SQL Agent</a></li>
+  <li><a href="#bringing-our-agent-to-life-with-gradio" id="toc-bringing-our-agent-to-life-with-gradio" class="nav-link" data-scroll-target="#bringing-our-agent-to-life-with-gradio">Bringing Our Agent to Life with Gradio</a></li>
+  <li><a href="#how-good-is-our-agent-a-note-on-evaluation" id="toc-how-good-is-our-agent-a-note-on-evaluation" class="nav-link" data-scroll-target="#how-good-is-our-agent-a-note-on-evaluation">How Good is Our Agent? A Note on Evaluation</a></li>
+  <li><a href="#conclusion" id="toc-conclusion" class="nav-link" data-scroll-target="#conclusion">Conclusion</a></li>
+  </ul>
+<div class="toc-actions"><ul><li><a href="https://github.com/kanpuriyanawab/edit/master/posts/text2sql_agent.qmd" class="toc-action"><i class="bi bi-github"></i>Edit this page</a></li><li><a href="https://github.com/kanpuriyanawab/issues/new" class="toc-action"><i class="bi empty"></i>Report an issue</a></li></ul></div></nav>
     </div>
 <!-- main -->
 <main class="content quarto-banner-title-block" id="quarto-document-content">
@@ -164,59 +181,163 @@ ul.task-list li input[type="checkbox"] {
 
 
 
-<p><img src="assets/interview/interview_aakash.webp" class="img-fluid"></p>
-<p>The AI world is brimming with talent. Folks in the AI industry and the research world are continuously pushing the boundaries of innovation. With this interview series, we want to focus on bringing these inspiring (and possibly unheard-of) stories out into the world — their struggles, their triumphs, and their journey. We will be conversing with people we have looked up to and still look up to for their unparalleled contributions to the AI world. We call this interview series AI Chronicles.</p>
-<p>The two of us with Aakash in Uzbekistan! Aakash Kumar Nain — open source legend, MLE extraordinaire, Delhi lover, mountain climber. We had the privilege of meeting Aakash in Tashkent at the Google ML Community Summit and were taken aback by how laidback and easygoing he was. Looking at how meticulous he is with his work, we were expecting him to be the “serious kind”. The three of us instantly hit it off.</p>
-<p>When we say Aakash is an open source legend, we kid you not. Aakash started contributing to DL open source in 2016, and has never looked back since then. He is a TensorFlow-Addons maintainer. He is a core contributor to Keras 3.0, the new multi-backend Keras. Our favourite open source work of his is, however, Annotated Papers, where he breaks down ML/DL papers into simple explanations. Aakash is a huge proponent of JAX. Safe to say, he has inspired folks like us to take to open source.</p>
-<p>On top of his impressive open source work, he has 7 years of experience in the industry as an ML Engineer/Researcher, starting his career at Parallel Dots and then working at Ola, H2O.ai and now Merlyn Minds where he is working on building an AI assistant for education. Despite having spent 7 years in the industry, he has lost none of his inquisitiveness and curiosity.</p>
-<p>We can keep raving on and on about Aakash’s technical accomplishments, but to us, what separates Aakash from the rest is his approach to life. Read on to find out more about the man!</p>
-<p>Hi, Aakash! Thank you for doing this.</p>
-<p>Thank you for having me here today.</p>
-<p>Q: Could you discuss any machine learning projects or applications that you’ve found personally rewarding, either in terms of impact or the technical challenges involved?</p>
-<p>Though all the open-source projects I worked on were rewarding, contributing to TensorFlow-Addons, Keras, JAX, and Keras Core created the biggest impact. Although I have been a TF user since 2016, my open-source journey started with TF-addons in 2019. Once you start exploring the low-level bits of a library or a framework, your understanding of the mental model improves automatically. I wrote many code examples for keras.io where I showcased the flexibility of the Keras API to build very complex models. The motivation for writing those code examples was to help people understand the mental model behind tf.keras</p>
-<p>I consider myself a power Keras user. I have always wanted to contribute to the core Keras engine. This year, I finally got an opportunity to collaborate with Francois Chollet and the team to rewrite the entire Keras codebase with multi-backend support, including but not limited to TensorFlow, JAX, and PyTorch. It is one of my biggest open-source collaborations with the highest impact.</p>
-<p>Q: The field of machine learning is continually evolving. Are there any emerging trends or developments that particularly excite you or that you believe will have a significant impact in the near future?</p>
-<p>Diffusion models are one of the things that have gotten me excited about the future of generative AI after a long time. Though generative machine learning algorithms are nothing new, it’s just that the underlying algorithm for Diffusion models feels more natural. The other thing that I am looking forward to is the successor of the Transformer architecture. CNNs to transformers was a big leap. I hope the next set of algorithms is equally revolutionary.</p>
-<p>Q: How do you approach maintaining a balance between your athletic interests, such as being a footballer, and your demanding career in data science? Do you find any synergies between these seemingly different pursuits?</p>
-<p>Ever heard of the phrase “Too much of anything is good for nothing”? If you like/love doing something, that doesn’t mean you should devote your entire time to it. Of course, it’s a biased opinion, but to me, there is way more to life than just work. So, I distribute my time among all the things I enjoy doing. It doesn’t mean that it should be like that for anyone else in any sense. It’s a personal choice how much time one wants to dedicate to different aspects of life. Also, I am a firm believer that health is the true wealth. To ensure that I am physically fit, I go to the gym and play football regularly.</p>
-<p>Q: Many aspiring data scientists grapple with imposter syndrome. Have you ever experienced such feelings, and if so, how did you overcome them?</p>
-<p>Oh absolutely! Though many people may suffer from imposter syndrome at different stages, I think it’s way more common during the early years. When working in a fast-moving field like ML, it is natural to feel lagging, seeing the incredible progress in ML and AI daily. The best way to overcome such feelings is to understand that you don’t have to follow every other trend. Fundamentals matter the most in the long run. If you have a solid understanding of the fundamentals, things will always be easy.</p>
-<p>Q: As a maintainer of TensorFlow addons and contributor to multi-backend Keras, can you give us some insights into the open-source development process, including the joys and challenges of contributing to these projects?</p>
-<p>Contributing to open-source is a commitment. It’s not a one-time thing. If you are working on an open-source project, ideally you expect that the community will use it, and that too for a long period. Developing something that people are eager to use needs well-defined goals. The development of the project has to align with these goals.</p>
-<p>The best part of OSS is that you get to collaborate with many talented people. Once you start developing things in collaboration, you get more clarity about the modalities (using the word modality loosely in this context). You start to optimize for maximum coverage-minimal maintenance. Talking about the challenges, I think the biggest challenge is commitment. Many people do OSS just to make it a bullet point in their resume, but some of us do it because we enjoy solving complex problems for a larger audience. If you have a full-time job, then working on OSS means cutting down on other things to find time for the project.</p>
-<p>Q: How do you stay updated with the latest developments in the field of machine learning? Are there specific resources or communities you recommend for those looking to stay informed?</p>
-<p>Reading research papers is the easiest way. The problem, nowadays, is that it is very hard to filter out good papers from the “pile” of research papers being dumped on arXiv every day. Earlier I used to use arXiv-sanity for filtering paper, but recent changes made to it made it somewhat less usable for me (asking Karpathy to bring back the top-rated filter). Now I rely mainly on my Twitter feed for filtering papers. It’s not that good, but it works.</p>
-<p>To answer your question about communities and resources, I think Twitter and Kaggle are hands down the best. If you constantly use the two, you pretty much are aware of the latest research trends and the things that work in practice.</p>
-<p>Q: If you had to offer a single piece of advice to aspiring data scientists or machine learning enthusiasts, what would it be, and why do you consider it so valuable?</p>
-<p>As I said earlier, the most important thing is to learn the fundamental concepts. The biggest mistake I see people making, especially people starting their careers or those in the early stage, is that they get influenced(pun intended!) by the noise on social media. Also, learning “how” to use an algorithm and learning “when” to use an algorithm are two very different things.</p>
-<p>One other unusual thing that I want to emphasize is that if you can afford higher education, go for it without a doubt. Degrees may not matter for your work, but they definitely help in your job search. I am not saying that you can’t do good without degrees, but you will get more opportunities easily if you have one. I couldn’t afford to apply for a master’s program after graduation, but if you can, you definitely should.</p>
-<p>Q: When you are given a problem statement, how do you devise AI solutions for it? What do you look for in a proposed solution?</p>
-<p>The first thing I do before attempting anything else at all is to go through the data thoroughly. People naively jump on model building, but I tend to spend a lot of time with the data at hand. Once I understand the dataset, I look for a trivial solution that can be considered as a baseline. Defining metrics for a model and defining metrics that align with the business are two different aspects. We can’t ignore the latter. Putting models into production means adjusting to the constraints in the production environment. Blatantly scaling up/down doesn’t work for most of the scenarios.</p>
-<p>Q: You’ve always been bullish on JAX, the framework. What is it about JAX that you like? Why would you use JAX over say, TensorFlow or PyTorch? When you look at an ML framework, what attributes are you looking for?</p>
-<p>Almost everything. Reproducibility is a first-class citizen, and so is parallelism in JAX. Have you tried sharding in JAX? I don’t think any other framework (past and present included) had such a good API design for implementing parallelism.</p>
-<p>I would use JAX over any other framework because it is efficient and much easier to optimize. People keep focusing on compilers for programming languages but don’t focus enough on the need for a compiler for deep learning workflows. In my opinion, Python is the perfect language, XLA is a great compiler, and JAX is the best framework for deep learning.</p>
-<p>If I were to choose a framework today from a given list, here are the following things that I use as a checklist for evaluation:</p>
+<p>Let me be honest… I don’t like writing SQL queries. And I always wished if someone could do it for me. Well that’s exactly what we are going to do today!</p>
+<p>We are going to build an intelligent agent that does just that, using Google’s Gemini model and creating a neat web interface with Gradio.</p>
+<p>Traditional Text-to-SQL pipelines can sometimes be a bit like a black box. You give them a question, they spit out a SQL query, and you hope for the best.</p>
+<p>What’s the advantage of building something more “agent-like,” even in a simplified form?</p>
+<p>A standard text-to-sql pipeline can be brittle. The generated SQL query might be incorrect. Even worse, an incorrect query could run without errors but give you wrong or useless results, and you might not even realize it!</p>
+<p>👉 While a full-fledged agent system might involve complex reasoning and self-correction, our approach today focuses on building a robust pipeline with clear steps, good error handling when talking to the Large Language Model (LLM), and a way to learn from the process. This lays the foundation for more advanced agentic behavior later.</p>
+<p>Let’s build this agent! 💪</p>
+<p>And by the way, all the code related to this guide can be found here on my github.</p>
+<section id="the-big-picture-our-agents-workflow" class="level2">
+<h2 class="anchored" data-anchor-id="the-big-picture-our-agents-workflow">The Big Picture: Our Agent’s Workflow</h2>
+<p>Before we dive into code, let’s look at the overall flow of our system. It’s a simple, logical sequence: a user’s question comes in one end, and an answer from the database comes out the other.</p>
+<p><img src="assets/text2sql_agent/db_schema.png" class="img-fluid"></p>
+</section>
+<section id="setting-the-stage---our-database" class="level2">
+<h2 class="anchored" data-anchor-id="setting-the-stage---our-database">Setting the Stage - Our Database</h2>
+<p>First things first, every SQL agent needs a database to talk to! For this tutorial, we’ll use SQLite, which is super convenient because it’s a file-based database and doesn’t require a separate server.</p>
+<p>Our Data: We’ll imagine a simple company database with two main tables:</p>
+<ul>
+<li><p>departments: Stores information about different departments.</p></li>
+<li><p>employees: Stores information about employees and which department they belong to.</p></li>
+</ul>
+<p>Here’s the structure (schema) we’ll aim for:</p>
+<p><img src="assets/text2sql_agent/workflow.webp" class="img-fluid"></p>
+<p>This setup allows us to ask interesting questions like “Which employees work in Engineering?” or “What’s the average salary in the HR department?”.</p>
+<p>To bring this to life, we need a script to create and populate this database. This ensures our agent always has a consistent environment to work in.</p>
+<p>For those who want to see exactly how the database is created, you can check out the <a href="https://github.com/kanpuriyanawab/awesome-ai-agents/blob/main/agents/text2sql/setup_db.py">database_setup.py</a> file in the GitHub repo. It’s a straightforward Python script using the sqlite3 library.</p>
+<p>This script, when called by our UI application, will ensure we always have a fresh database with this structure and data for our agent to work with.</p>
+</section>
+<section id="architecting-our-agent" class="level2">
+<h2 class="anchored" data-anchor-id="architecting-our-agent">Architecting Our Agent</h2>
+<p>Now let’s make our agent! Since the goal of our repository is to build several different kinds of agents from scratch, we need a clean, reusable structure.</p>
+<p><strong>Why a Base Class?</strong> We use a base class to define a common “contract” or interface. This ensures all our agents, whether for Text-to-SQL or another task, have a consistent design. It’s like saying every vehicle must have a run method, even if a car and a motorcycle implement it differently. This makes our project scalable and easy to understand.</p>
+<p>We’ll define a simple Agent base class in agents/base_agent.py that requires every agent to have a run method.</p>
+<pre><code># agents/base_agent.py
+from abc import ABC, abstractmethod
+
+class Agent(ABC):
+    def __init__(self, name: str):
+        self._internal_name = name
+
+    @abstractmethod
+    def run(self, user_input: str, history: list[tuple[str, str]] = None) -&gt; str:
+        pass
+
+    @property
+    def name(self) -&gt; str:
+        return self._internal_name
+</code></pre>
+<p>Our <strong>Text2SQLAgent</strong> will inherit from this, guaranteeing it fits into our agent framework.</p>
+</section>
+<section id="the-core-logic-of-our-text2sql-agent" class="level2">
+<h2 class="anchored" data-anchor-id="the-core-logic-of-our-text2sql-agent">The Core Logic of our Text2SQL Agent</h2>
+<p>Our agent’s job can be broken down into a few key steps. Let’s look at the concepts behind the main methods.</p>
 <ol type="1">
-<li><p>Mental model</p></li>
-<li><p>Ease of reproducibility</p></li>
-<li><p>Ease of parallelism</p></li>
-<li><p>The balance between low-level and high-level</p></li>
-<li><p>The ecosystem</p></li>
+<li><p><strong>Getting the Database Schema</strong> For an LLM to generate correct SQL, it must know the structure of your database. We need a method, let’s call it _get_database_schema, that connects to our SQLite file and programmatically extracts all table names, column names, and their data types. This schema is then passed to the LLM as part of the context.</p></li>
+<li><p><strong>Generating the SQL Query</strong> This is the heart of the agent, where we talk to Gemini. The process is called prompt engineering. We need to write a very clear set of instructions (a “prompt”) for the model.</p></li>
 </ol>
-<p>I think the ecosystem is the part where JAX is lacking in a big way, but I hope with Keras 3, more people will contribute to the ecosystem, and it will catch up.</p>
-<p>Q: Can’t have an interview without asking this question to the Annotated Papers guy 😂: what is one research paper you’ve read recently which gave you that “aha” feeling? Basically, a paper which blew your mind!</p>
-<p>I wouldn’t say that I came across any paper in the last few months that blew my mind, but the latest paper from Apple titled MobileCLIP was a refreshing one. Deploying deep learning models on mobile devices is always a challenge, and requires a bit of rethinking, and modifications on the architectural side which aren’t that obvious when you are deploying things on a server. In that way, I think MobileCLIP is a must-read for anyone interested in those kinds of details.</p>
-<p>Q: Your open source work has mostly focused on vision. Has your work in the industry focused around vision as well? Or have you dabbled in different fields?</p>
-<p>Haha yes, my open-source work has mostly been focused on vision, but in terms of industrial experience, I have a T-shaped knowledge graph where I consider the depth of expertise in vision and width for other areas of Machine Learning. From 2017 to date, I have worked on business problems focused on traditional machine learning, time series, vision, speech, and NLP. I have been on the other side of ML as well, where I have focused on MLOPs along with my research work.</p>
-<p>Computer Vision is my favorite field, and the biggest reason for that is that when I focus on vision problems, I have a sense of “what’s happening” inside my pipelines. I find vision more mature compared to other fields, and I absolutely love working with images.</p>
-<p>Q: You’ve been in the industry for 6–7 years, and yet, manage to take time out to contribute to open source. What motivates you to keep contributing to open source?</p>
-<p>Two major things. First, during my initial career phase, OSS played a big role in my learning and growth curves. Second, I consider solving problems in OSS as a mental exercise. The more you do it, the better you become. Your code being used by thousands of other developers is a true test of the logic baked in that code.</p>
-<p>Q: What’s the next big thing for Aakash Nain? :) What are you planning to work on next in open source? If you have any big announcements to make, this is the best place to make them 😂</p>
-<p>For now, I will be focusing on making some tutorials for large-scale training using Keras and JAX. At some point, I will also develop another library based on JAX purely for fun, mostly focused on the vision side, given if I get enough time.</p>
-<p>Anshuman &amp; Abheesht: Thank you, Aakash! It’s been great talking to you!</p>
-<p>And that concludes the fourth interview of our “AI Chronicles” series! This series is a joint effort of Anshuman Mishra and Abheesht Sharma. Anshuman is currently working at Flip as a Machine Learning Engineer. Abheesht is an Applied Scientist at Amazon, where he works on detecting advertisement bots. Both of them contribute extensively to ML open-source software and have been involved in developing KerasNLP.</p>
+<p>Our prompt includes:</p>
+<ul>
+<li><p>The Role: “You are an expert SQLite SQL query generator.”</p></li>
+<li><p>The Context: The full database schema we just extracted.</p></li>
+<li><p>The Task: The user’s question.</p></li>
+<li><p>The Constraints: “Output ONLY the SQL query. No extra text or markdown.”</p></li>
+</ul>
+<p>We then wrap this prompt and send it to the Gemini API using Google’s Python SDK.</p>
+<pre><code># A conceptual look at the prompt structure inside the _generate_sql_with_gemini method
+
+system_instruction_text = "You are an expert SQLite SQL query generator."
+
+prompt_for_task = f"""
+Database Schema:
+---
+{self.schema} 
+---
+Task: ...
+Constraints: ...
+
+User Question: {question}
+
+SQL Query:
+"""
+full_prompt_for_gemini = f"{system_instruction_text}\n\n{prompt_for_task}"
+response = self.gemini_model.generate_content(full_prompt_for_gemini, ...)</code></pre>
+<p>Full code can be found <a href="https://github.com/kanpuriyanawab/awesome-ai-agents/blob/main/agents/text2sql/agent.py">here</a>.</p>
+<ol start="3" type="1">
+<li><strong>Executing the Query</strong> Once Gemini returns what we hope is a valid SQL query, our agent needs to run it. A method _execute_sql_query connects to the database, executes the string, and fetches the results.</li>
+</ol>
+<p>A quick note on security: In a real-world application, directly running LLM-generated SQL can be risky. For this educational project, we’re keeping it simple, but in production, you would add validation layers or use read-only database permissions.</p>
+<p>Our Adventure with Gemini: From Bugs to Best Practices</p>
+<p>Working with powerful LLMs is an iterative process. It’s rarely perfect on the first try! Here are some real challenges we faced and the key lessons learned.</p>
+<p><strong>Best Practices We Adopted:</strong></p>
+<ul>
+<li><p>Clear, Instructive Prompts: Be explicit about the role, context, task, and constraints.</p></li>
+<li><p>Configuration for Determinism: Using temperature=0.0 for SQL generation tells the model to be predictable and factual, not creative.</p></li>
+<li><p>Handling API Responses Carefully: Never assume the LLM’s response will be perfect. Always check for errors, finish_reason, and empty content before processing the output.</p></li>
+</ul>
+<p><strong>Bugs Along the Way (and How We Squashed Them!):</strong></p>
+<ol type="1">
+<li><p>The “Empty Schema” Mystery: At first, our agent wasn’t sending the schema! Gemini received an empty prompt and couldn’t work. By meticulously printing the exact prompt string before sending it, we found the bug in our schema-loading logic and fixed it.</p></li>
+<li><p>The MAX_TOKENS Puzzle: Even with the schema, our first model (a preview version) would often fail with finish_reason: MAX_TOKENS and no output. It seemed to be getting confused by the long, complex prompt.</p></li>
+</ol>
+<ul>
+<li><p>The “Aha!” Moment: We used the “Extreme Prompt Simplification Test” we replaced our complex prompt with a simple question like “What is the capital of France?”. When that worked, it proved our API setup was fine and the issue was with how that specific model handled our complex prompt.</p></li>
+<li><p>The Fix: Increasing max_output_tokens resolved this!</p></li>
+</ul>
+<ol start="3" type="1">
+<li>The response.text Trap: Using response.text to get the output can fail if the model’s response is blocked or empty. We learned to robustly parse response.candidates[0].content.parts instead.</li>
+</ol>
+<p><strong><strong>Key Takeaway: Debugging LLM interactions is an art. Log your inputs (prompts) and its outputs (raw responses) very carefully!</strong></strong></p>
+</section>
+<section id="bringing-our-agent-to-life-with-gradio" class="level2">
+<h2 class="anchored" data-anchor-id="bringing-our-agent-to-life-with-gradio">Bringing Our Agent to Life with Gradio</h2>
+<p>Now, let’s build a cool UI! We want a chat window with clickable question suggestions on the side. For this custom layout, we’ll use Gradio’s gr.Blocks().</p>
+<p>(Here you could insert a screenshot of the final Gradio UI)</p>
+<p>The UI has three main parts:</p>
+<ol type="1">
+<li><p><strong>The Chatbot Display:</strong> A gr.Chatbot component shows the history of the conversation.</p></li>
+<li><p><strong>The Suggestion Column:</strong> We create a gr.Column and loop through a list of example questions, creating a gr.Button for each. The magic happens in the .click() event handler for each button, which updates the main input box.</p></li>
+<li><p><strong>The Input Area:</strong> A gr.Textbox for typing messages and a “Send” gr.Button. Both are wired to a single function, handle_chat_submission, which orchestrates the interaction with our agent.</p></li>
+</ol>
+<p>This function takes the user’s message and the chat history, passes them to our agent’s .run() method, gets the result, and updates the chat display.</p>
+<p>For the specific code that wires up these Gradio components, feel free to check out ui/app_text2sql.py in the repository.</p>
+</section>
+<section id="how-good-is-our-agent-a-note-on-evaluation" class="level2">
+<h2 class="anchored" data-anchor-id="how-good-is-our-agent-a-note-on-evaluation">How Good is Our Agent? A Note on Evaluation</h2>
+<p>Creating an agent is just the first step. To know if it’s truly useful, especially for production, we need to evaluate it.</p>
+<p><strong>Key Evaluation Metrics for Text-to-SQL:</strong></p>
+<ul>
+<li><p>Execution Accuracy: This is the most important one. Does the generated SQL run without errors and produce the correct answer? You’d need a test dataset of questions and their known correct answers to verify this.</p></li>
+<li><p>Query Match: Does the generated SQL query exactly match a “golden” or reference SQL query? This is very strict and often not necessary, as multiple different SQL queries can produce the same correct result.</p></li>
+<li><p>Robustness: How well does the agent handle ambiguous questions, questions about things not in the schema, or slightly malformed inputs?</p></li>
+</ul>
+<p>For a real project, you would build a “test suite” of many question-query-answer triplets and run your agent against it to calculate these metrics automatically. This helps track improvements as you refine your prompts or change models.</p>
+</section>
+<section id="conclusion" class="level2">
+<h2 class="anchored" data-anchor-id="conclusion">Conclusion</h2>
+<p>And there you have it! We’ve journeyed from understanding the need for a robust Text-to-SQL solution, setting up our database, architecting a scalable agent structure, and diving deep into the logic using Gemini. We navigated some tricky debugging and wrapped it all in a user-friendly Gradio interface.</p>
+<p>You’ve now built a functional Text-to-SQL agent from scratch! This project covers many important concepts: OOP, database interaction, LLM prompting, debugging, and web UI creation.</p>
+<p>This project touches on many important concepts:</p>
+<ul>
+<li>Object-Oriented Programming (base classes, inheritance)</li>
+<li>Database Interaction (SQLite)</li>
+<li>LLM Prompt Engineering and API Usage (Gemini)</li>
+<li>Debugging and Iterative Development</li>
+<li>Web UI Creation (Gradio)</li>
+</ul>
+<p>Feel free to experiment further:</p>
+<ul>
+<li>Make the agent use conversation history for follow-up questions.</li>
+<li>Add more error handling or self-correction attempts if the SQL fails.</li>
+<li>Try different LLMs or prompting strategies.</li>
+<li>Expand the Gradio UI with more features!</li>
+</ul>
+<p>Happy coding, and keep building amazing things!</p>
 
 
+</section>
 
 </main> <!-- /main -->
 <script id="quarto-html-after-body" type="application/javascript">
@@ -623,4 +744,4 @@ ul.task-list li input[type="checkbox"] {
 
 
 
-<footer class="footer"><div class="nav-footer"><div class="nav-footer-center"><div class="toc-actions"><ul><li><a href="https://github.com/kanpuriyanawab/edit/master/posts/interview_aakash.qmd" class="toc-action"><i class="bi bi-github"></i>Edit this page</a></li><li><a href="https://github.com/kanpuriyanawab/issues/new" class="toc-action"><i class="bi empty"></i>Report an issue</a></li></ul></div></div></div></footer></body></html>
+<footer class="footer"><div class="nav-footer"><div class="nav-footer-center"><div class="toc-actions d-sm-block d-md-none"><ul><li><a href="https://github.com/kanpuriyanawab/edit/master/posts/text2sql_agent.qmd" class="toc-action"><i class="bi bi-github"></i>Edit this page</a></li><li><a href="https://github.com/kanpuriyanawab/issues/new" class="toc-action"><i class="bi empty"></i>Report an issue</a></li></ul></div></div></div></footer></body></html>
