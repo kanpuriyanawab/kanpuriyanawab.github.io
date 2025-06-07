@@ -10,17 +10,17 @@ toc: true
 TLDR
 
 
-### Qwen2.5
-**[Add Qwen 2.5 to KerasHub](https://github.com/keras-team/keras-hub/pull/2088)**
-*🚀 Contribution to [KerasHub](https://github.com/keras-team/keras-hub)*
-*Led the integration of the powerful Qwen 2.5 language model. This involved implementing the core backbone, attention mechanisms, and checkpoint conversion, making a state-of-the-art model accessible to the Keras community.*
+### Qwen 2.5 model
+
+I did this work while working as consultant for Keras team. Contributed the model to [KerasHub](https://github.com/keras-team/keras-hub/pull/2088). This involved implementing the core backbone, attention mechanisms, and checkpoint conversion, making the state-of-the-art model accessible to the Keras community.
 
 
-### Qwen Moe
-[KerasHub - Add Qwen 1.5 Moe](https://github.com/keras-team/keras-hub/pull/2163)
+### Qwen-1.5-Mixture-of-Experts
+
+[This work](https://github.com/keras-team/keras-hub/pull/2163) involved implementing the core backbone, attention mechanisms, and checkpoint conversion, making Qwen-1.5-Mixture-of-Experts model model accessible to the Keras community.
 
 ### Mixtral
-[KerasHub - Add Mixtral](https://github.com/keras-team/keras-hub/pull/2196)
+Through this work I developed support for [Mixtral](https://github.com/keras-team/keras-hub/pull/2196) model in Keras Hub, making it accessible to community.
 
 
 ## 2024

@@ -15,6 +15,8 @@ search_exclude: false
 title: 'Building Production Ready Text-to-SQL Agent from Scratch'
 ---
 
+<iframe width="560" height="315" src="https://www.youtube.com/embed/ezOhLC10uSQ?si=8y72v6JKFX664w-V" title="YouTube video player" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share" referrerpolicy="strict-origin-when-cross-origin" allowfullscreen></iframe>
+
 Let me be honest… I don’t like writing SQL queries. And I always wished if someone could do it for me. Well that’s exactly what we are going to do today!
 
 We are going to build an intelligent agent that does just that, using Google's Gemini model and creating a neat web interface with Gradio.

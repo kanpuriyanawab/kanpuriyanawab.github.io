@@ -5,34 +5,42 @@ toc: false
 
 Hi there 👋. I am Anshuman Mishra. I work on large language models yet I like to call myself a software engineer.
 
-<!-- 
-<center>
+
+<!-- <center>
 <img src="assets/images/pic_5.jpeg" style="width: 350px; height: 350px; border-radius: 50%;" />
-</center> -->
+</center>
+ -->
 
 
+I work on large language models at [FlipAI](https://flip.ai).
 
-To know about my projects, please refer to [my GitHub profile](https://github.com/kanpuriyanawab). 
+### Professional Experience
 
-I work on large language models at [FlipAI](https://flip.ai). For more details on my work experience, check out my [LinkedIn profile](https://www.linkedin.com/in/kanpuriyanawab/).
+* **Independent AI Consultant, Google**
+    * *Feb 2025 - Present*
+    * Working with Keras team
 
-<table>
-  <tr>
-    <td><a href="https://github.com/kanpuriyanawab"><img src="https://img.shields.io/github/followers/kanpuriyanawab.svg?label=GitHub&style=social" alt="GitHub"></a></td>
-    <td><a href="https://twitter.com/kanpuriyanawab"><img src="https://img.shields.io/twitter/follow/kanpuriyanawab?label=Twitter&style=social" alt="Twitter"></a></td>
-    <td><a href="https://www.linkedin.com/in/kanpuriyanawab"><img src="https://img.shields.io/badge/LinkedIn--_.svg?style=social&logo=linkedin" alt="LinkedIn"></a></td>
-    <td><a href="mailto:shivanshuman021@gmail.com"><img src="https://img.shields.io/badge/Gmail--_.svg?style=social&logo=gmail" alt="Gmail"></a></td>
-  </tr>
-</table>
+* **ML Engineer, FlipAI**
+    * *July 2023 - May 2025*
+    * In my current role, I am responsible for designing, building, and deploying machine learning models in a fast-paced production environment. My work involves the end-to-end ML lifecycle, from data preprocessing and model training to deployment and monitoring of core AI features.
 
-### Timeline
+* **Google Summer of Code Mentee, Google**
+    * *July 2023 - May 2025*
+    * Worked with Keras team.
 
-| Position                               | Company                           | Duration                |
-|:--------------------------------------:|:---------------------------------:|:-----------------------:|
-| ML Engineer              | FlipAI                  | July 2023 - Present     |
-| Technical Author   | Weights&Biases                            | Sep 2023 - Feb 2024|
-| Data Science Intern   | BNY Mellon                            | Jan 2023 - June 2023|
-| Software Engineer Intern    | Amazon                     | May 2022 - July 2023   |
+* **Technical Author, Weights & Biases**
+    * *September 2023 - February 2024*
+    * During my time as a Technical Author, I focused on creating clear and compelling educational content for the machine learning community. I wrote in-depth articles, tutorials, and guides explaining complex ML concepts and demonstrating best practices using the W&B platform.
+
+* **Data Science Intern, BNY Mellon**
+    * *January 2023 - June 2023*
+    * As a Data Science Intern, I gained hands-on experience within the financial services industry. My responsibilities included analyzing large datasets to uncover insights, building predictive models, and presenting my findings to support data-driven decision-making.
+
+* **Software Engineer Intern, Amazon**
+    * *May 2022 - July 2022*
+    * During my internship at Amazon, I contributed to a team responsible for developing large-scale software systems. This experience provided a strong foundation in the software development lifecycle, including coding, debugging, and working with cloud infrastructure to deliver a project feature.
+
+
 
 ### Some stuff
 

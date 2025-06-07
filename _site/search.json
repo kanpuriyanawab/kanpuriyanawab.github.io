@@ -7,39 +7,18 @@
     "text": "Building Production Ready Text-to-SQL Agent from Scratch\n\n\nTired of Writing SQL? Let’s Build an AI That Does It For You.\n\n\n\n\n\nJun 6, 2025\n\n\n\n\n\n\n\n\n\n\n\n\nThe AI Memory Layer Will Change Everything\n\n\nHow Stateful Memory is Revolutionizing AI Agents and Applications\n\n\n\n\n\nJun 3, 2025\n\n\n\n\n\n\n\n\n\n\n\n\nInterview with Aakash Kumar Nain, MLE at Merlyn Minds\n\n\njoint work with Abheesht Sharma\n\n\n\n\n\nDec 22, 2023\n\n\n\n\n\n\n\n\n\n\n\n\nIllustrated LLM OS\n\n\nAn Implementational Perspective of LLMs as Operating Systems\n\n\n\n\n\nDec 3, 2023\n\n\n\n\n\n\n\n\n\n\n\n\nInterview with Matthew Watson, Keras Team, Google\n\n\njoint work with Abheesht Sharma\n\n\n\n\n\nOct 11, 2023\n\n\n\n\n\n\n\n\n\n\n\n\nInterview with Rajaswa Patil, AI Researcher at Postman Labs\n\n\njoint work with Abheesht Sharma\n\n\n\n\n\nSep 25, 2023\n\n\n\n\n\n\n\n\n\n\n\n\nDeep Learning in Julia\n\n\nImplementing ML models in Flux, the Julia Deep Learning Package!\n\n\n\n\n\nDec 31, 2022\n\n\n\n\n\n\n\n\n\n\n\n\nComprehensive data exploration with Julia\n\n\nExploratory Data Analysis of Housing dataset in Julia\n\n\n\n\n\nDec 22, 2022\n\n\n\n\n\n\n\n\n\n\n\n\nInterview with 2x Kaggle Grandmaster, Data Science Manager at Emirates NBD - Ravi Ramakrishnan\n\n\njoint work with Abheesht Sharma\n\n\n\n\n\nSep 12, 2022\n\n\n\n\n\nNo matching items"
   },
   {
-    "objectID": "pages/work.html",
-    "href": "pages/work.html",
-    "title": "Anshuman Mishra",
+    "objectID": "pages/life.html",
+    "href": "pages/life.html",
+    "title": "Life",
     "section": "",
-    "text": "TLDR\n\n\nAdd Qwen 2.5 to KerasHub 🚀 Contribution to KerasHub Led the integration of the powerful Qwen 2.5 language model. This involved implementing the core backbone, attention mechanisms, and checkpoint conversion, making a state-of-the-art model accessible to the Keras community.\n\n\n\nKerasHub - Add Qwen 1.5 Moe\n\n\n\nKerasHub - Add Mixtral"
+    "text": "&lt;img src=“../assets/images/life/mysore-road\n\n\n\n\nMy Strava: https://www.strava.com/athletes/141188010"
   },
   {
-    "objectID": "pages/work.html#section",
-    "href": "pages/work.html#section",
-    "title": "Anshuman Mishra",
+    "objectID": "pages/life.html#rasta-cafe-126-km",
+    "href": "pages/life.html#rasta-cafe-126-km",
+    "title": "Life",
     "section": "",
-    "text": "TLDR\n\n\nAdd Qwen 2.5 to KerasHub 🚀 Contribution to KerasHub Led the integration of the powerful Qwen 2.5 language model. This involved implementing the core backbone, attention mechanisms, and checkpoint conversion, making a state-of-the-art model accessible to the Keras community.\n\n\n\nKerasHub - Add Qwen 1.5 Moe\n\n\n\nKerasHub - Add Mixtral"
-  },
-  {
-    "objectID": "pages/work.html#section-1",
-    "href": "pages/work.html#section-1",
-    "title": "Anshuman Mishra",
-    "section": "2024",
-    "text": "2024\n\nWeights & Biases\nSupercharge KerasNLP Models with Wandb\n\n\nWeights & Biases\nGenerating High-quality Images with SD.Next, HuggingFace Diffusers and W&B"
-  },
-  {
-    "objectID": "pages/work.html#section-2",
-    "href": "pages/work.html#section-2",
-    "title": "Anshuman Mishra",
-    "section": "2023",
-    "text": "2023\ntl;dr - how many talks, open source contributions\n\nLlama\nKerasNLP - Add Llama Backbone\n\n\nGPT Neo X\n– Tell a story\nKerasNLP - Generic RotaryEmbedding Layer KerasNLP - Port GPTNeoX to KerasCore KerasNLP - Adding GPTNeoXBackbone Add GPTNeoXPreprocessor Refactor RotaryEmbedding and GPTNeoXAttention\n\n\nBeam Sampler\nPort BeamSampler to core\n\n\nKeras Core layer contributions\nKeras - Add rsqrt to ops API Keras - Add rms_scaling in LayerNormalization\n\n\nAlbert Classifier\nAdd AlbertClassifier Adding an AlbertMaskedLM task + Fix Projection layer dimension in MaskedLMHead\n\n\nMisc Bug Fixes\nFix RotaryEmbedding import Fix Autograph error with perplexity metric Fix ModuleNotFoundError keras_nlp.models.xlnet Add compute_output_shape to tokenizer Default compilation for Albert, Distilbert, Roberta MaskedLM Call super.config() in BartBackbone’s get_config() Add API exports for tokenizers documented on keras.io Add API exports for metrics documented on keras.io Add API exports for samplers documented on keras.io Add API exports for models documented on keras.io Move from_preset to base tokenizer classes\nAdd an add_prefix_space Arg in BytePairTokenizer\n\n\nTutorials\nPort [KerasNLP] Transformer Pretraining guide to multi-backend Keras\n\n\nTutorials\nfixing getting started guide kerasnlp\n\n\nTutorials\nAdd example : Data Parallel Training with KerasNLP\n\n\nTutorial\nAdd Semantic Similarity with KerasNLP tutorial\n\n\nTutorial\nhttps://github.com/keras-team/keras-io/blob/master/guides/keras_hub/transformer_pretraining.py\n\n\nTalk\nKerasNLP: From Words to Wisdom, on October 7, 2023 at DevFest New Delhi’23 .\n\n\nKaggle\nOne Stop EDA\n\n\nTesting improvements\nSpeed up default RoBERTa testing roughly 3x Adding XXBackboneTPUTests\n\n\nXLMRoberta\nAdd an XLMRobertaMaskedLM task model\n\n\ntalk\nModular NLP Workflows with KerasNLP, on September 29, 2023 at Google Developer Groups, Seattle.\n\n\ntalk\nSupercharging Keras with WandB, on September 23, 2023 at TensorFlow User Group Mumbai.\n\n\ntalk\nGSoC Success Secrets: Cracking the Code to Open Source Excellence, September 10, 2023 at National Institute of Technology, Warangal.\n\n\ntalk\nRethinking LLM Design with KerasNLP, on August 26, 2023 at TensorFlow User Group Hyderabad.\n\n\ntalk\nKerasNLP for Starters, on August 20, 2023 at TensorFlow User Group Durg\n\n\ntalk\nTaking KerasNLP on GenAI Ride on July, 23, 2023 at TensorFlow User Group, Kolkata\n\n\ntalk\nRe-imagining Keras in the evolving ML ecosystem on July 16, 2023 at Google I/O Extended’23 New Delhi.\n\n\nJulia Contributions\nFluxML - Adding UNet Model"
-  },
-  {
-    "objectID": "pages/work.html#section-3",
-    "href": "pages/work.html#section-3",
-    "title": "Anshuman Mishra",
-    "section": "2022",
-    "text": "2022\n\nCNN From Tensorflow to Pytorch\nDeepchem - Porting CNN from TF ➡️ PyTorch\n\n\nNeuralODE\nDeepchem - Neural ODE tutorial 📚\n\n\nh2o-llmstudio\nadd: safe serialization while pushing to hf\n\n\nDeepmind - optax\n\nadded typing to linear_algebra.py\n\n\n\nMisc Bug fixes\n:octocat: Fixed potential bug in deepchem’s CNN implementation\nFixing load_qm7_from_mat() not found\n\n\nKaggle\nKaggle T4x2 multi-gpu training G2Net\n\n\nKaggle\nLB:0.23 Ensemble {CatBoost, XGBoost, LightGBM}\n\n\nKaggle\nLightGBM + Optuna Baseline"
+    "text": "&lt;img src=“../assets/images/life/mysore-road\n\n\n\n\nMy Strava: https://www.strava.com/athletes/141188010"
   },
   {
     "objectID": "posts/interview_matt.html",
@@ -291,13 +270,41 @@
     "href": "index.html",
     "title": "Anshuman Mishra",
     "section": "",
-    "text": "Hi there 👋. I am Anshuman Mishra. I work on large language models yet I like to call myself a software engineer.\n\nTo know about my projects, please refer to my GitHub profile.\nI work on large language models at FlipAI. For more details on my work experience, check out my LinkedIn profile.\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\nTimeline\n\n\n\n\n\n\n\n\nPosition\nCompany\nDuration\n\n\n\n\nML Engineer\nFlipAI\nJuly 2023 - Present\n\n\nTechnical Author\nWeights&Biases\nSep 2023 - Feb 2024\n\n\nData Science Intern\nBNY Mellon\nJan 2023 - June 2023\n\n\nSoftware Engineer Intern\nAmazon\nMay 2022 - July 2023\n\n\n\n\n\nSome stuff\n\nGoogle Developer Expert in Machine Learning and Google Cloud Platform (bit.ly/expert-sp)\nMentee, Google Summer of Code 2023, in TensorFlow. See my project here\nOpen Source Contributor at KerasNLP"
+    "text": "Hi there 👋. I am Anshuman Mishra. I work on large language models yet I like to call myself a software engineer.\n\nI work on large language models at FlipAI.\n\nProfessional Experience\n\nIndependent AI Consultant, Google\n\nFeb 2025 - Present\nWorking with Keras team\n\nML Engineer, FlipAI\n\nJuly 2023 - May 2025\nIn my current role, I am responsible for designing, building, and deploying machine learning models in a fast-paced production environment. My work involves the end-to-end ML lifecycle, from data preprocessing and model training to deployment and monitoring of core AI features.\n\nGoogle Summer of Code Mentee, Google\n\nJuly 2023 - May 2025\nWorked with Keras team.\n\nTechnical Author, Weights & Biases\n\nSeptember 2023 - February 2024\nDuring my time as a Technical Author, I focused on creating clear and compelling educational content for the machine learning community. I wrote in-depth articles, tutorials, and guides explaining complex ML concepts and demonstrating best practices using the W&B platform.\n\nData Science Intern, BNY Mellon\n\nJanuary 2023 - June 2023\nAs a Data Science Intern, I gained hands-on experience within the financial services industry. My responsibilities included analyzing large datasets to uncover insights, building predictive models, and presenting my findings to support data-driven decision-making.\n\nSoftware Engineer Intern, Amazon\n\nMay 2022 - July 2022\nDuring my internship at Amazon, I contributed to a team responsible for developing large-scale software systems. This experience provided a strong foundation in the software development lifecycle, including coding, debugging, and working with cloud infrastructure to deliver a project feature.\n\n\n\n\nSome stuff\n\nGoogle Developer Expert in Machine Learning and Google Cloud Platform (bit.ly/expert-sp)\nMentee, Google Summer of Code 2023, in TensorFlow. See my project here\nOpen Source Contributor at KerasNLP"
   },
   {
-    "objectID": "pages/things.html",
-    "href": "pages/things.html",
-    "title": "Things",
+    "objectID": "pages/work.html",
+    "href": "pages/work.html",
+    "title": "Anshuman Mishra",
     "section": "",
-    "text": "My Strava: https://www.strava.com/athletes/141188010"
+    "text": "TLDR\n\n\nI did this work while working as consultant for Keras team. Contributed the model to KerasHub. This involved implementing the core backbone, attention mechanisms, and checkpoint conversion, making the state-of-the-art model accessible to the Keras community.\n\n\n\nThis work involved implementing the core backbone, attention mechanisms, and checkpoint conversion, making Qwen-1.5-Mixture-of-Experts model model accessible to the Keras community.\n\n\n\nThrough this work I developed support for Mixtral model in Keras Hub, making it accessible to community."
+  },
+  {
+    "objectID": "pages/work.html#section",
+    "href": "pages/work.html#section",
+    "title": "Anshuman Mishra",
+    "section": "",
+    "text": "TLDR\n\n\nI did this work while working as consultant for Keras team. Contributed the model to KerasHub. This involved implementing the core backbone, attention mechanisms, and checkpoint conversion, making the state-of-the-art model accessible to the Keras community.\n\n\n\nThis work involved implementing the core backbone, attention mechanisms, and checkpoint conversion, making Qwen-1.5-Mixture-of-Experts model model accessible to the Keras community.\n\n\n\nThrough this work I developed support for Mixtral model in Keras Hub, making it accessible to community."
+  },
+  {
+    "objectID": "pages/work.html#section-1",
+    "href": "pages/work.html#section-1",
+    "title": "Anshuman Mishra",
+    "section": "2024",
+    "text": "2024\n\nWeights & Biases\nSupercharge KerasNLP Models with Wandb\n\n\nWeights & Biases\nGenerating High-quality Images with SD.Next, HuggingFace Diffusers and W&B"
+  },
+  {
+    "objectID": "pages/work.html#section-2",
+    "href": "pages/work.html#section-2",
+    "title": "Anshuman Mishra",
+    "section": "2023",
+    "text": "2023\ntl;dr - how many talks, open source contributions\n\nLlama\nKerasNLP - Add Llama Backbone\n\n\nGPT Neo X\n– Tell a story\nKerasNLP - Generic RotaryEmbedding Layer KerasNLP - Port GPTNeoX to KerasCore KerasNLP - Adding GPTNeoXBackbone Add GPTNeoXPreprocessor Refactor RotaryEmbedding and GPTNeoXAttention\n\n\nBeam Sampler\nPort BeamSampler to core\n\n\nKeras Core layer contributions\nKeras - Add rsqrt to ops API Keras - Add rms_scaling in LayerNormalization\n\n\nAlbert Classifier\nAdd AlbertClassifier Adding an AlbertMaskedLM task + Fix Projection layer dimension in MaskedLMHead\n\n\nMisc Bug Fixes\nFix RotaryEmbedding import Fix Autograph error with perplexity metric Fix ModuleNotFoundError keras_nlp.models.xlnet Add compute_output_shape to tokenizer Default compilation for Albert, Distilbert, Roberta MaskedLM Call super.config() in BartBackbone’s get_config() Add API exports for tokenizers documented on keras.io Add API exports for metrics documented on keras.io Add API exports for samplers documented on keras.io Add API exports for models documented on keras.io Move from_preset to base tokenizer classes\nAdd an add_prefix_space Arg in BytePairTokenizer\n\n\nTutorials\nPort [KerasNLP] Transformer Pretraining guide to multi-backend Keras\n\n\nTutorials\nfixing getting started guide kerasnlp\n\n\nTutorials\nAdd example : Data Parallel Training with KerasNLP\n\n\nTutorial\nAdd Semantic Similarity with KerasNLP tutorial\n\n\nTutorial\nhttps://github.com/keras-team/keras-io/blob/master/guides/keras_hub/transformer_pretraining.py\n\n\nTalk\nKerasNLP: From Words to Wisdom, on October 7, 2023 at DevFest New Delhi’23 .\n\n\nKaggle\nOne Stop EDA\n\n\nTesting improvements\nSpeed up default RoBERTa testing roughly 3x Adding XXBackboneTPUTests\n\n\nXLMRoberta\nAdd an XLMRobertaMaskedLM task model\n\n\ntalk\nModular NLP Workflows with KerasNLP, on September 29, 2023 at Google Developer Groups, Seattle.\n\n\ntalk\nSupercharging Keras with WandB, on September 23, 2023 at TensorFlow User Group Mumbai.\n\n\ntalk\nGSoC Success Secrets: Cracking the Code to Open Source Excellence, September 10, 2023 at National Institute of Technology, Warangal.\n\n\ntalk\nRethinking LLM Design with KerasNLP, on August 26, 2023 at TensorFlow User Group Hyderabad.\n\n\ntalk\nKerasNLP for Starters, on August 20, 2023 at TensorFlow User Group Durg\n\n\ntalk\nTaking KerasNLP on GenAI Ride on July, 23, 2023 at TensorFlow User Group, Kolkata\n\n\ntalk\nRe-imagining Keras in the evolving ML ecosystem on July 16, 2023 at Google I/O Extended’23 New Delhi.\n\n\nJulia Contributions\nFluxML - Adding UNet Model"
+  },
+  {
+    "objectID": "pages/work.html#section-3",
+    "href": "pages/work.html#section-3",
+    "title": "Anshuman Mishra",
+    "section": "2022",
+    "text": "2022\n\nCNN From Tensorflow to Pytorch\nDeepchem - Porting CNN from TF ➡️ PyTorch\n\n\nNeuralODE\nDeepchem - Neural ODE tutorial 📚\n\n\nh2o-llmstudio\nadd: safe serialization while pushing to hf\n\n\nDeepmind - optax\n\nadded typing to linear_algebra.py\n\n\n\nMisc Bug fixes\n:octocat: Fixed potential bug in deepchem’s CNN implementation\nFixing load_qm7_from_mat() not found\n\n\nKaggle\nKaggle T4x2 multi-gpu training G2Net\n\n\nKaggle\nLB:0.23 Ensemble {CatBoost, XGBoost, LightGBM}\n\n\nKaggle\nLightGBM + Optuna Baseline"
   }
 ]
