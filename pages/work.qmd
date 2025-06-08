@@ -43,11 +43,13 @@ JMLR
 
 While at Weights & Biases, I authored this official [report](https://wandb.ai/kanpuriyanawab/keras-nlp-x-wandb/reports/Supercharge-KerasNLP-Models-with-Wandb--Vmlldzo1Mjk1NjI2) on fine-tuning KerasNLP models for Semantic Similarity. The guide demonstrates how to leverage W&B Sweeps on the SNLI dataset to find optimal hyperparameters and train a high-performing model.
 
+This was also [published](https://keras.io/examples/nlp/semantic_similarity_with_keras_hub/) on official keras website.
+
 ### Generating High-quality Images with SD.Next, HuggingFace Diffusers and W&B <span style="font-size: 0.65em; font-weight: 600; background-color: #fce8d1; color: #c55a11; padding: 3px 9px; border-radius: 12px; vertical-align: middle; text-transform: uppercase; letter-spacing: 0.5px;">Blog</span>
 
 I documented my experiments with advanced diffusion models in this [report](https://wandb.ai/ml-colabs/automatic/reports/Generating-High-quality-Images-with-SD-Next-HuggingFace-Diffusers-and-W-B--Vmlldzo1NTYzMzQy). It's a comprehensive guide to generating high-quality images with SD.Next and HuggingFace Diffusers, emphasizing the use of W&B for complete observability and reproducibility.
 
-### Llama <span style="font-size: 0.65em; font-weight: 600; background-color: #e0eafc; color: #3558b2; padding: 3px 9px; border-radius: 12px; vertical-align: middle; text-transform: uppercase; letter-spacing: 0.5px;">Open Source</span>
+### Llama2 <span style="font-size: 0.65em; font-weight: 600; background-color: #e0eafc; color: #3558b2; padding: 3px 9px; border-radius: 12px; vertical-align: middle; text-transform: uppercase; letter-spacing: 0.5px;">Open Source</span>
 
 The Llama2 was just released and community was going wild over it so I decided to add it in my gsoc project and [contribute](https://github.com/keras-team/keras-nlp/pull/1203) it to library. I applied all my learnings from GPTNeoX implementation in this project and learnt a ton of an amazing series of models to come, before 95% of the world even knew about it.
 
@@ -62,11 +64,12 @@ Contributing GPTNeoX to KerasHub was main project that I did as part of GSoC. In
 Beam Sampler already existed in KerasHub at the time, but I was curious about how it worked, so I took up the task of [porting it to keras3](https://github.com/keras-team/keras-nlp/pull/1181).
 
 
-### Keras Core layer contributions <span style="font-size: 0.65em; font-weight: 600; background-color: #e0eafc; color: #3558b2; padding: 3px 9px; border-radius: 12px; vertical-align: middle; text-transform: uppercase; letter-spacing: 0.5px;">Open Source</span>
+### Supported `rsqrt` op in Keras API <span style="font-size: 0.65em; font-weight: 600; background-color: #e0eafc; color: #3558b2; padding: 3px 9px; border-radius: 12px; vertical-align: middle; text-transform: uppercase; letter-spacing: 0.5px;">Open Source</span>
+Keras API did not have inverse square root op. This op was being used in GPTNeoX's layernorm layer. So I [contributed](https://github.com/keras-team/keras-core/pull/708) this op to Keras.
 
-[Keras - Add rsqrt to ops API](https://github.com/keras-team/keras-core/pull/708)
-
-[Keras - Add rms_scaling in LayerNormalization](https://github.com/keras-team/keras-core/pull/726)
+### Supported Root Mean Square Scaling in keras.LayerNormalization <span style="font-size: 0.65em; font-weight: 600; background-color: #e0eafc; color: #3558b2; padding: 3px 9px; border-radius: 12px; vertical-align: middle; text-transform: uppercase; letter-spacing: 0.5px;">Open Source</span>
+Generative models use root mean square scaling in layernorm layer which is an essential part of model architecture. This op was not available in official Keras API so I [contributed](https://github.com/keras-team/keras-core/pull/726) it! 
+[Keras - Add rms_scaling in LayerNormalization]
 
 ### Albert Classifier <span style="font-size: 0.65em; font-weight: 600; background-color: #e0eafc; color: #3558b2; padding: 3px 9px; border-radius: 12px; vertical-align: middle; text-transform: uppercase; letter-spacing: 0.5px;">Open Source</span>
 
@@ -89,28 +92,19 @@ Albert was the first model on which I started working, for Keras. The backbone e
 - [Move from_preset to base tokenizer classes](https://github.com/keras-team/keras-nlp/pull/673)
 - [Add an add_prefix_space Arg in BytePairTokenizer](https://github.com/keras-team/keras-nlp/pull/715)
 
-### Tutorials <span style="font-size: 0.65em; font-weight: 600; background-color: #fce8d1; color: #c55a11; padding: 3px 9px; border-radius: 12px; vertical-align: middle; text-transform: uppercase; letter-spacing: 0.5px;">Blog</span>
 
-[Port [KerasNLP] Transformer Pretraining guide to multi-backend Keras](https://github.com/keras-team/keras-io/pull/1438)
+### Data Parallel Training with KerasNLP <span style="font-size: 0.65em; font-weight: 600; background-color: #fce8d1; color: #c55a11; padding: 3px 9px; border-radius: 12px; vertical-align: middle; text-transform: uppercase; letter-spacing: 0.5px;">Blog</span>
+In this guide I demonstrated how to significantly accelerate NLP model training using data parallelism. I showcased the process of fine-tuning a pretrained BERT model from Keras Hub across multiple GPUs, leveraging TensorFlow's MirroredStrategy to efficiently scale deep learning workflows and dramatically reduce training time. 
 
-### Tutorials <span style="font-size: 0.65em; font-weight: 600; background-color: #fce8d1; color: #c55a11; padding: 3px 9px; border-radius: 12px; vertical-align: middle; text-transform: uppercase; letter-spacing: 0.5px;">Blog</span>
-[fixing getting started guide kerasnlp](https://github.com/keras-team/keras-io/pull/1414)
-
-### Tutorials <span style="font-size: 0.65em; font-weight: 600; background-color: #fce8d1; color: #c55a11; padding: 3px 9px; border-radius: 12px; vertical-align: middle; text-transform: uppercase; letter-spacing: 0.5px;">Blog</span>
-[Add example : Data Parallel Training with KerasNLP](https://github.com/keras-team/keras-io/pull/1395)
-
-### Tutorial <span style="font-size: 0.65em; font-weight: 600; background-color: #fce8d1; color: #c55a11; padding: 3px 9px; border-radius: 12px; vertical-align: middle; text-transform: uppercase; letter-spacing: 0.5px;">Blog</span>
-[Add Semantic Similarity with KerasNLP tutorial](https://github.com/keras-team/keras-io/pull/1299)
-
-### Tutorial <span style="font-size: 0.65em; font-weight: 600; background-color: #fce8d1; color: #c55a11; padding: 3px 9px; border-radius: 12px; vertical-align: middle; text-transform: uppercase; letter-spacing: 0.5px;">Blog</span>
-https://github.com/keras-team/keras-io/blob/master/guides/keras_hub/transformer_pretraining.py
+This guide was officially [published](https://keras.io/examples/nlp/data_parallel_training_with_keras_hub/) on Keras website.
 
 ### Talk <span style="font-size: 0.65em; font-weight: 600; background-color: #dcfce7; color: #166534; padding: 3px 9px; border-radius: 12px; vertical-align: middle; text-transform: uppercase; letter-spacing: 0.5px;">Talk</span>
 
 [KerasNLP: From Words to Wisdom](https://twitter.com/gdg_nd/status/1709132486238724550?t=9V1JG6XwqQNJz6MEuiGqPA&s=08), on October 7, 2023 at DevFest New Delhi’23 .
 
-### Kaggle
-[One Stop EDA](https://www.kaggle.com/code/shivanshuman/one-stop-eda)
+### Exploratory Data Analysis <span style="font-size: 0.65em; font-weight: 600; background-color: #fce8d1; color: #c55a11; padding: 3px 9px; border-radius: 12px; vertical-align: middle; text-transform: uppercase; letter-spacing: 0.5px;">Blog</span>
+
+In [this](https://www.kaggle.com/code/shivanshuman/one-stop-eda) Kaggle notebook, I developed a comprehensive template for Exploratory Data Analysis (EDA) on an enzyme substrate dataset. I demonstrated a full workflow, including visualizing feature correlations with heatmaps, analyzing distributions with histograms and box plots, and examining relationships between variables using pair plots to uncover key insights.
 
 
 ### Testing improvements <span style="font-size: 0.65em; font-weight: 600; background-color: #e0eafc; color: #3558b2; padding: 3px 9px; border-radius: 12px; vertical-align: middle; text-transform: uppercase; letter-spacing: 0.5px;">Open Source</span>
@@ -120,7 +114,7 @@ https://github.com/keras-team/keras-io/blob/master/guides/keras_hub/transformer_
 
 ### XLMRoberta <span style="font-size: 0.65em; font-weight: 600; background-color: #e0eafc; color: #3558b2; padding: 3px 9px; border-radius: 12px; vertical-align: middle; text-transform: uppercase; letter-spacing: 0.5px;">Open Source</span>
 
-[Add an XLMRobertaMaskedLM task model](https://github.com/keras-team/keras-nlp/pull/950)
+XLMRoberta backbone already existed but there were no task layers. I contributed [Masked Language Modeling](https://github.com/keras-team/keras-nlp/pull/950) task layer for the model.
 
 ### talk <span style="font-size: 0.65em; font-weight: 600; background-color: #dcfce7; color: #166534; padding: 3px 9px; border-radius: 12px; vertical-align: middle; text-transform: uppercase; letter-spacing: 0.5px;">Talk</span>
 
@@ -157,7 +151,7 @@ https://github.com/keras-team/keras-io/blob/master/guides/keras_hub/transformer_
 
 
 ### Julia Contributions <span style="font-size: 0.65em; font-weight: 600; background-color: #e0eafc; color: #3558b2; padding: 3px 9px; border-radius: 12px; vertical-align: middle; text-transform: uppercase; letter-spacing: 0.5px;">Open Source</span>
-[FluxML - Adding UNet Model](https://github.com/FluxML/Metalhead.jl/pull/210)
+Metalhead is FluxML's (a julia deep learning package) official model zoo. I [contributed]((https://github.com/FluxML/Metalhead.jl/pull/210)) the UNet image segmentation model to Metalhead.jl, Julia's core computer vision library. By implementing the architecture with reference to the official PyTorch version, I made this popular model for semantic segmentation natively available to the FluxML community, fulfilling a key feature request for the library.
 
 ## 2022
 
