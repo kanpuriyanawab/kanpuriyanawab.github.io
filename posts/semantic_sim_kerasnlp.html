@@ -6,8 +6,10 @@
 
 <meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=yes">
 
+<meta name="dcterms.date" content="2023-09-02">
+<meta name="description" content="This report demonstrates how to use the Weights&amp;Biases to speedup experiments with Keras">
 
-<title>Anshuman Mishra</title>
+<title>Predicting Semantic Similarity using KerasNLP – Anshuman Mishra</title>
 <style>
 code{white-space: pre-wrap;}
 span.smallcaps{font-variant: small-caps;}
@@ -23,22 +25,22 @@ ul.task-list li input[type="checkbox"] {
 </style>
 
 
-<script src="site_libs/quarto-nav/quarto-nav.js"></script>
-<script src="site_libs/quarto-nav/headroom.min.js"></script>
-<link href="./assets/images/pfp/varkala.jpg" rel="icon" type="image/jpeg">
-<script src="site_libs/clipboard/clipboard.min.js"></script>
-<script src="site_libs/quarto-html/quarto.js" type="module"></script>
-<script src="site_libs/quarto-html/tabsets/tabsets.js" type="module"></script>
-<script src="site_libs/quarto-html/popper.min.js"></script>
-<script src="site_libs/quarto-html/tippy.umd.min.js"></script>
-<script src="site_libs/quarto-html/anchor.min.js"></script>
-<link href="site_libs/quarto-html/tippy.css" rel="stylesheet">
-<link href="site_libs/quarto-html/quarto-syntax-highlighting-e1a5c8363afafaef2c763b6775fbf3ca.css" rel="stylesheet" id="quarto-text-highlighting-styles">
-<script src="site_libs/bootstrap/bootstrap.min.js"></script>
-<link href="site_libs/bootstrap/bootstrap-icons.css" rel="stylesheet">
-<link href="site_libs/bootstrap/bootstrap-fe8f458f31a467b51aeabd2275c1e88a.min.css" rel="stylesheet" append-hash="true" id="quarto-bootstrap" data-mode="light">
-<link href="site_libs/quarto-contrib/academicons-1.9.4/all.css" rel="stylesheet">
-<link href="site_libs/quarto-contrib/academicons-1.9.4/size.css" rel="stylesheet">
+<script src="../site_libs/quarto-nav/quarto-nav.js"></script>
+<script src="../site_libs/quarto-nav/headroom.min.js"></script>
+<link href="../assets/images/pfp/varkala.jpg" rel="icon" type="image/jpeg">
+<script src="../site_libs/clipboard/clipboard.min.js"></script>
+<script src="../site_libs/quarto-html/quarto.js" type="module"></script>
+<script src="../site_libs/quarto-html/tabsets/tabsets.js" type="module"></script>
+<script src="../site_libs/quarto-html/popper.min.js"></script>
+<script src="../site_libs/quarto-html/tippy.umd.min.js"></script>
+<script src="../site_libs/quarto-html/anchor.min.js"></script>
+<link href="../site_libs/quarto-html/tippy.css" rel="stylesheet">
+<link href="../site_libs/quarto-html/quarto-syntax-highlighting-e1a5c8363afafaef2c763b6775fbf3ca.css" rel="stylesheet" id="quarto-text-highlighting-styles">
+<script src="../site_libs/bootstrap/bootstrap.min.js"></script>
+<link href="../site_libs/bootstrap/bootstrap-icons.css" rel="stylesheet">
+<link href="../site_libs/bootstrap/bootstrap-fe8f458f31a467b51aeabd2275c1e88a.min.css" rel="stylesheet" append-hash="true" id="quarto-bootstrap" data-mode="light">
+<link href="../site_libs/quarto-contrib/academicons-1.9.4/all.css" rel="stylesheet">
+<link href="../site_libs/quarto-contrib/academicons-1.9.4/size.css" rel="stylesheet">
 <script id="quarto-search-options" type="application/json">{
   "language": {
     "search-no-results-text": "No results",
@@ -56,24 +58,24 @@ ul.task-list li input[type="checkbox"] {
 }</script>
 
 
-<link rel="stylesheet" href="styles.css">
-<meta property="og:title" content="Anshuman Mishra">
-<meta property="og:description" content="Personal site of Anshuman Mishra.">
+<link rel="stylesheet" href="../styles.css">
+<meta property="og:title" content="Predicting Semantic Similarity using KerasNLP – Anshuman Mishra">
+<meta property="og:description" content="This report demonstrates how to use the Weights&amp;Biases to speedup experiments with Keras">
 <meta property="og:site_name" content="Anshuman Mishra">
-<meta name="twitter:title" content="Anshuman Mishra">
-<meta name="twitter:description" content="Personal site of Anshuman Mishra.">
+<meta name="twitter:title" content="Predicting Semantic Similarity using KerasNLP – Anshuman Mishra">
+<meta name="twitter:description" content="This report demonstrates how to use the Weights&amp;Biases to speedup experiments with Keras">
 <meta name="twitter:creator" content="@kanpuriyanawab">
 <meta name="twitter:card" content="summary">
 </head>
 
-<body class="nav-fixed fullcontent quarto-light">
+<body class="nav-fixed quarto-light">
 
 <div id="quarto-search-results"></div>
-  <header id="quarto-header" class="headroom fixed-top">
+  <header id="quarto-header" class="headroom fixed-top quarto-banner">
     <nav class="navbar navbar-expand-lg " data-bs-theme="dark">
       <div class="navbar-container container-fluid">
       <div class="navbar-brand-container mx-auto">
-    <a class="navbar-brand" href="./index.html">
+    <a class="navbar-brand" href="../index.html">
     <span class="navbar-title">Anshuman Mishra</span>
     </a>
   </div>
@@ -83,15 +85,15 @@ ul.task-list li input[type="checkbox"] {
           <div class="collapse navbar-collapse" id="navbarCollapse">
             <ul class="navbar-nav navbar-nav-scroll me-auto">
   <li class="nav-item">
-    <a class="nav-link" href="./pages/work.html"> 
+    <a class="nav-link" href="../pages/work.html"> 
 <span class="menu-text">Work</span></a>
   </li>  
   <li class="nav-item">
-    <a class="nav-link" href="./blog.html"> 
+    <a class="nav-link" href="../blog.html"> 
 <span class="menu-text">Blog</span></a>
   </li>  
   <li class="nav-item">
-    <a class="nav-link" href="./pages/life.html"> 
+    <a class="nav-link" href="../pages/life.html"> 
 <span class="menu-text">Life</span></a>
   </li>  
 </ul>
@@ -123,7 +125,7 @@ ul.task-list li input[type="checkbox"] {
   </li>  
   <li class="nav-item">
     <a class="nav-link" href="https://scholar.google.fr/citations?user=70wh9jcAAAAJ"> 
-<span class="menu-text"><i class="ai  ai-google-scholar" aria-label="google-scholar"></i></span></a>
+<span class="menu-text">{{&lt; ai google-scholar &gt;}}</span></a>
   </li>  
 </ul>
           </div> <!-- /navcollapse -->
@@ -133,70 +135,61 @@ ul.task-list li input[type="checkbox"] {
     </nav>
 </header>
 <!-- content -->
-<div id="quarto-content" class="quarto-container page-columns page-rows-contents page-layout-article page-navbar">
+<header id="title-block-header" class="quarto-title-block default page-columns page-full">
+  <div class="quarto-title-banner page-columns page-full">
+    <div class="quarto-title column-body">
+      <h1 class="title">Predicting Semantic Similarity using KerasNLP</h1>
+                  <div>
+        <div class="description">
+          This report demonstrates how to use the Weights&amp;Biases to speedup experiments with Keras
+        </div>
+      </div>
+                          <div class="quarto-categories">
+                <div class="quarto-category">KerasHub</div>
+                <div class="quarto-category">LLMs</div>
+                <div class="quarto-category">Wandb</div>
+              </div>
+                  </div>
+  </div>
+    
+  
+  <div class="quarto-title-meta">
+
+      
+      <div>
+      <div class="quarto-title-meta-heading">Published</div>
+      <div class="quarto-title-meta-contents">
+        <p class="date">September 2, 2023</p>
+      </div>
+    </div>
+    
+      
+    </div>
+    
+  
+  </header><div id="quarto-content" class="quarto-container page-columns page-rows-contents page-layout-article page-navbar">
 <!-- sidebar -->
 <!-- margin-sidebar -->
-    
+    <div id="quarto-margin-sidebar" class="sidebar margin-sidebar zindex-bottom">
+        
+    </div>
 <!-- main -->
-<main class="content" id="quarto-document-content"><header id="title-block-header" class="quarto-title-block"></header>
+<main class="content quarto-banner-title-block" id="quarto-document-content">
 
 
 
 
-<p>Hi there 👋. I am Anshuman Mishra. I work on large language models yet I like to call myself a software engineer.</p>
-<!-- <center>
-<img src="assets/images/pic_5.jpeg" style="width: 350px; height: 350px; border-radius: 50%;" />
-</center>
- -->
-<p>I work on large language models at <a href="https://flip.ai">FlipAI</a>.</p>
-<section id="professional-experience" class="level3">
-<h3 class="anchored" data-anchor-id="professional-experience">Professional Experience</h3>
-<ul>
-<li><strong>Independent AI Consultant, Google</strong>
-<ul>
-<li><em>Feb 2025 - Present</em></li>
-<li>Working with Keras team</li>
-</ul></li>
-<li><strong>ML Engineer, FlipAI</strong>
-<ul>
-<li><em>July 2023 - May 2025</em></li>
-<li>In my current role, I am responsible for designing, building, and deploying machine learning models in a fast-paced production environment. My work involves the end-to-end ML lifecycle, from data preprocessing and model training to deployment and monitoring of core AI features.</li>
-</ul></li>
-<li><strong>Google Summer of Code Mentee, Google</strong>
-<ul>
-<li><em>July 2023 - May 2025</em></li>
-<li>Worked with Keras team.</li>
-</ul></li>
-<li><strong>Technical Author, Weights &amp; Biases</strong>
-<ul>
-<li><em>September 2023 - February 2024</em></li>
-<li>During my time as a Technical Author, I focused on creating clear and compelling educational content for the machine learning community. I wrote in-depth articles, tutorials, and guides explaining complex ML concepts and demonstrating best practices using the W&amp;B platform.</li>
-</ul></li>
-<li><strong>Data Science Intern, BNY Mellon</strong>
-<ul>
-<li><em>January 2023 - June 2023</em></li>
-<li>As a Data Science Intern, I gained hands-on experience within the financial services industry. My responsibilities included analyzing large datasets to uncover insights, building predictive models, and presenting my findings to support data-driven decision-making.</li>
-</ul></li>
-<li><strong>Software Engineer Intern, Amazon</strong>
-<ul>
-<li><em>May 2022 - July 2022</em></li>
-<li>During my internship at Amazon, I contributed to a team responsible for developing large-scale software systems. This experience provided a strong foundation in the software development lifecycle, including coding, debugging, and working with cloud infrastructure to deliver a project feature.</li>
-</ul></li>
-</ul>
-</section>
-<section id="some-stuff" class="level3">
-<h3 class="anchored" data-anchor-id="some-stuff">Some stuff</h3>
-<ul>
-<li>Google Developer Expert in Machine Learning and Google Cloud Platform (<a href="https://bit.ly/expert-sp">bit.ly/expert-sp</a>)</li>
-<li>Mentee, Google Summer of Code 2023, in TensorFlow. See my project <a href="https://summerofcode.withgoogle.com/archive/2023/projects/X4GwVWLu">here</a></li>
-<li>Open Source Contributor at <a href="https://github.com/keras-team/keras-nlp/">KerasNLP</a></li>
-</ul>
 
-
-</section>
+<iframe src="https://wandb.ai/kanpuriyanawab/keras-nlp-x-wandb/reports/Supercharge-KerasNLP-Models-with-Wandb--Vmlldzo1Mjk1NjI2" style="border:none;height:1024px;width:100%">
+<div id="quarto-navigation-envelope" class="hidden">
+<p><span class="hidden quarto-markdown-envelope-contents" data-render-id="cXVhcnRvLWludC1zaWRlYmFyLXRpdGxl">Anshuman Mishra</span> <span class="hidden quarto-markdown-envelope-contents" data-render-id="cXVhcnRvLWludC1uYXZiYXItdGl0bGU=">Anshuman Mishra</span> <span class="hidden quarto-markdown-envelope-contents" data-render-id="cXVhcnRvLWludC1uYXZiYXI6V29yaw==">Work</span> <span class="hidden quarto-markdown-envelope-contents" data-render-id="cXVhcnRvLWludC1uYXZiYXI6L3BhZ2VzL3dvcmsuaHRtbA==">/pages/work.html</span> <span class="hidden quarto-markdown-envelope-contents" data-render-id="cXVhcnRvLWludC1uYXZiYXI6QmxvZw==">Blog</span> <span class="hidden quarto-markdown-envelope-contents" data-render-id="cXVhcnRvLWludC1uYXZiYXI6L2Jsb2cuaHRtbA==">/blog.html</span> <span class="hidden quarto-markdown-envelope-contents" data-render-id="cXVhcnRvLWludC1uYXZiYXI6TGlmZQ==">Life</span> <span class="hidden quarto-markdown-envelope-contents" data-render-id="cXVhcnRvLWludC1uYXZiYXI6L3BhZ2VzL2xpZmUuaHRtbA==">/pages/life.html</span> <span class="hidden quarto-markdown-envelope-contents" data-render-id="cXVhcnRvLWludC1uYXZiYXI6aHR0cHM6Ly90d2l0dGVyLmNvbS9rYW5wdXJpeWFuYXdhYg==">https://twitter.com/kanpuriyanawab</span> <span class="hidden quarto-markdown-envelope-contents" data-render-id="cXVhcnRvLWludC1uYXZiYXI6aHR0cHM6Ly93d3cubGlua2VkaW4uY29tL2luL2Fuc2h1aXptZS8=">https://www.linkedin.com/in/anshuizme/</span> <span class="hidden quarto-markdown-envelope-contents" data-render-id="cXVhcnRvLWludC1uYXZiYXI6aHR0cHM6Ly9naXRodWIuY29tL2thbnB1cml5YW5hd2Fi">https://github.com/kanpuriyanawab</span> <span class="hidden quarto-markdown-envelope-contents" data-render-id="cXVhcnRvLWludC1uYXZiYXI6aHR0cHM6Ly95b3V0dWJlLmNvbS9AMXNtb2xsY29kZXI=">https://youtube.com/@1smollcoder</span> <span class="hidden quarto-markdown-envelope-contents" data-render-id="cXVhcnRvLWludC1uYXZiYXI6aHR0cHM6Ly9mdWxsc3RhY2thZ2VudHMuc3Vic3RhY2suY29t">https://fullstackagents.substack.com</span> <span class="hidden quarto-markdown-envelope-contents" data-render-id="cXVhcnRvLWludC1uYXZiYXI6e3s8IGFpIGdvb2dsZS1zY2hvbGFyID59fQ=="><i class="ai  ai-google-scholar" aria-label="google-scholar"></i></span> <span class="hidden quarto-markdown-envelope-contents" data-render-id="cXVhcnRvLWludC1uYXZiYXI6aHR0cHM6Ly9zY2hvbGFyLmdvb2dsZS5mci9jaXRhdGlvbnM/dXNlcj03MHdoOWpjQUFBQUo=">https://scholar.google.fr/citations?user=70wh9jcAAAAJ</span></p>
+</div>
+<div id="quarto-meta-markdown" class="hidden">
+<p><span class="hidden quarto-markdown-envelope-contents" data-render-id="cXVhcnRvLW1ldGF0aXRsZQ==">Predicting Semantic Similarity using KerasNLP – Anshuman Mishra</span> <span class="hidden quarto-markdown-envelope-contents" data-render-id="cXVhcnRvLXR3aXR0ZXJjYXJkdGl0bGU=">Predicting Semantic Similarity using KerasNLP – Anshuman Mishra</span> <span class="hidden quarto-markdown-envelope-contents" data-render-id="cXVhcnRvLW9nY2FyZHRpdGxl">Predicting Semantic Similarity using KerasNLP – Anshuman Mishra</span> <span class="hidden quarto-markdown-envelope-contents" data-render-id="cXVhcnRvLW1ldGFzaXRlbmFtZQ==">Anshuman Mishra</span> <span class="hidden quarto-markdown-envelope-contents" data-render-id="cXVhcnRvLXR3aXR0ZXJjYXJkZGVzYw==">This report demonstrates how to use the Weights&amp;Biases to speedup experiments with Keras</span> <span class="hidden quarto-markdown-envelope-contents" data-render-id="cXVhcnRvLW9nY2FyZGRkZXNj">This report demonstrates how to use the Weights&amp;Biases to speedup experiments with Keras</span></p>
+</div>
 
 </main> <!-- /main -->
-<script id="quarto-html-after-body" type="application/javascript">
+<script id = "quarto-html-after-body" type="application/javascript">
   window.document.addEventListener("DOMContentLoaded", function (event) {
     const icon = "";
     const anchorJS = new window.AnchorJS();
@@ -597,7 +590,7 @@ ul.task-list li input[type="checkbox"] {
   </script>
 </div> <!-- /content -->
 
+</body>
 
-
-
-<footer class="footer"><div class="nav-footer"><div class="nav-footer-center"><div class="toc-actions"><ul><li><a href="https://github.com/kanpuriyanawab/edit/master/index.qmd" class="toc-action"><i class="bi bi-github"></i>Edit this page</a></li><li><a href="https://github.com/kanpuriyanawab/issues/new" class="toc-action"><i class="bi empty"></i>Report an issue</a></li></ul></div></div></div></footer></body></html>
+</html>
+</iframe></main></div><footer class="footer"><div class="nav-footer"><div class="nav-footer-center"><div class="toc-actions"><ul><li><a href="https://github.com/kanpuriyanawab/edit/master/posts/semantic_sim_kerasnlp.qmd" class="toc-action"><i class="bi bi-github"></i>Edit this page</a></li><li><a href="https://github.com/kanpuriyanawab/issues/new" class="toc-action"><i class="bi empty"></i>Report an issue</a></li></ul></div></div></div></footer></body></html>
