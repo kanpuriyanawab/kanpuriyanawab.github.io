@@ -9,98 +9,103 @@ toc: true
 
 TLDR
 
+### Twitter <span style="font-size: 0.65em; font-weight: 600; background-color: #FFFFFF; color: #171717; border: 1.5px solid #171717; padding: 3px 9px; border-radius: 12px; vertical-align: middle; text-transform: uppercase; letter-spacing: 0.5px;">X</span>
 
-### Qwen 2.5 model
+### Qwen 2.5 model <span style="font-size: 0.65em; font-weight: 600; background-color: #e0eafc; color: #3558b2; padding: 3px 9px; border-radius: 12px; vertical-align: middle; text-transform: uppercase; letter-spacing: 0.5px;">Open Source</span>
 
 I did this work while working as consultant for Keras team. Contributed the model to [KerasHub](https://github.com/keras-team/keras-hub/pull/2088). This involved implementing the core backbone, attention mechanisms, and checkpoint conversion, making the state-of-the-art model accessible to the Keras community.
 
 
-### Qwen-1.5-Mixture-of-Experts
+### Qwen-1.5-Mixture-of-Experts <span style="font-size: 0.65em; font-weight: 600; background-color: #e0eafc; color: #3558b2; padding: 3px 9px; border-radius: 12px; vertical-align: middle; text-transform: uppercase; letter-spacing: 0.5px;">Open Source</span>
 
 [This work](https://github.com/keras-team/keras-hub/pull/2163) involved implementing the core backbone, attention mechanisms, and checkpoint conversion, making Qwen-1.5-Mixture-of-Experts model model accessible to the Keras community.
 
-### Mixtral
-Through this work I developed support for [Mixtral](https://github.com/keras-team/keras-hub/pull/2196) model in Keras Hub, making it accessible to community.
+**Challenges**- High Memory
 
+**Mitigation**- Llama4 based moe implementation, High Agency
+
+### Mixtral <span style="font-size: 0.65em; font-weight: 600; background-color: #e0eafc; color: #3558b2; padding: 3px 9px; border-radius: 12px; vertical-align: middle; text-transform: uppercase; letter-spacing: 0.5px;">Open Source</span>
+Through this work I developed support for [Mixtral](https://github.com/keras-team/keras-hub/pull/2196) model in Keras Hub, making it accessible to community.
 
 ## 2024
 
-*In 2024 I worked as Consultant for Growth Team of Weights & Biases writing reports for Wandb Fully Connected. I also spent some time trying out Youtube.*
+### Youtube video <span style="font-size: 0.65em; font-weight: 600; background-color: #FEE2E2; color: #991B1B; padding: 3px 9px; border-radius: 12px; vertical-align: middle; text-transform: uppercase; letter-spacing: 0.5px;">YouTube</span>
 
-### Weights & Biases
-[Supercharge KerasNLP Models with Wandb](https://wandb.ai/kanpuriyanawab/keras-nlp-x-wandb/reports/Supercharge-KerasNLP-Models-with-Wandb--Vmlldzo1Mjk1NjI2)
+I did Youtube & Twitter
 
-### Weights & Biases
-
-[Generating High-quality Images with SD.Next, HuggingFace Diffusers and W&B](https://wandb.ai/ml-colabs/automatic/reports/Generating-High-quality-Images-with-SD-Next-HuggingFace-Diffusers-and-W-B--Vmlldzo1NTYzMzQy)
-
+JMLR
 
 ## 2023
 
 *I contributed to open source (mainly Keras) heavily throught the year. Gave a lot of talks travelling across the country.*
 
-### Llama
+### Supercharge KerasNLP Models with Wandb <span style="font-size: 0.65em; font-weight: 600; background-color: #fce8d1; color: #c55a11; padding: 3px 9px; border-radius: 12px; vertical-align: middle; text-transform: uppercase; letter-spacing: 0.5px;">Blog</span>
 
-[KerasNLP - Add Llama Backbone](https://github.com/keras-team/keras-nlp/pull/1203)
+While at Weights & Biases, I authored this official [report](https://wandb.ai/kanpuriyanawab/keras-nlp-x-wandb/reports/Supercharge-KerasNLP-Models-with-Wandb--Vmlldzo1Mjk1NjI2) on fine-tuning KerasNLP models for Semantic Similarity. The guide demonstrates how to leverage W&B Sweeps on the SNLI dataset to find optimal hyperparameters and train a high-performing model.
 
-### GPT Neo X
+### Generating High-quality Images with SD.Next, HuggingFace Diffusers and W&B <span style="font-size: 0.65em; font-weight: 600; background-color: #fce8d1; color: #c55a11; padding: 3px 9px; border-radius: 12px; vertical-align: middle; text-transform: uppercase; letter-spacing: 0.5px;">Blog</span>
 
--- Tell a story
+I documented my experiments with advanced diffusion models in this [report](https://wandb.ai/ml-colabs/automatic/reports/Generating-High-quality-Images-with-SD-Next-HuggingFace-Diffusers-and-W-B--Vmlldzo1NTYzMzQy). It's a comprehensive guide to generating high-quality images with SD.Next and HuggingFace Diffusers, emphasizing the use of W&B for complete observability and reproducibility.
 
-[KerasNLP - Generic RotaryEmbedding Layer](https://github.com/keras-team/keras-nlp/pull/1180)
-[KerasNLP - Port GPTNeoX to KerasCore](https://github.com/keras-team/keras-nlp/pull/1137)
-[KerasNLP - Adding GPTNeoXBackbone](https://github.com/keras-team/keras-nlp/pull/1056)
-[Add GPTNeoXPreprocessor](https://github.com/keras-team/keras-nlp/pull/1093)
-[Refactor RotaryEmbedding and GPTNeoXAttention](https://github.com/keras-team/keras-nlp/pull/1101)
+### Llama <span style="font-size: 0.65em; font-weight: 600; background-color: #e0eafc; color: #3558b2; padding: 3px 9px; border-radius: 12px; vertical-align: middle; text-transform: uppercase; letter-spacing: 0.5px;">Open Source</span>
+
+The Llama2 was just released and community was going wild over it so I decided to add it in my gsoc project and [contribute](https://github.com/keras-team/keras-nlp/pull/1203) it to library. I applied all my learnings from GPTNeoX implementation in this project and learnt a ton of an amazing series of models to come, before 95% of the world even knew about it.
+
+### GPT Neo X <span style="font-size: 0.65em; font-weight: 600; background-color: #e0eafc; color: #3558b2; padding: 3px 9px; border-radius: 12px; vertical-align: middle; text-transform: uppercase; letter-spacing: 0.5px;">Open Source</span>
+
+Contributing GPTNeoX to KerasHub was main project that I did as part of GSoC. In first iteration I shipped [GPTNeoX backbone](https://github.com/keras-team/keras-nlp/pull/1056) and [Preprocessor](https://github.com/keras-team/keras-nlp/pull/1093) and by that time Keras3 was already in works. As soon as it reached a pre-release stable point I immediately [ported the implementation to Keras3](https://github.com/keras-team/keras-nlp/pull/1137) to work with PyTorch and JAX as well. Later [Matt](https://github.com/mattdangerw) and I realized that Rotary embedding layer that I [wrote](https://github.com/keras-team/keras-nlp/pull/1101) for GPT NeoX is gonna be fundamental component for Generative models so I shipped it as [a generic layer](https://github.com/keras-team/keras-nlp/pull/1180). One more small PR followed 
 
 
-### Beam Sampler
 
-[Port BeamSampler to core](https://github.com/keras-team/keras-nlp/pull/1181)
+### Beam Sampler <span style="font-size: 0.65em; font-weight: 600; background-color: #e0eafc; color: #3558b2; padding: 3px 9px; border-radius: 12px; vertical-align: middle; text-transform: uppercase; letter-spacing: 0.5px;">Open Source</span>
 
-### Keras Core layer contributions
+Beam Sampler already existed in KerasHub at the time, but I was curious about how it worked, so I took up the task of [porting it to keras3](https://github.com/keras-team/keras-nlp/pull/1181).
+
+
+### Keras Core layer contributions <span style="font-size: 0.65em; font-weight: 600; background-color: #e0eafc; color: #3558b2; padding: 3px 9px; border-radius: 12px; vertical-align: middle; text-transform: uppercase; letter-spacing: 0.5px;">Open Source</span>
+
 [Keras - Add rsqrt to ops API](https://github.com/keras-team/keras-core/pull/708)
+
 [Keras - Add rms_scaling in LayerNormalization](https://github.com/keras-team/keras-core/pull/726)
 
-### Albert Classifier
+### Albert Classifier <span style="font-size: 0.65em; font-weight: 600; background-color: #e0eafc; color: #3558b2; padding: 3px 9px; border-radius: 12px; vertical-align: middle; text-transform: uppercase; letter-spacing: 0.5px;">Open Source</span>
 
-[Add AlbertClassifier](https://github.com/keras-team/keras-nlp/pull/668)
-[Adding an AlbertMaskedLM task + Fix Projection layer dimension in MaskedLMHead](https://github.com/keras-team/keras-nlp/pull/725)
+Albert was the first model on which I started working, for Keras. The backbone existed but there were no task layers. I contributed [Classifier]((https://github.com/keras-team/keras-nlp/pull/668)) and [Masked Language Modeling]((https://github.com/keras-team/keras-nlp/pull/725)) task layer for the model.
 
 
-### Misc Bug Fixes
 
-[Fix RotaryEmbedding import](https://github.com/keras-team/keras-nlp/pull/1217)
-[Fix Autograph error with perplexity metric](https://github.com/keras-team/keras-nlp/pull/1211)
-[Fix ModuleNotFoundError keras_nlp.models.xlnet](https://github.com/keras-team/keras-nlp/pull/1204)
-[Add compute_output_shape to tokenizer](https://github.com/keras-team/keras-nlp/pull/1166)
-[Default compilation for Albert, Distilbert, Roberta MaskedLM](https://github.com/keras-team/keras-nlp/pull/833)
-[Call super.config() in BartBackbone's get_config()](https://github.com/keras-team/keras-nlp/pull/818)
-[Add API exports for tokenizers documented on keras.io](https://github.com/keras-team/keras-nlp/pull/817)
-[Add API exports for metrics documented on keras.io](https://github.com/keras-team/keras-nlp/pull/816)
-[Add API exports for samplers documented on keras.io](https://github.com/keras-team/keras-nlp/pull/815)
-[Add API exports for models documented on keras.io](https://github.com/keras-team/keras-nlp/pull/814)
-[Move from_preset to base tokenizer classes](https://github.com/keras-team/keras-nlp/pull/673)
+### Misc Bug Fixes <span style="font-size: 0.65em; font-weight: 600; background-color: #e0eafc; color: #3558b2; padding: 3px 9px; border-radius: 12px; vertical-align: middle; text-transform: uppercase; letter-spacing: 0.5px;">Open Source</span>
 
-[Add an add_prefix_space Arg in BytePairTokenizer](https://github.com/keras-team/keras-nlp/pull/715)
+- [Fix RotaryEmbedding import](https://github.com/keras-team/keras-nlp/pull/1217)
+- [Fix Autograph error with perplexity metric](https://github.com/keras-team/keras-nlp/pull/1211)
+- [Fix ModuleNotFoundError keras_nlp.models.xlnet](https://github.com/keras-team/keras-nlp/pull/1204)
+- [Add compute_output_shape to tokenizer](https://github.com/keras-team/keras-nlp/pull/1166)
+- [Default compilation for Albert, Distilbert, Roberta MaskedLM](https://github.com/keras-team/keras-nlp/pull/833)
+- [Call super.config() in BartBackbone's get_config()](https://github.com/keras-team/keras-nlp/pull/818)
+- [Add API exports for tokenizers documented on keras.io](https://github.com/keras-team/keras-nlp/pull/817)
+- [Add API exports for metrics documented on keras.io](https://github.com/keras-team/keras-nlp/pull/816)
+- [Add API exports for samplers documented on keras.io](https://github.com/keras-team/keras-nlp/pull/815)
+- [Add API exports for models documented on keras.io](https://github.com/keras-team/keras-nlp/pull/814)
+- [Move from_preset to base tokenizer classes](https://github.com/keras-team/keras-nlp/pull/673)
+- [Add an add_prefix_space Arg in BytePairTokenizer](https://github.com/keras-team/keras-nlp/pull/715)
 
-### Tutorials
+### Tutorials <span style="font-size: 0.65em; font-weight: 600; background-color: #fce8d1; color: #c55a11; padding: 3px 9px; border-radius: 12px; vertical-align: middle; text-transform: uppercase; letter-spacing: 0.5px;">Blog</span>
 
 [Port [KerasNLP] Transformer Pretraining guide to multi-backend Keras](https://github.com/keras-team/keras-io/pull/1438)
 
-### Tutorials
+### Tutorials <span style="font-size: 0.65em; font-weight: 600; background-color: #fce8d1; color: #c55a11; padding: 3px 9px; border-radius: 12px; vertical-align: middle; text-transform: uppercase; letter-spacing: 0.5px;">Blog</span>
 [fixing getting started guide kerasnlp](https://github.com/keras-team/keras-io/pull/1414)
 
-### Tutorials
+### Tutorials <span style="font-size: 0.65em; font-weight: 600; background-color: #fce8d1; color: #c55a11; padding: 3px 9px; border-radius: 12px; vertical-align: middle; text-transform: uppercase; letter-spacing: 0.5px;">Blog</span>
 [Add example : Data Parallel Training with KerasNLP](https://github.com/keras-team/keras-io/pull/1395)
 
-### Tutorial
+### Tutorial <span style="font-size: 0.65em; font-weight: 600; background-color: #fce8d1; color: #c55a11; padding: 3px 9px; border-radius: 12px; vertical-align: middle; text-transform: uppercase; letter-spacing: 0.5px;">Blog</span>
 [Add Semantic Similarity with KerasNLP tutorial](https://github.com/keras-team/keras-io/pull/1299)
 
-### Tutorial
+### Tutorial <span style="font-size: 0.65em; font-weight: 600; background-color: #fce8d1; color: #c55a11; padding: 3px 9px; border-radius: 12px; vertical-align: middle; text-transform: uppercase; letter-spacing: 0.5px;">Blog</span>
 https://github.com/keras-team/keras-io/blob/master/guides/keras_hub/transformer_pretraining.py
 
-### Talk
+### Talk <span style="font-size: 0.65em; font-weight: 600; background-color: #dcfce7; color: #166534; padding: 3px 9px; border-radius: 12px; vertical-align: middle; text-transform: uppercase; letter-spacing: 0.5px;">Talk</span>
 
 [KerasNLP: From Words to Wisdom](https://twitter.com/gdg_nd/status/1709132486238724550?t=9V1JG6XwqQNJz6MEuiGqPA&s=08), on October 7, 2023 at DevFest New Delhi’23 .
 
@@ -108,88 +113,88 @@ https://github.com/keras-team/keras-io/blob/master/guides/keras_hub/transformer_
 [One Stop EDA](https://www.kaggle.com/code/shivanshuman/one-stop-eda)
 
 
-### Testing improvements
+### Testing improvements <span style="font-size: 0.65em; font-weight: 600; background-color: #e0eafc; color: #3558b2; padding: 3px 9px; border-radius: 12px; vertical-align: middle; text-transform: uppercase; letter-spacing: 0.5px;">Open Source</span>
 [Speed up default RoBERTa testing roughly 3x](https://github.com/keras-team/keras-nlp/pull/897)
 [Adding XXBackboneTPUTests](https://github.com/keras-team/keras-nlp/pull/839)
 
 
-### XLMRoberta
+### XLMRoberta <span style="font-size: 0.65em; font-weight: 600; background-color: #e0eafc; color: #3558b2; padding: 3px 9px; border-radius: 12px; vertical-align: middle; text-transform: uppercase; letter-spacing: 0.5px;">Open Source</span>
 
 [Add an XLMRobertaMaskedLM task model](https://github.com/keras-team/keras-nlp/pull/950)
 
-### talk
+### talk <span style="font-size: 0.65em; font-weight: 600; background-color: #dcfce7; color: #166534; padding: 3px 9px; border-radius: 12px; vertical-align: middle; text-transform: uppercase; letter-spacing: 0.5px;">Talk</span>
 
 [Modular NLP Workflows with KerasNLP](https://x.com/margaretmz/status/1706717545007546491?s=20), on September 29, 2023 at Google Developer Groups, Seattle.
 
-### talk
+### talk <span style="font-size: 0.65em; font-weight: 600; background-color: #dcfce7; color: #166534; padding: 3px 9px; border-radius: 12px; vertical-align: middle; text-transform: uppercase; letter-spacing: 0.5px;">Talk</span>
 
 [Supercharging Keras with WandB](https://twitter.com/tfugmumbai/status/1705456979756613978?s=20), on September 23, 2023 at TensorFlow User Group Mumbai.
 
 
-### talk
+### talk <span style="font-size: 0.65em; font-weight: 600; background-color: #dcfce7; color: #166534; padding: 3px 9px; border-radius: 12px; vertical-align: middle; text-transform: uppercase; letter-spacing: 0.5px;">Talk</span>
 
 [GSoC Success Secrets: Cracking the Code to Open Source Excellence](https://www.linkedin.com/feed/update/urn:li:activity:7105945831630938112/), September 10, 2023 at National Institute of Technology, Warangal.
 
 
-### talk
+### talk <span style="font-size: 0.65em; font-weight: 600; background-color: #dcfce7; color: #166534; padding: 3px 9px; border-radius: 12px; vertical-align: middle; text-transform: uppercase; letter-spacing: 0.5px;">Talk</span>
 
 [Rethinking LLM Design with KerasNLP](https://twitter.com/kanpuriyanawab/status/1694540731783028926?s=20), on August 26, 2023 at TensorFlow User Group Hyderabad.
 
 
-### talk
+### talk <span style="font-size: 0.65em; font-weight: 600; background-color: #dcfce7; color: #166534; padding: 3px 9px; border-radius: 12px; vertical-align: middle; text-transform: uppercase; letter-spacing: 0.5px;">Talk</span>
 
 [KerasNLP for Starters](https://www.youtube.com/watch?v=KinLN4lA6Bg&t=3450s), on August 20, 2023 at TensorFlow User Group Durg
 
 
-### talk
+### talk <span style="font-size: 0.65em; font-weight: 600; background-color: #dcfce7; color: #166534; padding: 3px 9px; border-radius: 12px; vertical-align: middle; text-transform: uppercase; letter-spacing: 0.5px;">Talk</span>
 
 [Taking KerasNLP on GenAI Ride]() on July, 23, 2023 at TensorFlow User Group, Kolkata
 
 
-### talk
+### talk <span style="font-size: 0.65em; font-weight: 600; background-color: #dcfce7; color: #166534; padding: 3px 9px; border-radius: 12px; vertical-align: middle; text-transform: uppercase; letter-spacing: 0.5px;">Talk</span>
 
 [Re-imagining Keras in the evolving ML ecosystem](https://www.linkedin.com/posts/kanpuriyanawab_event-developercommunity-congratulations-activity-7086588533510934528-dS2y) on July 16, 2023 at Google I/O Extended'23 New Delhi.
 
 
-### Julia Contributions
+### Julia Contributions <span style="font-size: 0.65em; font-weight: 600; background-color: #e0eafc; color: #3558b2; padding: 3px 9px; border-radius: 12px; vertical-align: middle; text-transform: uppercase; letter-spacing: 0.5px;">Open Source</span>
 [FluxML - Adding UNet Model](https://github.com/FluxML/Metalhead.jl/pull/210)
 
 ## 2022
 
 *This year I mainly focused on Kaggling. It also marked my venture into Open Source world.*
 
-### CNN From Tensorflow to Pytorch
+### CNN From Tensorflow to Pytorch <span style="font-size: 0.65em; font-weight: 600; background-color: #e0eafc; color: #3558b2; padding: 3px 9px; border-radius: 12px; vertical-align: middle; text-transform: uppercase; letter-spacing: 0.5px;">Open Source</span>
 
 [Deepchem - Porting CNN from TF ➡️ PyTorch ](https://github.com/deepchem/deepchem/pull/2963)
 
-### NeuralODE
+### NeuralODE <span style="font-size: 0.65em; font-weight: 600; background-color: #e0eafc; color: #3558b2; padding: 3px 9px; border-radius: 12px; vertical-align: middle; text-transform: uppercase; letter-spacing: 0.5px;">Open Source</span>
 [Deepchem - Neural ODE tutorial 📚](https://github.com/deepchem/deepchem/pull/2859)
 
 
-### [h2o-llmstudio](https://github.com/h2oai/h2o-llmstudio)
+### h2o-llmstudio<span style="font-size: 0.65em; font-weight: 600; background-color: #e0eafc; color: #3558b2; padding: 3px 9px; border-radius: 12px; vertical-align: middle; text-transform: uppercase; letter-spacing: 0.5px;">Open Source</span>
 [add: safe serialization while pushing to hf](https://github.com/h2oai/h2o-llmstudio/pull/221)
 
 
 
-### [ Deepmind - optax](https://github.com/google-deepmind/optax)
+### Deepmind - optax <span style="font-size: 0.65em; font-weight: 600; background-color: #e0eafc; color: #3558b2; padding: 3px 9px; border-radius: 12px; vertical-align: middle; text-transform: uppercase; letter-spacing: 0.5px;">Open Source</span>
 
 - [added typing to linear_algebra.py](https://github.com/google-deepmind/optax/pull/413)
 
 
 
-### Misc Bug fixes
+### Misc Bug fixes <span style="font-size: 0.65em; font-weight: 600; background-color: #e0eafc; color: #3558b2; padding: 3px 9px; border-radius: 12px; vertical-align: middle; text-transform: uppercase; letter-spacing: 0.5px;">Open Source</span>
 
 [:octocat: Fixed potential bug in deepchem's CNN implementation](https://github.com/deepchem/deepchem/pull/2964)
 
 [Fixing load_qm7_from_mat() not found](https://github.com/deepchem/deepchem/pull/2988)
 
 
-### Kaggle 
+### Kaggle <span style="font-size: 0.65em; font-weight: 600; background-color: #fce8d1; color: #c55a11; padding: 3px 9px; border-radius: 12px; vertical-align: middle; text-transform: uppercase; letter-spacing: 0.5px;">Blog</span>
 [Kaggle T4x2 multi-gpu training G2Net](https://www.kaggle.com/code/shivanshuman/kaggle-t4x2-multi-gpu-training-g2net)
 
-### Kaggle 
+### Kaggle <span style="font-size: 0.65em; font-weight: 600; background-color: #fce8d1; color: #c55a11; padding: 3px 9px; border-radius: 12px; vertical-align: middle; text-transform: uppercase; letter-spacing: 0.5px;">Blog</span>
 
 [LB:0.23 Ensemble {CatBoost, XGBoost, LightGBM}](https://www.kaggle.com/code/shivanshuman/lb-0-23-ensemble-catboost-xgboost-lightgbm)
 
-### Kaggle 
+### Kaggle <span style="font-size: 0.65em; font-weight: 600; background-color: #fce8d1; color: #c55a11; padding: 3px 9px; border-radius: 12px; vertical-align: middle; text-transform: uppercase; letter-spacing: 0.5px;">Blog</span>
 [LightGBM + Optuna Baseline](https://www.kaggle.com/code/shivanshuman/lightgbm-optuna-baseline)

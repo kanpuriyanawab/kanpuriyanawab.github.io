@@ -1,0 +1,18 @@
+---
+aliases:
+- /sd_next
+permalink: /sd_next
+badges: false
+toc: true
+categories:
+- Diffusion
+- Wandb
+date: '2023-10-02'
+description: A walkthrough of using SD.Next (Advanced webUI for Stable Diffusion) for generating high-quality images using HuggingFace Diffusers and managing experiments with W&B. 
+hide: false
+output-file: sd_next.html
+search_exclude: false
+title: Generating High-quality Images with SD.Next, HuggingFace Diffusers and W&B
+---
+
+<iframe src="https://wandb.ai/ml-colabs/automatic/reports/Generating-High-quality-Images-with-SD-Next-HuggingFace-Diffusers-and-W-B--Vmlldzo1NTYzMzQy" style="border:none;height:1024px;width:100%">
