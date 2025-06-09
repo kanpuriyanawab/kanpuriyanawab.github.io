@@ -4,43 +4,34 @@ toc: false
 # page-layout: full
 ---
 
-Hi there 👋. I am Anshuman Mishra. I work on large language models yet I like to call myself a software engineer.
+Thanks for dropping by on this little corner of internet. This is Anshuman.
+
+I work as as an AI consultant helping startups and companies build AI-native products. 
+I specialize in working with large language models and I have work at the intersection of LLMs, agent frameworks and backend.
 
 
-I work on large language models at [FlipAI](https://flip.ai).
+### Who I’m Working With (Client companies)
 
-### Professional Experience
+- **Google** → Supporting Large Language Models in [KerasHub](https://github.com/keras-team/keras-hub), implementing them from scratch and writing technical deep-dives on using them.
 
-* **Independent AI Consultant, Google**
-    * *Feb 2025 - Present*
-    * Working with Keras team
+### Previous Clients (Companies):
 
-* **ML Engineer, FlipAI**
-    * *July 2023 - May 2025*
-    * In my current role, I am responsible for designing, building, and deploying machine learning models in a fast-paced production environment. My work involves the end-to-end ML lifecycle, from data preprocessing and model training to deployment and monitoring of core AI features.
-
-* **Google Summer of Code Mentee, Google**
-    * *July 2023 - May 2025*
-    * Worked with Keras team.
-
-* **Technical Author, Weights & Biases**
-    * *September 2023 - February 2024*
-    * During my time as a Technical Author, I focused on creating clear and compelling educational content for the machine learning community. I wrote in-depth articles, tutorials, and guides explaining complex ML concepts and demonstrating best practices using the W&B platform.
-
-* **Data Science Intern, BNY Mellon**
-    * *January 2023 - June 2023*
-    * As a Data Science Intern, I gained hands-on experience within the financial services industry. My responsibilities included analyzing large datasets to uncover insights, building predictive models, and presenting my findings to support data-driven decision-making.
-
-* **Software Engineer Intern, Amazon**
-    * *May 2022 - July 2022*
-    * During my internship at Amazon, I contributed to a team responsible for developing large-scale software systems. This experience provided a strong foundation in the software development lifecycle, including coding, debugging, and working with cloud infrastructure to deliver a project feature.
+- **W&B** → I focused on creating clear and compelling educational content for the machine learning community. I wrote in-depth articles, tutorials, and guides explaining complex ML concepts and demonstrating best practices using the W&B platform.
 
 
+### Previously led Applied ML at
 
-### Some stuff
+**FlipAI** → Fifth employee of the company and 2nd **Machine Learning Engineer** hired.  My work involved the end-to-end ML lifecycle, from data preprocessing and model training to deployment and monitoring of core AI features. I also spent quite some time designing, building, and deploying applications & feature in a fast-paced production environment as per customer needs.
 
-* Google Developer Expert in Machine Learning and Google Cloud Platform ([bit.ly/expert-sp](https://bit.ly/expert-sp))
-* Mentee, Google Summer of Code 2023, in TensorFlow. See my project [here](https://summerofcode.withgoogle.com/archive/2023/projects/X4GwVWLu)
-* Open Source Contributor at [KerasNLP](https://github.com/keras-team/keras-nlp/)
+**Google** → Got selected to work with Tensorflow and Keras team through Google Summer of Code Program. Mainly worked on KerasHub (then KerasNLP), implementing models like Llama2, GPT NeoX from scratch and writing technical articles.
+
+**BNY Mellon** → As a Data Science Intern, I gained hands-on experience within the financial services industry. My responsibilities included analyzing large datasets to uncover insights, building predictive models, and presenting my findings to support data-driven decision-making.
+
+**Amazon** → During my internship at Amazon, I contributed to a team responsible for developing large-scale software systems. This experience provided a strong foundation in the software development lifecycle, including coding, debugging, and working with cloud infrastructure to deliver a project feature.
+
+
+###
+
+I am also [Google Developer Expert]((https://g.dev/anshuizme)) in Machine Learning and Google Cloud Platform.
 
 
