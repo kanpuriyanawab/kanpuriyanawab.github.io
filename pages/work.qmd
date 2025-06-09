@@ -11,6 +11,12 @@ TLDR
 
 ### Twitter <span style="font-size: 0.65em; font-weight: 600; background-color: #FFFFFF; color: #171717; border: 1.5px solid #171717; padding: 3px 9px; border-radius: 12px; vertical-align: middle; text-transform: uppercase; letter-spacing: 0.5px;">X</span>
 
+
+### Qwen 3 model <span style="font-size: 0.65em; font-weight: 600; background-color: #e0eafc; color: #3558b2; padding: 3px 9px; border-radius: 12px; vertical-align: middle; text-transform: uppercase; letter-spacing: 0.5px;">Open Source</span>
+
+I did this work while working as consultant for Keras team. Contributed the model to [KerasHub](https://github.com/keras-team/keras-hub/pull/2249). This involved implementing the core backbone, attention mechanisms, and checkpoint conversion, making the state-of-the-art model accessible to the Keras community.
+
+
 ### Qwen 2.5 model <span style="font-size: 0.65em; font-weight: 600; background-color: #e0eafc; color: #3558b2; padding: 3px 9px; border-radius: 12px; vertical-align: middle; text-transform: uppercase; letter-spacing: 0.5px;">Open Source</span>
 
 I did this work while working as consultant for Keras team. Contributed the model to [KerasHub](https://github.com/keras-team/keras-hub/pull/2088). This involved implementing the core backbone, attention mechanisms, and checkpoint conversion, making the state-of-the-art model accessible to the Keras community.
@@ -18,22 +24,22 @@ I did this work while working as consultant for Keras team. Contributed the mode
 
 ### Qwen-1.5-Mixture-of-Experts <span style="font-size: 0.65em; font-weight: 600; background-color: #e0eafc; color: #3558b2; padding: 3px 9px; border-radius: 12px; vertical-align: middle; text-transform: uppercase; letter-spacing: 0.5px;">Open Source</span>
 
-[This work](https://github.com/keras-team/keras-hub/pull/2163) involved implementing the core backbone, attention mechanisms, and checkpoint conversion, making Qwen-1.5-Mixture-of-Experts model model accessible to the Keras community.
-
-**Challenges**- High Memory
-
-**Mitigation**- Llama4 based moe implementation, High Agency
+[This work](https://github.com/keras-team/keras-hub/pull/2163) involved implementing the core backbone, attention mechanisms, and checkpoint conversion, making Qwen-1.5-Mixture-of-Experts model model accessible to the Keras community. **Challenges**- High Memory. **Mitigation**- Llama4 based moe implementation, High Agency
 
 ### Mixtral <span style="font-size: 0.65em; font-weight: 600; background-color: #e0eafc; color: #3558b2; padding: 3px 9px; border-radius: 12px; vertical-align: middle; text-transform: uppercase; letter-spacing: 0.5px;">Open Source</span>
 Through this work I developed support for [Mixtral](https://github.com/keras-team/keras-hub/pull/2196) model in Keras Hub, making it accessible to community.
 
 ## 2024
 
+### JMLR
+
 ### Youtube video <span style="font-size: 0.65em; font-weight: 600; background-color: #FEE2E2; color: #991B1B; padding: 3px 9px; border-radius: 12px; vertical-align: middle; text-transform: uppercase; letter-spacing: 0.5px;">YouTube</span>
 
 I did Youtube & Twitter
 
-JMLR
+<iframe width="560" height="315" src="https://www.youtube.com/embed/2Xo11kjJiZk?si=8WjEXpvuFG8jRfmx" title="YouTube video player" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share" referrerpolicy="strict-origin-when-cross-origin" allowfullscreen></iframe>
+
+### data hack summit
 
 ## 2023
 
@@ -100,7 +106,6 @@ This guide was officially [published](https://keras.io/examples/nlp/data_paralle
 
 ### Talk <span style="font-size: 0.65em; font-weight: 600; background-color: #dcfce7; color: #166534; padding: 3px 9px; border-radius: 12px; vertical-align: middle; text-transform: uppercase; letter-spacing: 0.5px;">Talk</span>
 
-[KerasNLP: From Words to Wisdom](https://twitter.com/gdg_nd/status/1709132486238724550?t=9V1JG6XwqQNJz6MEuiGqPA&s=08), on October 7, 2023 at DevFest New Delhi’23 .
 
 ### Exploratory Data Analysis <span style="font-size: 0.65em; font-weight: 600; background-color: #fce8d1; color: #c55a11; padding: 3px 9px; border-radius: 12px; vertical-align: middle; text-transform: uppercase; letter-spacing: 0.5px;">Blog</span>
 
@@ -116,38 +121,27 @@ In [this](https://www.kaggle.com/code/shivanshuman/one-stop-eda) Kaggle notebook
 
 XLMRoberta backbone already existed but there were no task layers. I contributed [Masked Language Modeling](https://github.com/keras-team/keras-nlp/pull/950) task layer for the model.
 
-### talk <span style="font-size: 0.65em; font-weight: 600; background-color: #dcfce7; color: #166534; padding: 3px 9px; border-radius: 12px; vertical-align: middle; text-transform: uppercase; letter-spacing: 0.5px;">Talk</span>
-
-[Modular NLP Workflows with KerasNLP](https://x.com/margaretmz/status/1706717545007546491?s=20), on September 29, 2023 at Google Developer Groups, Seattle.
-
-### talk <span style="font-size: 0.65em; font-weight: 600; background-color: #dcfce7; color: #166534; padding: 3px 9px; border-radius: 12px; vertical-align: middle; text-transform: uppercase; letter-spacing: 0.5px;">Talk</span>
-
-[Supercharging Keras with WandB](https://twitter.com/tfugmumbai/status/1705456979756613978?s=20), on September 23, 2023 at TensorFlow User Group Mumbai.
+### Talks <span style="font-size: 0.65em; font-weight: 600; background-color: #dcfce7; color: #166534; padding: 3px 9px; border-radius: 12px; vertical-align: middle; text-transform: uppercase; letter-spacing: 0.5px;">Talk</span>
+In later half of 2023, after I finished my GSoC, I decided to give back the knowledge I earned from Open Source, to community. So I flew 11 cities throughout India giving talks and workshops on various topics related to NLP. Few of them are listed below:
 
 
-### talk <span style="font-size: 0.65em; font-weight: 600; background-color: #dcfce7; color: #166534; padding: 3px 9px; border-radius: 12px; vertical-align: middle; text-transform: uppercase; letter-spacing: 0.5px;">Talk</span>
+1. [KerasNLP: From Words to Wisdom](https://twitter.com/gdg_nd/status/1709132486238724550?t=9V1JG6XwqQNJz6MEuiGqPA&s=08), on October 7, 2023 at DevFest New Delhi’23 .
 
-[GSoC Success Secrets: Cracking the Code to Open Source Excellence](https://www.linkedin.com/feed/update/urn:li:activity:7105945831630938112/), September 10, 2023 at National Institute of Technology, Warangal.
+2. [Modular NLP Workflows with KerasNLP](https://x.com/margaretmz/status/1706717545007546491?s=20), on September 29, 2023 at Google Developer Groups, Seattle.
 
+3. [Supercharging Keras with WandB](https://twitter.com/tfugmumbai/status/1705456979756613978?s=20), on September 23, 2023 at TensorFlow User Group Mumbai.
 
-### talk <span style="font-size: 0.65em; font-weight: 600; background-color: #dcfce7; color: #166534; padding: 3px 9px; border-radius: 12px; vertical-align: middle; text-transform: uppercase; letter-spacing: 0.5px;">Talk</span>
+4. [GSoC Success Secrets: Cracking the Code to Open Source Excellence](https://www.linkedin.com/feed/update/urn:li:activity:7105945831630938112/), September 10, 2023 at National Institute of Technology, Warangal.
 
-[Rethinking LLM Design with KerasNLP](https://twitter.com/kanpuriyanawab/status/1694540731783028926?s=20), on August 26, 2023 at TensorFlow User Group Hyderabad.
+5. [Rethinking LLM Design with KerasNLP](https://twitter.com/kanpuriyanawab/status/1694540731783028926?s=20), on August 26, 2023 at TensorFlow User Group Hyderabad.
 
+6. [KerasNLP for Starters](https://www.youtube.com/watch?v=KinLN4lA6Bg&t=3450s), on August 20, 2023 at TensorFlow User Group Durg
 
-### talk <span style="font-size: 0.65em; font-weight: 600; background-color: #dcfce7; color: #166534; padding: 3px 9px; border-radius: 12px; vertical-align: middle; text-transform: uppercase; letter-spacing: 0.5px;">Talk</span>
+7. [Taking KerasNLP on GenAI Ride]() on July, 23, 2023 at TensorFlow User Group, Kolkata
 
-[KerasNLP for Starters](https://www.youtube.com/watch?v=KinLN4lA6Bg&t=3450s), on August 20, 2023 at TensorFlow User Group Durg
-
-
-### talk <span style="font-size: 0.65em; font-weight: 600; background-color: #dcfce7; color: #166534; padding: 3px 9px; border-radius: 12px; vertical-align: middle; text-transform: uppercase; letter-spacing: 0.5px;">Talk</span>
-
-[Taking KerasNLP on GenAI Ride]() on July, 23, 2023 at TensorFlow User Group, Kolkata
+8. [Re-imagining Keras in the evolving ML ecosystem](https://www.linkedin.com/posts/kanpuriyanawab_event-developercommunity-congratulations-activity-7086588533510934528-dS2y) on July 16, 2023 at Google I/O Extended'23 New Delhi.
 
 
-### talk <span style="font-size: 0.65em; font-weight: 600; background-color: #dcfce7; color: #166534; padding: 3px 9px; border-radius: 12px; vertical-align: middle; text-transform: uppercase; letter-spacing: 0.5px;">Talk</span>
-
-[Re-imagining Keras in the evolving ML ecosystem](https://www.linkedin.com/posts/kanpuriyanawab_event-developercommunity-congratulations-activity-7086588533510934528-dS2y) on July 16, 2023 at Google I/O Extended'23 New Delhi.
 
 
 ### Julia Contributions <span style="font-size: 0.65em; font-weight: 600; background-color: #e0eafc; color: #3558b2; padding: 3px 9px; border-radius: 12px; vertical-align: middle; text-transform: uppercase; letter-spacing: 0.5px;">Open Source</span>
@@ -159,8 +153,8 @@ Metalhead is FluxML's (a julia deep learning package) official model zoo. I [con
 
 ### CNN From Tensorflow to Pytorch <span style="font-size: 0.65em; font-weight: 600; background-color: #e0eafc; color: #3558b2; padding: 3px 9px; border-radius: 12px; vertical-align: middle; text-transform: uppercase; letter-spacing: 0.5px;">Open Source</span>
 
-In 2022, [Deepchem Project](https://deepchem.io) decided to migrate from tensorflow to pytorch. I [contributed](https://github.com/deepchem/deepchem/pull/2963) to this mission by porting their generic, scalable CNN models and layers to torch.
-[Deepchem - Porting CNN from TF ➡️ PyTorch ]()
+In 2022, [Deepchem Project](https://deepchem.io) decided to migrate from tensorflow to pytorch. I [contributed](https://github.com/deepchem/deepchem/pull/2963) to this mission by porting their generic, scalable CNN models and layers to torch. I also fixed couple ([1]((https://github.com/deepchem/deepchem/pull/2988)), [2](https://github.com/deepchem/deepchem/pull/2964)) of bugs in the library that have gone unnoticed. 
+
 
 
 
@@ -183,19 +177,9 @@ The goal of this competition was to predict if a person has any of any medical c
 
 
 
-### h2o-llmstudio<span style="font-size: 0.65em; font-weight: 600; background-color: #e0eafc; color: #3558b2; padding: 3px 9px; border-radius: 12px; vertical-align: middle; text-transform: uppercase; letter-spacing: 0.5px;">Open Source</span>
-[add: safe serialization while pushing to hf](https://github.com/h2oai/h2o-llmstudio/pull/221)
+### Support safe serialization while pushing to Huggingface Hub from H2O llmstudio<span style="font-size: 0.65em; font-weight: 600; background-color: #e0eafc; color: #3558b2; padding: 3px 9px; border-radius: 12px; vertical-align: middle; text-transform: uppercase; letter-spacing: 0.5px;">Open Source</span>
+[PR](https://github.com/h2oai/h2o-llmstudio/pull/221)
 
 
-
-### Deepmind - optax <span style="font-size: 0.65em; font-weight: 600; background-color: #e0eafc; color: #3558b2; padding: 3px 9px; border-radius: 12px; vertical-align: middle; text-transform: uppercase; letter-spacing: 0.5px;">Open Source</span>
-
-- [added typing to linear_algebra.py](https://github.com/google-deepmind/optax/pull/413)
-
-
-
-### Misc Bug fixes <span style="font-size: 0.65em; font-weight: 600; background-color: #e0eafc; color: #3558b2; padding: 3px 9px; border-radius: 12px; vertical-align: middle; text-transform: uppercase; letter-spacing: 0.5px;">Open Source</span>
-
-[:octocat: Fixed potential bug in deepchem's CNN implementation](https://github.com/deepchem/deepchem/pull/2964)
-
-[Fixing load_qm7_from_mat() not found](https://github.com/deepchem/deepchem/pull/2988)
+### Deepmind - optax <span style="font-size: 0.65em; font-weight: 600; background-color: #e0eafc; color: #3558b2; padding: 3px 9px; border-radius: 12px; vertical-align: middle; text-transform: uppercase; letter-spacing: 0.5px;">Open Source</span> 
+[This]((https://github.com/google-deepmind/optax/pull/413)) is how I started open source. My first-ever contribution was a jax library called optax by google deepmind.
