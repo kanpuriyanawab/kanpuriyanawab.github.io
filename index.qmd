@@ -8,12 +8,6 @@ toc: false
 Hi there 👋. I am Anshuman Mishra. I work on large language models yet I like to call myself a software engineer.
 
 
-<!-- <center>
-<img src="assets/images/pic_5.jpeg" style="width: 350px; height: 350px; border-radius: 50%;" />
-</center>
- -->
-
-
 I work on large language models at [FlipAI](https://flip.ai).
 
 ### Professional Experience
