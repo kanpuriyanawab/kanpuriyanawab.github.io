@@ -55,21 +55,86 @@
 <p>Now let’s make our agent! Since the goal of our repository is to build several different kinds of agents from scratch, we need a clean, reusable structure.</p>
 <p><strong>Why a Base Class?</strong> We use a base class to define a common “contract” or interface. This ensures all our agents, whether for Text-to-SQL or another task, have a consistent design. It’s like saying every vehicle must have a run method, even if a car and a motorcycle implement it differently. This makes our project scalable and easy to understand.</p>
 <p>We’ll define a simple Agent base class in agents/base_agent.py that requires every agent to have a run method.</p>
-<pre><code># agents/base_agent.py
-from abc import ABC, abstractmethod
-
-class Agent(ABC):
-    def __init__(self, name: str):
-        self._internal_name = name
-
-    @abstractmethod
-    def run(self, user_input: str, history: list[tuple[str, str]] = None) -&gt; str:
-        pass
-
-    @property
-    def name(self) -&gt; str:
-        return self._internal_name
-</code></pre>
+<div class="sourceCode" id="cb1" style="background: #f1f3f5;"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb1-1"><span class="co" style="color: #5E5E5E;
+background-color: null;
+font-style: inherit;"># agents/base_agent.py</span></span>
+<span id="cb1-2"><span class="im" style="color: #00769E;
+background-color: null;
+font-style: inherit;">from</span> abc <span class="im" style="color: #00769E;
+background-color: null;
+font-style: inherit;">import</span> ABC, abstractmethod</span>
+<span id="cb1-3"></span>
+<span id="cb1-4"><span class="kw" style="color: #003B4F;
+background-color: null;
+font-weight: bold;
+font-style: inherit;">class</span> Agent(ABC):</span>
+<span id="cb1-5">    <span class="kw" style="color: #003B4F;
+background-color: null;
+font-weight: bold;
+font-style: inherit;">def</span> <span class="fu" style="color: #4758AB;
+background-color: null;
+font-style: inherit;">__init__</span>(<span class="va" style="color: #111111;
+background-color: null;
+font-style: inherit;">self</span>, name: <span class="bu" style="color: null;
+background-color: null;
+font-style: inherit;">str</span>):</span>
+<span id="cb1-6">        <span class="va" style="color: #111111;
+background-color: null;
+font-style: inherit;">self</span>._internal_name <span class="op" style="color: #5E5E5E;
+background-color: null;
+font-style: inherit;">=</span> name</span>
+<span id="cb1-7"></span>
+<span id="cb1-8">    <span class="at" style="color: #657422;
+background-color: null;
+font-style: inherit;">@abstractmethod</span></span>
+<span id="cb1-9">    <span class="kw" style="color: #003B4F;
+background-color: null;
+font-weight: bold;
+font-style: inherit;">def</span> run(<span class="va" style="color: #111111;
+background-color: null;
+font-style: inherit;">self</span>, user_input: <span class="bu" style="color: null;
+background-color: null;
+font-style: inherit;">str</span>, history: <span class="bu" style="color: null;
+background-color: null;
+font-style: inherit;">list</span>[<span class="bu" style="color: null;
+background-color: null;
+font-style: inherit;">tuple</span>[<span class="bu" style="color: null;
+background-color: null;
+font-style: inherit;">str</span>, <span class="bu" style="color: null;
+background-color: null;
+font-style: inherit;">str</span>]] <span class="op" style="color: #5E5E5E;
+background-color: null;
+font-style: inherit;">=</span> <span class="va" style="color: #111111;
+background-color: null;
+font-style: inherit;">None</span>) <span class="op" style="color: #5E5E5E;
+background-color: null;
+font-style: inherit;">-&gt;</span> <span class="bu" style="color: null;
+background-color: null;
+font-style: inherit;">str</span>:</span>
+<span id="cb1-10">        <span class="cf" style="color: #003B4F;
+background-color: null;
+font-weight: bold;
+font-style: inherit;">pass</span></span>
+<span id="cb1-11"></span>
+<span id="cb1-12">    <span class="at" style="color: #657422;
+background-color: null;
+font-style: inherit;">@property</span></span>
+<span id="cb1-13">    <span class="kw" style="color: #003B4F;
+background-color: null;
+font-weight: bold;
+font-style: inherit;">def</span> name(<span class="va" style="color: #111111;
+background-color: null;
+font-style: inherit;">self</span>) <span class="op" style="color: #5E5E5E;
+background-color: null;
+font-style: inherit;">-&gt;</span> <span class="bu" style="color: null;
+background-color: null;
+font-style: inherit;">str</span>:</span>
+<span id="cb1-14">        <span class="cf" style="color: #003B4F;
+background-color: null;
+font-weight: bold;
+font-style: inherit;">return</span> <span class="va" style="color: #111111;
+background-color: null;
+font-style: inherit;">self</span>._internal_name</span></code></pre></div>
 <p>Our <strong>Text2SQLAgent</strong> will inherit from this, guaranteeing it fits into our agent framework.</p>
 </section>
 <section id="the-core-logic-of-our-text2sql-agent" class="level2">
@@ -87,24 +152,84 @@ class Agent(ABC):
 <li><p>The Constraints: “Output ONLY the SQL query. No extra text or markdown.”</p></li>
 </ul>
 <p>We then wrap this prompt and send it to the Gemini API using Google’s Python SDK.</p>
-<pre><code># A conceptual look at the prompt structure inside the _generate_sql_with_gemini method
-
-system_instruction_text = "You are an expert SQLite SQL query generator."
-
-prompt_for_task = f"""
-Database Schema:
----
-{self.schema} 
----
-Task: ...
-Constraints: ...
-
-User Question: {question}
-
-SQL Query:
-"""
-full_prompt_for_gemini = f"{system_instruction_text}\n\n{prompt_for_task}"
-response = self.gemini_model.generate_content(full_prompt_for_gemini, ...)</code></pre>
+<div class="sourceCode" id="cb2" style="background: #f1f3f5;"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb2-1"><span class="co" style="color: #5E5E5E;
+background-color: null;
+font-style: inherit;"># A conceptual look at the prompt structure inside the _generate_sql_with_gemini method</span></span>
+<span id="cb2-2"></span>
+<span id="cb2-3">system_instruction_text <span class="op" style="color: #5E5E5E;
+background-color: null;
+font-style: inherit;">=</span> <span class="st" style="color: #20794D;
+background-color: null;
+font-style: inherit;">"You are an expert SQLite SQL query generator."</span></span>
+<span id="cb2-4"></span>
+<span id="cb2-5">prompt_for_task <span class="op" style="color: #5E5E5E;
+background-color: null;
+font-style: inherit;">=</span> <span class="ss" style="color: #20794D;
+background-color: null;
+font-style: inherit;">f"""</span></span>
+<span id="cb2-6"><span class="ss" style="color: #20794D;
+background-color: null;
+font-style: inherit;">Database Schema:</span></span>
+<span id="cb2-7"><span class="ss" style="color: #20794D;
+background-color: null;
+font-style: inherit;">---</span></span>
+<span id="cb2-8"><span class="sc" style="color: #5E5E5E;
+background-color: null;
+font-style: inherit;">{</span><span class="va" style="color: #111111;
+background-color: null;
+font-style: inherit;">self</span><span class="sc" style="color: #5E5E5E;
+background-color: null;
+font-style: inherit;">.</span>schema<span class="sc" style="color: #5E5E5E;
+background-color: null;
+font-style: inherit;">}</span><span class="ss" style="color: #20794D;
+background-color: null;
+font-style: inherit;"> </span></span>
+<span id="cb2-9"><span class="ss" style="color: #20794D;
+background-color: null;
+font-style: inherit;">---</span></span>
+<span id="cb2-10"><span class="ss" style="color: #20794D;
+background-color: null;
+font-style: inherit;">Task: ...</span></span>
+<span id="cb2-11"><span class="ss" style="color: #20794D;
+background-color: null;
+font-style: inherit;">Constraints: ...</span></span>
+<span id="cb2-12"></span>
+<span id="cb2-13"><span class="ss" style="color: #20794D;
+background-color: null;
+font-style: inherit;">User Question: </span><span class="sc" style="color: #5E5E5E;
+background-color: null;
+font-style: inherit;">{</span>question<span class="sc" style="color: #5E5E5E;
+background-color: null;
+font-style: inherit;">}</span></span>
+<span id="cb2-14"></span>
+<span id="cb2-15"><span class="ss" style="color: #20794D;
+background-color: null;
+font-style: inherit;">SQL Query:</span></span>
+<span id="cb2-16"><span class="ss" style="color: #20794D;
+background-color: null;
+font-style: inherit;">"""</span></span>
+<span id="cb2-17">full_prompt_for_gemini <span class="op" style="color: #5E5E5E;
+background-color: null;
+font-style: inherit;">=</span> <span class="ss" style="color: #20794D;
+background-color: null;
+font-style: inherit;">f"</span><span class="sc" style="color: #5E5E5E;
+background-color: null;
+font-style: inherit;">{</span>system_instruction_text<span class="sc" style="color: #5E5E5E;
+background-color: null;
+font-style: inherit;">}</span><span class="ch" style="color: #20794D;
+background-color: null;
+font-style: inherit;">\n\n</span><span class="sc" style="color: #5E5E5E;
+background-color: null;
+font-style: inherit;">{</span>prompt_for_task<span class="sc" style="color: #5E5E5E;
+background-color: null;
+font-style: inherit;">}</span><span class="ss" style="color: #20794D;
+background-color: null;
+font-style: inherit;">"</span></span>
+<span id="cb2-18">response <span class="op" style="color: #5E5E5E;
+background-color: null;
+font-style: inherit;">=</span> <span class="va" style="color: #111111;
+background-color: null;
+font-style: inherit;">self</span>.gemini_model.generate_content(full_prompt_for_gemini, ...)</span></code></pre></div>
 <p>Full code can be found <a href="https://github.com/kanpuriyanawab/awesome-ai-agents/blob/main/agents/text2sql/agent.py">here</a>.</p>
 <ol start="3" type="1">
 <li><strong>Executing the Query</strong> Once Gemini returns what we hope is a valid SQL query, our agent needs to run it. A method _execute_sql_query connects to the database, executes the string, and fetches the results.</li>

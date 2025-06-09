@@ -183,12 +183,10 @@ Metalhead is FluxML's (a julia deep learning package) official model zoo. I [con
 [Fixing load_qm7_from_mat() not found](https://github.com/deepchem/deepchem/pull/2988)
 
 
-### Kaggle <span style="font-size: 0.65em; font-weight: 600; background-color: #fce8d1; color: #c55a11; padding: 3px 9px; border-radius: 12px; vertical-align: middle; text-transform: uppercase; letter-spacing: 0.5px;">Blog</span>
-[Kaggle T4x2 multi-gpu training G2Net](https://www.kaggle.com/code/shivanshuman/kaggle-t4x2-multi-gpu-training-g2net)
+### G2Net Detecting Continuous Gravitational Waves <span style="font-size: 0.65em; font-weight: 600; background-color: #E0F3FF; color: #196F9E; padding: 3px 9px; border-radius: 12px; vertical-align: middle; text-transform: uppercase; letter-spacing: 0.5px;">Kaggle</span>
 
-### Kaggle <span style="font-size: 0.65em; font-weight: 600; background-color: #fce8d1; color: #c55a11; padding: 3px 9px; border-radius: 12px; vertical-align: middle; text-transform: uppercase; letter-spacing: 0.5px;">Blog</span>
+I scored a bronze medal in this competition. The goal of this competition was to find continuous gravitational-wave signals. I developed a model sensitive enough to detect weak yet long-lasting signals emitted by rapidly-spinning neutron stars within noisy data. Here is one of the competition [notebooks]((https://www.kaggle.com/code/shivanshuman/kaggle-t4x2-multi-gpu-training-g2net)) that shows my approach to problem.
 
-[LB:0.23 Ensemble {CatBoost, XGBoost, LightGBM}](https://www.kaggle.com/code/shivanshuman/lb-0-23-ensemble-catboost-xgboost-lightgbm)
 
-### Kaggle <span style="font-size: 0.65em; font-weight: 600; background-color: #fce8d1; color: #c55a11; padding: 3px 9px; border-radius: 12px; vertical-align: middle; text-transform: uppercase; letter-spacing: 0.5px;">Blog</span>
-[LightGBM + Optuna Baseline](https://www.kaggle.com/code/shivanshuman/lightgbm-optuna-baseline)
+### ICR - Identifying Age-Related Conditions <span style="font-size: 0.65em; font-weight: 600; background-color: #E0F3FF; color: #196F9E; padding: 3px 9px; border-radius: 12px; vertical-align: middle; text-transform: uppercase; letter-spacing: 0.5px;">Kaggle</span>
+The goal of this competition was to predict if a person has any of any medical conditions. Here are two notebooks that I submitted for the competition. One of them used an [ensemble based technique]((https://www.kaggle.com/code/shivanshuman/lb-0-23-ensemble-catboost-xgboost-lightgbm)) and the other used just LigthGBM. I used [optuna]((https://www.kaggle.com/code/shivanshuman/lightgbm-optuna-baseline)) library for hyperparameter optimization.

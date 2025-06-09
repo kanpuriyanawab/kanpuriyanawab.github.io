@@ -70,7 +70,7 @@ Now let’s make our agent! Since the goal of our repository is to build several
 We'll define a simple Agent base class in agents/base_agent.py that requires every agent to have a run method.
 
 
-```
+```python
 # agents/base_agent.py
 from abc import ABC, abstractmethod
 
@@ -111,7 +111,7 @@ Our prompt includes:
 We then wrap this prompt and send it to the Gemini API using Google's Python SDK.
 
 
-```
+```python
 # A conceptual look at the prompt structure inside the _generate_sql_with_gemini method
 
 system_instruction_text = "You are an expert SQLite SQL query generator."
