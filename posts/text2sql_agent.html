@@ -75,9 +75,9 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
 <link href="../site_libs/quarto-html/quarto-syntax-highlighting-e1a5c8363afafaef2c763b6775fbf3ca.css" rel="stylesheet" class="quarto-color-scheme-extra" id="quarto-text-highlighting-styles">
 <script src="../site_libs/bootstrap/bootstrap.min.js"></script>
 <link href="../site_libs/bootstrap/bootstrap-icons.css" rel="stylesheet">
-<link href="../site_libs/bootstrap/bootstrap-fe8f458f31a467b51aeabd2275c1e88a.min.css" rel="stylesheet" append-hash="true" class="quarto-color-scheme" id="quarto-bootstrap" data-mode="light">
+<link href="../site_libs/bootstrap/bootstrap-f48f1e0cbdc60b09e7d756724da10ed0.min.css" rel="stylesheet" append-hash="true" class="quarto-color-scheme" id="quarto-bootstrap" data-mode="light">
 <link href="../site_libs/bootstrap/bootstrap-dark-20ab674ed1e28f1f3eb3331cca6ce3d6.min.css" rel="stylesheet" append-hash="true" class="quarto-color-scheme quarto-color-alternate" id="quarto-bootstrap" data-mode="dark">
-<link href="../site_libs/bootstrap/bootstrap-fe8f458f31a467b51aeabd2275c1e88a.min.css" rel="stylesheet" append-hash="true" class="quarto-color-scheme-extra" id="quarto-bootstrap" data-mode="light">
+<link href="../site_libs/bootstrap/bootstrap-f48f1e0cbdc60b09e7d756724da10ed0.min.css" rel="stylesheet" append-hash="true" class="quarto-color-scheme-extra" id="quarto-bootstrap" data-mode="light">
 <link href="../site_libs/quarto-contrib/academicons-1.9.4/all.css" rel="stylesheet">
 <link href="../site_libs/quarto-contrib/academicons-1.9.4/size.css" rel="stylesheet">
 <script id="quarto-search-options" type="application/json">{
@@ -415,6 +415,9 @@ gtag('config', 'G-36H2NR8FB7', { 'anonymize_ip': true});
 <p>👉 While a full-fledged agent system might involve complex reasoning and self-correction, our approach today focuses on building a robust pipeline with clear steps, good error handling when talking to the Large Language Model (LLM), and a way to learn from the process. This lays the foundation for more advanced agentic behavior later.</p>
 <p>Let’s build this agent! 💪</p>
 <p>And by the way, all the code related to this guide can be found here on my github.</p>
+<p style="text-align: center;">
+<a href="https://fullstackagents.substack.com/subscribe" target="_blank" style="display: inline-block; font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, Helvetica, Arial, sans-serif; background-color:rgb(19, 36, 135); color: #FFFFFF; font-size: 16px; font-weight: 600; padding: 12px 24px; border-radius: 8px; text-decoration: none;"> Subscribe to Full-Stack Agents </a>
+</p>
 <section id="the-big-picture-our-agents-workflow" class="level2">
 <h2 class="anchored" data-anchor-id="the-big-picture-our-agents-workflow">The Big Picture: Our Agent’s Workflow</h2>
 <p>Before we dive into code, let’s look at the overall flow of our system. It’s a simple, logical sequence: a user’s question comes in one end, and an answer from the database comes out the other.</p>
@@ -515,6 +518,9 @@ gtag('config', 'G-36H2NR8FB7', { 'anonymize_ip': true});
 <li>The response.text Trap: Using response.text to get the output can fail if the model’s response is blocked or empty. We learned to robustly parse response.candidates[0].content.parts instead.</li>
 </ol>
 <p><strong><strong>Key Takeaway: Debugging LLM interactions is an art. Log your inputs (prompts) and its outputs (raw responses) very carefully!</strong></strong></p>
+<p style="text-align: center;">
+<a href="https://fullstackagents.substack.com/subscribe" target="_blank" style="display: inline-block; font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, Helvetica, Arial, sans-serif; background-color:rgb(19, 36, 135); color: #FFFFFF; font-size: 16px; font-weight: 600; padding: 12px 24px; border-radius: 8px; text-decoration: none;"> Subscribe to Full-Stack Agents </a>
+</p>
 </section>
 <section id="bringing-our-agent-to-life-with-gradio" class="level2">
 <h2 class="anchored" data-anchor-id="bringing-our-agent-to-life-with-gradio">Bringing Our Agent to Life with Gradio</h2>
@@ -560,6 +566,9 @@ gtag('config', 'G-36H2NR8FB7', { 'anonymize_ip': true});
 <li>Expand the Gradio UI with more features!</li>
 </ul>
 <p>Happy coding, and keep building amazing things!</p>
+<p style="text-align: center;">
+<a href="https://fullstackagents.substack.com/subscribe" target="_blank" style="display: inline-block; font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, Helvetica, Arial, sans-serif; background-color:rgb(19, 36, 135); color: #FFFFFF; font-size: 16px; font-weight: 600; padding: 12px 24px; border-radius: 8px; text-decoration: none;"> Subscribe to Full-Stack Agents </a>
+</p>
 
 
 </section>
