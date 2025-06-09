@@ -5,7 +5,8 @@ project:
 format:
   html:
     theme:
-      light: cosmo
+      # light: cosmo
+      light: custom_theme.scss
       dark: darkly
     css: styles.css
     toc: true

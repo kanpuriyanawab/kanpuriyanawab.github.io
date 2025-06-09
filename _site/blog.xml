@@ -31,6 +31,9 @@
 <p>👉 While a full-fledged agent system might involve complex reasoning and self-correction, our approach today focuses on building a robust pipeline with clear steps, good error handling when talking to the Large Language Model (LLM), and a way to learn from the process. This lays the foundation for more advanced agentic behavior later.</p>
 <p>Let’s build this agent! 💪</p>
 <p>And by the way, all the code related to this guide can be found here on my github.</p>
+<p style="text-align: center;">
+<a href="https://fullstackagents.substack.com/subscribe" target="_blank" style="display: inline-block; font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, Helvetica, Arial, sans-serif; background-color:rgb(19, 36, 135); color: #FFFFFF; font-size: 16px; font-weight: 600; padding: 12px 24px; border-radius: 8px; text-decoration: none;"> Subscribe to Full-Stack Agents </a>
+</p>
 <section id="the-big-picture-our-agents-workflow" class="level2">
 <h2 class="anchored" data-anchor-id="the-big-picture-our-agents-workflow">The Big Picture: Our Agent’s Workflow</h2>
 <p>Before we dive into code, let’s look at the overall flow of our system. It’s a simple, logical sequence: a user’s question comes in one end, and an answer from the database comes out the other.</p>
@@ -257,6 +260,9 @@ font-style: inherit;">self</span>.gemini_model.generate_content(full_prompt_for_
 <li>The response.text Trap: Using response.text to get the output can fail if the model’s response is blocked or empty. We learned to robustly parse response.candidates[0].content.parts instead.</li>
 </ol>
 <p><strong><strong>Key Takeaway: Debugging LLM interactions is an art. Log your inputs (prompts) and its outputs (raw responses) very carefully!</strong></strong></p>
+<p style="text-align: center;">
+<a href="https://fullstackagents.substack.com/subscribe" target="_blank" style="display: inline-block; font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, Helvetica, Arial, sans-serif; background-color:rgb(19, 36, 135); color: #FFFFFF; font-size: 16px; font-weight: 600; padding: 12px 24px; border-radius: 8px; text-decoration: none;"> Subscribe to Full-Stack Agents </a>
+</p>
 </section>
 <section id="bringing-our-agent-to-life-with-gradio" class="level2">
 <h2 class="anchored" data-anchor-id="bringing-our-agent-to-life-with-gradio">Bringing Our Agent to Life with Gradio</h2>
@@ -302,6 +308,9 @@ font-style: inherit;">self</span>.gemini_model.generate_content(full_prompt_for_
 <li>Expand the Gradio UI with more features!</li>
 </ul>
 <p>Happy coding, and keep building amazing things!</p>
+<p style="text-align: center;">
+<a href="https://fullstackagents.substack.com/subscribe" target="_blank" style="display: inline-block; font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, Helvetica, Arial, sans-serif; background-color:rgb(19, 36, 135); color: #FFFFFF; font-size: 16px; font-weight: 600; padding: 12px 24px; border-radius: 8px; text-decoration: none;"> Subscribe to Full-Stack Agents </a>
+</p>
 
 
 </section>
@@ -352,6 +361,9 @@ font-style: inherit;">self</span>.gemini_model.generate_content(full_prompt_for_
 <p><em>Imagine feeding an AI 20 documents to answer a question, and the key document is the 10th one. The AI might struggle to find or correctly use that key document more than if it were the 1st or the 20th. In some cases, performance when information is in the middle can be worse than if the AI had no documents at all and was just relying on its pre-trained knowledge! This phenomenon is seen even in models specifically designed for long contexts.</em></p>
 <p><img src="https://www.heyyanshuman.com/posts/assets/agent_memory_101/memory_1.jpg" class="img-fluid"></p>
 <p>The consequence of these limitations is that many AI agents today are essentially stateless. Each interaction is largely isolated, leading to a lack of true personalization, repeated questions, and inconsistent behavior. It’s like having a brilliant personal assistant who, unfortunately, gets their memory wiped clean every morning.</p>
+<p style="text-align: center;">
+<a href="https://fullstackagents.substack.com/subscribe" target="_blank" style="display: inline-block; font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, Helvetica, Arial, sans-serif; background-color:rgb(19, 36, 135); color: #FFFFFF; font-size: 16px; font-weight: 600; padding: 12px 24px; border-radius: 8px; text-decoration: none;"> Subscribe to Full-Stack Agents </a>
+</p>
 </section>
 </section>
 <section id="defining-memory-in-ai-more-than-just-recent-chat-history" class="level2">
@@ -368,6 +380,9 @@ font-style: inherit;">self</span>.gemini_model.generate_content(full_prompt_for_
 </ul></li>
 </ul>
 <p>I have a strong opinion here. The Dotcom era Dotcom era enabled businesses to move online - and Apps emerged, I think AI is going to bring hyper-personalization to these apps. And for that to happen this much depth of memory so crucial. Moreover, Agent memory is going to play very important role in maintaining coherence and consistency in its interactions. It will enable an agent to Learn and adapt from past successes and failures.</p>
+<p style="text-align: center;">
+<a href="https://fullstackagents.substack.com/subscribe" target="_blank" style="display: inline-block; font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, Helvetica, Arial, sans-serif; background-color:rgb(19, 36, 135); color: #FFFFFF; font-size: 16px; font-weight: 600; padding: 12px 24px; border-radius: 8px; text-decoration: none;"> Subscribe to Full-Stack Agents </a>
+</p>
 </section>
 <section id="another-challenge---llms-lack-focus" class="level2">
 <h2 class="anchored" data-anchor-id="another-challenge---llms-lack-focus">Another challenge - LLMs lack focus!</h2>
@@ -465,6 +480,9 @@ font-style: inherit;">self</span>.gemini_model.generate_content(full_prompt_for_
 <li><p>The <a href="https://arxiv.org/abs/2504.19413">Mem0: Building Production-Ready AI Agents with Scalable Long-Term Memory</a> paper (Chhikara et al., 2025) offers a look at a production-focused system with impressive results and graph-based memory.</p></li>
 <li><p>The blogs from Letta (on RAG vs.&nbsp;Agent Memory, Memory Blocks, and Stateful Agents) and Mem0.ai (on Types of Memory, Making AI Companions Truly Personal, and Memory in Agents) provide excellent conceptual overviews and insights into building more personal AI.</p></li>
 </ul>
+<p style="text-align: center;">
+<a href="https://fullstackagents.substack.com/subscribe" target="_blank" style="display: inline-block; font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, Helvetica, Arial, sans-serif; background-color:rgb(19, 36, 135); color: #FFFFFF; font-size: 16px; font-weight: 600; padding: 12px 24px; border-radius: 8px; text-decoration: none;"> Subscribe to Full-Stack Agents </a>
+</p>
 
 
 </section>
