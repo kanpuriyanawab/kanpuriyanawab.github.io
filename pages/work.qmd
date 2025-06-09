@@ -7,9 +7,7 @@ toc: true
 
 ## 2025
 
-TLDR
-
-### Building Production Ready Text to SQL Agent <span style="font-size: 0.65em; font-weight: 600; background-color: #FFFFFF; color: #171717; border: 1.5px solid #171717; padding: 3px 9px; border-radius: 12px; vertical-align: middle; text-transform: uppercase; letter-spacing: 0.5px;">X</span>  <span style="font-size: 0.65em; font-weight: 600; background-color: #e0eafc; color: #3558b2; padding: 3px 9px; border-radius: 12px; vertical-align: middle; text-transform: uppercase; letter-spacing: 0.5px;">Open Source</span> <span style="font-size: 0.65em; font-weight: 600; background-color: #fce8d1; color: #c55a11; padding: 3px 9px; border-radius: 12px; vertical-align: middle; text-transform: uppercase; letter-spacing: 0.5px;">Blog</span><span style="font-size: 0.65em; font-weight: 600; background-color: #FEE2E2; color: #991B1B; padding: 3px 9px; border-radius: 12px; vertical-align: middle; text-transform: uppercase; letter-spacing: 0.5px;">YouTube</span>
+### Building Production Ready Text to SQL Agent <span style="font-size: 0.65em; font-weight: 600; background-color: #e0eafc; color: #3558b2; padding: 3px 9px; border-radius: 12px; vertical-align: middle; text-transform: uppercase; letter-spacing: 0.5px;">Open Source</span> <span style="font-size: 0.65em; font-weight: 600; background-color: #fce8d1; color: #c55a11; padding: 3px 9px; border-radius: 12px; vertical-align: middle; text-transform: uppercase; letter-spacing: 0.5px;">Blog</span><span style="font-size: 0.65em; font-weight: 600; background-color: #FEE2E2; color: #991B1B; padding: 3px 9px; border-radius: 12px; vertical-align: middle; text-transform: uppercase; letter-spacing: 0.5px;">YouTube</span>
 
 As I venture into AI Consulting, I'm giving back to community via education. In this project I demonstrate how to build production ready AI Agent for task of text to sql generation and execution.
 
@@ -60,8 +58,6 @@ I co-authored a foundational paper for the **Journal of Machine Learning Researc
 ### Data hack summit <span style="font-size: 0.65em; font-weight: 600; background-color: #dcfce7; color: #166534; padding: 3px 9px; border-radius: 12px; vertical-align: middle; text-transform: uppercase; letter-spacing: 0.5px;">Talk</span>
 
 I gave [this](https://www.analyticsvidhya.com/datahacksummit-2024/sessions/demystify-parallel-programming-hands-on-with-cuda-for-genai) talk at Data Hack Summit by Analytics Vidhya. It covered CUDA C fundamentals and core CUDA concepts like threads, blocks, and memory hierarchies. The session guided attendees through writing their first CUDA kernels, aiming to build the skills needed to optimize deep learning workloads.
-
-<iframe src="https://www.linkedin.com/embed/feed/update/urn:li:share:7195019535458971648?collapsed=1" height="628" width="504" frameborder="0" allowfullscreen="" title="Embedded post"></iframe>
 
 ## 2023
 
