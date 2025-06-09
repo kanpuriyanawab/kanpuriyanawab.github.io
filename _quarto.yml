@@ -14,6 +14,7 @@ website:
   title: "Anshuman Mishra"
   site-url: "https://www.heyyanshuman.com"
   description: "Introductions Anshuman Mishra."
+  google-analytics: "G-36H2NR8FB7"
   favicon: assets/images/pfp/varkala.jpg
   search: false
   twitter-card:
@@ -46,7 +47,7 @@ website:
       - text: "{{< ai google-scholar >}}"
         href: https://scholar.google.fr/citations?user=70wh9jcAAAAJ
 
-google-analytics: "G-36H2NR8FB7"
+
 
 execute:
   freeze: auto
