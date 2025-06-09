@@ -70,9 +70,9 @@ ul.task-list li input[type="checkbox"] {
     }
 
     const options = {
-      valueNames: ['listing-date','listing-title','listing-author','listing-image','listing-description',{ data: ['index'] },{ data: ['categories'] },{ data: ['listing-date-sort'] },{ data: ['listing-file-modified-sort'] }],
+      valueNames: ['listing-date','listing-title','listing-author','listing-image','listing-description','listing-categories',{ data: ['index'] },{ data: ['categories'] },{ data: ['listing-date-sort'] },{ data: ['listing-file-modified-sort'] }],
       
-      searchColumns: ["listing-date","listing-title","listing-author","listing-image","listing-description"],
+      searchColumns: ["listing-date","listing-title","listing-author","listing-image","listing-description","listing-categories"],
     };
 
     window['quarto-listings'] = window['quarto-listings'] || {};
@@ -363,14 +363,14 @@ window.Quarto = {
     </nav>
 </header>
 <!-- content -->
-<div id="quarto-content" class="quarto-container page-columns page-rows-contents page-layout-article page-navbar">
+<div id="quarto-content" class="quarto-container page-columns page-rows-contents page-layout-full page-navbar">
 <!-- sidebar -->
 <!-- margin-sidebar -->
-    <div id="quarto-margin-sidebar" class="sidebar margin-sidebar zindex-bottom">
+    <div id="quarto-margin-sidebar" class="sidebar margin-sidebar">
         
-    </div>
+    <h5 class="quarto-listing-category-title">Categories</h5><div class="quarto-listing-category category-default"><div class="category" data-category="">All <span class="quarto-category-count">(11)</span></div><div class="category" data-category="QWdlbnRz">Agents <span class="quarto-category-count">(2)</span></div><div class="category" data-category="RGlmZnVzaW9u">Diffusion <span class="quarto-category-count">(1)</span></div><div class="category" data-category="SW50ZXJ2aWV3">Interview <span class="quarto-category-count">(4)</span></div><div class="category" data-category="SnVsaWE=">Julia <span class="quarto-category-count">(1)</span></div><div class="category" data-category="S2VyYXNIdWI=">KerasHub <span class="quarto-category-count">(1)</span></div><div class="category" data-category="TExNcw==">LLMs <span class="quarto-category-count">(5)</span></div><div class="category" data-category="TW9kZWwlMjBBcmNoaXRlY3R1cmU=">Model Architecture <span class="quarto-category-count">(1)</span></div><div class="category" data-category="T3BlcmF0aW5nLXN5c3RlbQ==">Operating-system <span class="quarto-category-count">(2)</span></div><div class="category" data-category="V2FuZGI=">Wandb <span class="quarto-category-count">(2)</span></div></div></div>
 <!-- main -->
-<main class="content" id="quarto-document-content">
+<main class="content column-page-left" id="quarto-document-content">
 
 
 <header id="title-block-header" class="quarto-title-block default">
@@ -380,7 +380,7 @@ window.Quarto = {
 
 
 
-<div class="quarto-title-meta">
+<div class="quarto-title-meta column-page-left">
 
     
   
@@ -397,6 +397,31 @@ window.Quarto = {
 
 
 <div class="quarto-listing quarto-listing-container-default" id="listing-listing">
+<div class="listing-actions-group">
+   <div class="input-group input-group-sm quarto-listing-sort">
+    <span class="input-group-text"><i class="bi bi-sort-down"></i></span>
+    <select id="listing-listing-sort" class="form-select" aria-label="Order By" onchange="window['quarto-listings']['listing-listing'].sort(this.options[this.selectedIndex].value, { order: this.options[this.selectedIndex].getAttribute('data-direction')})">
+      <option value="" disabled="" selected="" hidden="">Order By</option>
+      <option value="index" data-direction="asc">Default</option>
+      <option value="listing-title" data-direction="asc">
+        Title
+      </option>
+      <option value="listing-date-sort" data-direction="asc">
+        Date - Oldest
+      </option>
+      <option value="listing-date-sort" data-direction="desc">
+        Date - Newest
+      </option>
+      <option value="listing-author" data-direction="asc">
+        Author
+      </option>
+    </select>
+  </div>
+    <div class="input-group input-group-sm quarto-listing-filter">
+      <span class="input-group-text"><i class="bi bi-search"></i></span>
+      <input type="text" class="search form-control" placeholder="Filter">
+    </div>
+</div>
 <div class="list quarto-listing-default">
 <div class="quarto-post image-right" data-index="0" data-categories="TExNcyUyQ0FnZW50cw==" data-listing-date-sort="1749148200000" data-listing-file-modified-sort="1749445567572" data-listing-date-modified-sort="NaN" data-listing-reading-time-sort="9" data-listing-word-count-sort="1643">
 <div class="thumbnail"><a href="./posts/text2sql_agent.html" class="no-external">
@@ -408,6 +433,13 @@ window.Quarto = {
 <h3 class="no-anchor listing-title">
 <a href="./posts/text2sql_agent.html" class="no-external">Building Production Ready Text-to-SQL Agent from Scratch</a>
 </h3>
+<div class="listing-categories">
+
+<div class="listing-category" onclick="window.quartoListingCategory('TExNcw=='); return false;">LLMs</div>
+
+<div class="listing-category" onclick="window.quartoListingCategory('QWdlbnRz'); return false;">Agents</div>
+
+</div>
 <div class="delink listing-description"><a href="./posts/text2sql_agent.html" class="no-external">
 <p>Tired of Writing SQL? Let’s Build an AI That Does It For You.</p>
 </a></div>
@@ -430,6 +462,13 @@ Jun 6, 2025
 <h3 class="no-anchor listing-title">
 <a href="./posts/agent_memory_101.html" class="no-external">The AI Memory Layer Will Change Everything</a>
 </h3>
+<div class="listing-categories">
+
+<div class="listing-category" onclick="window.quartoListingCategory('TExNcw=='); return false;">LLMs</div>
+
+<div class="listing-category" onclick="window.quartoListingCategory('QWdlbnRz'); return false;">Agents</div>
+
+</div>
 <div class="delink listing-description"><a href="./posts/agent_memory_101.html" class="no-external">
 <p>How Stateful Memory is Revolutionizing AI Agents and Applications</p>
 </a></div>
@@ -452,6 +491,11 @@ Jun 3, 2025
 <h3 class="no-anchor listing-title">
 <a href="./posts/interview_aakash.html" class="no-external">Interview with Aakash Kumar Nain, MLE at Merlyn Minds</a>
 </h3>
+<div class="listing-categories">
+
+<div class="listing-category" onclick="window.quartoListingCategory('SW50ZXJ2aWV3'); return false;">Interview</div>
+
+</div>
 <div class="delink listing-description"><a href="./posts/interview_aakash.html" class="no-external">
 <p>joint work with Abheesht Sharma</p>
 </a></div>
@@ -474,6 +518,13 @@ Dec 22, 2023
 <h3 class="no-anchor listing-title">
 <a href="./posts/illustrated_llmos.html" class="no-external">Illustrated LLM OS</a>
 </h3>
+<div class="listing-categories">
+
+<div class="listing-category" onclick="window.quartoListingCategory('TExNcw=='); return false;">LLMs</div>
+
+<div class="listing-category" onclick="window.quartoListingCategory('T3BlcmF0aW5nLXN5c3RlbQ=='); return false;">Operating-system</div>
+
+</div>
 <div class="delink listing-description"><a href="./posts/illustrated_llmos.html" class="no-external">
 <p>An Implementational Perspective of LLMs as Operating Systems</p>
 </a></div>
@@ -496,6 +547,11 @@ Dec 3, 2023
 <h3 class="no-anchor listing-title">
 <a href="./posts/interview_matt.html" class="no-external">Interview with Matthew Watson, Keras Team, Google</a>
 </h3>
+<div class="listing-categories">
+
+<div class="listing-category" onclick="window.quartoListingCategory('SW50ZXJ2aWV3'); return false;">Interview</div>
+
+</div>
 <div class="delink listing-description"><a href="./posts/interview_matt.html" class="no-external">
 <p>joint work with Abheesht Sharma</p>
 </a></div>
@@ -518,6 +574,13 @@ Oct 11, 2023
 <h3 class="no-anchor listing-title">
 <a href="./posts/sd_next.html" class="no-external">Generating High-quality Images with SD.Next, HuggingFace Diffusers and W&amp;B</a>
 </h3>
+<div class="listing-categories">
+
+<div class="listing-category" onclick="window.quartoListingCategory('RGlmZnVzaW9u'); return false;">Diffusion</div>
+
+<div class="listing-category" onclick="window.quartoListingCategory('V2FuZGI='); return false;">Wandb</div>
+
+</div>
 <div class="delink listing-description"><a href="./posts/sd_next.html" class="no-external">
 <p>A walkthrough of using SD.Next (Advanced webUI for Stable Diffusion) for generating high-quality images using HuggingFace Diffusers and managing experiments with W&amp;B.</p>
 </a></div>
@@ -540,6 +603,11 @@ Oct 2, 2023
 <h3 class="no-anchor listing-title">
 <a href="./posts/interview_rajaswa.html" class="no-external">Interview with Rajaswa Patil, AI Researcher at Postman Labs</a>
 </h3>
+<div class="listing-categories">
+
+<div class="listing-category" onclick="window.quartoListingCategory('SW50ZXJ2aWV3'); return false;">Interview</div>
+
+</div>
 <div class="delink listing-description"><a href="./posts/interview_rajaswa.html" class="no-external">
 <p>joint work with Abheesht Sharma</p>
 </a></div>
@@ -562,6 +630,15 @@ Sep 25, 2023
 <h3 class="no-anchor listing-title">
 <a href="./posts/semantic_sim_kerasnlp.html" class="no-external">Predicting Semantic Similarity using KerasNLP</a>
 </h3>
+<div class="listing-categories">
+
+<div class="listing-category" onclick="window.quartoListingCategory('S2VyYXNIdWI='); return false;">KerasHub</div>
+
+<div class="listing-category" onclick="window.quartoListingCategory('TExNcw=='); return false;">LLMs</div>
+
+<div class="listing-category" onclick="window.quartoListingCategory('V2FuZGI='); return false;">Wandb</div>
+
+</div>
 <div class="delink listing-description"><a href="./posts/semantic_sim_kerasnlp.html" class="no-external">
 <p>This report demonstrates how to use the Weights&amp;Biases to speedup experiments with Keras</p>
 </a></div>
@@ -584,6 +661,13 @@ Sep 2, 2023
 <h3 class="no-anchor listing-title">
 <a href="./posts/flux_is_so_flexible.html" class="no-external">Deep Learning in&nbsp;Julia</a>
 </h3>
+<div class="listing-categories">
+
+<div class="listing-category" onclick="window.quartoListingCategory('TW9kZWwlMjBBcmNoaXRlY3R1cmU='); return false;">Model Architecture</div>
+
+<div class="listing-category" onclick="window.quartoListingCategory('SnVsaWE='); return false;">Julia</div>
+
+</div>
 <div class="delink listing-description"><a href="./posts/flux_is_so_flexible.html" class="no-external">
 <p>Implementing ML models in Flux, the Julia Deep Learning&nbsp;Package!</p>
 </a></div>
@@ -606,6 +690,13 @@ Dec 31, 2022
 <h3 class="no-anchor listing-title">
 <a href="./posts/julia_house_price_prediction.html" class="no-external">Comprehensive data exploration with Julia</a>
 </h3>
+<div class="listing-categories">
+
+<div class="listing-category" onclick="window.quartoListingCategory('TExNcw=='); return false;">LLMs</div>
+
+<div class="listing-category" onclick="window.quartoListingCategory('T3BlcmF0aW5nLXN5c3RlbQ=='); return false;">Operating-system</div>
+
+</div>
 <div class="delink listing-description"><a href="./posts/julia_house_price_prediction.html" class="no-external">
 <p>Exploratory Data Analysis of Housing dataset in Julia</p>
 </a></div>
@@ -628,6 +719,11 @@ Dec 22, 2022
 <h3 class="no-anchor listing-title">
 <a href="./posts/interview_rrk.html" class="no-external">Interview with 2x Kaggle Grandmaster, Data Science Manager at Emirates NBD - Ravi Ramakrishnan</a>
 </h3>
+<div class="listing-categories">
+
+<div class="listing-category" onclick="window.quartoListingCategory('SW50ZXJ2aWV3'); return false;">Interview</div>
+
+</div>
 <div class="delink listing-description"><a href="./posts/interview_rrk.html" class="no-external">
 <p>joint work with Abheesht Sharma</p>
 </a></div>
