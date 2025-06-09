@@ -1,37 +1,47 @@
 ---
 # title: "Anshuman Mishra"
 toc: false
-# page-layout: full
+page-layout: full
 ---
 
-Thanks for dropping by on this little corner of internet. This is Anshuman.
+::: {.columns}
 
-I work as as an AI consultant helping startups and companies build AI-native products. 
-I specialize in working with large language models and I have work at the intersection of LLMs, agent frameworks and backend.
+::: {.column width="65%"}
+### Hi, I'm Anshuman.
 
+Thanks for dropping by. I'm a software engineer at heart with a deep passion for building with stuff with large language models.
 
-### Who I’m Working With (Client companies)
+After years of contributing to the core of major open-source machine learning frameworks, I now work as an AI consultant, helping startups build robust, AI-native products. 
 
-- **Google** → Supporting Large Language Models in [KerasHub](https://github.com/keras-team/keras-hub), implementing them from scratch and writing technical deep-dives on using them.
+My expertise comes from foundational, hands-on work—implementing models from scratch, designing training pipelines, and writing technical guides.
 
-### Previous Clients (Companies):
+I am also a [Google Developer Expert](https://g.dev/anshuizme) in Machine Learning.
+
+:::
+
+::: {.column width="35%"}
+![](assets/images/pfp/varkala.jpg){fig-align="center" width="250" style="border-radius: 30%;"}
+:::
+
+:::
+
+---
+
+### Who I’m Working With (Consultancy)
+
+* **Google** → As an Independent AI Consultant, I support the Keras team by implementing state-of-the-art models in [KerasHub](https://github.com/keras-team/keras-hub) and writing technical deep-dives on their usage.
+
+### Previous Clients (Consultancy):
 
 - **W&B** → I focused on creating clear and compelling educational content for the machine learning community. I wrote in-depth articles, tutorials, and guides explaining complex ML concepts and demonstrating best practices using the W&B platform.
 
-
-### Previously led Applied ML at
+### Experience
 
 **FlipAI** → Fifth employee of the company and 2nd **Machine Learning Engineer** hired.  My work involved the end-to-end ML lifecycle, from data preprocessing and model training to deployment and monitoring of core AI features. I also spent quite some time designing, building, and deploying applications & feature in a fast-paced production environment as per customer needs.
 
-**Google** → Got selected to work with Tensorflow and Keras team through Google Summer of Code Program. Mainly worked on KerasHub (then KerasNLP), implementing models like Llama2, GPT NeoX from scratch and writing technical articles.
+**Google** → Selected for the **Google Summer of Code Program** to work with the TensorFlow and Keras teams. Mainly worked on KerasHub (then KerasNLP), implementing models like Llama2, GPT NeoX from scratch and writing technical articles.
 
-**BNY Mellon** → As a Data Science Intern, I gained hands-on experience within the financial services industry. My responsibilities included analyzing large datasets to uncover insights, building predictive models, and presenting my findings to support data-driven decision-making.
+**BNY Mellon** → As a **Data Science Intern**, I gained hands-on experience within the financial services industry. My responsibilities included analyzing large datasets to uncover insights, building predictive models, and presenting my findings to support data-driven decision-making.
 
-**Amazon** → During my internship at Amazon, I contributed to a team responsible for developing large-scale software systems. This experience provided a strong foundation in the software development lifecycle, including coding, debugging, and working with cloud infrastructure to deliver a project feature.
-
-
-###
-
-I am also [Google Developer Expert]((https://g.dev/anshuizme)) in Machine Learning and Google Cloud Platform.
-
+**Amazon** → During my **Software Engineering internship** at Amazon, I contributed to a team responsible for developing large-scale software systems. This experience provided a strong foundation in the software development lifecycle, including coding, debugging, and working with cloud infrastructure to deliver a project feature.
 
