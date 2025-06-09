@@ -23,7 +23,7 @@ To stay upto-date with my work you can subscribe via [substack](https://fullstac
 In this [blog](https://heyyanshuman.com/posts/agent_memory_101) we dive into Memory layer of AI and understand why stateful AI agents are path to hyperpersonalization and not the stateless once. -->
 
 
-### Qwen Model Family Integration in Keras <span style="font-size: 0.65em; font-weight: 600; background-color: #e0eafc; color: #3558b2; padding: 3px 9px; border-radius: 12px; vertical-align: middle; text-transform: uppercase; letter-spacing: 0.5px;">OSS</span>
+### Qwen Model Family Integration in Keras  <span style="font-size: 0.65em; font-weight: 600; background-color: #fce8d1; color: #c55a11; padding: 3px 9px; border-radius: 12px; vertical-align: middle; text-transform: uppercase; letter-spacing: 0.5px;">OSS</span>
 
 As a consultant for the Keras team, I led the integration of the state-of-the-art **Qwen model family** into KerasHub. This work made multiple versions of this powerful generative model, including its advanced Mixture-of-Experts variant, accessible to the global Keras community.
 
