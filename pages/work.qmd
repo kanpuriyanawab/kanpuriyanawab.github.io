@@ -67,55 +67,23 @@ This was also [published](https://keras.io/examples/nlp/semantic_similarity_with
 <!-- ### Generating High-quality Images with SD.Next, HuggingFace Diffusers and W&B <span style="font-size: 0.65em; font-weight: 600; background-color: #fce8d1; color: #c55a11; padding: 3px 9px; border-radius: 12px; vertical-align: middle; text-transform: uppercase; letter-spacing: 0.5px;">Blog</span>
 
 I documented my experiments with advanced diffusion models in this [report](https://wandb.ai/ml-colabs/automatic/reports/Generating-High-quality-Images-with-SD-Next-HuggingFace-Diffusers-and-W-B--Vmlldzo1NTYzMzQy). It's a comprehensive guide to generating high-quality images with SD.Next and HuggingFace Diffusers, emphasizing the use of W&B for complete observability and reproducibility. -->
+### Google Summer of Code at TensorFlow <span style="font-size: 0.65em; font-weight: 600; background-color: #fce8d1; color: #c55a11; padding: 3px 9px; border-radius: 12px; vertical-align: middle; text-transform: uppercase; letter-spacing: 0.5px;">OSS</span>
 
-### Llama2 <span style="font-size: 0.65em; font-weight: 600; background-color: #fce8d1; color: #c55a11; padding: 3px 9px; border-radius: 12px; vertical-align: middle; text-transform: uppercase; letter-spacing: 0.5px;">OSS</span>
+My Google Summer of Code project was centered on expanding the KerasNLP library with foundational generative models. This experience evolved from implementing a single model to contributing core components, porting functionalities to Keras 3, and adding a series of highly-demanded models to the ecosystem.
 
-The Llama2 was just released and community was going wild over it so I decided to add it in my gsoc project and [contribute](https://github.com/keras-team/keras-nlp/pull/1203) it to library. I applied all my learnings from GPTNeoX implementation in this project and learnt a ton of an amazing series of models to come, before 95% of the world even knew about it.
+* **Pioneering Foundational Models:**
+    * **GPT-NeoX:** My main project was the end-to-end implementation of [GPT-NeoX](https://github.com/keras-team/keras-nlp/pull/1056), including its [preprocessor](https://github.com/keras-team/keras-nlp/pull/1093). Foreseeing the industry's shift, I proactively [ported the model to Keras 3](https://github.com/keras-team/keras-nlp/pull/1137) to ensure multi-backend support for TensorFlow, PyTorch, and JAX.
+    * **Llama 2:** Responding to immediate community excitement, I applied my learnings from GPT-NeoX to quickly [contribute the Llama 2 model](https://github.com/keras-team/keras-nlp/pull/1203) to KerasNLP shortly after its release.
 
-### GPT Neo X <span style="font-size: 0.65em; font-weight: 600; background-color: #fce8d1; color: #c55a11; padding: 3px 9px; border-radius: 12px; vertical-align: middle; text-transform: uppercase; letter-spacing: 0.5px;">OSS</span>
+* **Developing Core API Components:**
+    * **Generic Rotary Embedding:** I identified that the [Rotary Embedding layer](https://github.com/keras-team/keras-nlp/pull/1101) for GPT-NeoX was a fundamental component for most modern LLMs. I took the initiative to refactor and ship it as a [generic, reusable Keras layer](https://github.com/keras-team/keras-nlp/pull/1180), strengthening the core Keras API.
+    * **New Keras Ops:** To support the models, I implemented and [contributed the `rsqrt` op](https://github.com/keras-team/keras-core/pull/708) and added [Root Mean Square scaling](https://github.com/keras-team/keras-core/pull/726) to the `LayerNormalization` layer, both of which are essential for modern generative architectures.
 
-Contributing GPTNeoX to KerasHub was main project that I did as part of GSoC. In first iteration I shipped [GPTNeoX backbone](https://github.com/keras-team/keras-nlp/pull/1056) and [Preprocessor](https://github.com/keras-team/keras-nlp/pull/1093) and by that time Keras3 was already in works. As soon as it reached a pre-release stable point I immediately [ported the implementation to Keras3](https://github.com/keras-team/keras-nlp/pull/1137) to work with PyTorch and JAX as well. Later [Matt](https://github.com/mattdangerw) and I realized that Rotary embedding layer that I [wrote](https://github.com/keras-team/keras-nlp/pull/1101) for GPT NeoX is gonna be fundamental component for Generative models so I shipped it as [a generic layer](https://github.com/keras-team/keras-nlp/pull/1180). One more small PR followed 
+* **Enhancing Existing Models & Frameworks:**
+    * **Albert & XLM-RoBERTa:** I expanded the capabilities of existing models by contributing missing task layers, including the [Classifier](https://github.com/keras-team/keras-nlp/pull/668) and [Masked LM](https://github.com/keras-team/keras-nlp/pull/725) heads for Albert, and the [Masked LM head](https://github.com/keras-team/keras-nlp/pull/950) for XLM-RoBERTa.
+    * **Beam Sampler Port:** To deepen my understanding of decoding strategies, I ported the [Beam Sampler to Keras 3](https://github.com/keras-team/keras-nlp/pull/1181), contributing to the framework's multi-backend compatibility.
+    * **Testing Improvements:** I significantly improved the CI/CD pipeline by [speeding up RoBERTa testing by ~3x](https://github.com/keras-team/keras-nlp/pull/897) and adding new [TPU tests](https://github.com/keras-team/keras-nlp/pull/839) for backbones.
 
-
-
-### Beam Sampler <span style="font-size: 0.65em; font-weight: 600; background-color: #fce8d1; color: #c55a11; padding: 3px 9px; border-radius: 12px; vertical-align: middle; text-transform: uppercase; letter-spacing: 0.5px;">OSS</span>
-
-Beam Sampler already existed in KerasHub at the time, but I was curious about how it worked, so I took up the task of [porting it to keras3](https://github.com/keras-team/keras-nlp/pull/1181).
-
-
-### Supported `rsqrt` op in Keras API <span style="font-size: 0.65em; font-weight: 600; background-color: #fce8d1; color: #c55a11; padding: 3px 9px; border-radius: 12px; vertical-align: middle; text-transform: uppercase; letter-spacing: 0.5px;">OSS</span>
-Keras API did not have inverse square root op. This op was being used in GPTNeoX's layernorm layer. So I [contributed](https://github.com/keras-team/keras-core/pull/708) this op to Keras.
-
-### Supported Root Mean Square Scaling in keras.LayerNormalization <span style="font-size: 0.65em; font-weight: 600; background-color: #fce8d1; color: #c55a11; padding: 3px 9px; border-radius: 12px; vertical-align: middle; text-transform: uppercase; letter-spacing: 0.5px;">OSS</span>
-Generative models use root mean square scaling in layernorm layer which is an essential part of model architecture. This op was not available in official Keras API so I [contributed](https://github.com/keras-team/keras-core/pull/726) it! 
-[Keras - Add rms_scaling in LayerNormalization]
-
-### Albert Classifier <span style="font-size: 0.65em; font-weight: 600; background-color: #fce8d1; color: #c55a11; padding: 3px 9px; border-radius: 12px; vertical-align: middle; text-transform: uppercase; letter-spacing: 0.5px;">OSS</span>
-
-Albert was the first model on which I started working, for Keras. The backbone existed but there were no task layers. I contributed [Classifier]((https://github.com/keras-team/keras-nlp/pull/668)) and [Masked Language Modeling]((https://github.com/keras-team/keras-nlp/pull/725)) task layer for the model.
-
-
-
-<!-- 
-### Data Parallel Training with KerasNLP <span style="font-size: 0.65em; font-weight: 600; background-color: #fce8d1; color: #c55a11; padding: 3px 9px; border-radius: 12px; vertical-align: middle; text-transform: uppercase; letter-spacing: 0.5px;">Blog</span>
-In this guide I demonstrated how to significantly accelerate NLP model training using data parallelism. I showcased the process of fine-tuning a pretrained BERT model from Keras Hub across multiple GPUs, leveraging TensorFlow's MirroredStrategy to efficiently scale deep learning workflows and dramatically reduce training time. 
-
-This guide was officially [published](https://keras.io/examples/nlp/data_parallel_training_with_keras_hub/) on Keras website.
-
-
-### Exploratory Data Analysis <span style="font-size: 0.65em; font-weight: 600; background-color: #fce8d1; color: #c55a11; padding: 3px 9px; border-radius: 12px; vertical-align: middle; text-transform: uppercase; letter-spacing: 0.5px;">Blog</span>
-
-In [this](https://www.kaggle.com/code/shivanshuman/one-stop-eda) Kaggle notebook, I developed a comprehensive template for Exploratory Data Analysis (EDA) on an enzyme substrate dataset. I demonstrated a full workflow, including visualizing feature correlations with heatmaps, analyzing distributions with histograms and box plots, and examining relationships between variables using pair plots to uncover key insights. -->
-
-
-### Testing improvements <span style="font-size: 0.65em; font-weight: 600; background-color: #fce8d1; color: #c55a11; padding: 3px 9px; border-radius: 12px; vertical-align: middle; text-transform: uppercase; letter-spacing: 0.5px;">OSS</span>
-[Speed up default RoBERTa testing roughly 3x](https://github.com/keras-team/keras-nlp/pull/897)
-[Adding XXBackboneTPUTests](https://github.com/keras-team/keras-nlp/pull/839)
-
-
-### XLMRoberta <span style="font-size: 0.65em; font-weight: 600; background-color: #fce8d1; color: #c55a11; padding: 3px 9px; border-radius: 12px; vertical-align: middle; text-transform: uppercase; letter-spacing: 0.5px;">OSS</span>
-
-XLMRoberta backbone already existed but there were no task layers. I contributed [Masked Language Modeling](https://github.com/keras-team/keras-nlp/pull/950) task layer for the model.
 
 ### Talks <span style="font-size: 0.65em; font-weight: 600; background-color: #dcfce7; color: #166534; padding: 3px 9px; border-radius: 12px; vertical-align: middle; text-transform: uppercase; letter-spacing: 0.5px;">Talk</span>
 In later half of 2023, after I finished my GSoC, I decided to give back the knowledge I earned from OSS, to community. So I flew 11 cities throughout India giving talks and workshops on various topics related to NLP. Few of them are listed below:
@@ -138,6 +106,16 @@ In later half of 2023, after I finished my GSoC, I decided to give back the know
 8. [Re-imagining Keras in the evolving ML ecosystem](https://www.linkedin.com/posts/kanpuriyanawab_event-developercommunity-congratulations-activity-7086588533510934528-dS2y) on July 16, 2023 at Google I/O Extended'23 New Delhi.
 
 
+<!-- 
+### Data Parallel Training with KerasNLP <span style="font-size: 0.65em; font-weight: 600; background-color: #fce8d1; color: #c55a11; padding: 3px 9px; border-radius: 12px; vertical-align: middle; text-transform: uppercase; letter-spacing: 0.5px;">Blog</span>
+In this guide I demonstrated how to significantly accelerate NLP model training using data parallelism. I showcased the process of fine-tuning a pretrained BERT model from Keras Hub across multiple GPUs, leveraging TensorFlow's MirroredStrategy to efficiently scale deep learning workflows and dramatically reduce training time. 
+
+This guide was officially [published](https://keras.io/examples/nlp/data_parallel_training_with_keras_hub/) on Keras website.
+
+
+### Exploratory Data Analysis <span style="font-size: 0.65em; font-weight: 600; background-color: #fce8d1; color: #c55a11; padding: 3px 9px; border-radius: 12px; vertical-align: middle; text-transform: uppercase; letter-spacing: 0.5px;">Blog</span>
+
+In [this](https://www.kaggle.com/code/shivanshuman/one-stop-eda) Kaggle notebook, I developed a comprehensive template for Exploratory Data Analysis (EDA) on an enzyme substrate dataset. I demonstrated a full workflow, including visualizing feature correlations with heatmaps, analyzing distributions with histograms and box plots, and examining relationships between variables using pair plots to uncover key insights. -->
 
 
 ### Julia Contributions <span style="font-size: 0.65em; font-weight: 600; background-color: #fce8d1; color: #c55a11; padding: 3px 9px; border-radius: 12px; vertical-align: middle; text-transform: uppercase; letter-spacing: 0.5px;">OSS</span>
