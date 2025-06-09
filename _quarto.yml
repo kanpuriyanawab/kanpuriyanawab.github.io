@@ -4,14 +4,16 @@ project:
 
 format:
   html:
-    theme: cosmo
+    theme:
+      light: cosmo
+      dark: darkly
     css: styles.css
     toc: true
 
 website:
   title: "Anshuman Mishra"
   site-url: "https://www.heyyanshuman.com"
-  description: "Personal site of Anshuman Mishra."
+  description: "Introductions Anshuman Mishra."
   favicon: assets/images/pfp/varkala.jpg
   search: false
   twitter-card:
@@ -43,6 +45,8 @@ website:
         href: https://fullstackagents.substack.com
       - text: "{{< ai google-scholar >}}"
         href: https://scholar.google.fr/citations?user=70wh9jcAAAAJ
+
+google-analytics: "G-36H2NR8FB7"
 
 execute:
   freeze: auto
