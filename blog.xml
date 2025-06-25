@@ -9,7 +9,7 @@
 <link>https://www.heyyanshuman.com/blog.html</link>
 <atom:link href="https://www.heyyanshuman.com/blog.xml" rel="self" type="application/rss+xml"/>
 <description>Introductions Anshuman Mishra.</description>
-<generator>quarto-1.7.31</generator>
+<generator>quarto-1.7.32</generator>
 <lastBuildDate>Fri, 06 Jun 2025 00:00:00 GMT</lastBuildDate>
 <item>
   <title>Building Production Ready Text-to-SQL Agent from Scratch</title>
