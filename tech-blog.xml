@@ -6,8 +6,8 @@
       version="2.0">
 <channel>
 <title>Introductions</title>
-<link>https://www.heyyanshuman.com/blog.html</link>
-<atom:link href="https://www.heyyanshuman.com/blog.xml" rel="self" type="application/rss+xml"/>
+<link>https://www.heyyanshuman.com/tech-blog.html</link>
+<atom:link href="https://www.heyyanshuman.com/tech-blog.xml" rel="self" type="application/rss+xml"/>
 <description>Introductions Anshuman Mishra.</description>
 <generator>quarto-1.7.31</generator>
 <lastBuildDate>Sat, 26 Jul 2025 18:30:00 GMT</lastBuildDate>
@@ -3333,6 +3333,25 @@ ht(co, xticks=(1:35, not_avoid), yticks=(1:35, not_avoid),
   <category>Interview</category>
   <guid>https://www.heyyanshuman.com/posts/interview_rrk.html</guid>
   <pubDate>Sun, 11 Sep 2022 18:30:00 GMT</pubDate>
+</item>
+<item>
+  <title>What is Flux Kontext really?</title>
+  <link>https://www.heyyanshuman.com/posts/what_is_flux_kontext_really.html</link>
+  <description><![CDATA[ 
+
+
+
+
+
+
+
+
+
+ ]]></description>
+  <category>Diffusion</category>
+  <category>Model Architecture</category>
+  <guid>https://www.heyyanshuman.com/posts/what_is_flux_kontext_really.html</guid>
+  <pubDate>Mon, 01 Aug 2022 18:30:00 GMT</pubDate>
 </item>
 </channel>
 </rss>
