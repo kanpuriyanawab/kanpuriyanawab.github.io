@@ -2,10 +2,12 @@
 <html xmlns="http://www.w3.org/1999/xhtml" lang="en" xml:lang="en"><head>
 
 <meta charset="utf-8">
-<meta name="generator" content="quarto-1.7.31">
+<meta name="generator" content="quarto-1.7.32">
 
 <meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=yes">
 
+<meta name="dcterms.date" content="2025-07-27">
+<meta name="description" content="How to fine-tune Gemma3 vision on consumer hardware with 4-bit quantization (QLoRA)">
 
 <title>Fine-Tuning a Vision Language Model in 2025 – Introductions</title>
 <style>
@@ -68,14 +70,14 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
 <script src="../site_libs/quarto-html/tippy.umd.min.js"></script>
 <script src="../site_libs/quarto-html/anchor.min.js"></script>
 <link href="../site_libs/quarto-html/tippy.css" rel="stylesheet">
-<link href="../site_libs/quarto-html/quarto-syntax-highlighting-ed09741bc9a4bc7923efc7a27dab3f48.css" rel="stylesheet" class="quarto-color-scheme" id="quarto-text-highlighting-styles">
-<link href="../site_libs/quarto-html/quarto-syntax-highlighting-dark-ed09741bc9a4bc7923efc7a27dab3f48.css" rel="stylesheet" class="quarto-color-scheme quarto-color-alternate" id="quarto-text-highlighting-styles">
-<link href="../site_libs/quarto-html/quarto-syntax-highlighting-ed09741bc9a4bc7923efc7a27dab3f48.css" rel="stylesheet" class="quarto-color-scheme-extra" id="quarto-text-highlighting-styles">
+<link href="../site_libs/quarto-html/quarto-syntax-highlighting-2cd88b842f3556f70e7132508a5c4eca.css" rel="stylesheet" class="quarto-color-scheme" id="quarto-text-highlighting-styles">
+<link href="../site_libs/quarto-html/quarto-syntax-highlighting-dark-2cd88b842f3556f70e7132508a5c4eca.css" rel="stylesheet" class="quarto-color-scheme quarto-color-alternate" id="quarto-text-highlighting-styles">
+<link href="../site_libs/quarto-html/quarto-syntax-highlighting-2cd88b842f3556f70e7132508a5c4eca.css" rel="stylesheet" class="quarto-color-scheme-extra" id="quarto-text-highlighting-styles">
 <script src="../site_libs/bootstrap/bootstrap.min.js"></script>
 <link href="../site_libs/bootstrap/bootstrap-icons.css" rel="stylesheet">
-<link href="../site_libs/bootstrap/bootstrap-e09a65fd212fc7ece53c3ff344569000.min.css" rel="stylesheet" append-hash="true" class="quarto-color-scheme" id="quarto-bootstrap" data-mode="light">
-<link href="../site_libs/bootstrap/bootstrap-dark-da1e500cad1d9fa44bbb15cae6850b58.min.css" rel="stylesheet" append-hash="true" class="quarto-color-scheme quarto-color-alternate" id="quarto-bootstrap" data-mode="dark">
-<link href="../site_libs/bootstrap/bootstrap-e09a65fd212fc7ece53c3ff344569000.min.css" rel="stylesheet" append-hash="true" class="quarto-color-scheme-extra" id="quarto-bootstrap" data-mode="light">
+<link href="../site_libs/bootstrap/bootstrap-479ab6ca4c8cb4b6317becd776b56206.min.css" rel="stylesheet" append-hash="true" class="quarto-color-scheme" id="quarto-bootstrap" data-mode="light">
+<link href="../site_libs/bootstrap/bootstrap-dark-748cffea66c69cce3aa66c94edd4127b.min.css" rel="stylesheet" append-hash="true" class="quarto-color-scheme quarto-color-alternate" id="quarto-bootstrap" data-mode="dark">
+<link href="../site_libs/bootstrap/bootstrap-479ab6ca4c8cb4b6317becd776b56206.min.css" rel="stylesheet" append-hash="true" class="quarto-color-scheme-extra" id="quarto-bootstrap" data-mode="light">
 <link href="../site_libs/quarto-contrib/academicons-1.9.4/all.css" rel="stylesheet">
 <link href="../site_libs/quarto-contrib/academicons-1.9.4/size.css" rel="stylesheet">
 <script id="quarto-search-options" type="application/json">{
@@ -106,13 +108,13 @@ gtag('config', 'G-36H2NR8FB7', { 'anonymize_ip': true});
 
 <link rel="stylesheet" href="../styles.css">
 <meta property="og:title" content="Fine-Tuning a Vision Language Model in 2025 – Introductions">
-<meta property="og:description" content="Introductions Anshuman Mishra.">
+<meta property="og:description" content="How to fine-tune Gemma3 vision on consumer hardware with 4-bit quantization (QLoRA)">
 <meta property="og:image" content="https://www.heyyanshuman.com/posts/assets/finetune_vlm/gemma3_arch.png">
 <meta property="og:site_name" content="Introductions">
 <meta property="og:image:height" content="454">
 <meta property="og:image:width" content="839">
 <meta name="twitter:title" content="Fine-Tuning a Vision Language Model in 2025 – Introductions">
-<meta name="twitter:description" content="Introductions Anshuman Mishra.">
+<meta name="twitter:description" content="How to fine-tune Gemma3 vision on consumer hardware with 4-bit quantization (QLoRA)">
 <meta name="twitter:image" content="https://www.heyyanshuman.com/posts/assets/finetune_vlm/gemma3_arch.png">
 <meta name="twitter:creator" content="@kanpuriyanawab">
 <meta name="twitter:card" content="summary">
@@ -350,13 +352,28 @@ gtag('config', 'G-36H2NR8FB7', { 'anonymize_ip': true});
   <div class="quarto-title-banner page-columns page-full">
     <div class="quarto-title column-body">
       <h1 class="title">Fine-Tuning a Vision Language Model in 2025</h1>
-                      </div>
+                  <div>
+        <div class="description">
+          How to fine-tune Gemma3 vision on consumer hardware with 4-bit quantization (QLoRA)
+        </div>
+      </div>
+                          <div class="quarto-categories">
+                <div class="quarto-category">VLMs</div>
+                <div class="quarto-category">LoRA</div>
+              </div>
+                  </div>
   </div>
     
   
   <div class="quarto-title-meta">
 
       
+      <div>
+      <div class="quarto-title-meta-heading">Published</div>
+      <div class="quarto-title-meta-contents">
+        <p class="date">July 27, 2025</p>
+      </div>
+    </div>
     
       
     </div>
