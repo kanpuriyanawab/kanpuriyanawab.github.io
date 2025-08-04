@@ -2169,6 +2169,12 @@ Key Takeaways
 </ul>
 </div>
 </div>
+</section>
+<section id="references" class="level2">
+<h2 class="anchored" data-anchor-id="references">References</h2>
+<ol type="1">
+<li><a href="https://colab.research.google.com/github/unslothai/notebooks/blob/main/nb/Qwen3_(4B)-GRPO.ipynb">Unsloth AI</a></li>
+</ol>
 
 
 </section>

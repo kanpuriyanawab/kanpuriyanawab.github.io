@@ -336,6 +336,13 @@
     "text": "Closing Note\nThat’s it! Now you know the fundamentals of fancy “post-training”. You see how easy it is create specialized models that excel at complex tasks by combining a powerful base model, a clever reinforcement learning technique, and an efficient library.\n\n\n\n\n\n\nKey Takeaways\n\n\n\n\nGRPO is an effective method for teaching models to reason by rewarding them for correct and well-structured responses.\nUnsloth makes the fine-tuning process more accessible by improving speed and reducing memory usage.\nA well-defined reward system is crucial for the success of GRPO.\nPre-finetuning can help to streamline the main RL training phase."
   },
   {
+    "objectID": "posts/post_training_reasoning_model.html#references",
+    "href": "posts/post_training_reasoning_model.html#references",
+    "title": "Training LLMs to Think",
+    "section": "References",
+    "text": "References\n\nUnsloth AI"
+  },
+  {
     "objectID": "posts/what_is_gspo.html",
     "href": "posts/what_is_gspo.html",
     "title": "What is GSPO?",
