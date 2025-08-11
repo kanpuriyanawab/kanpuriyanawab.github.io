@@ -6,10 +6,9 @@
 
 <meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=yes">
 
-<meta name="dcterms.date" content="2022-12-31">
-<meta name="description" content="Implementing ML models in Flux, the Julia Deep Learning&nbsp;Package!">
+<meta name="author" content="Your Name">
 
-<title>Deep Learning in&nbsp;Julia – Introductions</title>
+<title>RAG Foundations: Building and Evaluating Your First QA System – Introductions</title>
 <style>
 code{white-space: pre-wrap;}
 span.smallcaps{font-variant: small-caps;}
@@ -72,19 +71,13 @@ gtag('config', 'G-36H2NR8FB7', { 'anonymize_ip': true});
 
 
 <link rel="stylesheet" href="../styles.css">
-<meta property="og:title" content="Deep Learning in&nbsp;Julia – Introductions">
-<meta property="og:description" content="Implementing ML models in Flux, the Julia Deep Learning&nbsp;Package!">
-<meta property="og:image" content="https://www.heyyanshuman.com/posts/assets/flux_is_flexible/unet_full.png">
+<meta property="og:title" content="RAG Foundations: Building and Evaluating Your First QA System – Introductions">
+<meta property="og:description" content="Introductions Anshuman Mishra.">
 <meta property="og:site_name" content="Introductions">
-<meta property="og:image:height" content="609">
-<meta property="og:image:width" content="842">
-<meta name="twitter:title" content="Deep Learning in&nbsp;Julia – Introductions">
-<meta name="twitter:description" content="Implementing ML models in Flux, the Julia Deep Learning&nbsp;Package!">
-<meta name="twitter:image" content="https://www.heyyanshuman.com/posts/assets/flux_is_flexible/unet_full.png">
+<meta name="twitter:title" content="RAG Foundations: Building and Evaluating Your First QA System – Introductions">
+<meta name="twitter:description" content="Introductions Anshuman Mishra.">
 <meta name="twitter:creator" content="@athleticKoder">
 <meta name="twitter:card" content="summary">
-<meta name="twitter:image-height" content="609">
-<meta name="twitter:image-width" content="842">
 </head>
 
 <body class="nav-fixed quarto-light"><script id="quarto-html-before-body" type="application/javascript">
@@ -316,29 +309,20 @@ gtag('config', 'G-36H2NR8FB7', { 'anonymize_ip': true});
 <header id="title-block-header" class="quarto-title-block default page-columns page-full">
   <div class="quarto-title-banner page-columns page-full">
     <div class="quarto-title column-body">
-      <h1 class="title">Deep Learning in&nbsp;Julia</h1>
-                  <div>
-        <div class="description">
-          Implementing ML models in Flux, the Julia Deep Learning&nbsp;Package!
-        </div>
-      </div>
-                          <div class="quarto-categories">
-                <div class="quarto-category">Model Architecture</div>
-                <div class="quarto-category">Julia</div>
-              </div>
-                  </div>
+      <h1 class="title">RAG Foundations: Building and Evaluating Your First QA System</h1>
+                      </div>
   </div>
     
   
   <div class="quarto-title-meta">
 
-      
       <div>
-      <div class="quarto-title-meta-heading">Published</div>
+      <div class="quarto-title-meta-heading">Author</div>
       <div class="quarto-title-meta-contents">
-        <p class="date">December 31, 2022</p>
-      </div>
+               <p>Your Name </p>
+            </div>
     </div>
+      
     
       
     </div>
@@ -352,9 +336,25 @@ gtag('config', 'G-36H2NR8FB7', { 'anonymize_ip': true});
     <h2 id="toc-title">On this page</h2>
    
   <ul>
-  <li><a href="#unet" id="toc-unet" class="nav-link active" data-scroll-target="#unet">UNet 🥅</a></li>
+  <li><a href="#rag-foundations-building-and-evaluating-your-first-qa-system" id="toc-rag-foundations-building-and-evaluating-your-first-qa-system" class="nav-link active" data-scroll-target="#rag-foundations-building-and-evaluating-your-first-qa-system">RAG Foundations: Building and Evaluating Your First QA System</a>
+  <ul class="collapse">
+  <li><a href="#part-1-the-ingestion-pipeline---preparing-your-knowledge" id="toc-part-1-the-ingestion-pipeline---preparing-your-knowledge" class="nav-link" data-scroll-target="#part-1-the-ingestion-pipeline---preparing-your-knowledge">Part 1: The Ingestion Pipeline - Preparing Your Knowledge</a>
+  <ul class="collapse">
+  <li><a href="#loading-data" id="toc-loading-data" class="nav-link" data-scroll-target="#loading-data">Loading Data</a></li>
+  </ul></li>
+  </ul></li>
+  <li><a href="#assuming-the-data-has-been-downloaded-to-this-directory" id="toc-assuming-the-data-has-been-downloaded-to-this-directory" class="nav-link" data-scroll-target="#assuming-the-data-has-been-downloaded-to-this-directory">Assuming the data has been downloaded to this directory</a></li>
+  <li><a href="#store-the-files-as-dictionaries-with-content-and-metadata" id="toc-store-the-files-as-dictionaries-with-content-and-metadata" class="nav-link" data-scroll-target="#store-the-files-as-dictionaries-with-content-and-metadata">Store the files as dictionaries with content and metadata</a></li>
+  <li><a href="#these-are-hyperparameters-of-our-ingestion-pipeline" id="toc-these-are-hyperparameters-of-our-ingestion-pipeline" class="nav-link" data-scroll-target="#these-are-hyperparameters-of-our-ingestion-pipeline">These are hyperparameters of our ingestion pipeline</a></li>
+  <li><a href="#lets-chunk-all-our-documents" id="toc-lets-chunk-all-our-documents" class="nav-link" data-scroll-target="#lets-chunk-all-our-documents">Let’s chunk all our documents</a></li>
+  <li><a href="#by-inheriting-from-weave.model-we-can-track-our-retrievers-experiments" id="toc-by-inheriting-from-weave.model-we-can-track-our-retrievers-experiments" class="nav-link" data-scroll-target="#by-inheriting-from-weave.model-we-can-track-our-retrievers-experiments">By inheriting from weave.Model, we can track our retriever’s experiments</a></li>
+  <li><a href="#lets-test-it" id="toc-lets-test-it" class="nav-link" data-scroll-target="#lets-test-it">Let’s test it</a></li>
+  <li><a href="#a-simple-prompt-to-guide-the-llm" id="toc-a-simple-prompt-to-guide-the-llm" class="nav-link" data-scroll-target="#a-simple-prompt-to-guide-the-llm">A simple prompt to guide the LLM</a></li>
+  <li><a href="#initialize-and-run-the-full-pipeline" id="toc-initialize-and-run-the-full-pipeline" class="nav-link" data-scroll-target="#initialize-and-run-the-full-pipeline">Initialize and run the full pipeline</a></li>
+  <li><a href="#this-is-a-simplified-example-of-the-logic" id="toc-this-is-a-simplified-example-of-the-logic" class="nav-link" data-scroll-target="#this-is-a-simplified-example-of-the-logic">This is a simplified example of the logic</a></li>
+  <li><a href="#the-full-implementation-involves-careful-prompt-engineering" id="toc-the-full-implementation-involves-careful-prompt-engineering" class="nav-link" data-scroll-target="#the-full-implementation-involves-careful-prompt-engineering">The full implementation involves careful prompt engineering</a></li>
   </ul>
-<div class="toc-actions"><ul><li><a href="https://github.com/kanpuriyanawab/edit/master/posts/flux_is_so_flexible.qmd" class="toc-action"><i class="bi bi-github"></i>Edit this page</a></li><li><a href="https://github.com/kanpuriyanawab/issues/new" class="toc-action"><i class="bi empty"></i>Report an issue</a></li></ul></div></nav>
+<div class="toc-actions"><ul><li><a href="https://github.com/kanpuriyanawab/edit/master/posts/rag_zero_to_hero.qmd" class="toc-action"><i class="bi bi-github"></i>Edit this page</a></li><li><a href="https://github.com/kanpuriyanawab/issues/new" class="toc-action"><i class="bi empty"></i>Report an issue</a></li></ul></div></nav>
     </div>
 <!-- main -->
 <main class="content quarto-banner-title-block" id="quarto-document-content">
@@ -364,71 +364,318 @@ gtag('config', 'G-36H2NR8FB7', { 'anonymize_ip': true});
 
 
 
-<p><a href="https://fluxml.ai/">Flux</a> is amazing and it’s far more than just an ML framework. Differentiable programming &amp; Zygote, first class GPU support are features that set it apart among ML systems. The best thing I love about flux is mixing neural nets with differential equations, to get the best of black box and mechanistic modelling, this is what <a href="https://sciml.ai/">SciML</a> doing.</p>
-<p>Flux is fairly new, and needs attention of community&nbsp;! In this article we’ll learn about how to implement a model in Flux.jl&nbsp;. We’ll walkthrough UNet implementation, which I’ve been <a href="https://github.com/shivance/Metalhead.jl/blob/ba54cf0219cc247a732c1710925a4eef7a2c70c7/src/convnets/unet.jl">working</a> on lately to contribute to flux’s model zoo <strong>Metalhead.jl.</strong></p>
-<p><strong>After reading this article you’ll learn about</strong></p>
-<ol type="1">
-<li>What is UNet?</li>
-<li>A brief overview of Flux API</li>
-<li>Reimplementing PyTorch Models in Julia</li>
-</ol>
-<section id="unet" class="level2">
-<h2 class="anchored" data-anchor-id="unet">UNet 🥅</h2>
-<p>UNet is a deep learning model which was released in the paper <a href="https://arxiv.org/pdf/1505.04597v1">U-Net: Convolutional Networks for Biomedical Image Segmentation</a>. The architecture of the network looks like&nbsp;: Fig. 1 ( Source: UNet&nbsp;Paper)We’ll not go into detail about UNet theory, as the paper explains it in best way, and explaination here would be redundant anyway.</p>
-<div class="quarto-figure quarto-figure-center">
-<figure class="figure">
-<p><img src="assets/flux_is_flexible/unet_full.png" class="img-fluid figure-img"></p>
-<figcaption>Source: UNet Paper</figcaption>
-</figure>
+<section id="rag-foundations-building-and-evaluating-your-first-qa-system" class="level1">
+<h1>RAG Foundations: Building and Evaluating Your First QA System</h1>
+<p>Retrieval-Augmented Generation (RAG) has rapidly become the cornerstone of modern AI applications, enabling Large Language Models (LLMs) to reason over private, real-time data. While the basic idea is simple—find relevant information and give it to an LLM to generate an answer—the journey from a proof-of-concept to a robust, production-ready system is filled with nuance and complexity.</p>
+<p>This guide is the first of a two-part series designed to take you from zero to hero in building advanced RAG systems. In this post, we’ll lay the groundwork by building a complete, functional RAG pipeline from scratch. We’ll take a hands-on, code-first approach, covering everything from data ingestion to the critical process of evaluation. Let’s get started.</p>
+<section id="part-1-the-ingestion-pipeline---preparing-your-knowledge" class="level2">
+<h2 class="anchored" data-anchor-id="part-1-the-ingestion-pipeline---preparing-your-knowledge">Part 1: The Ingestion Pipeline - Preparing Your Knowledge</h2>
+<p>At its heart, a RAG pipeline has two core components: a <strong>Retriever</strong> and a <strong>Generator</strong>. But before either can do their job, we need to prepare the knowledge base they will operate on. This is the data ingestion pipeline. Your RAG system is only as good as the data it has access to.</p>
+<section id="loading-data" class="level3">
+<h3 class="anchored" data-anchor-id="loading-data">Loading Data</h3>
+<p>The first step is always to load and prepare your source documents. For our example, we’ll use the Weights &amp; Biases documentation, which consists of several markdown files.</p>
+<div class="callout callout-style-default callout-note callout-titled" title="Code Breakdown: Loading Documents">
+<div class="callout-header d-flex align-content-center">
+<div class="callout-icon-container">
+<i class="callout-icon"></i>
 </div>
-<p>This tutorial will focus on implementation.</p>
-<p>Let’s dive into code rightaway&nbsp;! The article is written presuming that you have knowledge of implementing a neural networks in PyTorch&nbsp;! We simply create a class that inherits nn.Module&nbsp;. We now create layers and assign it to class with self&nbsp;. When this model is instantiated, these layers will become attribute of the model object.</p>
-<script src="https://gist.github.com/kanpuriyanawab/c66010357e03ddcd21862c633162efb9.js"></script>
-<pre><code>&gt;&gt;&gt; exec(open("basic_model.py").read())
-torch.Size([1, 5, 8, 8])</code></pre>
-<p>Let’s see how it looks like in Julia.</p>
-<script src="https://gist.github.com/kanpuriyanawab/e0e278c4fcdd26ef998a2393b9e4bb9d.js"></script>
-<pre><code>julia&gt; include("basic_model.jl");
-(8, 8, 5, 1)</code></pre>
-<p>Some Key things to note here are&nbsp;:</p>
-<ol type="1">
-<li>Flux follows (H, W, C, N) standard for images while PyTorch uses (N, C, H, W)</li>
-<li>Chain function is similar to nn.Sequential method from PyTorch</li>
-<li>Julia implements Multiple Dispatch unlike PyThon which is designed on Single Dispatch paradigm. In short multiple dispatch allows us to implement a single method for different combination of different type arguments, unlike python which restricts the methods to be bound to a single object and reimplemented for different classes. Read more about multiple dispatch here&nbsp;.</li>
-</ol>
-<p>Let’s see how <a href="https://medium.com/r/?url=https%3A%2F%2Fgithub.com%2Fmateuszbuda%2Fbrain-segmentation-pytorch%2Fblob%2Fd45f8908ab2f0246ba204c702a6161c9eb25f902%2Funet.py%23L1">official UNet implementation</a> from Torchhub looks like</p>
-<p>The author of original implementation (hereon referred just as “author”) created a helper method to create a convolutional block&nbsp;. This is a good practise called as DRY ( Do not Repeat Yourself).</p>
-<div class="quarto-figure quarto-figure-center">
-<figure class="figure">
-<p><img src="assets/flux_is_flexible/unet.png" class="img-fluid figure-img"></p>
-<figcaption>Source: UNet Paper</figcaption>
-</figure>
+<div class="callout-title-container flex-fill">
+Code Breakdown: Loading Documents
 </div>
-<p>This allows us to create these conv blocks (fig.&nbsp;2 zooms into fig.&nbsp;1 to show these conv blocks) just by passing input and output channels. To implement it with Flux, we reuse our knowledge from gist 1&nbsp;:</p>
-<script src="https://gist.github.com/kanpuriyanawab/6b63cf078466fda41cc5912b36ded6b2.js"></script>
-<p>This allows us to create these conv blocks (fig.&nbsp;2 zooms into fig.&nbsp;1 to show these conv blocks) just by passing input and output channels.</p>
-<p>Pretty simple isn’t it&nbsp;?</p>
-<p>One thing to note here is, Flux doesn’t allow us to name the layers explicitly, the reason can be found in <a href="https://github.com/FluxML/Flux.jl/issues/2142">this</a> github issue. Now let’s go ahead and see how layers were created by author.</p>
-<p>Now we see that we have an encoder, bottleneck, decoder and an upconv layer. 1. Encoder&nbsp;: The four downstairs in Fig. 1 form the encoder block, and it encodes image by successive convolutions 2. Bottleneck&nbsp;: The layer between encoder and decoder is called bottleneck. The output of decoder is passed on to decoder &amp; upconv block. 3. Decoder &amp; Upconv block&nbsp;: The upconv block upsamples the input matrix, i.e.&nbsp;deconvolves the input to output with bigger size ( H x W ) than input. Decoder follows upconv layer and increases channels by performing convolution.</p>
-<p>Let’s create the model class in Flux first. Julia doesn’t have classes, it has structs&nbsp;. So model struct would look like this.</p>
-<script src="https://gist.github.com/kanpuriyanawab/8e5eb8ed5722f6a574ae90558b5ab42e.js"></script>
-<p>To reduce the redundancy in code I’ll implement the layers as array of layers, it’ll allow us to write a clean forward pass later. Don’t forget to notice the relation between number of channels of different blocks of UNet model.</p>
-<p>The unet_block is the convolutional block that we defined earlier is a simple chain of Convolutional and BatchNorm layers. We further chain these blocks keeping in mind the input &amp; output features using the Chain function. See&nbsp;! How easy it is to create a model in Flux. Now we have one last thing remaining, the forward pass&nbsp;. We do it like</p>
-<script src="https://gist.github.com/kanpuriyanawab/4771bb348755b488597b461ab9868aa5.js"></script>
-<p>in PyTorch. The cat operation orchestrates the connection between encoder and decoder demonstrated by copy and crop represented by gray arrow in Fig. 1.</p>
-<p>But don’t you find the code above messy&nbsp;? That’s where our definition of layers of arrays comes in. Let’s see how the forward pass is written for UNet.</p>
-<script src="https://gist.github.com/kanpuriyanawab/9e3c6b8ee5cf77c3e29ec62e71ea49fc.js"></script>
-<p>Pretty simple &amp; clean, we managed to keep the entire logic same.</p>
-<p>Some key points to be noted here:</p>
+</div>
+<div class="callout-body-container callout-body">
+<p>This Python snippet uses the <code>pathlib</code> library to interact with the file system.</p>
 <ol type="1">
-<li>σ is nothing else but sigmoid function&nbsp;! Julia allows us to use all the mathematical symbols as variables&nbsp;. Thus, flux defined sigmoid as σ rather than sigmoid()</li>
-<li>Julia uses matlab like syntax for ranges (see 1:4 for iterating over 1, 2, 3, 4 and 4:-1:1 for 4, 3, 2, 1).</li>
-<li>Julia uses 1 based indexing.</li>
-<li>Any Julia function with a trailing&nbsp;! tells that operation will be inplace ( remember pass by reference from C++ using &amp; operation).</li>
-<li>The <code>return</code> keyword in last line is redundant, simply writing σ(u.final_conv(out)) would work as Julia always returns the output of last line of code, from any code block.</li>
+<li><code>pathlib.Path(...)</code> creates an object representing the directory containing our documentation.</li>
+<li><code>.rglob("*.md")</code> recursively finds all files ending with <code>.md</code> (markdown) in that directory.</li>
+<li>We then loop through each file path, read its content using <code>.read_text()</code>, and store it in a list of dictionaries. Each dictionary contains the raw <code>content</code> and some <code>metadata</code>, like the file’s original <code>source</code> path.</li>
 </ol>
-<p>That brings us to the end of this tutorial. Thanks for reading&nbsp;!</p>
-<p>This is the second article of my first blog series Julia For the Win. You can find the previous article Kaggle x Julia&nbsp;: Advanced House Price Prediction&nbsp;: EDA.</p>
+</div>
+</div>
+<p>import pathlib</p>
+</section>
+</section>
+</section>
+<section id="assuming-the-data-has-been-downloaded-to-this-directory" class="level1">
+<h1>Assuming the data has been downloaded to this directory</h1>
+<p>docs_dir = pathlib.Path(“../data/wandb_docs”) docs_files = sorted(docs_dir.rglob(“*.md”))</p>
+<p>print(f”Number of files: {len(docs_files)}“)</p>
+</section>
+<section id="store-the-files-as-dictionaries-with-content-and-metadata" class="level1">
+<h1>Store the files as dictionaries with content and metadata</h1>
+<p>data = [] for file in docs_files: content = file.read_text() data.append( { “content”: content, “metadata”: { “source”: str(file.relative_to(docs_dir)), # A naive token count for now “raw_tokens”: len(content.split()), }, } )</p>
+<p>print(“Example document structure:”) print(data[0])</p>
+<p>Chunking Strategies LLMs have a finite context window, meaning they can only process a certain amount of text at once. Furthermore, feeding them smaller, more relevant pieces of text is more efficient and often leads to better results. This is where chunking comes in. We split our large documents into smaller, manageable chunks. A simple strategy is to split the text by a fixed number of tokens.</p>
+<div class="callout callout-style-default callout-note callout-titled" title="Code Breakdown: Simple Chunking">
+<div class="callout-header d-flex align-content-center">
+<div class="callout-icon-container">
+<i class="callout-icon"></i>
+</div>
+<div class="callout-title-container flex-fill">
+Code Breakdown: Simple Chunking
+</div>
+</div>
+<div class="callout-body-container callout-body">
+<p>The split_into_chunks function implements a basic fixed-size, overlapping chunking strategy.</p>
+<p>It first splits the entire text into a list of words (or “tokens” in this naive case).</p>
+<p>It then iterates through the list, grabbing a chunk_size number of words at a time.</p>
+<p>The chunk_overlap parameter makes the next chunk start a few words before the previous one ended. This can help preserve context that might otherwise be lost at the boundary of two chunks.</p>
+<p>Finally, we apply this function to every document we loaded, creating a new, much larger list of chunked_data.</p>
+</div>
+</div>
+<p>from typing import List</p>
+</section>
+<section id="these-are-hyperparameters-of-our-ingestion-pipeline" class="level1">
+<h1>These are hyperparameters of our ingestion pipeline</h1>
+<p>CHUNK_SIZE = 300 CHUNK_OVERLAP = 0</p>
+<p>def split_into_chunks( text: str, chunk_size: int = CHUNK_SIZE, chunk_overlap: int = CHUNK_OVERLAP ) -&gt; List[str]: “““A simple function to split text into overlapping chunks.”“” tokens = text.split() chunks = [] start = 0 while start &lt; len(tokens): end = start + chunk_size chunk = tokens[start:end] chunks.append(” “.join(chunk)) start = end - chunk_overlap return chunks</p>
+</section>
+<section id="lets-chunk-all-our-documents" class="level1">
+<h1>Let’s chunk all our documents</h1>
+<p>chunked_data = [] for doc in data: chunks = split_into_chunks(doc[“content”]) for chunk in chunks: chunked_data.append( { “content”: chunk, “metadata”: { “source”: doc[“metadata”][“source”], “raw_tokens”: len(chunk.split()), }, } )</p>
+<p>print(f”Original documents: {len(data)}“) print(f”Total chunks: {len(chunked_data)}“)</p>
+<p>Data Preprocessing Raw text often contains formatting artifacts, special characters, or other “noise” that can confuse an LLM. A crucial preprocessing step is to clean the text to make it as “pure” as possible for the model.</p>
+<div class="callout callout-style-default callout-note callout-titled" title="Code Breakdown: Text Cleaning">
+<div class="callout-header d-flex align-content-center">
+<div class="callout-icon-container">
+<i class="callout-icon"></i>
+</div>
+<div class="callout-title-container flex-fill">
+Code Breakdown: Text Cleaning
+</div>
+</div>
+<div class="callout-body-container callout-body">
+<p>This function, make_text_tokenization_safe, performs a few simple cleaning steps using Python’s built-in re (regular expressions) and string libraries.</p>
+<p>text.lower() converts everything to lowercase to ensure consistency.</p>
+<p>re.sub(r”[^\w\s\d]“,” “, text) removes any character that is not a word character, whitespace, or digit.</p>
+<p>text.translate(…) is an efficient way to remove all punctuation.</p>
+<p>re.sub(r”+“,” “, text).strip() collapses multiple whitespace characters into a single space and removes leading/trailing spaces.</p>
+</div>
+</div>
+<p>import re import string</p>
+<p>def make_text_tokenization_safe(text: str) -&gt; str: “““Removes special characters and normalizes whitespace.”“” # A simplified cleaning function text = text.lower() text = re.sub(r”[^\w\s\d]“,” “, text) text = text.translate(str.maketrans(”“,”“, string.punctuation)) text = re.sub(r”+“,” “, text).strip() return text</p>
+<p>cleaned_data = [] for doc in chunked_data: cleaned_doc = doc.copy() cleaned_doc[“cleaned_content”] = make_text_tokenization_safe(doc[“content”]) cleaned_data.append(cleaned_doc)</p>
+<p>print(“Original chunk:”) print(chunked_data[100][‘content’]) print(“chunk:”) print(cleaned_data[100][‘cleaned_content’])</p>
+<p>Part 2: Building a Simple Retriever Now that we have clean, chunked data, we need a way to retrieve the chunks that are most relevant to a user’s query. This is the job of the retriever.</p>
+<p>TF-IDF Retriever We’ll start with a classic information retrieval technique: TF-IDF (Term Frequency-Inverse Document Frequency). TF-IDF vectorizes text by giving more weight to words that are frequent in a specific document but rare across all documents. It’s a great, simple baseline.</p>
+<div class="callout callout-style-default callout-note callout-titled" title="Code Breakdown: TF-IDF Retriever">
+<div class="callout-header d-flex align-content-center">
+<div class="callout-icon-container">
+<i class="callout-icon"></i>
+</div>
+<div class="callout-title-container flex-fill">
+Code Breakdown: TF-IDF Retriever
+</div>
+</div>
+<div class="callout-body-container callout-body">
+<p>This TFIDFRetriever class encapsulates the logic for TF-IDF retrieval.</p>
+<p>index_data: This method takes our list of cleaned documents and uses scikit-learn’s TfidfVectorizer to convert them into a numerical matrix (self.index). This only needs to be done once.</p>
+<p>search: This method takes a new user query. It first transforms the query into a TF-IDF vector using the same vectorizer. Then, it uses scipy’s cdist to compute the cosine distance between the query vector and all the document vectors in the index.</p>
+<p>argsort()[:k] finds the indices of the k documents with the smallest distance (i.e., the most similar ones).</p>
+<p>Finally, it formats the results, including the original text and a similarity score.</p>
+</div>
+</div>
+<p>import weave from sklearn.feature_extraction.text import TfidfVectorizer from scipy.spatial.distance import cdist</p>
+</section>
+<section id="by-inheriting-from-weave.model-we-can-track-our-retrievers-experiments" class="level1">
+<h1>By inheriting from weave.Model, we can track our retriever’s experiments</h1>
+<p>class TFIDFRetriever(weave.Model): vectorizer: TfidfVectorizer = TfidfVectorizer() index: list = None data: list = None</p>
+<pre><code>def index_data(self, data):
+    """Builds the TF-IDF index from the documents."""
+    self.data = data
+    docs = [doc["cleaned_content"] for doc in data]
+    self.index = self.vectorizer.fit_transform(docs)
+
+@weave.op()
+def search(self, query, k=5):
+    """Searches the index for the most relevant documents."""
+    query_vec = self.vectorizer.transform([query])
+    # Using cosine distance to find the closest vectors
+    cosine_distances = cdist(
+        query_vec.todense(), self.index.todense(), metric="cosine"
+    )[0]
+    top_k_indices = cosine_distances.argsort()[:k]
+    
+    output = []
+    for idx in top_k_indices:
+        output.append(
+            {
+                "source": self.data[idx]["metadata"]["source"],
+                "text": self.data[idx]["cleaned_content"],
+                "score": 1 - cosine_distances[idx],
+            }
+        )
+    return output
+
+@weave.op()
+def predict(self, query: str, k: int):
+    return self.search(query, k)</code></pre>
+</section>
+<section id="lets-test-it" class="level1">
+<h1>Let’s test it</h1>
+<p>retriever = TFIDFRetriever() retriever.index_data(cleaned_data) query = “How do I log metrics in my training script?” search_results = retriever.predict(query, k=3)</p>
+<p>for result in search_results: print(f”Score: {result[‘score’]:.4f}, Source: {result[‘source’]}“) print(f”Text: {result[‘text’][:100]}…“)</p>
+<p>A Better Baseline: The BM25 Retriever While TF-IDF is a good start, BM25 (Best Matching 25) is a more advanced sparse retrieval algorithm that often outperforms it. It improves upon TF-IDF by considering term frequency saturation (a term appearing 10 times isn’t 10 times as relevant as it appearing once) and document length normalization.</p>
+<div class="callout callout-style-default callout-note callout-titled" title="Code Breakdown: BM25 Retriever">
+<div class="callout-header d-flex align-content-center">
+<div class="callout-icon-container">
+<i class="callout-icon"></i>
+</div>
+<div class="callout-title-container flex-fill">
+Code Breakdown: BM25 Retriever
+</div>
+</div>
+<div class="callout-body-container callout-body">
+<p>This class uses the bm25s library, a fast implementation of the BM25 algorithm.</p>
+<p>index_data: Instead of vectorizing, BM25 works directly with tokenized text. We use bm25s.tokenize to prepare the corpus and then call .index() to build the BM25 index.</p>
+<p>predict: Similarly, the query is tokenized. The .retrieve() method efficiently finds the top-k documents and their corresponding BM25 scores. The logic is similar to TF-IDF but often yields more relevant results.</p>
+</div>
+</div>
+<p>import bm25s</p>
+<p>class BM25Retriever(weave.Model): index: bm25s.BM25 = bm25s.BM25() data: list = None</p>
+<pre><code>def index_data(self, data):
+    self.data = data
+    corpus = [doc["cleaned_content"] for doc in data]
+    # BM25 works on tokenized text
+    corpus_tokens = bm25s.tokenize(corpus)
+    self.index.index(corpus_tokens)
+
+@weave.op()
+def predict(self, query: str, k: int):
+    query_tokens = bm25s.tokenize(query)
+    results, scores = self.index.retrieve(query_tokens, corpus=self.data, k=k)
+    
+    # `results` will be a list of the actual documents
+    # `scores` will be their corresponding BM25 scores
+    # ... formatting the output ...
+    return results[0] # Simplified for brevity</code></pre>
+<p>Part 3: Generating Answers The final step is to take the user’s query and the retrieved context and generate a coherent answer. We’ll use a powerful LLM for this, accessed via an API (in this case, Cohere’s command-r model).</p>
+<div class="callout callout-style-default callout-note callout-titled" title="Code Breakdown: Response Generator">
+<div class="callout-header d-flex align-content-center">
+<div class="callout-icon-container">
+<i class="callout-icon"></i>
+</div>
+<div class="callout-title-container flex-fill">
+Code Breakdown: Response Generator
+</div>
+</div>
+<div class="callout-body-container callout-body">
+<p>The SimpleResponseGenerator class handles the interaction with the LLM.</p>
+<p><strong>init</strong>: It initializes the Cohere client with an API key. It also stores the LLM model name and a prompt string.</p>
+<p>create_messages: This method formats the input for the LLM. Most chat models expect a list of messages, each with a role (system, user, or assistant). The system prompt gives the LLM its high-level instructions.</p>
+<p>predict: This is the main method. It takes the user query and the context from our retriever. It formats the context into the special documents parameter that Cohere’s API uses for RAG. It then calls the client.chat method and returns the generated text.</p>
+</div>
+</div>
+<p>import os import cohere</p>
+<p>class SimpleResponseGenerator(weave.Model): model: str prompt: str client: cohere.Client = None</p>
+<pre><code>def __init__(self, model: str, prompt: str):
+    super().__init__(model=model, prompt=prompt)
+    self.client = cohere.Client(os.environ.get("COHERE_API_KEY"))
+
+def create_messages(self, query: str):
+    return [
+        {"role": "system", "content": self.prompt},
+        {"role": "user", "content": query},
+    ]
+
+@weave.op()
+def predict(self, query: str, context: List[Dict[str, any]]):
+    documents = [{"source": item["source"], "text": item["text"]} for item in context]
+    messages = self.create_messages(query)
+    response = self.client.chat(
+        messages=messages,
+        model=self.model,
+        documents=documents,
+        temperature=0.1,
+    )
+    return response.chat_message.message</code></pre>
+</section>
+<section id="a-simple-prompt-to-guide-the-llm" class="level1">
+<h1>A simple prompt to guide the LLM</h1>
+<p>INITIAL_PROMPT = “Answer the following question about W&amp;B. Provide a helpful and complete answer based only on the provided documents.”</p>
+<p>response_generator = SimpleResponseGenerator(model=“command-r”, prompt=INITIAL_PROMPT) answer = response_generator.predict(query, search_results) print(answer)</p>
+<p>Putting It All Together: The SimpleRAGPipeline We can encapsulate this entire workflow into a single class. This makes our system modular and easy to run.</p>
+<div class="callout callout-style-default callout-note callout-titled" title="Code Breakdown: The Full Pipeline">
+<div class="callout-header d-flex align-content-center">
+<div class="callout-icon-container">
+<i class="callout-icon"></i>
+</div>
+<div class="callout-title-container flex-fill">
+Code Breakdown: The Full Pipeline
+</div>
+</div>
+<div class="callout-body-container callout-body">
+<p>The SimpleRAGPipeline class is a straightforward container that orchestrates the two main components.</p>
+<p>It holds an instance of our retriever and our response_generator.</p>
+<p>The predict method defines the core RAG logic: it takes a query, calls the retriever to get the context, and then passes both the query and the context to the response generator to get the final answer.</p>
+</div>
+</div>
+<p>class SimpleRAGPipeline(weave.Model): retriever: TFIDFRetriever response_generator: SimpleResponseGenerator top_k: int = 5</p>
+<pre><code>@weave.op()
+def predict(self, query: str):
+    context = self.retriever.predict(query, self.top_k)
+    return self.response_generator.predict(query, context)</code></pre>
+</section>
+<section id="initialize-and-run-the-full-pipeline" class="level1">
+<h1>Initialize and run the full pipeline</h1>
+<p>rag_pipeline = SimpleRAGPipeline( retriever=retriever, response_generator=response_generator, top_k=5 ) response = rag_pipeline.predict(“How do I get get started with wandb?”) print(response)</p>
+<p>Part 4: The Golden Rule - If You Can’t Measure It, You Can’t Improve It Building a RAG system is an iterative science. To improve our pipeline, we need a robust way to evaluate its performance. We’ll break down evaluation into two parts: Retrieval Evaluation and Response Evaluation.</p>
+<p>Evaluating the Retriever The goal of the retriever is to find the most relevant documents. We can measure this using classic information retrieval metrics. To do this, we need an evaluation dataset with questions and corresponding “ground truth” relevant documents.</p>
+<div class="callout callout-style-default callout-note callout-titled" title="Code Breakdown: Retrieval Metrics">
+<div class="callout-header d-flex align-content-center">
+<div class="callout-icon-container">
+<i class="callout-icon"></i>
+</div>
+<div class="callout-title-container flex-fill">
+Code Breakdown: Retrieval Metrics
+</div>
+</div>
+<div class="callout-body-container callout-body">
+<p>These functions calculate two common retrieval metrics.</p>
+<p>compute_hit_rate: It checks if there’s any overlap between the set of retrieved document sources and the set of known relevant sources. It returns 1.0 for a “hit” and 0.0 for a “miss”.</p>
+<p>compute_mrr: It finds the rank of the first relevant document in the retrieved list. The score is the reciprocal of that rank (e.g., rank 1 = 1.0, rank 2 = 0.5, rank 3 = 0.33). If no relevant document is found, the score is 0.</p>
+<p>These metrics can be run across an entire evaluation dataset to get an average score for the retriever’s performance.</p>
+</div>
+</div>
+<p>from typing import Any, Dict, List import numpy as np</p>
+<p><span class="citation" data-cites="weave.op">@weave.op</span> def compute_hit_rate(output: List[Dict[str, Any]], contexts: List[Dict[str, Any]]) -&gt; float: retrieved_sources = {doc[“source”] for doc in output} relevant_sources = {ctx[“source”] for ctx in contexts if ctx.get(“relevance”, 1) &gt; 0} return 1.0 if retrieved_sources.intersection(relevant_sources) else 0.0</p>
+<p><span class="citation" data-cites="weave.op">@weave.op</span> def compute_mrr(output: List[Dict[str, Any]], contexts: List[Dict[str, Any]]) -&gt; float: relevant_sources = {ctx[“source”] for ctx in contexts if ctx.get(“relevance”, 1) &gt; 0} for i, doc in enumerate(output): if doc[“source”] in relevant_sources: return 1.0 / (i + 1) return 0.0</p>
+<p>Evaluating the Final Response Evaluating the generated response is more complex. We care about correctness, relevance, and faithfulness to the source documents. A powerful approach is to use another, more powerful LLM to “judge” the quality of the generated answer based on a set of criteria.</p>
+<div class="callout callout-style-default callout-note callout-titled" title="Code Breakdown: LLM as a Judge">
+<div class="callout-header d-flex align-content-center">
+<div class="callout-icon-container">
+<i class="callout-icon"></i>
+</div>
+<div class="callout-title-container flex-fill">
+Code Breakdown: LLM as a Judge
+</div>
+</div>
+<div class="callout-body-container callout-body">
+<p>This function outlines the “LLM as a Judge” pattern.</p>
+<p>It constructs a detailed prompt for a powerful “judge” LLM.</p>
+<p>This prompt includes the original question, the ideal reference_answer, and the generated_answer from our RAG system.</p>
+<p>It asks the judge LLM to provide a structured evaluation (e.g., a numerical score and a text reason) in a specific format like JSON.</p>
+<p>The function would then make an API call to this judge LLM and parse its response. This automates the process of getting a qualitative score for our generated answers.</p>
+</div>
+</div>
+</section>
+<section id="this-is-a-simplified-example-of-the-logic" class="level1">
+<h1>This is a simplified example of the logic</h1>
+</section>
+<section id="the-full-implementation-involves-careful-prompt-engineering" class="level1">
+<h1>The full implementation involves careful prompt engineering</h1>
+<p><span class="citation" data-cites="weave.op">@weave.op</span> async def llm_correctness_scorer(output: str, question: str, answer: str) -&gt; dict: # <code>prompt</code> would contain instructions for the LLM judge # to score the <code>output</code> against the <code>answer</code> for the given <code>question</code> # and return a score and a reason in JSON format. prompt = f”“” Evaluate the following generated answer for correctness. Question: {question} Reference Answer: {answer} Generated Answer: {output}</p>
+<pre><code>Provide a score from 0 (incorrect) to 2 (perfectly correct) and a reason.
+Return JSON with keys "score" and "reason".
+"""
+# This would be an API call to a powerful LLM
+# evaluation_result = call_llm_judge(prompt) 
+# return evaluation_result
+
+# Placeholder for demonstration
+return {"score": 2, "reason": "The answer is factually correct and complete."}</code></pre>
+<p>Conclusion &amp; What’s Next We’ve successfully built and learned how to evaluate a foundational RAG system. We started with raw documents and ended with a pipeline that can ingest data, retrieve relevant context, and generate answers. Most importantly, we established a framework for measuring performance, which is the key to systematic improvement.</p>
+<p>In the next post, “Advanced RAG: Production-Ready Techniques for Retrieval and Agentic Systems,” we will take this foundation and elevate it. We’ll dive into state-of-the-art techniques like semantic chunking, dense and hybrid retrieval, re-ranking, and the exciting world of agentic RAG with tool use. Stay tuned!</p>
 
 
 </section>
@@ -851,4 +1098,4 @@ torch.Size([1, 5, 8, 8])</code></pre>
 
 
 
-<footer class="footer"><div class="nav-footer"><div class="nav-footer-center"><div class="toc-actions d-sm-block d-md-none"><ul><li><a href="https://github.com/kanpuriyanawab/edit/master/posts/flux_is_so_flexible.qmd" class="toc-action"><i class="bi bi-github"></i>Edit this page</a></li><li><a href="https://github.com/kanpuriyanawab/issues/new" class="toc-action"><i class="bi empty"></i>Report an issue</a></li></ul></div></div></div></footer></body></html>
+<footer class="footer"><div class="nav-footer"><div class="nav-footer-center"><div class="toc-actions d-sm-block d-md-none"><ul><li><a href="https://github.com/kanpuriyanawab/edit/master/posts/rag_zero_to_hero.qmd" class="toc-action"><i class="bi bi-github"></i>Edit this page</a></li><li><a href="https://github.com/kanpuriyanawab/issues/new" class="toc-action"><i class="bi empty"></i>Report an issue</a></li></ul></div></div></div></footer></body></html>

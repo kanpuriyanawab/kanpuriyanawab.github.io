@@ -6,10 +6,10 @@
 
 <meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=yes">
 
-<meta name="dcterms.date" content="2022-12-31">
-<meta name="description" content="Implementing ML models in Flux, the Julia Deep Learning&nbsp;Package!">
+<meta name="dcterms.date" content="2025-08-11">
+<meta name="description" content="Bringing FalAI to davinci resolve">
 
-<title>Deep Learning in&nbsp;Julia – Introductions</title>
+<title>Introducing Falafel: AI Video Generation in DaVinci Resolve – Introductions</title>
 <style>
 code{white-space: pre-wrap;}
 span.smallcaps{font-variant: small-caps;}
@@ -35,14 +35,14 @@ ul.task-list li input[type="checkbox"] {
 <script src="../site_libs/quarto-html/tippy.umd.min.js"></script>
 <script src="../site_libs/quarto-html/anchor.min.js"></script>
 <link href="../site_libs/quarto-html/tippy.css" rel="stylesheet">
-<link href="../site_libs/quarto-html/quarto-syntax-highlighting-ea385d0e468b0dd5ea5bf0780b1290d9.css" rel="stylesheet" class="quarto-color-scheme" id="quarto-text-highlighting-styles">
-<link href="../site_libs/quarto-html/quarto-syntax-highlighting-dark-bc185b5c5bdbcb35c2eb49d8a876ef70.css" rel="stylesheet" class="quarto-color-scheme quarto-color-alternate" id="quarto-text-highlighting-styles">
-<link href="../site_libs/quarto-html/quarto-syntax-highlighting-ea385d0e468b0dd5ea5bf0780b1290d9.css" rel="stylesheet" class="quarto-color-scheme-extra" id="quarto-text-highlighting-styles">
+<link href="../site_libs/quarto-html/quarto-syntax-highlighting-ffffa96520c6cf7ec6bfd4297e4347f0.css" rel="stylesheet" class="quarto-color-scheme" id="quarto-text-highlighting-styles">
+<link href="../site_libs/quarto-html/quarto-syntax-highlighting-dark-ffffa96520c6cf7ec6bfd4297e4347f0.css" rel="stylesheet" class="quarto-color-scheme quarto-color-alternate" id="quarto-text-highlighting-styles">
+<link href="../site_libs/quarto-html/quarto-syntax-highlighting-ffffa96520c6cf7ec6bfd4297e4347f0.css" rel="stylesheet" class="quarto-color-scheme-extra" id="quarto-text-highlighting-styles">
 <script src="../site_libs/bootstrap/bootstrap.min.js"></script>
 <link href="../site_libs/bootstrap/bootstrap-icons.css" rel="stylesheet">
-<link href="../site_libs/bootstrap/bootstrap-86e65ece5faec92ce16f9c85813cf771.min.css" rel="stylesheet" append-hash="true" class="quarto-color-scheme" id="quarto-bootstrap" data-mode="light">
-<link href="../site_libs/bootstrap/bootstrap-dark-70251fee9d101ca39d3791353faa8e21.min.css" rel="stylesheet" append-hash="true" class="quarto-color-scheme quarto-color-alternate" id="quarto-bootstrap" data-mode="dark">
-<link href="../site_libs/bootstrap/bootstrap-86e65ece5faec92ce16f9c85813cf771.min.css" rel="stylesheet" append-hash="true" class="quarto-color-scheme-extra" id="quarto-bootstrap" data-mode="light">
+<link href="../site_libs/bootstrap/bootstrap-53e2934f2624c36ac3161caeada67ca1.min.css" rel="stylesheet" append-hash="true" class="quarto-color-scheme" id="quarto-bootstrap" data-mode="light">
+<link href="../site_libs/bootstrap/bootstrap-dark-29bf839e1b934446d045b66250ea7e79.min.css" rel="stylesheet" append-hash="true" class="quarto-color-scheme quarto-color-alternate" id="quarto-bootstrap" data-mode="dark">
+<link href="../site_libs/bootstrap/bootstrap-53e2934f2624c36ac3161caeada67ca1.min.css" rel="stylesheet" append-hash="true" class="quarto-color-scheme-extra" id="quarto-bootstrap" data-mode="light">
 <link href="../site_libs/quarto-contrib/academicons-1.9.4/all.css" rel="stylesheet">
 <link href="../site_libs/quarto-contrib/academicons-1.9.4/size.css" rel="stylesheet">
 <script id="quarto-search-options" type="application/json">{
@@ -72,19 +72,19 @@ gtag('config', 'G-36H2NR8FB7', { 'anonymize_ip': true});
 
 
 <link rel="stylesheet" href="../styles.css">
-<meta property="og:title" content="Deep Learning in&nbsp;Julia – Introductions">
-<meta property="og:description" content="Implementing ML models in Flux, the Julia Deep Learning&nbsp;Package!">
-<meta property="og:image" content="https://www.heyyanshuman.com/posts/assets/flux_is_flexible/unet_full.png">
+<meta property="og:title" content="Introducing Falafel: AI Video Generation in DaVinci Resolve – Introductions">
+<meta property="og:description" content="Bringing FalAI to davinci resolve">
+<meta property="og:image" content="https://www.heyyanshuman.com/posts/assets/falafel/import_to_falafel.png">
 <meta property="og:site_name" content="Introductions">
-<meta property="og:image:height" content="609">
-<meta property="og:image:width" content="842">
-<meta name="twitter:title" content="Deep Learning in&nbsp;Julia – Introductions">
-<meta name="twitter:description" content="Implementing ML models in Flux, the Julia Deep Learning&nbsp;Package!">
-<meta name="twitter:image" content="https://www.heyyanshuman.com/posts/assets/flux_is_flexible/unet_full.png">
+<meta property="og:image:height" content="952">
+<meta property="og:image:width" content="1068">
+<meta name="twitter:title" content="Introducing Falafel: AI Video Generation in DaVinci Resolve – Introductions">
+<meta name="twitter:description" content="Bringing FalAI to davinci resolve">
+<meta name="twitter:image" content="https://www.heyyanshuman.com/posts/assets/falafel/import_to_falafel.png">
 <meta name="twitter:creator" content="@athleticKoder">
 <meta name="twitter:card" content="summary">
-<meta name="twitter:image-height" content="609">
-<meta name="twitter:image-width" content="842">
+<meta name="twitter:image-height" content="952">
+<meta name="twitter:image-width" content="1068">
 </head>
 
 <body class="nav-fixed quarto-light"><script id="quarto-html-before-body" type="application/javascript">
@@ -316,15 +316,17 @@ gtag('config', 'G-36H2NR8FB7', { 'anonymize_ip': true});
 <header id="title-block-header" class="quarto-title-block default page-columns page-full">
   <div class="quarto-title-banner page-columns page-full">
     <div class="quarto-title column-body">
-      <h1 class="title">Deep Learning in&nbsp;Julia</h1>
+      <h1 class="title">Introducing Falafel: AI Video Generation in DaVinci Resolve</h1>
                   <div>
         <div class="description">
-          Implementing ML models in Flux, the Julia Deep Learning&nbsp;Package!
+          Bringing FalAI to davinci resolve
         </div>
       </div>
                           <div class="quarto-categories">
-                <div class="quarto-category">Model Architecture</div>
-                <div class="quarto-category">Julia</div>
+                <div class="quarto-category">SaaS</div>
+                <div class="quarto-category">Diffusion Model</div>
+                <div class="quarto-category">Video Editing</div>
+                <div class="quarto-category">Open Source</div>
               </div>
                   </div>
   </div>
@@ -336,7 +338,7 @@ gtag('config', 'G-36H2NR8FB7', { 'anonymize_ip': true});
       <div>
       <div class="quarto-title-meta-heading">Published</div>
       <div class="quarto-title-meta-contents">
-        <p class="date">December 31, 2022</p>
+        <p class="date">August 11, 2025</p>
       </div>
     </div>
     
@@ -352,9 +354,13 @@ gtag('config', 'G-36H2NR8FB7', { 'anonymize_ip': true});
     <h2 id="toc-title">On this page</h2>
    
   <ul>
-  <li><a href="#unet" id="toc-unet" class="nav-link active" data-scroll-target="#unet">UNet 🥅</a></li>
+  <li><a href="#what-is-falafel" id="toc-what-is-falafel" class="nav-link active" data-scroll-target="#what-is-falafel">What is Falafel?</a></li>
+  <li><a href="#how-it-works" id="toc-how-it-works" class="nav-link" data-scroll-target="#how-it-works">How It Works</a></li>
+  <li><a href="#key-features" id="toc-key-features" class="nav-link" data-scroll-target="#key-features">Key Features</a></li>
+  <li><a href="#get-started-now" id="toc-get-started-now" class="nav-link" data-scroll-target="#get-started-now">Get Started Now</a></li>
+  <li><a href="#the-road-ahead" id="toc-the-road-ahead" class="nav-link" data-scroll-target="#the-road-ahead">The Road Ahead</a></li>
   </ul>
-<div class="toc-actions"><ul><li><a href="https://github.com/kanpuriyanawab/edit/master/posts/flux_is_so_flexible.qmd" class="toc-action"><i class="bi bi-github"></i>Edit this page</a></li><li><a href="https://github.com/kanpuriyanawab/issues/new" class="toc-action"><i class="bi empty"></i>Report an issue</a></li></ul></div></nav>
+<div class="toc-actions"><ul><li><a href="https://github.com/kanpuriyanawab/edit/master/posts/falafel_launch.qmd" class="toc-action"><i class="bi bi-github"></i>Edit this page</a></li><li><a href="https://github.com/kanpuriyanawab/issues/new" class="toc-action"><i class="bi empty"></i>Report an issue</a></li></ul></div></nav>
     </div>
 <!-- main -->
 <main class="content quarto-banner-title-block" id="quarto-document-content">
@@ -364,71 +370,50 @@ gtag('config', 'G-36H2NR8FB7', { 'anonymize_ip': true});
 
 
 
-<p><a href="https://fluxml.ai/">Flux</a> is amazing and it’s far more than just an ML framework. Differentiable programming &amp; Zygote, first class GPU support are features that set it apart among ML systems. The best thing I love about flux is mixing neural nets with differential equations, to get the best of black box and mechanistic modelling, this is what <a href="https://sciml.ai/">SciML</a> doing.</p>
-<p>Flux is fairly new, and needs attention of community&nbsp;! In this article we’ll learn about how to implement a model in Flux.jl&nbsp;. We’ll walkthrough UNet implementation, which I’ve been <a href="https://github.com/shivance/Metalhead.jl/blob/ba54cf0219cc247a732c1710925a4eef7a2c70c7/src/convnets/unet.jl">working</a> on lately to contribute to flux’s model zoo <strong>Metalhead.jl.</strong></p>
-<p><strong>After reading this article you’ll learn about</strong></p>
+<p>I’m super excited to announce the launch of <strong>Falafel</strong>, a new tool designed to bridge the gap between powerful AI video generation and professional video editing.</p>
+<p>If you’ve ever wanted to generate stunning video clips from an image using diffusion models and bring them directly into your DaVinci Resolve timeline without a cumbersome export/import process, Falafel is for you.</p>
+<section id="what-is-falafel" class="level3">
+<h3 class="anchored" data-anchor-id="what-is-falafel">What is Falafel?</h3>
+<p>Falafel is a free, open-source desktop application that acts as a bridge between your DaVinci Resolve media pool and the powerful models available on <a href="https://fal.ai">Fal.ai</a>. It streamlines the creative process, letting you focus on editing, not file management.</p>
+<p>The name ‘Falafel’ is a fun nod to its core—it’s a wrapper for <strong>Fal</strong> AI. The project is built with Electron and the source code is available for everyone on <a href="https://github.com/kanpuriyanawab/falafel">GitHub</a>.</p>
+</section>
+<section id="how-it-works" class="level3">
+<h3 class="anchored" data-anchor-id="how-it-works">How It Works</h3>
+<p>Getting started is simple. The entire workflow is designed to keep you in your creative zone.</p>
 <ol type="1">
-<li>What is UNet?</li>
-<li>A brief overview of Flux API</li>
-<li>Reimplementing PyTorch Models in Julia</li>
+<li><p><strong>Install &amp; Setup</strong> Download and install the Falafel desktop app. On the first launch, you’ll be prompted to sign in with Google to get started.</p></li>
+<li><p><strong>Connect to DaVinci Resolve</strong> Inside Resolve, navigate to the menu: <code>Workspace</code> -&gt; <code>Scripts</code> -&gt; <code>Falafel</code>. This action starts a local server that allows the two applications to communicate.</p></li>
+<li><p><strong>Select Your Source Image</strong> In the DaVinci Resolve Media Pool, simply click on the image you want to use as your source.</p></li>
+<li><p><strong>Generate in Falafel</strong> Switch over to the Falafel app.</p>
+<ul>
+<li>Click the <strong><code>Select Image from Media Pool</code></strong> button. Your chosen image will appear in the app.</li>
+<li>Enter your Fal AI API Key.</li>
+<li>Write a descriptive prompt for the video you want to create.</li>
+<li>Click <strong><code>Generate Video</code></strong> and let the AI work its magic. <img src="./assets/falafel/import_to_falafel.png" class="img-fluid"></li>
+</ul></li>
+<li><p><strong>Import to Resolve</strong> Once the generation is complete, a new button, <strong><code>Import to Media Pool</code></strong>, will appear in Falafel. Clicking this will send the newly created video file directly into your DaVinci Resolve Media Pool, ready to be dropped into your timeline.</p></li>
 </ol>
-<section id="unet" class="level2">
-<h2 class="anchored" data-anchor-id="unet">UNet 🥅</h2>
-<p>UNet is a deep learning model which was released in the paper <a href="https://arxiv.org/pdf/1505.04597v1">U-Net: Convolutional Networks for Biomedical Image Segmentation</a>. The architecture of the network looks like&nbsp;: Fig. 1 ( Source: UNet&nbsp;Paper)We’ll not go into detail about UNet theory, as the paper explains it in best way, and explaination here would be redundant anyway.</p>
-<div class="quarto-figure quarto-figure-center">
-<figure class="figure">
-<p><img src="assets/flux_is_flexible/unet_full.png" class="img-fluid figure-img"></p>
-<figcaption>Source: UNet Paper</figcaption>
-</figure>
-</div>
-<p>This tutorial will focus on implementation.</p>
-<p>Let’s dive into code rightaway&nbsp;! The article is written presuming that you have knowledge of implementing a neural networks in PyTorch&nbsp;! We simply create a class that inherits nn.Module&nbsp;. We now create layers and assign it to class with self&nbsp;. When this model is instantiated, these layers will become attribute of the model object.</p>
-<script src="https://gist.github.com/kanpuriyanawab/c66010357e03ddcd21862c633162efb9.js"></script>
-<pre><code>&gt;&gt;&gt; exec(open("basic_model.py").read())
-torch.Size([1, 5, 8, 8])</code></pre>
-<p>Let’s see how it looks like in Julia.</p>
-<script src="https://gist.github.com/kanpuriyanawab/e0e278c4fcdd26ef998a2393b9e4bb9d.js"></script>
-<pre><code>julia&gt; include("basic_model.jl");
-(8, 8, 5, 1)</code></pre>
-<p>Some Key things to note here are&nbsp;:</p>
-<ol type="1">
-<li>Flux follows (H, W, C, N) standard for images while PyTorch uses (N, C, H, W)</li>
-<li>Chain function is similar to nn.Sequential method from PyTorch</li>
-<li>Julia implements Multiple Dispatch unlike PyThon which is designed on Single Dispatch paradigm. In short multiple dispatch allows us to implement a single method for different combination of different type arguments, unlike python which restricts the methods to be bound to a single object and reimplemented for different classes. Read more about multiple dispatch here&nbsp;.</li>
-</ol>
-<p>Let’s see how <a href="https://medium.com/r/?url=https%3A%2F%2Fgithub.com%2Fmateuszbuda%2Fbrain-segmentation-pytorch%2Fblob%2Fd45f8908ab2f0246ba204c702a6161c9eb25f902%2Funet.py%23L1">official UNet implementation</a> from Torchhub looks like</p>
-<p>The author of original implementation (hereon referred just as “author”) created a helper method to create a convolutional block&nbsp;. This is a good practise called as DRY ( Do not Repeat Yourself).</p>
-<div class="quarto-figure quarto-figure-center">
-<figure class="figure">
-<p><img src="assets/flux_is_flexible/unet.png" class="img-fluid figure-img"></p>
-<figcaption>Source: UNet Paper</figcaption>
-</figure>
-</div>
-<p>This allows us to create these conv blocks (fig.&nbsp;2 zooms into fig.&nbsp;1 to show these conv blocks) just by passing input and output channels. To implement it with Flux, we reuse our knowledge from gist 1&nbsp;:</p>
-<script src="https://gist.github.com/kanpuriyanawab/6b63cf078466fda41cc5912b36ded6b2.js"></script>
-<p>This allows us to create these conv blocks (fig.&nbsp;2 zooms into fig.&nbsp;1 to show these conv blocks) just by passing input and output channels.</p>
-<p>Pretty simple isn’t it&nbsp;?</p>
-<p>One thing to note here is, Flux doesn’t allow us to name the layers explicitly, the reason can be found in <a href="https://github.com/FluxML/Flux.jl/issues/2142">this</a> github issue. Now let’s go ahead and see how layers were created by author.</p>
-<p>Now we see that we have an encoder, bottleneck, decoder and an upconv layer. 1. Encoder&nbsp;: The four downstairs in Fig. 1 form the encoder block, and it encodes image by successive convolutions 2. Bottleneck&nbsp;: The layer between encoder and decoder is called bottleneck. The output of decoder is passed on to decoder &amp; upconv block. 3. Decoder &amp; Upconv block&nbsp;: The upconv block upsamples the input matrix, i.e.&nbsp;deconvolves the input to output with bigger size ( H x W ) than input. Decoder follows upconv layer and increases channels by performing convolution.</p>
-<p>Let’s create the model class in Flux first. Julia doesn’t have classes, it has structs&nbsp;. So model struct would look like this.</p>
-<script src="https://gist.github.com/kanpuriyanawab/8e5eb8ed5722f6a574ae90558b5ab42e.js"></script>
-<p>To reduce the redundancy in code I’ll implement the layers as array of layers, it’ll allow us to write a clean forward pass later. Don’t forget to notice the relation between number of channels of different blocks of UNet model.</p>
-<p>The unet_block is the convolutional block that we defined earlier is a simple chain of Convolutional and BatchNorm layers. We further chain these blocks keeping in mind the input &amp; output features using the Chain function. See&nbsp;! How easy it is to create a model in Flux. Now we have one last thing remaining, the forward pass&nbsp;. We do it like</p>
-<script src="https://gist.github.com/kanpuriyanawab/4771bb348755b488597b461ab9868aa5.js"></script>
-<p>in PyTorch. The cat operation orchestrates the connection between encoder and decoder demonstrated by copy and crop represented by gray arrow in Fig. 1.</p>
-<p>But don’t you find the code above messy&nbsp;? That’s where our definition of layers of arrays comes in. Let’s see how the forward pass is written for UNet.</p>
-<script src="https://gist.github.com/kanpuriyanawab/9e3c6b8ee5cf77c3e29ec62e71ea49fc.js"></script>
-<p>Pretty simple &amp; clean, we managed to keep the entire logic same.</p>
-<p>Some key points to be noted here:</p>
-<ol type="1">
-<li>σ is nothing else but sigmoid function&nbsp;! Julia allows us to use all the mathematical symbols as variables&nbsp;. Thus, flux defined sigmoid as σ rather than sigmoid()</li>
-<li>Julia uses matlab like syntax for ranges (see 1:4 for iterating over 1, 2, 3, 4 and 4:-1:1 for 4, 3, 2, 1).</li>
-<li>Julia uses 1 based indexing.</li>
-<li>Any Julia function with a trailing&nbsp;! tells that operation will be inplace ( remember pass by reference from C++ using &amp; operation).</li>
-<li>The <code>return</code> keyword in last line is redundant, simply writing σ(u.final_conv(out)) would work as Julia always returns the output of last line of code, from any code block.</li>
-</ol>
-<p>That brings us to the end of this tutorial. Thanks for reading&nbsp;!</p>
-<p>This is the second article of my first blog series Julia For the Win. You can find the previous article Kaggle x Julia&nbsp;: Advanced House Price Prediction&nbsp;: EDA.</p>
+<p><img src="./assets/falafel/import_to_media_pool.png" class="img-fluid"></p>
+</section>
+<section id="key-features" class="level3">
+<h3 class="anchored" data-anchor-id="key-features">Key Features</h3>
+<ul>
+<li><strong>Seamless Integration</strong>: A direct link between your Resolve project and AI models. No more saving, exporting, finding, and importing files.</li>
+<li><strong>Privacy-Focused</strong>: Your API keys are yours alone and are not stored or transmitted to any third-party server besides Fal.ai.</li>
+<li><strong>Open Source</strong>: Built for the community, by the community. You can inspect the code, contribute, and suggest features on <a href="https://github.com/kanpuriyanawab/falafel">GitHub</a>.</li>
+<li><strong>Free to Use</strong>: Falafel is completely free. You only need an API key from Fal.ai for the generation service itself.</li>
+</ul>
+</section>
+<section id="get-started-now" class="level3">
+<h3 class="anchored" data-anchor-id="get-started-now">Get Started Now</h3>
+<p>Ready to supercharge your editing workflow? You can download the latest version of Falafel and find the source code on the official GitHub repository.</p>
+<p><strong><a href="./assets/falafel/Falafel-1.0.0-arm64.dmg">Download Falafel</a></strong></p>
+</section>
+<section id="the-road-ahead" class="level3">
+<h3 class="anchored" data-anchor-id="the-road-ahead">The Road Ahead</h3>
+<p>This is just the beginning for Falafel. Future plans include support for more models, batch processing, and even more configuration options directly within the app.</p>
+<p>I built Falafel to solve a problem I had, and I hope it helps you too. I welcome any feedback, bug reports, and contributions. Please feel free to open an issue or pull request on GitHub.</p>
+<p>Thank you for checking it out!</p>
 
 
 </section>
@@ -851,4 +836,4 @@ torch.Size([1, 5, 8, 8])</code></pre>
 
 
 
-<footer class="footer"><div class="nav-footer"><div class="nav-footer-center"><div class="toc-actions d-sm-block d-md-none"><ul><li><a href="https://github.com/kanpuriyanawab/edit/master/posts/flux_is_so_flexible.qmd" class="toc-action"><i class="bi bi-github"></i>Edit this page</a></li><li><a href="https://github.com/kanpuriyanawab/issues/new" class="toc-action"><i class="bi empty"></i>Report an issue</a></li></ul></div></div></div></footer></body></html>
+<footer class="footer"><div class="nav-footer"><div class="nav-footer-center"><div class="toc-actions d-sm-block d-md-none"><ul><li><a href="https://github.com/kanpuriyanawab/edit/master/posts/falafel_launch.qmd" class="toc-action"><i class="bi bi-github"></i>Edit this page</a></li><li><a href="https://github.com/kanpuriyanawab/issues/new" class="toc-action"><i class="bi empty"></i>Report an issue</a></li></ul></div></div></div></footer></body></html>
