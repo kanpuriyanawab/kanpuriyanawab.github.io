@@ -2,7 +2,7 @@
 <html xmlns="http://www.w3.org/1999/xhtml" lang="en" xml:lang="en"><head>
 
 <meta charset="utf-8">
-<meta name="generator" content="quarto-1.7.33">
+<meta name="generator" content="quarto-1.8.24">
 
 <meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=yes">
 
@@ -66,18 +66,19 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
 <script src="../site_libs/clipboard/clipboard.min.js"></script>
 <script src="../site_libs/quarto-html/quarto.js" type="module"></script>
 <script src="../site_libs/quarto-html/tabsets/tabsets.js" type="module"></script>
+<script src="../site_libs/quarto-html/axe/axe-check.js" type="module"></script>
 <script src="../site_libs/quarto-html/popper.min.js"></script>
 <script src="../site_libs/quarto-html/tippy.umd.min.js"></script>
 <script src="../site_libs/quarto-html/anchor.min.js"></script>
 <link href="../site_libs/quarto-html/tippy.css" rel="stylesheet">
-<link href="../site_libs/quarto-html/quarto-syntax-highlighting-ffffa96520c6cf7ec6bfd4297e4347f0.css" rel="stylesheet" class="quarto-color-scheme" id="quarto-text-highlighting-styles">
-<link href="../site_libs/quarto-html/quarto-syntax-highlighting-dark-ffffa96520c6cf7ec6bfd4297e4347f0.css" rel="stylesheet" class="quarto-color-scheme quarto-color-alternate" id="quarto-text-highlighting-styles">
-<link href="../site_libs/quarto-html/quarto-syntax-highlighting-ffffa96520c6cf7ec6bfd4297e4347f0.css" rel="stylesheet" class="quarto-color-scheme-extra" id="quarto-text-highlighting-styles">
+<link href="../site_libs/quarto-html/quarto-syntax-highlighting-12b3df05fff64bd15c9bad32e15a2ea0.css" rel="stylesheet" class="quarto-color-scheme" id="quarto-text-highlighting-styles">
+<link href="../site_libs/quarto-html/quarto-syntax-highlighting-dark-12b3df05fff64bd15c9bad32e15a2ea0.css" rel="stylesheet" class="quarto-color-scheme quarto-color-alternate" id="quarto-text-highlighting-styles">
+<link href="../site_libs/quarto-html/quarto-syntax-highlighting-12b3df05fff64bd15c9bad32e15a2ea0.css" rel="stylesheet" class="quarto-color-scheme-extra" id="quarto-text-highlighting-styles">
 <script src="../site_libs/bootstrap/bootstrap.min.js"></script>
 <link href="../site_libs/bootstrap/bootstrap-icons.css" rel="stylesheet">
-<link href="../site_libs/bootstrap/bootstrap-53e2934f2624c36ac3161caeada67ca1.min.css" rel="stylesheet" append-hash="true" class="quarto-color-scheme" id="quarto-bootstrap" data-mode="light">
-<link href="../site_libs/bootstrap/bootstrap-dark-29bf839e1b934446d045b66250ea7e79.min.css" rel="stylesheet" append-hash="true" class="quarto-color-scheme quarto-color-alternate" id="quarto-bootstrap" data-mode="dark">
-<link href="../site_libs/bootstrap/bootstrap-53e2934f2624c36ac3161caeada67ca1.min.css" rel="stylesheet" append-hash="true" class="quarto-color-scheme-extra" id="quarto-bootstrap" data-mode="light">
+<link href="../site_libs/bootstrap/bootstrap-b5d1590170535b1ee42e24e3295f2eb9.min.css" rel="stylesheet" append-hash="true" class="quarto-color-scheme" id="quarto-bootstrap" data-mode="light">
+<link href="../site_libs/bootstrap/bootstrap-dark-846bfcd90b9f2dd023c0b1007d535218.min.css" rel="stylesheet" append-hash="true" class="quarto-color-scheme quarto-color-alternate" id="quarto-bootstrap" data-mode="dark">
+<link href="../site_libs/bootstrap/bootstrap-b5d1590170535b1ee42e24e3295f2eb9.min.css" rel="stylesheet" append-hash="true" class="quarto-color-scheme-extra" id="quarto-bootstrap" data-mode="light">
 <link href="../site_libs/quarto-contrib/academicons-1.9.4/all.css" rel="stylesheet">
 <link href="../site_libs/quarto-contrib/academicons-1.9.4/size.css" rel="stylesheet">
 <script id="quarto-search-options" type="application/json">{
@@ -291,6 +292,8 @@ gtag('config', 'G-36H2NR8FB7', { 'anonymize_ip': true});
     <nav class="navbar navbar-expand-lg " data-bs-theme="dark">
       <div class="navbar-container container-fluid">
       <div class="navbar-brand-container mx-auto">
+    <a href="../index.html" class="navbar-brand navbar-brand-logo">
+    </a>
     <a class="navbar-brand" href="../index.html">
     <span class="navbar-title">Introductions</span>
     </a>
@@ -417,16 +420,16 @@ gtag('config', 'G-36H2NR8FB7', { 'anonymize_ip': true});
 <section id="install-dependencies" class="level2">
 <h2 class="anchored" data-anchor-id="install-dependencies">Install dependencies</h2>
 <p>First thing first let’s get the base libraries, and we are going to do this guide in pytorch. To install it:</p>
-<div class="sourceCode" id="cb1"><pre class="sourceCode bash code-with-copy"><code class="sourceCode bash"><span id="cb1-1"><a href="#cb1-1" aria-hidden="true" tabindex="-1"></a><span class="ex">!pip</span> install <span class="at">-qq</span> torch torchvision torchaudio</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="code-copy-outer-scaffold"><div class="sourceCode" id="cb1"><pre class="sourceCode bash code-with-copy"><code class="sourceCode bash"><span id="cb1-1"><a href="#cb1-1" aria-hidden="true" tabindex="-1"></a><span class="ex">!pip</span> install <span class="at">-qq</span> torch torchvision torchaudio</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
 <p>Next, we’ll need transformers for our models, datasets for data handling, bitsandbytes for quantization, peft for efficient fine-tuning, and accelerate to optimize it all.</p>
-<div class="sourceCode" id="cb2"><pre class="sourceCode bash code-with-copy"><code class="sourceCode bash"><span id="cb2-1"><a href="#cb2-1" aria-hidden="true" tabindex="-1"></a><span class="ex">!pip</span> install <span class="at">-U</span> <span class="at">-qq</span> transformers trl datasets bitsandbytes peft accelerate</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="code-copy-outer-scaffold"><div class="sourceCode" id="cb2"><pre class="sourceCode bash code-with-copy"><code class="sourceCode bash"><span id="cb2-1"><a href="#cb2-1" aria-hidden="true" tabindex="-1"></a><span class="ex">!pip</span> install <span class="at">-U</span> <span class="at">-qq</span> transformers trl datasets bitsandbytes peft accelerate</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
 <div class="callout callout-style-default callout-tip callout-titled" title="Key Libraries">
 <div class="callout-header d-flex align-content-center">
 <div class="callout-icon-container">
 <i class="callout-icon"></i>
 </div>
 <div class="callout-title-container flex-fill">
-Key Libraries
+<span class="screen-reader-only">Tip</span>Key Libraries
 </div>
 </div>
 <div class="callout-body-container callout-body">
@@ -444,16 +447,16 @@ Key Libraries
 <h2 class="anchored" data-anchor-id="load-and-prepare-the-dataset">Load and Prepare the Dataset</h2>
 <p>With our environment set up, it’s time to load our data. The <a href="https://huggingface.co/datasets/HuggingFaceM4/ChartQA">ChartQA dataset</a> is available on the Hugging Face Hub and is perfect for our task. It contains a wide variety of graphs along with corresponding question-answer pairs, presenting a solid challenge for a model’s VQA capabilities.</p>
 <p>Since our goal is to build a conversational model, we need to format the dataset into a chat-like structure. I’ve crafted a system prompt to guide the model’s behavior:</p>
-<div class="sourceCode" id="cb3"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb3-1"><a href="#cb3-1" aria-hidden="true" tabindex="-1"></a>system_prompt<span class="op">=</span><span class="st">"""You are a Vision Language Model that understands and </span></span>
+<div class="code-copy-outer-scaffold"><div class="sourceCode" id="cb3"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb3-1"><a href="#cb3-1" aria-hidden="true" tabindex="-1"></a>system_prompt<span class="op">=</span><span class="st">"""You are a Vision Language Model that understands and </span></span>
 <span id="cb3-2"><a href="#cb3-2" aria-hidden="true" tabindex="-1"></a><span class="st">interprets chart images. Your job is to look at the chart and answer </span></span>
 <span id="cb3-3"><a href="#cb3-3" aria-hidden="true" tabindex="-1"></a><span class="st">questions with short, clear responses—usually a single word, number, </span></span>
 <span id="cb3-4"><a href="#cb3-4" aria-hidden="true" tabindex="-1"></a><span class="st">or brief phrase. The charts may be line charts, bar charts, pie charts, </span></span>
 <span id="cb3-5"><a href="#cb3-5" aria-hidden="true" tabindex="-1"></a><span class="st">or others, and can include colors, labels, legends, and text. Focus on </span></span>
 <span id="cb3-6"><a href="#cb3-6" aria-hidden="true" tabindex="-1"></a><span class="st">giving accurate answers based only on what is shown  in the image. </span></span>
 <span id="cb3-7"><a href="#cb3-7" aria-hidden="true" tabindex="-1"></a><span class="st">Do not explain your answer unless the question needs it to make sense.</span></span>
-<span id="cb3-8"><a href="#cb3-8" aria-hidden="true" tabindex="-1"></a><span class="st">"""</span></span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<span id="cb3-8"><a href="#cb3-8" aria-hidden="true" tabindex="-1"></a><span class="st">"""</span></span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
 <p>Referring to the chat template described in the <a href="https://huggingface.co/google/gemma-3-4b-it">Gemma 3 model card</a>, we can create a formatting function that structures each sample into a conversation with <code>system</code>, <code>user</code>, and <code>assistant</code> roles.</p>
-<div class="sourceCode" id="cb4"><pre class="sourceCode javascript code-with-copy"><code class="sourceCode javascript"><span id="cb4-1"><a href="#cb4-1" aria-hidden="true" tabindex="-1"></a>def <span class="fu">format_data</span>(sample)<span class="op">:</span></span>
+<div class="code-copy-outer-scaffold"><div class="sourceCode" id="cb4"><pre class="sourceCode javascript code-with-copy"><code class="sourceCode javascript"><span id="cb4-1"><a href="#cb4-1" aria-hidden="true" tabindex="-1"></a>def <span class="fu">format_data</span>(sample)<span class="op">:</span></span>
 <span id="cb4-2"><a href="#cb4-2" aria-hidden="true" tabindex="-1"></a>    # The system message sets the context <span class="cf">for</span> the model</span>
 <span id="cb4-3"><a href="#cb4-3" aria-hidden="true" tabindex="-1"></a>    system_message <span class="op">=</span> {</span>
 <span id="cb4-4"><a href="#cb4-4" aria-hidden="true" tabindex="-1"></a>        <span class="st">"role"</span><span class="op">:</span> <span class="st">"system"</span><span class="op">,</span></span>
@@ -472,30 +475,30 @@ Key Libraries
 <span id="cb4-17"><a href="#cb4-17" aria-hidden="true" tabindex="-1"></a>        <span class="st">"role"</span><span class="op">:</span> <span class="st">"assistant"</span><span class="op">,</span></span>
 <span id="cb4-18"><a href="#cb4-18" aria-hidden="true" tabindex="-1"></a>        <span class="st">"content"</span><span class="op">:</span> [{<span class="st">"type"</span><span class="op">:</span> <span class="st">"text"</span><span class="op">,</span> <span class="st">"text"</span><span class="op">:</span> sample[<span class="st">"label"</span>][<span class="dv">0</span>]}]<span class="op">,</span></span>
 <span id="cb4-19"><a href="#cb4-19" aria-hidden="true" tabindex="-1"></a>    }</span>
-<span id="cb4-20"><a href="#cb4-20" aria-hidden="true" tabindex="-1"></a>    <span class="cf">return</span> [system_message<span class="op">,</span> user_message<span class="op">,</span> assistant_message]</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<span id="cb4-20"><a href="#cb4-20" aria-hidden="true" tabindex="-1"></a>    <span class="cf">return</span> [system_message<span class="op">,</span> user_message<span class="op">,</span> assistant_message]</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
 <div class="callout callout-style-default callout-note callout-titled" title="Note">
 <div class="callout-header d-flex align-content-center">
 <div class="callout-icon-container">
 <i class="callout-icon"></i>
 </div>
 <div class="callout-title-container flex-fill">
-Note
+<span class="screen-reader-only">Note</span>Note
 </div>
 </div>
 <div class="callout-body-container callout-body">
 <p>This guide is compute-intensive, so we’ll only use a small fraction (10%) of the dataset for demonstration. For a production model, you would want to fine-tune on the full dataset.</p>
 </div>
 </div>
-<div class="sourceCode" id="cb5"><pre class="sourceCode javascript code-with-copy"><code class="sourceCode javascript"><span id="cb5-1"><a href="#cb5-1" aria-hidden="true" tabindex="-1"></a><span class="im">from</span> datasets <span class="im">import</span> load_dataset</span>
+<div class="code-copy-outer-scaffold"><div class="sourceCode" id="cb5"><pre class="sourceCode javascript code-with-copy"><code class="sourceCode javascript"><span id="cb5-1"><a href="#cb5-1" aria-hidden="true" tabindex="-1"></a><span class="im">from</span> datasets <span class="im">import</span> load_dataset</span>
 <span id="cb5-2"><a href="#cb5-2" aria-hidden="true" tabindex="-1"></a></span>
 <span id="cb5-3"><a href="#cb5-3" aria-hidden="true" tabindex="-1"></a>train_dataset<span class="op">,</span> eval_dataset<span class="op">,</span> test_dataset <span class="op">=</span> <span class="fu">load_dataset</span>(</span>
 <span id="cb5-4"><a href="#cb5-4" aria-hidden="true" tabindex="-1"></a>    <span class="st">"HuggingFaceM4/ChartQA"</span><span class="op">,</span> </span>
 <span id="cb5-5"><a href="#cb5-5" aria-hidden="true" tabindex="-1"></a>    split<span class="op">=</span>[<span class="st">"train[:10%]"</span><span class="op">,</span> <span class="st">"val[:10%]"</span><span class="op">,</span> <span class="st">"test[:10%]"</span>]</span>
-<span id="cb5-6"><a href="#cb5-6" aria-hidden="true" tabindex="-1"></a>)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<span id="cb5-6"><a href="#cb5-6" aria-hidden="true" tabindex="-1"></a>)</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
 <p>Now, let’s format the data using the chatbot structure.</p>
-<div class="sourceCode" id="cb6"><pre class="sourceCode javascript code-with-copy"><code class="sourceCode javascript"><span id="cb6-1"><a href="#cb6-1" aria-hidden="true" tabindex="-1"></a>train_dataset <span class="op">=</span> [<span class="fu">format_data</span>(sample) <span class="cf">for</span> sample <span class="kw">in</span> train_dataset]</span>
+<div class="code-copy-outer-scaffold"><div class="sourceCode" id="cb6"><pre class="sourceCode javascript code-with-copy"><code class="sourceCode javascript"><span id="cb6-1"><a href="#cb6-1" aria-hidden="true" tabindex="-1"></a>train_dataset <span class="op">=</span> [<span class="fu">format_data</span>(sample) <span class="cf">for</span> sample <span class="kw">in</span> train_dataset]</span>
 <span id="cb6-2"><a href="#cb6-2" aria-hidden="true" tabindex="-1"></a>eval_dataset <span class="op">=</span> [<span class="fu">format_data</span>(sample) <span class="cf">for</span> sample <span class="kw">in</span> eval_dataset]</span>
-<span id="cb6-3"><a href="#cb6-3" aria-hidden="true" tabindex="-1"></a>test_dataset <span class="op">=</span> [<span class="fu">format_data</span>(sample) <span class="cf">for</span> sample <span class="kw">in</span> test_dataset]</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<span id="cb6-3"><a href="#cb6-3" aria-hidden="true" tabindex="-1"></a>test_dataset <span class="op">=</span> [<span class="fu">format_data</span>(sample) <span class="cf">for</span> sample <span class="kw">in</span> test_dataset]</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
 </section>
 <section id="establish-a-baseline" class="level2">
 <h2 class="anchored" data-anchor-id="establish-a-baseline">Establish a Baseline</h2>
@@ -507,7 +510,7 @@ Note
 <figcaption><a href="https://miro.medium.com/v2/resize:fit:1400/format:webp/1*Fd6h5380Ca7myTcfUYNlgA.png">Gemma 3 Architrecture</a></figcaption>
 </figure>
 </div>
-<div class="sourceCode" id="cb7"><pre class="sourceCode javascript code-with-copy"><code class="sourceCode javascript"><span id="cb7-1"><a href="#cb7-1" aria-hidden="true" tabindex="-1"></a><span class="im">import</span> torch</span>
+<div class="code-copy-outer-scaffold"><div class="sourceCode" id="cb7"><pre class="sourceCode javascript code-with-copy"><code class="sourceCode javascript"><span id="cb7-1"><a href="#cb7-1" aria-hidden="true" tabindex="-1"></a><span class="im">import</span> torch</span>
 <span id="cb7-2"><a href="#cb7-2" aria-hidden="true" tabindex="-1"></a><span class="im">from</span> transformers <span class="im">import</span> AutoProcessor<span class="op">,</span> Gemma3ForConditionalGeneration</span>
 <span id="cb7-3"><a href="#cb7-3" aria-hidden="true" tabindex="-1"></a></span>
 <span id="cb7-4"><a href="#cb7-4" aria-hidden="true" tabindex="-1"></a>model <span class="op">=</span> Gemma3ForConditionalGeneration<span class="op">.</span><span class="fu">from_pretrained</span>(</span>
@@ -515,9 +518,9 @@ Note
 <span id="cb7-6"><a href="#cb7-6" aria-hidden="true" tabindex="-1"></a>    device_map<span class="op">=</span><span class="st">"auto"</span><span class="op">,</span></span>
 <span id="cb7-7"><a href="#cb7-7" aria-hidden="true" tabindex="-1"></a>    torch_dtype<span class="op">=</span>torch<span class="op">.</span><span class="at">bfloat16</span></span>
 <span id="cb7-8"><a href="#cb7-8" aria-hidden="true" tabindex="-1"></a>)</span>
-<span id="cb7-9"><a href="#cb7-9" aria-hidden="true" tabindex="-1"></a>processor <span class="op">=</span> AutoProcessor<span class="op">.</span><span class="fu">from_pretrained</span>(<span class="st">"google/gemma-3-4b-it"</span>)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<span id="cb7-9"><a href="#cb7-9" aria-hidden="true" tabindex="-1"></a>processor <span class="op">=</span> AutoProcessor<span class="op">.</span><span class="fu">from_pretrained</span>(<span class="st">"google/gemma-3-4b-it"</span>)</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
 <p>Next, let’s create a helper function to streamline inference. This function will take a data sample, process it, and generate the model’s response.</p>
-<div class="sourceCode" id="cb8"><pre class="sourceCode javascript code-with-copy"><code class="sourceCode javascript"><span id="cb8-1"><a href="#cb8-1" aria-hidden="true" tabindex="-1"></a></span>
+<div class="code-copy-outer-scaffold"><div class="sourceCode" id="cb8"><pre class="sourceCode javascript code-with-copy"><code class="sourceCode javascript"><span id="cb8-1"><a href="#cb8-1" aria-hidden="true" tabindex="-1"></a></span>
 <span id="cb8-2"><a href="#cb8-2" aria-hidden="true" tabindex="-1"></a>def <span class="fu">generate_text_from_sample</span>(model<span class="op">,</span> processor<span class="op">,</span> sample<span class="op">,</span> max_new_tokens<span class="op">=</span><span class="dv">1024</span><span class="op">,</span> device<span class="op">=</span><span class="st">"cuda"</span>)<span class="op">:</span></span>
 <span id="cb8-3"><a href="#cb8-3" aria-hidden="true" tabindex="-1"></a>    # The sample contains system<span class="op">,</span> user<span class="op">,</span> and assistant messages<span class="op">.</span></span>
 <span id="cb8-4"><a href="#cb8-4" aria-hidden="true" tabindex="-1"></a>    # We only need the user message <span class="cf">for</span> inference<span class="op">.</span></span>
@@ -550,17 +553,17 @@ Note
 <span id="cb8-31"><a href="#cb8-31" aria-hidden="true" tabindex="-1"></a>        generated_ids<span class="op">,</span> skip_special_tokens<span class="op">=</span>True<span class="op">,</span> clean_up_tokenization_spaces<span class="op">=</span>False</span>
 <span id="cb8-32"><a href="#cb8-32" aria-hidden="true" tabindex="-1"></a>    )</span>
 <span id="cb8-33"><a href="#cb8-33" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb8-34"><a href="#cb8-34" aria-hidden="true" tabindex="-1"></a>    <span class="cf">return</span> output_text[<span class="dv">0</span>]</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<span id="cb8-34"><a href="#cb8-34" aria-hidden="true" tabindex="-1"></a>    <span class="cf">return</span> output_text[<span class="dv">0</span>]</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
 <p>Let’s test the base model on a sample from our training set.</p>
-<div class="sourceCode" id="cb9"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb9-1"><a href="#cb9-1" aria-hidden="true" tabindex="-1"></a>output <span class="op">=</span> generate_text_from_sample(model, processor, train_dataset[<span class="dv">0</span>])</span>
-<span id="cb9-2"><a href="#cb9-2" aria-hidden="true" tabindex="-1"></a><span class="bu">print</span>(output)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="code-copy-outer-scaffold"><div class="sourceCode" id="cb9"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb9-1"><a href="#cb9-1" aria-hidden="true" tabindex="-1"></a>output <span class="op">=</span> generate_text_from_sample(model, processor, train_dataset[<span class="dv">0</span>])</span>
+<span id="cb9-2"><a href="#cb9-2" aria-hidden="true" tabindex="-1"></a><span class="bu">print</span>(output)</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
 <div class="callout callout-style-default callout-note callout-titled" title="Note">
 <div class="callout-header d-flex align-content-center">
 <div class="callout-icon-container">
 <i class="callout-icon"></i>
 </div>
 <div class="callout-title-container flex-fill">
-Note
+<span class="screen-reader-only">Note</span>Note
 </div>
 </div>
 <div class="callout-body-container callout-body">
@@ -581,7 +584,7 @@ Note
 <section id="loading-the-quantized-model" class="level3">
 <h3 class="anchored" data-anchor-id="loading-the-quantized-model">Loading the Quantized Model</h3>
 <p>First, we’ll create a <code>BitsAndBytesConfig</code> to tell the <code>transformers</code> library to load our model in 4-bit precision.</p>
-<div class="sourceCode" id="cb10"><pre class="sourceCode javascript code-with-copy"><code class="sourceCode javascript"><span id="cb10-1"><a href="#cb10-1" aria-hidden="true" tabindex="-1"></a><span class="im">from</span> transformers <span class="im">import</span> BitsAndBytesConfig</span>
+<div class="code-copy-outer-scaffold"><div class="sourceCode" id="cb10"><pre class="sourceCode javascript code-with-copy"><code class="sourceCode javascript"><span id="cb10-1"><a href="#cb10-1" aria-hidden="true" tabindex="-1"></a><span class="im">from</span> transformers <span class="im">import</span> BitsAndBytesConfig</span>
 <span id="cb10-2"><a href="#cb10-2" aria-hidden="true" tabindex="-1"></a></span>
 <span id="cb10-3"><a href="#cb10-3" aria-hidden="true" tabindex="-1"></a>bits_and_bytes_config <span class="op">=</span> <span class="fu">BitsAndBytesConfig</span>(</span>
 <span id="cb10-4"><a href="#cb10-4" aria-hidden="true" tabindex="-1"></a>    load_in_4bit<span class="op">=</span>True<span class="op">,</span></span>
@@ -596,14 +599,14 @@ Note
 <span id="cb10-13"><a href="#cb10-13" aria-hidden="true" tabindex="-1"></a>    torch_dtype<span class="op">=</span>torch<span class="op">.</span><span class="at">bfloat16</span><span class="op">,</span></span>
 <span id="cb10-14"><a href="#cb10-14" aria-hidden="true" tabindex="-1"></a>    quantization_config<span class="op">=</span>bits_and_bytes_config</span>
 <span id="cb10-15"><a href="#cb10-15" aria-hidden="true" tabindex="-1"></a>)</span>
-<span id="cb10-16"><a href="#cb10-16" aria-hidden="true" tabindex="-1"></a>processor <span class="op">=</span> AutoProcessor<span class="op">.</span><span class="fu">from_pretrained</span>(<span class="st">"google/gemma-3-4b-it"</span>)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<span id="cb10-16"><a href="#cb10-16" aria-hidden="true" tabindex="-1"></a>processor <span class="op">=</span> AutoProcessor<span class="op">.</span><span class="fu">from_pretrained</span>(<span class="st">"google/gemma-3-4b-it"</span>)</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
 <div class="callout callout-style-default callout-tip callout-titled" title="Key Parameters in `BitsAndBytesConfig`">
 <div class="callout-header d-flex align-content-center">
 <div class="callout-icon-container">
 <i class="callout-icon"></i>
 </div>
 <div class="callout-title-container flex-fill">
-Key Parameters in <code>BitsAndBytesConfig</code>
+<span class="screen-reader-only">Tip</span>Key Parameters in <code>BitsAndBytesConfig</code>
 </div>
 </div>
 <div class="callout-body-container callout-body">
@@ -619,7 +622,7 @@ Key Parameters in <code>BitsAndBytesConfig</code>
 <section id="setting-up-the-lora-configuration" class="level3">
 <h3 class="anchored" data-anchor-id="setting-up-the-lora-configuration">Setting Up the LoRA Configuration</h3>
 <p>Next, we define our <code>LoraConfig</code>. This tells PEFT where to inject the adapter layers and how to configure them.</p>
-<div class="sourceCode" id="cb11"><pre class="sourceCode javascript code-with-copy"><code class="sourceCode javascript"><span id="cb11-1"><a href="#cb11-1" aria-hidden="true" tabindex="-1"></a></span>
+<div class="code-copy-outer-scaffold"><div class="sourceCode" id="cb11"><pre class="sourceCode javascript code-with-copy"><code class="sourceCode javascript"><span id="cb11-1"><a href="#cb11-1" aria-hidden="true" tabindex="-1"></a></span>
 <span id="cb11-2"><a href="#cb11-2" aria-hidden="true" tabindex="-1"></a><span class="im">from</span> peft <span class="im">import</span> LoraConfig<span class="op">,</span> get_peft_model</span>
 <span id="cb11-3"><a href="#cb11-3" aria-hidden="true" tabindex="-1"></a></span>
 <span id="cb11-4"><a href="#cb11-4" aria-hidden="true" tabindex="-1"></a>peft_config <span class="op">=</span> <span class="fu">LoraConfig</span>(</span>
@@ -631,14 +634,14 @@ Key Parameters in <code>BitsAndBytesConfig</code>
 <span id="cb11-10"><a href="#cb11-10" aria-hidden="true" tabindex="-1"></a>    task_type<span class="op">=</span><span class="st">"CAUSAL_LM"</span></span>
 <span id="cb11-11"><a href="#cb11-11" aria-hidden="true" tabindex="-1"></a>)</span>
 <span id="cb11-12"><a href="#cb11-12" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb11-13"><a href="#cb11-13" aria-hidden="true" tabindex="-1"></a>peft_model <span class="op">=</span> <span class="fu">get_peft_model</span>(model<span class="op">,</span> peft_config)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<span id="cb11-13"><a href="#cb11-13" aria-hidden="true" tabindex="-1"></a>peft_model <span class="op">=</span> <span class="fu">get_peft_model</span>(model<span class="op">,</span> peft_config)</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
 <div class="callout callout-style-default callout-tip callout-titled" title="Key Parameters in `LoraConfig`">
 <div class="callout-header d-flex align-content-center">
 <div class="callout-icon-container">
 <i class="callout-icon"></i>
 </div>
 <div class="callout-title-container flex-fill">
-Key Parameters in <code>LoraConfig</code>
+<span class="screen-reader-only">Tip</span>Key Parameters in <code>LoraConfig</code>
 </div>
 </div>
 <div class="callout-body-container callout-body">
@@ -654,7 +657,7 @@ Key Parameters in <code>LoraConfig</code>
 <section id="configuring-the-trainer" class="level3">
 <h3 class="anchored" data-anchor-id="configuring-the-trainer">Configuring the Trainer</h3>
 <p>Now, we configure the training process using <code>SFTConfig</code> from the TRL library. This class holds all the hyperparameters for our supervised fine-tuning run.</p>
-<div class="sourceCode" id="cb12"><pre class="sourceCode javascript code-with-copy"><code class="sourceCode javascript"><span id="cb12-1"><a href="#cb12-1" aria-hidden="true" tabindex="-1"></a></span>
+<div class="code-copy-outer-scaffold"><div class="sourceCode" id="cb12"><pre class="sourceCode javascript code-with-copy"><code class="sourceCode javascript"><span id="cb12-1"><a href="#cb12-1" aria-hidden="true" tabindex="-1"></a></span>
 <span id="cb12-2"><a href="#cb12-2" aria-hidden="true" tabindex="-1"></a><span class="im">from</span> trl <span class="im">import</span> SFTConfig</span>
 <span id="cb12-3"><a href="#cb12-3" aria-hidden="true" tabindex="-1"></a></span>
 <span id="cb12-4"><a href="#cb12-4" aria-hidden="true" tabindex="-1"></a># Configure training <span class="kw">arguments</span></span>
@@ -699,14 +702,14 @@ Key Parameters in <code>LoraConfig</code>
 <span id="cb12-43"><a href="#cb12-43" aria-hidden="true" tabindex="-1"></a>    dataset_kwargs<span class="op">=</span>{<span class="st">"skip_prepare_dataset"</span><span class="op">:</span> True}</span>
 <span id="cb12-44"><a href="#cb12-44" aria-hidden="true" tabindex="-1"></a>)</span>
 <span id="cb12-45"><a href="#cb12-45" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb12-46"><a href="#cb12-46" aria-hidden="true" tabindex="-1"></a>training_args<span class="op">.</span><span class="at">remove_unused_columns</span> <span class="op">=</span> False</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<span id="cb12-46"><a href="#cb12-46" aria-hidden="true" tabindex="-1"></a>training_args<span class="op">.</span><span class="at">remove_unused_columns</span> <span class="op">=</span> False</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
 <div class="callout callout-style-default callout-tip callout-titled" title="Key Parameters in `SFTConfig`">
 <div class="callout-header d-flex align-content-center">
 <div class="callout-icon-container">
 <i class="callout-icon"></i>
 </div>
 <div class="callout-title-container flex-fill">
-Key Parameters in <code>SFTConfig</code>
+<span class="screen-reader-only">Tip</span>Key Parameters in <code>SFTConfig</code>
 </div>
 </div>
 <div class="callout-body-container callout-body">
@@ -725,7 +728,7 @@ Key Parameters in <code>SFTConfig</code>
 <section id="creating-a-data-collator" class="level3">
 <h3 class="anchored" data-anchor-id="creating-a-data-collator">Creating a Data Collator</h3>
 <p>We need one final piece before training: a data collator. This function takes a list of samples from our dataset and batches them together, ensuring they are correctly padded and formatted for the model. It’s also responsible for creating the <code>labels</code> for our language modeling task.</p>
-<div class="sourceCode" id="cb13"><pre class="sourceCode javascript code-with-copy"><code class="sourceCode javascript"><span id="cb13-1"><a href="#cb13-1" aria-hidden="true" tabindex="-1"></a>image_token_id <span class="op">=</span> processor<span class="op">.</span><span class="at">tokenizer</span><span class="op">.</span><span class="at">additional_special_tokens_ids</span>[</span>
+<div class="code-copy-outer-scaffold"><div class="sourceCode" id="cb13"><pre class="sourceCode javascript code-with-copy"><code class="sourceCode javascript"><span id="cb13-1"><a href="#cb13-1" aria-hidden="true" tabindex="-1"></a>image_token_id <span class="op">=</span> processor<span class="op">.</span><span class="at">tokenizer</span><span class="op">.</span><span class="at">additional_special_tokens_ids</span>[</span>
 <span id="cb13-2"><a href="#cb13-2" aria-hidden="true" tabindex="-1"></a>    processor<span class="op">.</span><span class="at">tokenizer</span><span class="op">.</span><span class="at">additional_special_tokens</span><span class="op">.</span><span class="fu">index</span>(<span class="st">"&lt;image&gt;"</span>)</span>
 <span id="cb13-3"><a href="#cb13-3" aria-hidden="true" tabindex="-1"></a>]</span>
 <span id="cb13-4"><a href="#cb13-4" aria-hidden="true" tabindex="-1"></a></span>
@@ -745,14 +748,14 @@ Key Parameters in <code>SFTConfig</code>
 <span id="cb13-18"><a href="#cb13-18" aria-hidden="true" tabindex="-1"></a>    labels[labels <span class="op">==</span> image_token_id] <span class="op">=</span> <span class="op">-</span><span class="dv">100</span></span>
 <span id="cb13-19"><a href="#cb13-19" aria-hidden="true" tabindex="-1"></a>    batch[<span class="st">"labels"</span>] <span class="op">=</span> labels</span>
 <span id="cb13-20"><a href="#cb13-20" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb13-21"><a href="#cb13-21" aria-hidden="true" tabindex="-1"></a>    <span class="cf">return</span> batch</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<span id="cb13-21"><a href="#cb13-21" aria-hidden="true" tabindex="-1"></a>    <span class="cf">return</span> batch</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
 <div class="callout callout-style-default callout-tip callout-titled" title="What is a Data Collator?">
 <div class="callout-header d-flex align-content-center">
 <div class="callout-icon-container">
 <i class="callout-icon"></i>
 </div>
 <div class="callout-title-container flex-fill">
-What is a Data Collator?
+<span class="screen-reader-only">Tip</span>What is a Data Collator?
 </div>
 </div>
 <div class="callout-body-container callout-body">
@@ -768,7 +771,7 @@ What is a Data Collator?
 <section id="launching-the-training" class="level3">
 <h3 class="anchored" data-anchor-id="launching-the-training">Launching the Training</h3>
 <p>Now, we can instantiate the <code>SFTTrainer</code> from TRL. It elegantly wraps the entire training loop, handling everything from data collation to model saving.</p>
-<div class="sourceCode" id="cb14"><pre class="sourceCode javascript code-with-copy"><code class="sourceCode javascript"><span id="cb14-1"><a href="#cb14-1" aria-hidden="true" tabindex="-1"></a></span>
+<div class="code-copy-outer-scaffold"><div class="sourceCode" id="cb14"><pre class="sourceCode javascript code-with-copy"><code class="sourceCode javascript"><span id="cb14-1"><a href="#cb14-1" aria-hidden="true" tabindex="-1"></a></span>
 <span id="cb14-2"><a href="#cb14-2" aria-hidden="true" tabindex="-1"></a><span class="im">from</span> trl <span class="im">import</span> SFTTrainer</span>
 <span id="cb14-3"><a href="#cb14-3" aria-hidden="true" tabindex="-1"></a></span>
 <span id="cb14-4"><a href="#cb14-4" aria-hidden="true" tabindex="-1"></a>trainer <span class="op">=</span> <span class="fu">SFTTrainer</span>(</span>
@@ -779,14 +782,14 @@ What is a Data Collator?
 <span id="cb14-9"><a href="#cb14-9" aria-hidden="true" tabindex="-1"></a>    data_collator<span class="op">=</span>collate_fn<span class="op">,</span></span>
 <span id="cb14-10"><a href="#cb14-10" aria-hidden="true" tabindex="-1"></a>    peft_config<span class="op">=</span>peft_config<span class="op">,</span></span>
 <span id="cb14-11"><a href="#cb14-11" aria-hidden="true" tabindex="-1"></a>    processing_class<span class="op">=</span>processor<span class="op">.</span><span class="at">tokenizer</span><span class="op">,</span></span>
-<span id="cb14-12"><a href="#cb14-12" aria-hidden="true" tabindex="-1"></a>)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<span id="cb14-12"><a href="#cb14-12" aria-hidden="true" tabindex="-1"></a>)</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
 <div class="callout callout-style-default callout-tip callout-titled" title="Why pass `model` and `peft_config` separately?">
 <div class="callout-header d-flex align-content-center">
 <div class="callout-icon-container">
 <i class="callout-icon"></i>
 </div>
 <div class="callout-title-container flex-fill">
-Why pass <code>model</code> and <code>peft_config</code> separately?
+<span class="screen-reader-only">Tip</span>Why pass <code>model</code> and <code>peft_config</code> separately?
 </div>
 </div>
 <div class="callout-body-container callout-body">
@@ -794,7 +797,7 @@ Why pass <code>model</code> and <code>peft_config</code> separately?
 </div>
 </div>
 <p>To start training, all we need to do is call one method:</p>
-<div class="sourceCode" id="cb15"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb15-1"><a href="#cb15-1" aria-hidden="true" tabindex="-1"></a>trainer.train()</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="code-copy-outer-scaffold"><div class="sourceCode" id="cb15"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb15-1"><a href="#cb15-1" aria-hidden="true" tabindex="-1"></a>trainer.train()</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
 <p>This will kick off the training process, and once training is complete, the best adapter checkpoint will be saved in the <code>output_dir</code> we specified.</p>
 </section>
 </section>
@@ -802,22 +805,22 @@ Why pass <code>model</code> and <code>peft_config</code> separately?
 <h2 class="anchored" data-anchor-id="test-the-fine-tuned-model">Test the Fine-Tuned Model</h2>
 <p>We’re done! Now for the moment of truth. Let’s load our fine-tuned adapter and see if the model’s performance has improved.</p>
 <p>First, we reload the original 4-bit quantized model. Then, we use the <code>load_adapter</code> method to attach our trained LoRA weights.</p>
-<div class="sourceCode" id="cb16"><pre class="sourceCode javascript code-with-copy"><code class="sourceCode javascript"><span id="cb16-1"><a href="#cb16-1" aria-hidden="true" tabindex="-1"></a>model <span class="op">=</span> Gemma3ForConditionalGeneration<span class="op">.</span><span class="fu">from_pretrained</span>(</span>
+<div class="code-copy-outer-scaffold"><div class="sourceCode" id="cb16"><pre class="sourceCode javascript code-with-copy"><code class="sourceCode javascript"><span id="cb16-1"><a href="#cb16-1" aria-hidden="true" tabindex="-1"></a>model <span class="op">=</span> Gemma3ForConditionalGeneration<span class="op">.</span><span class="fu">from_pretrained</span>(</span>
 <span id="cb16-2"><a href="#cb16-2" aria-hidden="true" tabindex="-1"></a>    <span class="st">"google/gemma-3-4b-it"</span><span class="op">,</span></span>
 <span id="cb16-3"><a href="#cb16-3" aria-hidden="true" tabindex="-1"></a>    device_map<span class="op">=</span><span class="st">"auto"</span><span class="op">,</span></span>
 <span id="cb16-4"><a href="#cb16-4" aria-hidden="true" tabindex="-1"></a>    torch_dtype<span class="op">=</span>torch<span class="op">.</span><span class="at">bfloat16</span><span class="op">,</span></span>
 <span id="cb16-5"><a href="#cb16-5" aria-hidden="true" tabindex="-1"></a>    quantization_config<span class="op">=</span>bits_and_bytes_config</span>
 <span id="cb16-6"><a href="#cb16-6" aria-hidden="true" tabindex="-1"></a>)</span>
 <span id="cb16-7"><a href="#cb16-7" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb16-8"><a href="#cb16-8" aria-hidden="true" tabindex="-1"></a>model<span class="op">.</span><span class="fu">load_adapter</span>(<span class="st">"gemma3-vqa-finetuned"</span>)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<span id="cb16-8"><a href="#cb16-8" aria-hidden="true" tabindex="-1"></a>model<span class="op">.</span><span class="fu">load_adapter</span>(<span class="st">"gemma3-vqa-finetuned"</span>)</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
 <p>Let’s pick a sample from the test set that the model hasn’t seen before.</p>
-<div class="sourceCode" id="cb17"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb17-1"><a href="#cb17-1" aria-hidden="true" tabindex="-1"></a>test_sample <span class="op">=</span> test_dataset[<span class="dv">21</span>]</span>
+<div class="code-copy-outer-scaffold"><div class="sourceCode" id="cb17"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb17-1"><a href="#cb17-1" aria-hidden="true" tabindex="-1"></a>test_sample <span class="op">=</span> test_dataset[<span class="dv">21</span>]</span>
 <span id="cb17-2"><a href="#cb17-2" aria-hidden="true" tabindex="-1"></a><span class="bu">print</span>(<span class="st">"Question:"</span>, test_sample[<span class="dv">1</span>][<span class="st">'content'</span>][<span class="dv">1</span>][<span class="st">'text'</span>])</span>
-<span id="cb17-3"><a href="#cb17-3" aria-hidden="true" tabindex="-1"></a>test_sample[<span class="dv">1</span>][<span class="st">'content'</span>][<span class="dv">0</span>][<span class="st">'image'</span>]</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<span id="cb17-3"><a href="#cb17-3" aria-hidden="true" tabindex="-1"></a>test_sample[<span class="dv">1</span>][<span class="st">'content'</span>][<span class="dv">0</span>][<span class="st">'image'</span>]</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
 <p><img src="./assets/finetune_vlm/chart.jpg" class="img-fluid"></p>
 <p>And now, let’s generate an answer with our fine-tuned model.</p>
-<div class="sourceCode" id="cb18"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb18-1"><a href="#cb18-1" aria-hidden="true" tabindex="-1"></a>output <span class="op">=</span> generate_text_from_sample(model, processor, test_sample)</span>
-<span id="cb18-2"><a href="#cb18-2" aria-hidden="true" tabindex="-1"></a><span class="bu">print</span>(<span class="st">"Model Answer:"</span>, output)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="code-copy-outer-scaffold"><div class="sourceCode" id="cb18"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb18-1"><a href="#cb18-1" aria-hidden="true" tabindex="-1"></a>output <span class="op">=</span> generate_text_from_sample(model, processor, test_sample)</span>
+<span id="cb18-2"><a href="#cb18-2" aria-hidden="true" tabindex="-1"></a><span class="bu">print</span>(<span class="st">"Model Answer:"</span>, output)</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
 <p>You should now see a much more accurate and direct answer to the question, demonstrating the power of fine-tuning. We’ve successfully taught the model a new skill—interpreting charts—without the prohibitive cost of a full fine-tune.</p>
 </section>
 <section id="references" class="level2">
@@ -895,13 +898,14 @@ Why pass <code>model</code> and <code>peft_config</code> separately?
       e.clearSelection();
     }
     const getTextToCopy = function(trigger) {
-        const codeEl = trigger.previousElementSibling.cloneNode(true);
-        for (const childEl of codeEl.children) {
-          if (isCodeAnnotation(childEl)) {
-            childEl.remove();
-          }
+      const outerScaffold = trigger.parentElement.cloneNode(true);
+      const codeEl = outerScaffold.querySelector('code');
+      for (const childEl of codeEl.children) {
+        if (isCodeAnnotation(childEl)) {
+          childEl.remove();
         }
-        return codeEl.innerText;
+      }
+      return codeEl.innerText;
     }
     const clipboard = new window.ClipboardJS('.code-copy-button:not([data-in-quarto-modal])', {
       text: getTextToCopy
