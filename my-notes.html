@@ -7,7 +7,7 @@
 <meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=yes">
 
 
-<title>Introductions</title>
+<title>My Notes – Introductions</title>
 <style>
 code{white-space: pre-wrap;}
 span.smallcaps{font-variant: small-caps;}
@@ -26,6 +26,8 @@ ul.task-list li input[type="checkbox"] {
 <script src="site_libs/quarto-nav/quarto-nav.js"></script>
 <script src="site_libs/quarto-nav/headroom.min.js"></script>
 <link href="./assets/images/pfp/varkala.jpg" rel="icon" type="image/jpeg">
+<script src="site_libs/quarto-listing/list.min.js"></script>
+<script src="site_libs/quarto-listing/quarto-listing.js"></script>
 <script src="site_libs/clipboard/clipboard.min.js"></script>
 <script src="site_libs/quarto-html/quarto.js" type="module"></script>
 <script src="site_libs/quarto-html/tabsets/tabsets.js" type="module"></script>
@@ -59,6 +61,35 @@ ul.task-list li input[type="checkbox"] {
     "search-label": "Search"
   }
 }</script>
+<script>
+
+  window.document.addEventListener("DOMContentLoaded", function (_event) {
+    const listingTargetEl = window.document.querySelector('#listing-listing .list');
+    if (!listingTargetEl) {
+      // No listing discovered, do not attach.
+      return; 
+    }
+
+    const options = {
+      valueNames: ['listing-date','listing-title','listing-author','listing-image','listing-description',{ data: ['index'] },{ data: ['categories'] },{ data: ['listing-date-sort'] },{ data: ['listing-file-modified-sort'] }],
+      
+      searchColumns: ["listing-date","listing-title","listing-author","listing-image","listing-description"],
+    };
+
+    window['quarto-listings'] = window['quarto-listings'] || {};
+    window['quarto-listings']['listing-listing'] = new List('listing-listing', options);
+
+    if (window['quarto-listing-loaded']) {
+      window['quarto-listing-loaded']();
+    }
+  });
+
+  window.addEventListener('hashchange',() => {
+    if (window['quarto-listing-loaded']) {
+      window['quarto-listing-loaded']();
+    }
+  })
+  </script>
 <script async="" src="https://www.googletagmanager.com/gtag/js?id=G-EKSMXY3E8G"></script>
 
 <script type="text/javascript">
@@ -69,15 +100,40 @@ gtag('js', new Date());
 gtag('config', 'G-EKSMXY3E8G', { 'anonymize_ip': true});
 </script>
 
+  <script src="https://cdnjs.cloudflare.com/polyfill/v3/polyfill.min.js?features=es6"></script>
+  <script src="https://cdn.jsdelivr.net/npm/mathjax@3/es5/tex-chtml-full.js" type="text/javascript"></script>
+
+<script type="text/javascript">
+const typesetMath = (el) => {
+  if (window.MathJax) {
+    // MathJax Typeset
+    window.MathJax.typeset([el]);
+  } else if (window.katex) {
+    // KaTeX Render
+    var mathElements = el.getElementsByClassName("math");
+    var macros = [];
+    for (var i = 0; i < mathElements.length; i++) {
+      var texText = mathElements[i].firstChild;
+      if (mathElements[i].tagName == "SPAN" && texText && texText.data) {
+        window.katex.render(texText.data, mathElements[i], {
+          displayMode: mathElements[i].classList.contains('display'),
+          throwOnError: false,
+          macros: macros,
+          fleqn: false
+        });
+      }
+    }
+  }
+}
+window.Quarto = {
+  typesetMath
+};
+</script>
 
 <link rel="stylesheet" href="styles.css">
-<meta property="og:title" content="Introductions">
-<meta property="og:description" content="Introductions Anshuman Mishra.">
-<meta property="og:image" content="https://www.heyyanshuman.com/assets/images/pfp/varkala.jpg">
+<link rel="alternate" type="application/rss+xml" title="Introductions" href="my-notes.xml" data-external="1"><meta property="og:title" content="My Notes – Introductions">
 <meta property="og:site_name" content="Introductions">
-<meta name="twitter:title" content="Introductions">
-<meta name="twitter:description" content="Introductions Anshuman Mishra.">
-<meta name="twitter:image" content="https://www.heyyanshuman.com/assets/images/pfp/varkala.jpg">
+<meta name="twitter:title" content="My Notes – Introductions">
 <meta name="twitter:creator" content="@athleticKoder">
 <meta name="twitter:card" content="summary">
 </head>
@@ -277,7 +333,7 @@ gtag('config', 'G-EKSMXY3E8G', { 'anonymize_ip': true});
 <span class="menu-text">Tech Blog</span></a>
   </li>  
   <li class="nav-item">
-    <a class="nav-link" href="./my-notes.html"> 
+    <a class="nav-link active" href="./my-notes.html" aria-current="page"> 
 <span class="menu-text">My Notes</span></a>
   </li>  
 </ul>
@@ -323,55 +379,63 @@ gtag('config', 'G-EKSMXY3E8G', { 'anonymize_ip': true});
 <div id="quarto-content" class="quarto-container page-columns page-rows-contents page-layout-full page-navbar">
 <!-- sidebar -->
 <!-- margin-sidebar -->
-    
+    <div id="quarto-margin-sidebar" class="sidebar margin-sidebar zindex-bottom">
+        
+    </div>
 <!-- main -->
-<main class="content column-page" id="quarto-document-content"><header id="title-block-header" class="quarto-title-block"></header>
+<main class="content column-page" id="quarto-document-content">
+
+
+<header id="title-block-header" class="quarto-title-block default">
+<div class="quarto-title">
+<h1 class="title">My Notes</h1>
+</div>
+
+
+
+<div class="quarto-title-meta column-page">
+
+    
+  
+    
+  </div>
+  
+
+
+</header>
 
 
 
 
 
-<div class="columns">
-<div class="column" style="width:65%;">
-<section id="hi-im-anshuman." class="level2">
-<h2 class="anchored" data-anchor-id="hi-im-anshuman.">Hi, I’m Anshuman.</h2>
-<p>I’m a <strong>Machine Learning Engineer</strong> building at the intersection of classical engineering depth and AI orchestration.</p>
-<p>Currently at <strong>Zomato</strong>, where I’m building and leading an AI evaluation platform and SDK—tackling one of the hardest problems in AI today.</p>
-<p>I graduated from <strong>NIT Warangal</strong> in 2023 and have spent years contributing to the core of major open-source ML frameworks. My work spans from implementing foundational models from scratch to designing production ML systems at scale.</p>
-<p>I’m also a <a href="https://g.dev/anshuizme"><strong>Google Developer Expert</strong></a> in Machine Learning and write <a href="https://conductorbyam.substack.com/"><strong>The Conductor</strong></a>—a newsletter for engineers learning to lead AI without losing the depth that makes their judgment irreplaceable.</p>
-</section>
-</div><div class="column" style="width:35%;">
-<div class="quarto-figure quarto-figure-center">
-<figure class="figure">
-<p><img src="assets/images/pfp/varkala.jpg" class="img-fluid quarto-figure quarto-figure-center figure-img" style="border-radius: 30%;" width="250"></p>
-</figure>
+
+<div class="quarto-listing quarto-listing-container-default" id="listing-listing">
+<div class="list quarto-listing-default">
+<div class="quarto-post image-right" data-index="0" data-categories="UGVyc29uYWwlMkNSZWZsZWN0aW9ucw==" data-listing-date-sort="1770681600000" data-listing-file-modified-sort="1770726011102" data-listing-date-modified-sort="NaN" data-listing-reading-time-sort="6" data-listing-word-count-sort="1116">
+<div class="thumbnail"><a href="./notes/thinking_out_loud.html" class="no-external">
+
+<p class="card-img-top"><img src="notes/assets/thinking_out_loud/img1.png"  class="thumbnail-image card-img"/></p>
+
+</a></div>
+<div class="body">
+<h3 class="no-anchor listing-title">
+<a href="./notes/thinking_out_loud.html" class="no-external">(Thinking Out Loud) On Engineering, Identity, and What Comes Next</a>
+</h3>
+<div class="delink listing-description"><a href="./notes/thinking_out_loud.html" class="no-external">
+<p>Personal reflections on engineering, identity, and the path forward</p>
+</a></div>
+</div>
+<div class="metadata">
+<a href="./notes/thinking_out_loud.html" class="no-external">
+<div class="listing-date">
+Feb 10, 2026
+</div>
+</a>
 </div>
 </div>
 </div>
-<hr>
-<section id="who-im-working-with-consultancy" class="level3">
-<h3 class="anchored" data-anchor-id="who-im-working-with-consultancy">Who I’m Working With (Consultancy)</h3>
-<ul>
-<li><strong>Google</strong> → As an Independent AI Consultant, I support the Keras team by implementing state-of-the-art models in <a href="https://github.com/keras-team/keras-hub">KerasHub</a> and writing technical deep-dives on their usage.</li>
-</ul>
-</section>
-<section id="previous-clients-consultancy" class="level3">
-<h3 class="anchored" data-anchor-id="previous-clients-consultancy">Previous Clients (Consultancy):</h3>
-<ul>
-<li><strong>Weights &amp; Biases (acquired by CoreWeave)</strong> → I focused on creating clear and compelling educational content for the machine learning community. I wrote in-depth articles, tutorials, and guides explaining complex ML concepts and demonstrating best practices using the W&amp;B platform.</li>
-</ul>
-</section>
-<section id="experience" class="level3">
-<h3 class="anchored" data-anchor-id="experience">Experience</h3>
-<p><strong>FlipAI</strong> → Tenth employee of the company and 2nd <strong>Machine Learning Engineer</strong> hired. My work involved the end-to-end ML lifecycle, from data preprocessing and model training to deployment and monitoring of core AI features. I also spent quite some time designing, building, and deploying applications &amp; feature in a fast-paced production environment as per customer needs.</p>
-<p><strong>Google</strong> → Selected for the <strong>Google Summer of Code Program</strong> to work with the TensorFlow and Keras teams. Mainly worked on KerasHub (then KerasNLP), implementing models like Llama2, GPT NeoX from scratch and writing technical articles.</p>
-<p><strong>BNY Mellon</strong> → As a <strong>Data Science Intern</strong>, I gained hands-on experience within the financial services industry. My responsibilities included analyzing large datasets to uncover insights, building predictive models, and presenting my findings to support data-driven decision-making.</p>
-<p><strong>Amazon</strong> → During my <strong>Software Engineering internship</strong> at Amazon, I contributed to a team responsible for developing large-scale software systems. This experience provided a strong foundation in the software development lifecycle, including coding, debugging, and working with cloud infrastructure to deliver a project feature.</p>
-
-
-</section>
-
-</main> <!-- /main -->
+<div class="listing-no-matching d-none">No matching items</div>
+</div></main> <!-- /main -->
 <script id="quarto-html-after-body" type="application/javascript">
   window.document.addEventListener("DOMContentLoaded", function (event) {
     // Ensure there is a toggle, if there isn't float one in the top right
@@ -790,4 +854,4 @@ gtag('config', 'G-EKSMXY3E8G', { 'anonymize_ip': true});
 
 
 
-<footer class="footer"><div class="nav-footer"><div class="nav-footer-center"><div class="toc-actions"><ul><li><a href="https://github.com/kanpuriyanawab/edit/master/index.qmd" class="toc-action"><i class="bi bi-github"></i>Edit this page</a></li><li><a href="https://github.com/kanpuriyanawab/issues/new" class="toc-action"><i class="bi empty"></i>Report an issue</a></li></ul></div></div></div></footer></body></html>
+<footer class="footer"><div class="nav-footer"><div class="nav-footer-center"><div class="toc-actions"><ul><li><a href="https://github.com/kanpuriyanawab/edit/master/my-notes.qmd" class="toc-action"><i class="bi bi-github"></i>Edit this page</a></li><li><a href="https://github.com/kanpuriyanawab/issues/new" class="toc-action"><i class="bi empty"></i>Report an issue</a></li></ul></div></div></div></footer></body></html>

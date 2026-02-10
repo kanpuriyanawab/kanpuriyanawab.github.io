@@ -7,7 +7,7 @@
 <meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=yes">
 
 
-<title>Introductions</title>
+<title>claude – Introductions</title>
 <style>
 code{white-space: pre-wrap;}
 span.smallcaps{font-variant: small-caps;}
@@ -19,6 +19,41 @@ ul.task-list li input[type="checkbox"] {
   width: 0.8em;
   margin: 0 0.8em 0.2em -1em; /* quarto-specific, see https://github.com/quarto-dev/quarto-cli/issues/4556 */ 
   vertical-align: middle;
+}
+/* CSS for syntax highlighting */
+html { -webkit-text-size-adjust: 100%; }
+pre > code.sourceCode { white-space: pre; position: relative; }
+pre > code.sourceCode > span { display: inline-block; line-height: 1.25; }
+pre > code.sourceCode > span:empty { height: 1.2em; }
+.sourceCode { overflow: visible; }
+code.sourceCode > span { color: inherit; text-decoration: inherit; }
+div.sourceCode { margin: 1em 0; }
+pre.sourceCode { margin: 0; }
+@media screen {
+div.sourceCode { overflow: auto; }
+}
+@media print {
+pre > code.sourceCode { white-space: pre-wrap; }
+pre > code.sourceCode > span { text-indent: -5em; padding-left: 5em; }
+}
+pre.numberSource code
+  { counter-reset: source-line 0; }
+pre.numberSource code > span
+  { position: relative; left: -4em; counter-increment: source-line; }
+pre.numberSource code > span > a:first-child::before
+  { content: counter(source-line);
+    position: relative; left: -1em; text-align: right; vertical-align: baseline;
+    border: none; display: inline-block;
+    -webkit-touch-callout: none; -webkit-user-select: none;
+    -khtml-user-select: none; -moz-user-select: none;
+    -ms-user-select: none; user-select: none;
+    padding: 0 4px; width: 4em;
+  }
+pre.numberSource { margin-left: 3em;  padding-left: 4px; }
+div.sourceCode
+  {   }
+@media screen {
+pre > code.sourceCode > span > a:first-child::before { text-decoration: underline; }
 }
 </style>
 
@@ -73,11 +108,9 @@ gtag('config', 'G-EKSMXY3E8G', { 'anonymize_ip': true});
 <link rel="stylesheet" href="styles.css">
 <meta property="og:title" content="Introductions">
 <meta property="og:description" content="Introductions Anshuman Mishra.">
-<meta property="og:image" content="https://www.heyyanshuman.com/assets/images/pfp/varkala.jpg">
 <meta property="og:site_name" content="Introductions">
 <meta name="twitter:title" content="Introductions">
 <meta name="twitter:description" content="Introductions Anshuman Mishra.">
-<meta name="twitter:image" content="https://www.heyyanshuman.com/assets/images/pfp/varkala.jpg">
 <meta name="twitter:creator" content="@athleticKoder">
 <meta name="twitter:card" content="summary">
 </head>
@@ -320,55 +353,212 @@ gtag('config', 'G-EKSMXY3E8G', { 'anonymize_ip': true});
     </nav>
 </header>
 <!-- content -->
-<div id="quarto-content" class="quarto-container page-columns page-rows-contents page-layout-full page-navbar">
+<div id="quarto-content" class="quarto-container page-columns page-rows-contents page-layout-article page-navbar">
 <!-- sidebar -->
 <!-- margin-sidebar -->
-    
+    <div id="quarto-margin-sidebar" class="sidebar margin-sidebar">
+        <nav id="TOC" role="doc-toc" class="toc-active">
+    <h2 id="toc-title">On this page</h2>
+   
+  <ul>
+  <li><a href="#claude.md" id="toc-claude.md" class="nav-link active" data-scroll-target="#claude.md">CLAUDE.md</a>
+  <ul class="collapse">
+  <li><a href="#project-overview" id="toc-project-overview" class="nav-link" data-scroll-target="#project-overview">Project Overview</a></li>
+  <li><a href="#build-development-commands" id="toc-build-development-commands" class="nav-link" data-scroll-target="#build-development-commands">Build &amp; Development Commands</a>
+  <ul class="collapse">
+  <li><a href="#preview-the-site-locally" id="toc-preview-the-site-locally" class="nav-link" data-scroll-target="#preview-the-site-locally">Preview the site locally</a></li>
+  <li><a href="#build-the-site" id="toc-build-the-site" class="nav-link" data-scroll-target="#build-the-site">Build the site</a></li>
+  <li><a href="#publish-to-github-pages" id="toc-publish-to-github-pages" class="nav-link" data-scroll-target="#publish-to-github-pages">Publish to GitHub Pages</a></li>
+  </ul></li>
+  <li><a href="#site-architecture" id="toc-site-architecture" class="nav-link" data-scroll-target="#site-architecture">Site Architecture</a>
+  <ul class="collapse">
+  <li><a href="#core-configuration" id="toc-core-configuration" class="nav-link" data-scroll-target="#core-configuration">Core Configuration</a></li>
+  <li><a href="#content-structure" id="toc-content-structure" class="nav-link" data-scroll-target="#content-structure">Content Structure</a></li>
+  <li><a href="#blog-post-structure" id="toc-blog-post-structure" class="nav-link" data-scroll-target="#blog-post-structure">Blog Post Structure</a></li>
+  <li><a href="#styling" id="toc-styling" class="nav-link" data-scroll-target="#styling">Styling</a></li>
+  <li><a href="#extensions" id="toc-extensions" class="nav-link" data-scroll-target="#extensions">Extensions</a></li>
+  <li><a href="#assets" id="toc-assets" class="nav-link" data-scroll-target="#assets">Assets</a></li>
+  </ul></li>
+  <li><a href="#git-workflow" id="toc-git-workflow" class="nav-link" data-scroll-target="#git-workflow">Git Workflow</a></li>
+  <li><a href="#content-guidelines" id="toc-content-guidelines" class="nav-link" data-scroll-target="#content-guidelines">Content Guidelines</a>
+  <ul class="collapse">
+  <li><a href="#when-creating-new-blog-posts" id="toc-when-creating-new-blog-posts" class="nav-link" data-scroll-target="#when-creating-new-blog-posts">When Creating New Blog Posts</a></li>
+  <li><a href="#when-editing-existing-content" id="toc-when-editing-existing-content" class="nav-link" data-scroll-target="#when-editing-existing-content">When Editing Existing Content</a></li>
+  </ul></li>
+  <li><a href="#technical-notes" id="toc-technical-notes" class="nav-link" data-scroll-target="#technical-notes">Technical Notes</a></li>
+  <li><a href="#output-directory" id="toc-output-directory" class="nav-link" data-scroll-target="#output-directory">Output Directory</a></li>
+  <li><a href="#important-context" id="toc-important-context" class="nav-link" data-scroll-target="#important-context">Important Context</a></li>
+  </ul></li>
+  </ul>
+<div class="toc-actions"><ul><li><a href="https://github.com/kanpuriyanawab/edit/master/CLAUDE.md" class="toc-action"><i class="bi bi-github"></i>Edit this page</a></li><li><a href="https://github.com/kanpuriyanawab/issues/new" class="toc-action"><i class="bi empty"></i>Report an issue</a></li></ul></div></nav>
+    </div>
 <!-- main -->
-<main class="content column-page" id="quarto-document-content"><header id="title-block-header" class="quarto-title-block"></header>
+<main class="content" id="quarto-document-content"><header id="title-block-header" class="quarto-title-block"></header>
 
 
 
 
 
-<div class="columns">
-<div class="column" style="width:65%;">
-<section id="hi-im-anshuman." class="level2">
-<h2 class="anchored" data-anchor-id="hi-im-anshuman.">Hi, I’m Anshuman.</h2>
-<p>I’m a <strong>Machine Learning Engineer</strong> building at the intersection of classical engineering depth and AI orchestration.</p>
-<p>Currently at <strong>Zomato</strong>, where I’m building and leading an AI evaluation platform and SDK—tackling one of the hardest problems in AI today.</p>
-<p>I graduated from <strong>NIT Warangal</strong> in 2023 and have spent years contributing to the core of major open-source ML frameworks. My work spans from implementing foundational models from scratch to designing production ML systems at scale.</p>
-<p>I’m also a <a href="https://g.dev/anshuizme"><strong>Google Developer Expert</strong></a> in Machine Learning and write <a href="https://conductorbyam.substack.com/"><strong>The Conductor</strong></a>—a newsletter for engineers learning to lead AI without losing the depth that makes their judgment irreplaceable.</p>
+<section id="claude.md" class="level1">
+<h1>CLAUDE.md</h1>
+<p>This file provides guidance to Claude Code (claude.ai/code) when working with code in this repository.</p>
+<section id="project-overview" class="level2">
+<h2 class="anchored" data-anchor-id="project-overview">Project Overview</h2>
+<p>This is a personal website for Anshuman Mishra (heyyanshuman.com), a Machine Learning Engineer at Zomato and Google Developer Expert. Built with Quarto, the site includes: - Home page with bio and experience - ML work (OSS contributions, papers, Kaggle) - Building (fun projects like Nebula, Sidekick, Snapgenie) - Talks &amp; Media (conference talks, podcasts, YouTube) - Tech Blog (technical articles) - My Notes (personal reflections)</p>
 </section>
-</div><div class="column" style="width:35%;">
-<div class="quarto-figure quarto-figure-center">
-<figure class="figure">
-<p><img src="assets/images/pfp/varkala.jpg" class="img-fluid quarto-figure quarto-figure-center figure-img" style="border-radius: 30%;" width="250"></p>
-</figure>
-</div>
-</div>
-</div>
-<hr>
-<section id="who-im-working-with-consultancy" class="level3">
-<h3 class="anchored" data-anchor-id="who-im-working-with-consultancy">Who I’m Working With (Consultancy)</h3>
+<section id="build-development-commands" class="level2">
+<h2 class="anchored" data-anchor-id="build-development-commands">Build &amp; Development Commands</h2>
+<section id="preview-the-site-locally" class="level3">
+<h3 class="anchored" data-anchor-id="preview-the-site-locally">Preview the site locally</h3>
+<div class="code-copy-outer-scaffold"><div class="sourceCode" id="cb1"><pre class="sourceCode bash code-with-copy"><code class="sourceCode bash"><span id="cb1-1"><a href="#cb1-1" aria-hidden="true" tabindex="-1"></a><span class="ex">quarto</span> preview</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
+<p>This starts a local development server with live reload. Access at http://localhost:4848 (or port shown in output).</p>
+</section>
+<section id="build-the-site" class="level3">
+<h3 class="anchored" data-anchor-id="build-the-site">Build the site</h3>
+<div class="code-copy-outer-scaffold"><div class="sourceCode" id="cb2"><pre class="sourceCode bash code-with-copy"><code class="sourceCode bash"><span id="cb2-1"><a href="#cb2-1" aria-hidden="true" tabindex="-1"></a><span class="ex">quarto</span> render</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
+<p>Generates static site files in the <code>_site/</code> directory.</p>
+</section>
+<section id="publish-to-github-pages" class="level3">
+<h3 class="anchored" data-anchor-id="publish-to-github-pages">Publish to GitHub Pages</h3>
+<div class="code-copy-outer-scaffold"><div class="sourceCode" id="cb3"><pre class="sourceCode bash code-with-copy"><code class="sourceCode bash"><span id="cb3-1"><a href="#cb3-1" aria-hidden="true" tabindex="-1"></a><span class="ex">quarto</span> publish gh-pages</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
+<p>Builds and deploys the site to GitHub Pages. The site is hosted at heyyanshuman.com (custom domain configured via CNAME).</p>
+</section>
+</section>
+<section id="site-architecture" class="level2">
+<h2 class="anchored" data-anchor-id="site-architecture">Site Architecture</h2>
+<section id="core-configuration" class="level3">
+<h3 class="anchored" data-anchor-id="core-configuration">Core Configuration</h3>
 <ul>
-<li><strong>Google</strong> → As an Independent AI Consultant, I support the Keras team by implementing state-of-the-art models in <a href="https://github.com/keras-team/keras-hub">KerasHub</a> and writing technical deep-dives on their usage.</li>
+<li>**_quarto.yml**: Main configuration file defining site structure, theme, navigation, and metadata
+<ul>
+<li>Uses custom theme (<code>custom_theme.scss</code>) with light/dark mode support</li>
+<li>Google Analytics integration</li>
+<li>Social media cards (Twitter, Open Graph)</li>
+<li>Five main navbar sections: “ML”, “Building”, “Talks”, “Tech Blog”, “My Notes”</li>
+</ul></li>
 </ul>
 </section>
-<section id="previous-clients-consultancy" class="level3">
-<h3 class="anchored" data-anchor-id="previous-clients-consultancy">Previous Clients (Consultancy):</h3>
+<section id="content-structure" class="level3">
+<h3 class="anchored" data-anchor-id="content-structure">Content Structure</h3>
 <ul>
-<li><strong>Weights &amp; Biases (acquired by CoreWeave)</strong> → I focused on creating clear and compelling educational content for the machine learning community. I wrote in-depth articles, tutorials, and guides explaining complex ML concepts and demonstrating best practices using the W&amp;B platform.</li>
+<li><strong>index.qmd</strong>: Home page with bio, current role at Zomato, experience, and consultancy work</li>
+<li><strong>pages/ml.qmd</strong>: ML work including OSS contributions, publications, and Kaggle competitions</li>
+<li><strong>pages/building.qmd</strong>: Fun projects (Nebula, Sidekick, Snapgenie, SlideBookLM, etc.)</li>
+<li><strong>pages/talks.qmd</strong>: Conference talks, podcasts, and YouTube videos</li>
+<li><strong>tech-blog.qmd</strong>: Technical blog listing page with filtering, sorting, and RSS feed</li>
+<li><strong>my-notes.qmd</strong>: Personal blog listing page</li>
+<li><strong>posts/</strong>: Technical blog posts as <code>.qmd</code> files
+<ul>
+<li>**posts/_metadata.yml**: Shared configuration for all blog posts (freeze: true, title-block-banner: true)</li>
+<li>Each post has YAML frontmatter with: title, date, description, categories, aliases, permalink</li>
+</ul></li>
+<li><strong>notes/</strong>: Personal blog posts as <code>.qmd</code> files
+<ul>
+<li>**notes/_metadata.yml**: Shared configuration for personal posts</li>
+<li>Follows same frontmatter pattern as technical posts</li>
+</ul></li>
 </ul>
 </section>
-<section id="experience" class="level3">
-<h3 class="anchored" data-anchor-id="experience">Experience</h3>
-<p><strong>FlipAI</strong> → Tenth employee of the company and 2nd <strong>Machine Learning Engineer</strong> hired. My work involved the end-to-end ML lifecycle, from data preprocessing and model training to deployment and monitoring of core AI features. I also spent quite some time designing, building, and deploying applications &amp; feature in a fast-paced production environment as per customer needs.</p>
-<p><strong>Google</strong> → Selected for the <strong>Google Summer of Code Program</strong> to work with the TensorFlow and Keras teams. Mainly worked on KerasHub (then KerasNLP), implementing models like Llama2, GPT NeoX from scratch and writing technical articles.</p>
-<p><strong>BNY Mellon</strong> → As a <strong>Data Science Intern</strong>, I gained hands-on experience within the financial services industry. My responsibilities included analyzing large datasets to uncover insights, building predictive models, and presenting my findings to support data-driven decision-making.</p>
-<p><strong>Amazon</strong> → During my <strong>Software Engineering internship</strong> at Amazon, I contributed to a team responsible for developing large-scale software systems. This experience provided a strong foundation in the software development lifecycle, including coding, debugging, and working with cloud infrastructure to deliver a project feature.</p>
+<section id="blog-post-structure" class="level3">
+<h3 class="anchored" data-anchor-id="blog-post-structure">Blog Post Structure</h3>
+<p>All blog posts follow a consistent YAML frontmatter pattern:</p>
+<div class="code-copy-outer-scaffold"><div class="sourceCode" id="cb4"><pre class="sourceCode yaml code-with-copy"><code class="sourceCode yaml"><span id="cb4-1"><a href="#cb4-1" aria-hidden="true" tabindex="-1"></a><span class="pp">---</span></span>
+<span id="cb4-2"><a href="#cb4-2" aria-hidden="true" tabindex="-1"></a><span class="fu">aliases</span><span class="kw">:</span></span>
+<span id="cb4-3"><a href="#cb4-3" aria-hidden="true" tabindex="-1"></a><span class="kw">-</span><span class="at"> /post_slug</span></span>
+<span id="cb4-4"><a href="#cb4-4" aria-hidden="true" tabindex="-1"></a><span class="fu">permalink</span><span class="kw">:</span><span class="at"> /post_slug</span></span>
+<span id="cb4-5"><a href="#cb4-5" aria-hidden="true" tabindex="-1"></a><span class="fu">badges</span><span class="kw">:</span><span class="at"> </span><span class="ch">false</span></span>
+<span id="cb4-6"><a href="#cb4-6" aria-hidden="true" tabindex="-1"></a><span class="fu">toc</span><span class="kw">:</span><span class="at"> </span><span class="ch">true</span></span>
+<span id="cb4-7"><a href="#cb4-7" aria-hidden="true" tabindex="-1"></a><span class="fu">categories</span><span class="kw">:</span></span>
+<span id="cb4-8"><a href="#cb4-8" aria-hidden="true" tabindex="-1"></a><span class="kw">-</span><span class="at"> Category1</span></span>
+<span id="cb4-9"><a href="#cb4-9" aria-hidden="true" tabindex="-1"></a><span class="kw">-</span><span class="at"> Category2</span></span>
+<span id="cb4-10"><a href="#cb4-10" aria-hidden="true" tabindex="-1"></a><span class="fu">date</span><span class="kw">:</span><span class="at"> </span><span class="st">'YYYY-MM-DD'</span></span>
+<span id="cb4-11"><a href="#cb4-11" aria-hidden="true" tabindex="-1"></a><span class="fu">description</span><span class="kw">:</span><span class="at"> Short description</span></span>
+<span id="cb4-12"><a href="#cb4-12" aria-hidden="true" tabindex="-1"></a><span class="fu">hide</span><span class="kw">:</span><span class="at"> </span><span class="ch">false</span></span>
+<span id="cb4-13"><a href="#cb4-13" aria-hidden="true" tabindex="-1"></a><span class="fu">output-file</span><span class="kw">:</span><span class="at"> filename.html</span></span>
+<span id="cb4-14"><a href="#cb4-14" aria-hidden="true" tabindex="-1"></a><span class="fu">search_exclude</span><span class="kw">:</span><span class="at"> </span><span class="ch">false</span></span>
+<span id="cb4-15"><a href="#cb4-15" aria-hidden="true" tabindex="-1"></a><span class="fu">title</span><span class="kw">:</span><span class="at"> Blog Post Title</span></span>
+<span id="cb4-16"><a href="#cb4-16" aria-hidden="true" tabindex="-1"></a><span class="pp">---</span></span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
+</section>
+<section id="styling" class="level3">
+<h3 class="anchored" data-anchor-id="styling">Styling</h3>
+<ul>
+<li><strong>custom_theme.scss</strong>: Custom Quarto theme (light mode)</li>
+<li><strong>sketchy.scss</strong>: Alternative theme file</li>
+<li><strong>styles.css</strong>: Additional custom styles</li>
+<li>Dark mode uses Quarto’s built-in “darkly” theme</li>
+</ul>
+</section>
+<section id="extensions" class="level3">
+<h3 class="anchored" data-anchor-id="extensions">Extensions</h3>
+<ul>
+<li>**_extensions/quarto-ext/fontawesome**: FontAwesome icon support</li>
+<li>**_extensions/schochastics/academicons**: Academic icon support (e.g., Google Scholar icon)</li>
+</ul>
+</section>
+<section id="assets" class="level3">
+<h3 class="anchored" data-anchor-id="assets">Assets</h3>
+<ul>
+<li><strong>assets/images/pfp/</strong>: Profile pictures</li>
+<li><strong>posts/assets/</strong>: Technical blog post images and media files organized by post</li>
+<li><strong>notes/assets/</strong>: Personal blog post images and media files</li>
+</ul>
+</section>
+</section>
+<section id="git-workflow" class="level2">
+<h2 class="anchored" data-anchor-id="git-workflow">Git Workflow</h2>
+<ul>
+<li>Main branch: <code>master</code></li>
+<li>GitHub repo: https://github.com/kanpuriyanawab/</li>
+<li>The <code>_site/</code> directory is tracked in git (uncommented in .gitignore)</li>
+<li>Build artifacts in <code>.quarto/</code> are ignored</li>
+</ul>
+</section>
+<section id="content-guidelines" class="level2">
+<h2 class="anchored" data-anchor-id="content-guidelines">Content Guidelines</h2>
+<section id="when-creating-new-blog-posts" class="level3">
+<h3 class="anchored" data-anchor-id="when-creating-new-blog-posts">When Creating New Blog Posts</h3>
+<p><strong>Technical Posts:</strong> 1. Create a new <code>.qmd</code> file in the <code>posts/</code> directory 2. Use the YAML frontmatter template shown above 3. <code>freeze: true</code> is inherited from <code>posts/_metadata.yml</code> to cache computational output 4. Place images in <code>posts/assets/[post-slug]/</code> 5. Use categories that align with existing taxonomy (check <code>tech-blog.qmd</code> listing)</p>
+<p><strong>Personal Notes:</strong> 1. Create a new <code>.qmd</code> file in the <code>notes/</code> directory 2. Use the same YAML frontmatter pattern 3. Place images in <code>notes/assets/[post-slug]/</code> 4. Categories typically include: Personal, Reflections, Career, etc.</p>
+</section>
+<section id="when-editing-existing-content" class="level3">
+<h3 class="anchored" data-anchor-id="when-editing-existing-content">When Editing Existing Content</h3>
+<ul>
+<li>Home page bio and experience: Edit <code>index.qmd</code></li>
+<li>ML work (OSS, papers, Kaggle): Edit <code>pages/ml.qmd</code></li>
+<li>Fun projects: Edit <code>pages/building.qmd</code></li>
+<li>Talks and media: Edit <code>pages/talks.qmd</code></li>
+<li>Technical blog posts: Edit files in <code>posts/</code></li>
+<li>Personal notes: Edit files in <code>notes/</code></li>
+<li>Navigation or site metadata: Edit <code>_quarto.yml</code></li>
+</ul>
+</section>
+</section>
+<section id="technical-notes" class="level2">
+<h2 class="anchored" data-anchor-id="technical-notes">Technical Notes</h2>
+<ul>
+<li>Quarto version: 1.7.31 (check with <code>quarto --version</code>)</li>
+<li>Execution mode: <code>freeze: auto</code> (computational code is frozen/cached)</li>
+<li>The site uses Quarto’s website project type</li>
+<li>Blog listing automatically generates from <code>posts/</code> directory content</li>
+<li>RSS feed is automatically generated for the blog</li>
+<li>Social media metadata (Twitter cards, Open Graph) is configured in <code>_quarto.yml</code></li>
+</ul>
+</section>
+<section id="output-directory" class="level2">
+<h2 class="anchored" data-anchor-id="output-directory">Output Directory</h2>
+<p>The <code>_site/</code> directory contains the built website. Key files: - Static HTML pages for all content - <code>listings.json</code>: Blog post metadata for listing pages - <code>search.json</code>: Search index data - <code>sitemap.xml</code>: Site sitemap - <code>tech-blog.xml</code>: RSS feed for the technical blog - <code>my-notes.xml</code>: RSS feed for personal notes</p>
+</section>
+<section id="important-context" class="level2">
+<h2 class="anchored" data-anchor-id="important-context">Important Context</h2>
+<ul>
+<li><strong>Current Role</strong>: Machine Learning Engineer at Zomato (building AI evaluation platform and SDK)</li>
+<li><strong>Newsletter</strong>: The Conductor (https://conductorbyam.substack.com/) - linked in Tech Blog and home page</li>
+<li><strong>Google Developer Expert</strong>: In Machine Learning</li>
+<li><strong>Education</strong>: NIT Warangal, 2023</li>
+</ul>
 
 
+</section>
 </section>
 
 </main> <!-- /main -->
@@ -790,4 +980,4 @@ gtag('config', 'G-EKSMXY3E8G', { 'anonymize_ip': true});
 
 
 
-<footer class="footer"><div class="nav-footer"><div class="nav-footer-center"><div class="toc-actions"><ul><li><a href="https://github.com/kanpuriyanawab/edit/master/index.qmd" class="toc-action"><i class="bi bi-github"></i>Edit this page</a></li><li><a href="https://github.com/kanpuriyanawab/issues/new" class="toc-action"><i class="bi empty"></i>Report an issue</a></li></ul></div></div></div></footer></body></html>
+<footer class="footer"><div class="nav-footer"><div class="nav-footer-center"><div class="toc-actions d-sm-block d-md-none"><ul><li><a href="https://github.com/kanpuriyanawab/edit/master/CLAUDE.md" class="toc-action"><i class="bi bi-github"></i>Edit this page</a></li><li><a href="https://github.com/kanpuriyanawab/issues/new" class="toc-action"><i class="bi empty"></i>Report an issue</a></li></ul></div></div></div></footer></body></html>

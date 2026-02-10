@@ -6,10 +6,10 @@
       version="2.0">
 <channel>
 <title>Introductions</title>
-<link>https://www.heyyanshuman.com/ml-blog.html</link>
-<atom:link href="https://www.heyyanshuman.com/ml-blog.xml" rel="self" type="application/rss+xml"/>
+<link>https://www.heyyanshuman.com/tech-blog.html</link>
+<atom:link href="https://www.heyyanshuman.com/tech-blog.xml" rel="self" type="application/rss+xml"/>
 <description>Introductions Anshuman Mishra.</description>
-<generator>quarto-1.8.25</generator>
+<generator>quarto-1.8.27</generator>
 <lastBuildDate>Sun, 05 Oct 2025 00:00:00 GMT</lastBuildDate>
 <item>
   <title>Evals are dead. Long live evals!</title>
@@ -2254,72 +2254,6 @@ font-style: inherit;">return</span> env_instance</span></code></pre></div></div>
   <category>Agents</category>
   <guid>https://www.heyyanshuman.com/posts/building_ai_environments_with_verifiers.html</guid>
   <pubDate>Sun, 05 Oct 2025 00:00:00 GMT</pubDate>
-</item>
-<item>
-  <title>Introducing Falafel: AI Video Generation in DaVinci Resolve</title>
-  <link>https://www.heyyanshuman.com/posts/falafel_launch.html</link>
-  <description><![CDATA[ 
-
-
-
-
-
-
-<p>I’m super excited to announce the launch of <strong>Falafel</strong>, a new tool designed to bridge the gap between powerful AI video generation and professional video editing.</p>
-<p>If you’ve ever wanted to generate stunning video clips from an image using diffusion models and bring them directly into your DaVinci Resolve timeline without a cumbersome export/import process, Falafel is for you.</p>
-<section id="what-is-falafel" class="level3">
-<h3 class="anchored" data-anchor-id="what-is-falafel">What is Falafel?</h3>
-<p>Falafel is a free, open-source desktop application that acts as a bridge between your DaVinci Resolve media pool and the powerful models available on <a href="https://fal.ai">Fal.ai</a>. It streamlines the creative process, letting you focus on editing, not file management.</p>
-<p>The name ‘Falafel’ is a fun nod to its core—it’s a wrapper for <strong>Fal</strong> AI. The project is built with Electron and the source code is available for everyone on <a href="https://github.com/kanpuriyanawab/falafel">GitHub</a>.</p>
-</section>
-<section id="how-it-works" class="level3">
-<h3 class="anchored" data-anchor-id="how-it-works">How It Works</h3>
-<p>Getting started is simple. The entire workflow is designed to keep you in your creative zone.</p>
-<ol type="1">
-<li><p><strong>Install &amp; Setup</strong> Download and install the Falafel desktop app. On the first launch, you’ll be prompted to sign in with Google to get started.</p></li>
-<li><p><strong>Connect to DaVinci Resolve</strong> Inside Resolve, navigate to the menu: <code>Workspace</code> -&gt; <code>Scripts</code> -&gt; <code>Falafel</code>. This action starts a local server that allows the two applications to communicate.</p></li>
-<li><p><strong>Select Your Source Image</strong> In the DaVinci Resolve Media Pool, simply click on the image you want to use as your source.</p></li>
-<li><p><strong>Generate in Falafel</strong> Switch over to the Falafel app.</p>
-<ul>
-<li>Click the <strong><code>Select Image from Media Pool</code></strong> button. Your chosen image will appear in the app.</li>
-<li>Enter your Fal AI API Key.</li>
-<li>Write a descriptive prompt for the video you want to create.</li>
-<li>Click <strong><code>Generate Video</code></strong> and let the AI work its magic. <img src="https://www.heyyanshuman.com/posts/assets/falafel/import_to_falafel.png" class="img-fluid"></li>
-</ul></li>
-<li><p><strong>Import to Resolve</strong> Once the generation is complete, a new button, <strong><code>Import to Media Pool</code></strong>, will appear in Falafel. Clicking this will send the newly created video file directly into your DaVinci Resolve Media Pool, ready to be dropped into your timeline.</p></li>
-</ol>
-<p><img src="https://www.heyyanshuman.com/posts/assets/falafel/import_to_media_pool.png" class="img-fluid"></p>
-</section>
-<section id="key-features" class="level3">
-<h3 class="anchored" data-anchor-id="key-features">Key Features</h3>
-<ul>
-<li><strong>Seamless Integration</strong>: A direct link between your Resolve project and AI models. No more saving, exporting, finding, and importing files.</li>
-<li><strong>Privacy-Focused</strong>: Your API keys are yours alone and are not stored or transmitted to any third-party server besides Fal.ai.</li>
-<li><strong>Open Source</strong>: Built for the community, by the community. You can inspect the code, contribute, and suggest features on <a href="https://github.com/kanpuriyanawab/falafel">GitHub</a>.</li>
-<li><strong>Free to Use</strong>: Falafel is completely free. You only need an API key from Fal.ai for the generation service itself.</li>
-</ul>
-</section>
-<section id="get-started-now" class="level3">
-<h3 class="anchored" data-anchor-id="get-started-now">Get Started Now</h3>
-<p>Ready to supercharge your editing workflow? You can download the latest version of Falafel and find the source code on the official GitHub repository.</p>
-<p><strong><a href="https://github.com/kanpuriyanawab/falafel/releases/tag/v1.0.0">Download Falafel</a></strong></p>
-</section>
-<section id="the-road-ahead" class="level3">
-<h3 class="anchored" data-anchor-id="the-road-ahead">The Road Ahead</h3>
-<p>This is just the beginning for Falafel. Future plans include support for more models, batch processing, and even more configuration options directly within the app.</p>
-<p>I built Falafel to solve a problem I had, and I hope it helps you too. I welcome any feedback, bug reports, and contributions. Please feel free to open an issue or pull request on GitHub.</p>
-<p>Thank you for checking it out!</p>
-
-
-</section>
-
- ]]></description>
-  <category>SaaS</category>
-  <category>Diffusion</category>
-  <category>Video Editing</category>
-  <category>Open Source</category>
-  <guid>https://www.heyyanshuman.com/posts/falafel_launch.html</guid>
-  <pubDate>Mon, 11 Aug 2025 00:00:00 GMT</pubDate>
 </item>
 <item>
   <title>Training LLMs to Think</title>
@@ -6522,7 +6456,7 @@ font-style: inherit;">self</span>.gemini_model.generate_content(full_prompt_for_
 
 <iframe src="https://wandb.ai/ml-colabs/automatic/reports/Generating-High-quality-Images-with-SD-Next-HuggingFace-Diffusers-and-W-B--Vmlldzo1NTYzMzQy" style="border:none;height:1024px;width:100%">
 <div id="quarto-navigation-envelope" class="hidden">
-<p><span class="hidden quarto-markdown-envelope-contents" data-render-id="cXVhcnRvLWludC1zaWRlYmFyLXRpdGxl">Introductions</span> <span class="hidden quarto-markdown-envelope-contents" data-render-id="cXVhcnRvLWludC1uYXZiYXItdGl0bGU=">Introductions</span> <span class="hidden quarto-markdown-envelope-contents" data-render-id="cXVhcnRvLWludC1uYXZiYXI6V29yaw==">Work</span> <span class="hidden quarto-markdown-envelope-contents" data-render-id="cXVhcnRvLWludC1uYXZiYXI6L3BhZ2VzL3dvcmsuaHRtbA==">/pages/work.html</span> <span class="hidden quarto-markdown-envelope-contents" data-render-id="cXVhcnRvLWludC1uYXZiYXI6TUwgQmxvZw==">ML Blog</span> <span class="hidden quarto-markdown-envelope-contents" data-render-id="cXVhcnRvLWludC1uYXZiYXI6L21sLWJsb2cuaHRtbA==">/ml-blog.html</span> <span class="hidden quarto-markdown-envelope-contents" data-render-id="cXVhcnRvLWludC1uYXZiYXI6aHR0cHM6Ly90d2l0dGVyLmNvbS9hdGhsZXRpY0tvZGVy">https://twitter.com/athleticKoder</span> <span class="hidden quarto-markdown-envelope-contents" data-render-id="cXVhcnRvLWludC1uYXZiYXI6aHR0cHM6Ly93d3cubGlua2VkaW4uY29tL2luL2Fuc2h1aXptZS8=">https://www.linkedin.com/in/anshuizme/</span> <span class="hidden quarto-markdown-envelope-contents" data-render-id="cXVhcnRvLWludC1uYXZiYXI6aHR0cHM6Ly9naXRodWIuY29tL2thbnB1cml5YW5hd2Fi">https://github.com/kanpuriyanawab</span> <span class="hidden quarto-markdown-envelope-contents" data-render-id="cXVhcnRvLWludC1uYXZiYXI6aHR0cHM6Ly95b3V0dWJlLmNvbS9AMXNtb2xsY29kZXI=">https://youtube.com/@1smollcoder</span> <span class="hidden quarto-markdown-envelope-contents" data-render-id="cXVhcnRvLWludC1uYXZiYXI6aHR0cHM6Ly9mdWxsc3RhY2thZ2VudHMuc3Vic3RhY2suY29t">https://fullstackagents.substack.com</span> <span class="hidden quarto-markdown-envelope-contents" data-render-id="cXVhcnRvLWludC1uYXZiYXI6e3s8IGFpIGdvb2dsZS1zY2hvbGFyID59fQ=="><i class="ai  ai-google-scholar" aria-label="google-scholar"></i></span> <span class="hidden quarto-markdown-envelope-contents" data-render-id="cXVhcnRvLWludC1uYXZiYXI6aHR0cHM6Ly9zY2hvbGFyLmdvb2dsZS5mci9jaXRhdGlvbnM/dXNlcj03MHdoOWpjQUFBQUo=">https://scholar.google.fr/citations?user=70wh9jcAAAAJ</span></p>
+<p><span class="hidden quarto-markdown-envelope-contents" data-render-id="cXVhcnRvLWludC1zaWRlYmFyLXRpdGxl">Introductions</span> <span class="hidden quarto-markdown-envelope-contents" data-render-id="cXVhcnRvLWludC1uYXZiYXItdGl0bGU=">Introductions</span> <span class="hidden quarto-markdown-envelope-contents" data-render-id="cXVhcnRvLWludC1uYXZiYXI6TUw=">ML</span> <span class="hidden quarto-markdown-envelope-contents" data-render-id="cXVhcnRvLWludC1uYXZiYXI6L3BhZ2VzL21sLmh0bWw=">/pages/ml.html</span> <span class="hidden quarto-markdown-envelope-contents" data-render-id="cXVhcnRvLWludC1uYXZiYXI6QnVpbGRpbmc=">Building</span> <span class="hidden quarto-markdown-envelope-contents" data-render-id="cXVhcnRvLWludC1uYXZiYXI6L3BhZ2VzL2J1aWxkaW5nLmh0bWw=">/pages/building.html</span> <span class="hidden quarto-markdown-envelope-contents" data-render-id="cXVhcnRvLWludC1uYXZiYXI6VGFsa3M=">Talks</span> <span class="hidden quarto-markdown-envelope-contents" data-render-id="cXVhcnRvLWludC1uYXZiYXI6L3BhZ2VzL3RhbGtzLmh0bWw=">/pages/talks.html</span> <span class="hidden quarto-markdown-envelope-contents" data-render-id="cXVhcnRvLWludC1uYXZiYXI6VGVjaCBCbG9n">Tech Blog</span> <span class="hidden quarto-markdown-envelope-contents" data-render-id="cXVhcnRvLWludC1uYXZiYXI6L3RlY2gtYmxvZy5odG1s">/tech-blog.html</span> <span class="hidden quarto-markdown-envelope-contents" data-render-id="cXVhcnRvLWludC1uYXZiYXI6TXkgTm90ZXM=">My Notes</span> <span class="hidden quarto-markdown-envelope-contents" data-render-id="cXVhcnRvLWludC1uYXZiYXI6L215LW5vdGVzLmh0bWw=">/my-notes.html</span> <span class="hidden quarto-markdown-envelope-contents" data-render-id="cXVhcnRvLWludC1uYXZiYXI6aHR0cHM6Ly90d2l0dGVyLmNvbS9hdGhsZXRpY0tvZGVy">https://twitter.com/athleticKoder</span> <span class="hidden quarto-markdown-envelope-contents" data-render-id="cXVhcnRvLWludC1uYXZiYXI6aHR0cHM6Ly93d3cubGlua2VkaW4uY29tL2luL2Fuc2h1aXptZS8=">https://www.linkedin.com/in/anshuizme/</span> <span class="hidden quarto-markdown-envelope-contents" data-render-id="cXVhcnRvLWludC1uYXZiYXI6aHR0cHM6Ly9naXRodWIuY29tL2thbnB1cml5YW5hd2Fi">https://github.com/kanpuriyanawab</span> <span class="hidden quarto-markdown-envelope-contents" data-render-id="cXVhcnRvLWludC1uYXZiYXI6aHR0cHM6Ly95b3V0dWJlLmNvbS9AMXNtb2xsY29kZXI=">https://youtube.com/@1smollcoder</span> <span class="hidden quarto-markdown-envelope-contents" data-render-id="cXVhcnRvLWludC1uYXZiYXI6aHR0cHM6Ly9mdWxsc3RhY2thZ2VudHMuc3Vic3RhY2suY29t">https://fullstackagents.substack.com</span> <span class="hidden quarto-markdown-envelope-contents" data-render-id="cXVhcnRvLWludC1uYXZiYXI6e3s8IGFpIGdvb2dsZS1zY2hvbGFyID59fQ=="><i class="ai  ai-google-scholar" aria-label="google-scholar"></i></span> <span class="hidden quarto-markdown-envelope-contents" data-render-id="cXVhcnRvLWludC1uYXZiYXI6aHR0cHM6Ly9zY2hvbGFyLmdvb2dsZS5mci9jaXRhdGlvbnM/dXNlcj03MHdoOWpjQUFBQUo=">https://scholar.google.fr/citations?user=70wh9jcAAAAJ</span></p>
 </div>
 <div id="quarto-meta-markdown" class="hidden">
 <p><span class="hidden quarto-markdown-envelope-contents" data-render-id="cXVhcnRvLW1ldGF0aXRsZQ==">Generating High-quality Images with SD.Next, HuggingFace Diffusers and W&amp;B – Introductions</span> <span class="hidden quarto-markdown-envelope-contents" data-render-id="cXVhcnRvLXR3aXR0ZXJjYXJkdGl0bGU=">Generating High-quality Images with SD.Next, HuggingFace Diffusers and W&amp;B – Introductions</span> <span class="hidden quarto-markdown-envelope-contents" data-render-id="cXVhcnRvLW9nY2FyZHRpdGxl">Generating High-quality Images with SD.Next, HuggingFace Diffusers and W&amp;B – Introductions</span> <span class="hidden quarto-markdown-envelope-contents" data-render-id="cXVhcnRvLW1ldGFzaXRlbmFtZQ==">Introductions</span> <span class="hidden quarto-markdown-envelope-contents" data-render-id="cXVhcnRvLXR3aXR0ZXJjYXJkZGVzYw==">A walkthrough of using SD.Next (Advanced webUI for Stable Diffusion) for generating high-quality images using HuggingFace Diffusers and managing experiments with W&amp;B.</span> <span class="hidden quarto-markdown-envelope-contents" data-render-id="cXVhcnRvLW9nY2FyZGRkZXNj">A walkthrough of using SD.Next (Advanced webUI for Stable Diffusion) for generating high-quality images using HuggingFace Diffusers and managing experiments with W&amp;B.</span></p>
@@ -6965,7 +6899,7 @@ font-style: inherit;">self</span>.gemini_model.generate_content(full_prompt_for_
 
 <iframe src="https://wandb.ai/kanpuriyanawab/keras-nlp-x-wandb/reports/Supercharge-KerasNLP-Models-with-Wandb--Vmlldzo1Mjk1NjI2" style="border:none;height:1024px;width:100%">
 <div id="quarto-navigation-envelope" class="hidden">
-<p><span class="hidden quarto-markdown-envelope-contents" data-render-id="cXVhcnRvLWludC1zaWRlYmFyLXRpdGxl">Introductions</span> <span class="hidden quarto-markdown-envelope-contents" data-render-id="cXVhcnRvLWludC1uYXZiYXItdGl0bGU=">Introductions</span> <span class="hidden quarto-markdown-envelope-contents" data-render-id="cXVhcnRvLWludC1uYXZiYXI6V29yaw==">Work</span> <span class="hidden quarto-markdown-envelope-contents" data-render-id="cXVhcnRvLWludC1uYXZiYXI6L3BhZ2VzL3dvcmsuaHRtbA==">/pages/work.html</span> <span class="hidden quarto-markdown-envelope-contents" data-render-id="cXVhcnRvLWludC1uYXZiYXI6TUwgQmxvZw==">ML Blog</span> <span class="hidden quarto-markdown-envelope-contents" data-render-id="cXVhcnRvLWludC1uYXZiYXI6L21sLWJsb2cuaHRtbA==">/ml-blog.html</span> <span class="hidden quarto-markdown-envelope-contents" data-render-id="cXVhcnRvLWludC1uYXZiYXI6aHR0cHM6Ly90d2l0dGVyLmNvbS9hdGhsZXRpY0tvZGVy">https://twitter.com/athleticKoder</span> <span class="hidden quarto-markdown-envelope-contents" data-render-id="cXVhcnRvLWludC1uYXZiYXI6aHR0cHM6Ly93d3cubGlua2VkaW4uY29tL2luL2Fuc2h1aXptZS8=">https://www.linkedin.com/in/anshuizme/</span> <span class="hidden quarto-markdown-envelope-contents" data-render-id="cXVhcnRvLWludC1uYXZiYXI6aHR0cHM6Ly9naXRodWIuY29tL2thbnB1cml5YW5hd2Fi">https://github.com/kanpuriyanawab</span> <span class="hidden quarto-markdown-envelope-contents" data-render-id="cXVhcnRvLWludC1uYXZiYXI6aHR0cHM6Ly95b3V0dWJlLmNvbS9AMXNtb2xsY29kZXI=">https://youtube.com/@1smollcoder</span> <span class="hidden quarto-markdown-envelope-contents" data-render-id="cXVhcnRvLWludC1uYXZiYXI6aHR0cHM6Ly9mdWxsc3RhY2thZ2VudHMuc3Vic3RhY2suY29t">https://fullstackagents.substack.com</span> <span class="hidden quarto-markdown-envelope-contents" data-render-id="cXVhcnRvLWludC1uYXZiYXI6e3s8IGFpIGdvb2dsZS1zY2hvbGFyID59fQ=="><i class="ai  ai-google-scholar" aria-label="google-scholar"></i></span> <span class="hidden quarto-markdown-envelope-contents" data-render-id="cXVhcnRvLWludC1uYXZiYXI6aHR0cHM6Ly9zY2hvbGFyLmdvb2dsZS5mci9jaXRhdGlvbnM/dXNlcj03MHdoOWpjQUFBQUo=">https://scholar.google.fr/citations?user=70wh9jcAAAAJ</span></p>
+<p><span class="hidden quarto-markdown-envelope-contents" data-render-id="cXVhcnRvLWludC1zaWRlYmFyLXRpdGxl">Introductions</span> <span class="hidden quarto-markdown-envelope-contents" data-render-id="cXVhcnRvLWludC1uYXZiYXItdGl0bGU=">Introductions</span> <span class="hidden quarto-markdown-envelope-contents" data-render-id="cXVhcnRvLWludC1uYXZiYXI6TUw=">ML</span> <span class="hidden quarto-markdown-envelope-contents" data-render-id="cXVhcnRvLWludC1uYXZiYXI6L3BhZ2VzL21sLmh0bWw=">/pages/ml.html</span> <span class="hidden quarto-markdown-envelope-contents" data-render-id="cXVhcnRvLWludC1uYXZiYXI6QnVpbGRpbmc=">Building</span> <span class="hidden quarto-markdown-envelope-contents" data-render-id="cXVhcnRvLWludC1uYXZiYXI6L3BhZ2VzL2J1aWxkaW5nLmh0bWw=">/pages/building.html</span> <span class="hidden quarto-markdown-envelope-contents" data-render-id="cXVhcnRvLWludC1uYXZiYXI6VGFsa3M=">Talks</span> <span class="hidden quarto-markdown-envelope-contents" data-render-id="cXVhcnRvLWludC1uYXZiYXI6L3BhZ2VzL3RhbGtzLmh0bWw=">/pages/talks.html</span> <span class="hidden quarto-markdown-envelope-contents" data-render-id="cXVhcnRvLWludC1uYXZiYXI6VGVjaCBCbG9n">Tech Blog</span> <span class="hidden quarto-markdown-envelope-contents" data-render-id="cXVhcnRvLWludC1uYXZiYXI6L3RlY2gtYmxvZy5odG1s">/tech-blog.html</span> <span class="hidden quarto-markdown-envelope-contents" data-render-id="cXVhcnRvLWludC1uYXZiYXI6TXkgTm90ZXM=">My Notes</span> <span class="hidden quarto-markdown-envelope-contents" data-render-id="cXVhcnRvLWludC1uYXZiYXI6L215LW5vdGVzLmh0bWw=">/my-notes.html</span> <span class="hidden quarto-markdown-envelope-contents" data-render-id="cXVhcnRvLWludC1uYXZiYXI6aHR0cHM6Ly90d2l0dGVyLmNvbS9hdGhsZXRpY0tvZGVy">https://twitter.com/athleticKoder</span> <span class="hidden quarto-markdown-envelope-contents" data-render-id="cXVhcnRvLWludC1uYXZiYXI6aHR0cHM6Ly93d3cubGlua2VkaW4uY29tL2luL2Fuc2h1aXptZS8=">https://www.linkedin.com/in/anshuizme/</span> <span class="hidden quarto-markdown-envelope-contents" data-render-id="cXVhcnRvLWludC1uYXZiYXI6aHR0cHM6Ly9naXRodWIuY29tL2thbnB1cml5YW5hd2Fi">https://github.com/kanpuriyanawab</span> <span class="hidden quarto-markdown-envelope-contents" data-render-id="cXVhcnRvLWludC1uYXZiYXI6aHR0cHM6Ly95b3V0dWJlLmNvbS9AMXNtb2xsY29kZXI=">https://youtube.com/@1smollcoder</span> <span class="hidden quarto-markdown-envelope-contents" data-render-id="cXVhcnRvLWludC1uYXZiYXI6aHR0cHM6Ly9mdWxsc3RhY2thZ2VudHMuc3Vic3RhY2suY29t">https://fullstackagents.substack.com</span> <span class="hidden quarto-markdown-envelope-contents" data-render-id="cXVhcnRvLWludC1uYXZiYXI6e3s8IGFpIGdvb2dsZS1zY2hvbGFyID59fQ=="><i class="ai  ai-google-scholar" aria-label="google-scholar"></i></span> <span class="hidden quarto-markdown-envelope-contents" data-render-id="cXVhcnRvLWludC1uYXZiYXI6aHR0cHM6Ly9zY2hvbGFyLmdvb2dsZS5mci9jaXRhdGlvbnM/dXNlcj03MHdoOWpjQUFBQUo=">https://scholar.google.fr/citations?user=70wh9jcAAAAJ</span></p>
 </div>
 <div id="quarto-meta-markdown" class="hidden">
 <p><span class="hidden quarto-markdown-envelope-contents" data-render-id="cXVhcnRvLW1ldGF0aXRsZQ==">Predicting Semantic Similarity using KerasNLP – Introductions</span> <span class="hidden quarto-markdown-envelope-contents" data-render-id="cXVhcnRvLXR3aXR0ZXJjYXJkdGl0bGU=">Predicting Semantic Similarity using KerasNLP – Introductions</span> <span class="hidden quarto-markdown-envelope-contents" data-render-id="cXVhcnRvLW9nY2FyZHRpdGxl">Predicting Semantic Similarity using KerasNLP – Introductions</span> <span class="hidden quarto-markdown-envelope-contents" data-render-id="cXVhcnRvLW1ldGFzaXRlbmFtZQ==">Introductions</span> <span class="hidden quarto-markdown-envelope-contents" data-render-id="cXVhcnRvLXR3aXR0ZXJjYXJkZGVzYw==">This report demonstrates how to use the Weights&amp;Biases to speedup experiments with Keras</span> <span class="hidden quarto-markdown-envelope-contents" data-render-id="cXVhcnRvLW9nY2FyZGRkZXNj">This report demonstrates how to use the Weights&amp;Biases to speedup experiments with Keras</span></p>
