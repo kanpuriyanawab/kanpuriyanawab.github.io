@@ -5,12 +5,12 @@
       xmlns:dc="http://purl.org/dc/elements/1.1/" 
       version="2.0">
 <channel>
-<title>Introductions</title>
+<title>Anshuman Mishra</title>
 <link>https://www.heyyanshuman.com/my-notes.html</link>
 <atom:link href="https://www.heyyanshuman.com/my-notes.xml" rel="self" type="application/rss+xml"/>
-<description>Introductions Anshuman Mishra.</description>
-<generator>quarto-1.8.27</generator>
-<lastBuildDate>Tue, 10 Feb 2026 00:00:00 GMT</lastBuildDate>
+<description>Machine learning engineer building AI systems, open source software, and essays.</description>
+<generator>quarto-1.7.31</generator>
+<lastBuildDate>Mon, 09 Feb 2026 18:30:00 GMT</lastBuildDate>
 <item>
   <title>(Thinking Out Loud) On Engineering, Identity, and What Comes Next</title>
   <link>https://www.heyyanshuman.com/notes/thinking_out_loud.html</link>
@@ -68,7 +68,7 @@
   <category>Personal</category>
   <category>Reflections</category>
   <guid>https://www.heyyanshuman.com/notes/thinking_out_loud.html</guid>
-  <pubDate>Tue, 10 Feb 2026 00:00:00 GMT</pubDate>
+  <pubDate>Mon, 09 Feb 2026 18:30:00 GMT</pubDate>
 </item>
 </channel>
 </rss>

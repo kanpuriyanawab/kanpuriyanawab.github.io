@@ -6,10 +6,8 @@
 
 <meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=yes">
 
-<meta name="dcterms.date" content="2023-12-03">
-<meta name="description" content="An Implementational Perspective of LLMs as Operating Systems">
 
-<title>Illustrated LLM OS – Anshuman Mishra</title>
+<title>Writing – Anshuman Mishra</title>
 <style>
 /* Default styles provided by pandoc.
 ** See https://pandoc.org/MANUAL.html#variables-for-html for config info.
@@ -28,19 +26,21 @@ ul.task-list li input[type="checkbox"] {
 </style>
 
 
-<script src="../site_libs/quarto-nav/quarto-nav.js"></script>
-<link href="../assets/images/favicon.png" rel="icon" type="image/png">
-<script src="../site_libs/clipboard/clipboard.min.js"></script>
-<script src="../site_libs/quarto-html/quarto.js" type="module"></script>
-<script src="../site_libs/quarto-html/tabsets/tabsets.js" type="module"></script>
-<script src="../site_libs/quarto-html/popper.min.js"></script>
-<script src="../site_libs/quarto-html/tippy.umd.min.js"></script>
-<script src="../site_libs/quarto-html/anchor.min.js"></script>
-<link href="../site_libs/quarto-html/tippy.css" rel="stylesheet">
-<link href="../site_libs/quarto-html/quarto-syntax-highlighting-dbc92dda8186f57fa2e333fbb71d6a9d.css" rel="stylesheet" id="quarto-text-highlighting-styles">
-<script src="../site_libs/bootstrap/bootstrap.min.js"></script>
-<link href="../site_libs/bootstrap/bootstrap-icons.css" rel="stylesheet">
-<link href="../site_libs/bootstrap/bootstrap-97aa45d14c4e0715575e5f6dd95412a3.min.css" rel="stylesheet" append-hash="true" id="quarto-bootstrap" data-mode="light">
+<script src="site_libs/quarto-nav/quarto-nav.js"></script>
+<link href="./assets/images/favicon.png" rel="icon" type="image/png">
+<script src="site_libs/quarto-listing/list.min.js"></script>
+<script src="site_libs/quarto-listing/quarto-listing.js"></script>
+<script src="site_libs/clipboard/clipboard.min.js"></script>
+<script src="site_libs/quarto-html/quarto.js" type="module"></script>
+<script src="site_libs/quarto-html/tabsets/tabsets.js" type="module"></script>
+<script src="site_libs/quarto-html/popper.min.js"></script>
+<script src="site_libs/quarto-html/tippy.umd.min.js"></script>
+<script src="site_libs/quarto-html/anchor.min.js"></script>
+<link href="site_libs/quarto-html/tippy.css" rel="stylesheet">
+<link href="site_libs/quarto-html/quarto-syntax-highlighting-dbc92dda8186f57fa2e333fbb71d6a9d.css" rel="stylesheet" id="quarto-text-highlighting-styles">
+<script src="site_libs/bootstrap/bootstrap.min.js"></script>
+<link href="site_libs/bootstrap/bootstrap-icons.css" rel="stylesheet">
+<link href="site_libs/bootstrap/bootstrap-97aa45d14c4e0715575e5f6dd95412a3.min.css" rel="stylesheet" append-hash="true" id="quarto-bootstrap" data-mode="light">
 <script id="quarto-search-options" type="application/json">{
   "language": {
     "search-no-results-text": "No results",
@@ -56,6 +56,35 @@ ul.task-list li input[type="checkbox"] {
     "search-label": "Search"
   }
 }</script>
+<script>
+
+  window.document.addEventListener("DOMContentLoaded", function (_event) {
+    const listingTargetEl = window.document.querySelector('#listing-listing .list');
+    if (!listingTargetEl) {
+      // No listing discovered, do not attach.
+      return; 
+    }
+
+    const options = {
+      valueNames: ['listing-date','listing-title','listing-author','listing-image','listing-description',{ data: ['index'] },{ data: ['categories'] },{ data: ['listing-date-sort'] },{ data: ['listing-file-modified-sort'] }],
+      
+      searchColumns: ["listing-date","listing-title","listing-author","listing-image","listing-description"],
+    };
+
+    window['quarto-listings'] = window['quarto-listings'] || {};
+    window['quarto-listings']['listing-listing'] = new List('listing-listing', options);
+
+    if (window['quarto-listing-loaded']) {
+      window['quarto-listing-loaded']();
+    }
+  });
+
+  window.addEventListener('hashchange',() => {
+    if (window['quarto-listing-loaded']) {
+      window['quarto-listing-loaded']();
+    }
+  })
+  </script>
 <script async="" src="https://www.googletagmanager.com/gtag/js?id=G-EKSMXY3E8G"></script>
 
 <script type="text/javascript">
@@ -66,75 +95,70 @@ gtag('js', new Date());
 gtag('config', 'G-EKSMXY3E8G', { 'anonymize_ip': true});
 </script>
 
+  <script src="https://cdnjs.cloudflare.com/polyfill/v3/polyfill.min.js?features=es6"></script>
+  <script defer="" src="https://cdn.jsdelivr.net/npm/mathjax@3/es5/tex-chtml-full.js" type="text/javascript"></script>
 
-<link rel="stylesheet" href="../site.css">
-<meta property="og:title" content="Illustrated LLM OS – Anshuman Mishra">
-<meta property="og:description" content="An Implementational Perspective of LLMs as Operating Systems">
-<meta property="og:image" content="https://www.heyyanshuman.com/posts/assets/illustrated_llmos/karpathy_ss.png">
+<script type="text/javascript">
+const typesetMath = (el) => {
+  if (window.MathJax) {
+    // MathJax Typeset
+    window.MathJax.typeset([el]);
+  } else if (window.katex) {
+    // KaTeX Render
+    var mathElements = el.getElementsByClassName("math");
+    var macros = [];
+    for (var i = 0; i < mathElements.length; i++) {
+      var texText = mathElements[i].firstChild;
+      if (mathElements[i].tagName == "SPAN" && texText && texText.data) {
+        window.katex.render(texText.data, mathElements[i], {
+          displayMode: mathElements[i].classList.contains('display'),
+          throwOnError: false,
+          macros: macros,
+          fleqn: false
+        });
+      }
+    }
+  }
+}
+window.Quarto = {
+  typesetMath
+};
+</script>
+
+<link rel="stylesheet" href="site.css">
+<link rel="alternate" type="application/rss+xml" title="Anshuman Mishra" href="writing.xml" data-external="1"><meta property="og:title" content="Writing – Anshuman Mishra">
+<meta property="og:description" content="Machine learning engineer building AI systems, open source software, and essays.">
 <meta property="og:site_name" content="Anshuman Mishra">
-<meta property="og:image:height" content="1252">
-<meta property="og:image:width" content="2880">
-<meta name="twitter:title" content="Illustrated LLM OS – Anshuman Mishra">
-<meta name="twitter:description" content="An Implementational Perspective of LLMs as Operating Systems">
-<meta name="twitter:image" content="https://www.heyyanshuman.com/posts/assets/illustrated_llmos/karpathy_ss.png">
+<meta name="twitter:title" content="Writing – Anshuman Mishra">
+<meta name="twitter:description" content="Machine learning engineer building AI systems, open source software, and essays.">
 <meta name="twitter:creator" content="@athleticKoder">
 <meta name="twitter:card" content="summary">
-<meta name="twitter:image-height" content="1252">
-<meta name="twitter:image-width" content="2880">
 </head>
 
 <body class="quarto-light">
 
 <div id="quarto-search-results"></div>
 <!-- content -->
-<div id="quarto-content" class="quarto-container page-columns page-rows-contents page-layout-article">
+<div id="quarto-content" class="quarto-container page-columns page-rows-contents page-layout-full">
 <!-- sidebar -->
 <!-- margin-sidebar -->
-    <div id="quarto-margin-sidebar" class="sidebar margin-sidebar">
-        <nav id="TOC" role="doc-toc" class="toc-active">
-    <h2 id="toc-title">On this page</h2>
-   
-  <ul>
-  <li><a href="#preliminaries" id="toc-preliminaries" class="nav-link active" data-scroll-target="#preliminaries">Preliminaries:</a></li>
-  <li><a href="#where-should-llm-sit-concerns-possibilities-and-limitations" id="toc-where-should-llm-sit-concerns-possibilities-and-limitations" class="nav-link" data-scroll-target="#where-should-llm-sit-concerns-possibilities-and-limitations">Where should LLM sit? Concerns, Possibilities, and Limitations</a></li>
-  <li><a href="#towards-implementation-injecting-a-state-machine-in-decoder" id="toc-towards-implementation-injecting-a-state-machine-in-decoder" class="nav-link" data-scroll-target="#towards-implementation-injecting-a-state-machine-in-decoder">Towards Implementation: Injecting a State Machine in Decoder</a></li>
-  <li><a href="#tuning-llms-for-os-use-case-a-rl-problem" id="toc-tuning-llms-for-os-use-case-a-rl-problem" class="nav-link" data-scroll-target="#tuning-llms-for-os-use-case-a-rl-problem">Tuning LLMs for OS use case: A RL Problem:</a></li>
-  <li><a href="#concluding-notes" id="toc-concluding-notes" class="nav-link" data-scroll-target="#concluding-notes">Concluding Notes</a></li>
-  <li><a href="#acknowledgements" id="toc-acknowledgements" class="nav-link" data-scroll-target="#acknowledgements">Acknowledgements</a></li>
-  </ul>
-</nav>
-    </div>
+    
 <!-- main -->
-<main class="content" id="quarto-document-content">
+<main class="content column-page" id="quarto-document-content">
 <nav class="site-nav">
-  <a href="../">Intro</a> | <a href="../writing.html">Writing</a> | <a href="../pages/work.html">Work</a> | <a href="../pages/projects.html">Projects</a> | <a href="../pages/talks.html">Talks</a>
+  <a href="./">Intro</a> | <a href="./writing.html">Writing</a> | <a href="./pages/work.html">Work</a> | <a href="./pages/projects.html">Projects</a> | <a href="./pages/talks.html">Talks</a>
 </nav>
 
 <header id="title-block-header" class="quarto-title-block default">
 <div class="quarto-title">
-<h1 class="title">Illustrated LLM OS</h1>
-  <div class="quarto-categories">
-    <div class="quarto-category">LLMs</div>
-    <div class="quarto-category">Operating-system</div>
-  </div>
-  </div>
-
-<div>
-  <div class="description">
-    An Implementational Perspective of LLMs as Operating Systems
-  </div>
+<h1 class="title">Writing</h1>
 </div>
 
 
-<div class="quarto-title-meta">
+
+<div class="quarto-title-meta column-page">
 
     
-    <div>
-    <div class="quarto-title-meta-heading">Published</div>
-    <div class="quarto-title-meta-contents">
-      <p class="date">December 3, 2023</p>
-    </div>
-  </div>
   
     
   </div>
@@ -144,67 +168,262 @@ gtag('config', 'G-EKSMXY3E8G', { 'anonymize_ip': true});
 </header>
 
 
-<p>This blog post explores the implementation of large language models (LLMs) as operating systems, inspired by <a href="https://twitter.com/karpathy">Andrej Karpathy’s</a> vision of AI resembling an OS, akin to Jarvis from Iron Man. The focus is on practical considerations, proposing an application-level integration for LLMs within a terminal session. A novel approach involves injecting state machines into the decoding process, enabling real-time code execution and interaction. Additionally, this post proposes <strong>Reinforcement Learning by System Feedback (RLSF)</strong>,” a reinforcement learning technique applied to code generation tasks. This method leverages a reward model to evaluate code correctness through Python subprocess execution, enhancing LLM performance. The findings contribute insights into the dynamic control of LLMs and their potential applications beyond coding tasks.</p>
-<p><img src="assets/illustrated_llmos/karpathy_ss.png" class="img-fluid"></p>
-<p><em>Image source: <a href="assets/illustrated_llmos/karpathy_ss.png">[1hr Talk] Intro to Large Language Models by Andrej Karpathy</a></em></p>
-<section id="preliminaries" class="level2">
-<h2 class="anchored" data-anchor-id="preliminaries">Preliminaries:</h2>
-<ol type="1">
-<li><p><strong>State Machines</strong>: A state machine is a mathematical abstraction used to design algorithms. A state machine reads a set of inputs and changes to a different state based on those inputs. A state is a description of the status of a system waiting to execute a transition. A transition is a set of actions to execute when a condition is fulfilled or an event is received. In a state diagram, circles represent each possible state and arrows represent transitions between states.</p></li>
-<li><p><strong>Constrained Decoding</strong>: Constrained decoding is a technique used in natural language processing and sequence generation tasks, including those involving large language models (LLMs). In constrained decoding, the generation of sequences is guided or restricted by certain constraints or conditions. This approach is particularly useful when you want to control or influence the output of a language model to meet specific requirements or criteria.</p></li>
-</ol>
-<p>A major challenge in the implementation of LLM OS is establishing a Link between the Operating System and LLM, that ensures training following the principle of Responsible AI.</p>
-</section>
-<section id="where-should-llm-sit-concerns-possibilities-and-limitations" class="level2">
-<h2 class="anchored" data-anchor-id="where-should-llm-sit-concerns-possibilities-and-limitations">Where should LLM sit? Concerns, Possibilities, and Limitations</h2>
-<p>Imagine a futuristic Jarvis-like AI. It’ll be able to search through the internet, access local files, videos, and images on the disk, and execute programs. Where should it sit? At the kernel level? At Python Level?</p>
-<p><strong>At Kernel Level</strong>: Consider integrating our advanced language model with the Linux kernel. This would provide the AI with comprehensive access to the operating system’s core functionalities. However, it’s important to recognize that large language models (LLMs) are designed for human-like interaction, not intricate coding tasks. While embedding the model at the kernel level offers the advantage of understanding and controlling detailed system operations, it raises valid security concerns. Responsible development is crucial to ensure that the AI’s evolving decision-making capabilities don’t inadvertently compromise system integrity.</p>
-<p><strong>At Application Level</strong>: Alternatively, we can position the LLM at the application level, operating seamlessly within a terminal session. Leveraging the abstractions of a programming language, such as Python, provides optimal control over the AI. This approach facilitates easy updates to the LLM OS and allows for extensive customization.</p>
-</section>
-<section id="towards-implementation-injecting-a-state-machine-in-decoder" class="level2">
-<h2 class="anchored" data-anchor-id="towards-implementation-injecting-a-state-machine-in-decoder">Towards Implementation: Injecting a State Machine in Decoder</h2>
-<p>Following is the illustration of how the generation process works in decoder-like models source.</p>
-<p><img src="assets/illustrated_llmos/illustrated_gpt2.gif" class="img-fluid"></p>
-<p><em>Image source: <a href="https://jalammar.github.io/illustrated-gpt2/">The Illustrated GPT-2 by Jay Alammar</a></em></p>
-<p>The seamless interaction of a Large Language Model (LLM) with an operating system (OS) can be achieved through the strategic injection of a State Machine. By utilizing this approach, the model’s behavior can be dynamically controlled, enhancing its capability to engage with the OS. In particular, the injection of special tokens acts as triggers, facilitating interaction with the Python interpreter through subprocesses.</p>
-<p>To illustrate this concept, consider the scenario where the LLM is tasked with generating the sum of the first N natural numbers. Here, I request the model to encapsulate the generated code within designated special tokens, [CODE] and [/CODE], during its response. The State Machine is activated upon the generation of the [CODE] token, initiating the collection of the generated code in a buffer.</p>
-<p>Upon the subsequent generation of the [/CODE] token, the State Machine orchestrates a temporary pause in the generation process. This interlude allows for the invocation of a Python subprocess to execute the collected code. The output of this execution is then appended to the current cache. Resuming the generation process, this technique enables the model to dynamically learn program execution behavior in real time.</p>
-<p>In the following sections of this blog, we delve deeper into how this innovative technique empowers the model to adapt and refine its program execution understanding on the fly.</p>
-<div class="quarto-figure quarto-figure-center">
-<figure class="figure">
-<p><img src="assets/illustrated_llmos/chatgpt_response.png" class="img-fluid figure-img"></p>
-<figcaption>image/png</figcaption>
-</figure>
+<p>Essays on agents, evals, post-training, model systems, and the practice of building with AI. Plus shorter notes and reflections.</p>
+<p>I also publish a weekly newsletter at <a href="https://conductorbyam.substack.com/">The Conductor</a>.</p>
+
+
+
+
+<div class="quarto-listing quarto-listing-container-default" id="listing-listing">
+<div class="list quarto-listing-default">
+<div class="quarto-post image-right" data-index="0" data-categories="UGVyc29uYWwlMkNSZWZsZWN0aW9ucw==" data-listing-date-sort="1770681600000" data-listing-file-modified-sort="1774198739113" data-listing-date-modified-sort="NaN" data-listing-reading-time-sort="6" data-listing-word-count-sort="1116">
+<div class="thumbnail"><a href="./notes/thinking_out_loud.html" class="no-external">
+
+<p class="card-img-top"><img loading='lazy' src="notes/assets/thinking_out_loud/img1.png"  class="thumbnail-image card-img"/></p>
+
+</a></div>
+<div class="body">
+<h3 class="no-anchor listing-title">
+<a href="./notes/thinking_out_loud.html" class="no-external">(Thinking Out Loud) On Engineering, Identity, and What Comes Next</a>
+</h3>
+<div class="delink listing-description"><a href="./notes/thinking_out_loud.html" class="no-external">
+<p>Personal reflections on engineering, identity, and the path forward</p>
+</a></div>
 </div>
-<p>Following is an illustration of a state machine to do various operations like db queries, accessing file systems, and even internet searches through Python subprocesses.</p>
-<div class="quarto-figure quarto-figure-center">
-<figure class="figure">
-<p><img src="assets/illustrated_llmos/llmos_flow_diag.png" class="img-fluid figure-img"></p>
-<figcaption>image/png</figcaption>
-</figure>
+<div class="metadata">
+<a href="./notes/thinking_out_loud.html" class="no-external">
+<div class="listing-date">
+Feb 10, 2026
 </div>
-<p>The Python programming language boasts a robust ecosystem that opens up a multitude of possibilities, especially when harnessed through subprocesses. By utilizing subprocesses, we can seamlessly execute Shell or Programming Language codes, expanding the functionality of our applications. Python’s versatility extends to internet access, where we can leverage powerful libraries like requests and urllib. This capability allows the Large Language Model (LLM) to interact dynamically with online resources. Additionally, the integration of command line packages, such as the one offered by Google, further enhances the LLM’s capacity to fetch information from the web. Python’s sophisticated file-handling utilities provide the LLM with the capability to navigate and manipulate files and multimedia at the user’s request. This functionality extends beyond mere text-based interactions, offering a rich, multimodal experience. The inclusion of multimodal models further augments the LLM’s ability to interpret and respond to a diverse range of user inputs.</p>
-</section>
-<section id="tuning-llms-for-os-use-case-a-rl-problem" class="level2">
-<h2 class="anchored" data-anchor-id="tuning-llms-for-os-use-case-a-rl-problem">Tuning LLMs for OS use case: A RL Problem:</h2>
-<p>Imagine confronting a challenging programming problem and enlisting the assistance of the Large Language Model (LLM) to generate a solution. Traditionally, the process involves articulating the problem to the LLM, receiving the generated code, manual inspection for correctness, and iterative feedback for bug resolution.</p>
-<p>Now, let’s recast this procedure as a Reinforcement Learning (RL) challenge, casting our LLM as an agent navigating a realm of computer processes. In this RL framework, the agent’s objective is to generate code, subject to correctness scrutiny.</p>
-<p>To enhance this code generation process, we leverage a fundamental concept in RL — the reward model. This model quantifies the quality of generated code based on execution results. Through training the reward model, the LLM is systematically penalized for generating incorrect code, eliminating the need for manual intervention.</p>
-<p>I call this technique <strong>Reinforcement Learning by System Feedback (RLSF)</strong>. This technique can not only be applied to improving LLMs on code generation tasks but to a variety of tasks as shown in the state machine diagram.</p>
-</section>
-<section id="concluding-notes" class="level2">
-<h2 class="anchored" data-anchor-id="concluding-notes">Concluding Notes</h2>
-<p>The reason I published this blog post is because I think the discussion of integrating LLMs with Operating Systems should be Open. It should be developed responsibly in an Open Source Environment. If there is an initiative like this in the future, I would love to collaborate on it! At this stage, I couldn’t get a working prototype of the approaches I discussed due to a lack of computing resources.</p>
-<p>Just Imagine an operating system built on HuggingFace transformer’s LLM pipelines. This setup not only accommodates the effortless integration of new models but also ensures the system remains adaptable to the latest advancements in the field. LLMs can add a new layer of accessibility to our Operating System by acting as smart interfaces.</p>
-</section>
-<section id="acknowledgements" class="level2">
-<h2 class="anchored" data-anchor-id="acknowledgements">Acknowledgements</h2>
-<p><a href="https://www.linkedin.com/in/ravindra-m-a2751914/">Ravindra Majumdar</a> and <a href="https://www.linkedin.com/in/sunil-mallya-91a88320/">Sunil Mallya</a> for introducing me to the concept of constrained decoding.</p>
+</a>
+</div>
+</div>
+<div class="quarto-post image-right" data-index="1" data-categories="QUklMkNMTE0lMkNSZWluZm9yY2VtZW50JTIwTGVhcm5pbmclMkNFdmFsJTJDQWdlbnRz" data-listing-date-sort="1759622400000" data-listing-file-modified-sort="1774198739144" data-listing-date-modified-sort="NaN" data-listing-reading-time-sort="26" data-listing-word-count-sort="5060">
+<div class="thumbnail"><a href="./posts/building_ai_environments_with_verifiers.html" class="no-external">
 
+<div class="listing-item-img-placeholder card-img-top" >&nbsp;</div>
 
-</section>
+</a></div>
+<div class="body">
+<h3 class="no-anchor listing-title">
+<a href="./posts/building_ai_environments_with_verifiers.html" class="no-external">Evals are dead. Long live evals!</a>
+</h3>
+<div class="delink listing-description"><a href="./posts/building_ai_environments_with_verifiers.html" class="no-external">
+<p>deep dive into RL environments and Verifiers</p>
+</a></div>
+</div>
+<div class="metadata">
+<a href="./posts/building_ai_environments_with_verifiers.html" class="no-external">
+<div class="listing-date">
+Oct 5, 2025
+</div>
+<div class="listing-author">
+Anshuman Mishra
+</div>
+</a>
+</div>
+</div>
+<div class="quarto-post image-right" data-index="2" data-categories="TExNcw==" data-listing-date-sort="1754265600000" data-listing-file-modified-sort="1774198739144" data-listing-date-modified-sort="NaN" data-listing-reading-time-sort="24" data-listing-word-count-sort="4798">
+<div class="thumbnail"><a href="./posts/post_training_reasoning_model.html" class="no-external">
 
-</main> <!-- /main -->
+<p class="card-img-top"><img loading='lazy' src="posts/assets/rl_fine_tuning/grpo_vs_ppo.png"  class="thumbnail-image card-img"/></p>
+
+</a></div>
+<div class="body">
+<h3 class="no-anchor listing-title">
+<a href="./posts/post_training_reasoning_model.html" class="no-external">Training LLMs to Think</a>
+</h3>
+<div class="delink listing-description"><a href="./posts/post_training_reasoning_model.html" class="no-external">
+<p>Post training a LLM for reasoning with GRPO using Unsloth</p>
+</a></div>
+</div>
+<div class="metadata">
+<a href="./posts/post_training_reasoning_model.html" class="no-external">
+<div class="listing-date">
+Aug 4, 2025
+</div>
+</a>
+</div>
+</div>
+<div class="quarto-post image-right" data-index="3" data-categories="VkxNcyUyQ0ZpbmUtdHVuaW5n" data-listing-date-sort="1753574400000" data-listing-file-modified-sort="1774198739144" data-listing-date-modified-sort="NaN" data-listing-reading-time-sort="12" data-listing-word-count-sort="2297">
+<div class="thumbnail"><a href="./posts/fine-tuning-vlm.html" class="no-external">
+
+<p class="card-img-top"><img loading='lazy' src="posts/assets/finetune_vlm/gemma3_arch.png"  class="thumbnail-image card-img"/></p>
+
+</a></div>
+<div class="body">
+<h3 class="no-anchor listing-title">
+<a href="./posts/fine-tuning-vlm.html" class="no-external">Fine-Tuning a Vision Language Model in 2025</a>
+</h3>
+<div class="delink listing-description"><a href="./posts/fine-tuning-vlm.html" class="no-external">
+<p>How to fine-tune Gemma3 vision on consumer hardware with 4-bit quantization (QLoRA)</p>
+</a></div>
+</div>
+<div class="metadata">
+<a href="./posts/fine-tuning-vlm.html" class="no-external">
+<div class="listing-date">
+Jul 27, 2025
+</div>
+</a>
+</div>
+</div>
+<div class="quarto-post image-right" data-index="4" data-categories="TExNcw==" data-listing-date-sort="1753574400000" data-listing-file-modified-sort="1774198739144" data-listing-date-modified-sort="NaN" data-listing-reading-time-sort="8" data-listing-word-count-sort="1485">
+<div class="thumbnail"><a href="./posts/what_is_gspo.html" class="no-external">
+
+<p class="card-img-top"><img loading='lazy' src="posts/assets/what_is_gspo/grpo_1.png"  class="thumbnail-image card-img"/></p>
+
+</a></div>
+<div class="body">
+<h3 class="no-anchor listing-title">
+<a href="./posts/what_is_gspo.html" class="no-external">What is GSPO?</a>
+</h3>
+<div class="delink listing-description"><a href="./posts/what_is_gspo.html" class="no-external">
+<p>How does Group Sequence Policy Optimization work?</p>
+</a></div>
+</div>
+<div class="metadata">
+<a href="./posts/what_is_gspo.html" class="no-external">
+<div class="listing-date">
+Jul 27, 2025
+</div>
+</a>
+</div>
+</div>
+<div class="quarto-post image-right" data-index="5" data-categories="TExNcyUyQ0FnZW50cw==" data-listing-date-sort="1749168000000" data-listing-file-modified-sort="1774198739144" data-listing-date-modified-sort="NaN" data-listing-reading-time-sort="9" data-listing-word-count-sort="1643">
+<div class="thumbnail"><a href="./posts/text2sql_agent.html" class="no-external">
+
+<p class="card-img-top"><img loading='lazy' src="posts/assets/text2sql_agent/db_schema.png"  class="thumbnail-image card-img"/></p>
+
+</a></div>
+<div class="body">
+<h3 class="no-anchor listing-title">
+<a href="./posts/text2sql_agent.html" class="no-external">Building Production Ready Text-to-SQL Agent from Scratch</a>
+</h3>
+<div class="delink listing-description"><a href="./posts/text2sql_agent.html" class="no-external">
+<p>Tired of Writing SQL? Let’s Build an AI That Does It For You.</p>
+</a></div>
+</div>
+<div class="metadata">
+<a href="./posts/text2sql_agent.html" class="no-external">
+<div class="listing-date">
+Jun 6, 2025
+</div>
+</a>
+</div>
+</div>
+<div class="quarto-post image-right" data-index="6" data-categories="TExNcyUyQ0FnZW50cw==" data-listing-date-sort="1748908800000" data-listing-file-modified-sort="1774198739114" data-listing-date-modified-sort="NaN" data-listing-reading-time-sort="18" data-listing-word-count-sort="3401">
+<div class="thumbnail"><a href="./posts/agent_memory_101.html" class="no-external">
+
+<p class="card-img-top"><img loading='lazy' src="posts/assets/agent_memory_101/memory_1.jpg"  class="thumbnail-image card-img"/></p>
+
+</a></div>
+<div class="body">
+<h3 class="no-anchor listing-title">
+<a href="./posts/agent_memory_101.html" class="no-external">The AI Memory Layer Will Change Everything</a>
+</h3>
+<div class="delink listing-description"><a href="./posts/agent_memory_101.html" class="no-external">
+<p>How Stateful Memory is Revolutionizing AI Agents and Applications</p>
+</a></div>
+</div>
+<div class="metadata">
+<a href="./posts/agent_memory_101.html" class="no-external">
+<div class="listing-date">
+Jun 3, 2025
+</div>
+</a>
+</div>
+</div>
+<div class="quarto-post image-right" data-index="7" data-categories="TExNcyUyQ09wZXJhdGluZy1zeXN0ZW0=" data-listing-date-sort="1701561600000" data-listing-file-modified-sort="1774198739144" data-listing-date-modified-sort="NaN" data-listing-reading-time-sort="6" data-listing-word-count-sort="1200">
+<div class="thumbnail"><a href="./posts/illustrated_llmos.html" class="no-external">
+
+<p class="card-img-top"><img loading='lazy' src="posts/assets/illustrated_llmos/karpathy_ss.png"  class="thumbnail-image card-img"/></p>
+
+</a></div>
+<div class="body">
+<h3 class="no-anchor listing-title">
+<a href="./posts/illustrated_llmos.html" class="no-external">Illustrated LLM OS</a>
+</h3>
+<div class="delink listing-description"><a href="./posts/illustrated_llmos.html" class="no-external">
+<p>An Implementational Perspective of LLMs as Operating Systems</p>
+</a></div>
+</div>
+<div class="metadata">
+<a href="./posts/illustrated_llmos.html" class="no-external">
+<div class="listing-date">
+Dec 3, 2023
+</div>
+</a>
+</div>
+</div>
+<div class="quarto-post image-right" data-index="8" data-categories="RGlmZnVzaW9uJTJDV2FuZGI=" data-listing-date-sort="1696204800000" data-listing-file-modified-sort="1774198739144" data-listing-date-modified-sort="NaN" data-listing-reading-time-sort="1" data-listing-word-count-sort="3">
+<div class="thumbnail"><a href="./posts/sd_next.html" class="no-external">
+
+<div class="listing-item-img-placeholder card-img-top" >&nbsp;</div>
+
+</a></div>
+<div class="body">
+<h3 class="no-anchor listing-title">
+<a href="./posts/sd_next.html" class="no-external">Generating High-quality Images with SD.Next, HuggingFace Diffusers and W&amp;B</a>
+</h3>
+<div class="delink listing-description"><a href="./posts/sd_next.html" class="no-external">
+<p>A walkthrough of using SD.Next (Advanced webUI for Stable Diffusion) for generating high-quality images using HuggingFace Diffusers and managing experiments with W&amp;B.</p>
+</a></div>
+</div>
+<div class="metadata">
+<a href="./posts/sd_next.html" class="no-external">
+<div class="listing-date">
+Oct 2, 2023
+</div>
+</a>
+</div>
+</div>
+<div class="quarto-post image-right" data-index="9" data-categories="S2VyYXNIdWIlMkNMTE1zJTJDV2FuZGI=" data-listing-date-sort="1693612800000" data-listing-file-modified-sort="1774198739144" data-listing-date-modified-sort="NaN" data-listing-reading-time-sort="1" data-listing-word-count-sort="3">
+<div class="thumbnail"><a href="./posts/semantic_sim_kerasnlp.html" class="no-external">
+
+<div class="listing-item-img-placeholder card-img-top" >&nbsp;</div>
+
+</a></div>
+<div class="body">
+<h3 class="no-anchor listing-title">
+<a href="./posts/semantic_sim_kerasnlp.html" class="no-external">Predicting Semantic Similarity using KerasNLP</a>
+</h3>
+<div class="delink listing-description"><a href="./posts/semantic_sim_kerasnlp.html" class="no-external">
+<p>This report demonstrates how to use the Weights&amp;Biases to speedup experiments with Keras</p>
+</a></div>
+</div>
+<div class="metadata">
+<a href="./posts/semantic_sim_kerasnlp.html" class="no-external">
+<div class="listing-date">
+Sep 2, 2023
+</div>
+</a>
+</div>
+</div>
+<div class="quarto-post image-right" data-index="10" data-categories="TW9kZWwlMjBBcmNoaXRlY3R1cmUlMkNKdWxpYQ==" data-listing-date-sort="1672444800000" data-listing-file-modified-sort="1774198739144" data-listing-date-modified-sort="NaN" data-listing-reading-time-sort="5" data-listing-word-count-sort="894">
+<div class="thumbnail"><a href="./posts/flux_is_so_flexible.html" class="no-external">
+
+<p class="card-img-top"><img loading='lazy' src="posts/assets/flux_is_flexible/unet_full.png"  class="thumbnail-image card-img"/></p>
+
+</a></div>
+<div class="body">
+<h3 class="no-anchor listing-title">
+<a href="./posts/flux_is_so_flexible.html" class="no-external">Deep Learning in&nbsp;Julia</a>
+</h3>
+<div class="delink listing-description"><a href="./posts/flux_is_so_flexible.html" class="no-external">
+<p>Implementing ML models in Flux, the Julia Deep Learning&nbsp;Package!</p>
+</a></div>
+</div>
+<div class="metadata">
+<a href="./posts/flux_is_so_flexible.html" class="no-external">
+<div class="listing-date">
+Dec 31, 2022
+</div>
+</a>
+</div>
+</div>
+</div>
+<div class="listing-no-matching d-none">No matching items</div>
+</div></main> <!-- /main -->
 <script id="quarto-html-after-body" type="application/javascript">
   window.document.addEventListener("DOMContentLoaded", function (event) {
     const icon = "";
