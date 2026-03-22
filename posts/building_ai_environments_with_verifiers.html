@@ -2,7 +2,7 @@
 <html xmlns="http://www.w3.org/1999/xhtml" lang="en" xml:lang="en"><head>
 
 <meta charset="utf-8">
-<meta name="generator" content="quarto-1.9.36">
+<meta name="generator" content="quarto-1.7.31">
 
 <meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=yes">
 
@@ -12,9 +12,6 @@
 
 <title>Evals are dead. Long live evals! – Anshuman Mishra</title>
 <style>
-/* Default styles provided by pandoc.
-** See https://pandoc.org/MANUAL.html#variables-for-html for config info.
-*/
 code{white-space: pre-wrap;}
 span.smallcaps{font-variant: small-caps;}
 div.columns{display: flex; gap: min(4vw, 1.5em);}
@@ -73,10 +70,10 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
 <script src="../site_libs/quarto-html/tippy.umd.min.js"></script>
 <script src="../site_libs/quarto-html/anchor.min.js"></script>
 <link href="../site_libs/quarto-html/tippy.css" rel="stylesheet">
-<link href="../site_libs/quarto-html/quarto-syntax-highlighting-dbc92dda8186f57fa2e333fbb71d6a9d.css" rel="stylesheet" id="quarto-text-highlighting-styles">
+<link href="../site_libs/quarto-html/quarto-syntax-highlighting-46f4cc9626f044588a66931b604fc9c8.css" rel="stylesheet" id="quarto-text-highlighting-styles">
 <script src="../site_libs/bootstrap/bootstrap.min.js"></script>
 <link href="../site_libs/bootstrap/bootstrap-icons.css" rel="stylesheet">
-<link href="../site_libs/bootstrap/bootstrap-97aa45d14c4e0715575e5f6dd95412a3.min.css" rel="stylesheet" append-hash="true" id="quarto-bootstrap" data-mode="light">
+<link href="../site_libs/bootstrap/bootstrap-c46752b923742e9f911f285aaef1de07.min.css" rel="stylesheet" append-hash="true" id="quarto-bootstrap" data-mode="light">
 <script id="quarto-search-options" type="application/json">{
   "language": {
     "search-no-results-text": "No results",
@@ -203,7 +200,7 @@ gtag('config', 'G-EKSMXY3E8G', { 'anonymize_ip': true});
 <i class="callout-icon"></i>
 </div>
 <div class="callout-title-container flex-fill">
-<span class="screen-reader-only">Note</span>What You’ll Learn
+What You’ll Learn
 </div>
 </div>
 <div class="callout-body-container callout-body">
@@ -245,13 +242,13 @@ gtag('config', 'G-EKSMXY3E8G', { 'anonymize_ip': true});
 <section id="a.-singleturnenv-one-shot-evaluation" class="level4">
 <h4 class="anchored" data-anchor-id="a.-singleturnenv-one-shot-evaluation">a. <strong>SingleTurnEnv</strong>: One-Shot Evaluation</h4>
 <p>Some tasks don’t need interaction - you present a problem, the agent responds, and you evaluate. That’s SingleTurnEnv. Think of it like a contextual bandit problem: each episode is independent, no state carries over.</p>
-<div class="code-copy-outer-scaffold"><div class="sourceCode" id="cb1"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb1-1"><a href="#cb1-1" aria-hidden="true" tabindex="-1"></a><span class="co"># Basic structure</span></span>
+<div class="sourceCode" id="cb1"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb1-1"><a href="#cb1-1" aria-hidden="true" tabindex="-1"></a><span class="co"># Basic structure</span></span>
 <span id="cb1-2"><a href="#cb1-2" aria-hidden="true" tabindex="-1"></a>env <span class="op">=</span> vf.SingleTurnEnv(</span>
 <span id="cb1-3"><a href="#cb1-3" aria-hidden="true" tabindex="-1"></a>    dataset<span class="op">=</span>your_data,</span>
 <span id="cb1-4"><a href="#cb1-4" aria-hidden="true" tabindex="-1"></a>    system_prompt<span class="op">=</span><span class="st">"Instructions for the model"</span>,</span>
 <span id="cb1-5"><a href="#cb1-5" aria-hidden="true" tabindex="-1"></a>    parser<span class="op">=</span>your_parser,</span>
 <span id="cb1-6"><a href="#cb1-6" aria-hidden="true" tabindex="-1"></a>    rubric<span class="op">=</span>your_rubric</span>
-<span id="cb1-7"><a href="#cb1-7" aria-hidden="true" tabindex="-1"></a>)</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
+<span id="cb1-7"><a href="#cb1-7" aria-hidden="true" tabindex="-1"></a>)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 <p><strong>Where you’d use this:</strong></p>
 <p>Say you’re building a <strong>code completion agent</strong>. You give it a function signature and docstring, it generates the implementation, you run tests - done. One shot. The state is just the incomplete function and context. The action is the generated code. The reward is whether tests pass and if the code follows good practices.</p>
 <p>Or a <strong>math reasoning agent</strong> - you present a word problem, it works through the solution step-by-step, and you check if the final answer is correct. The reasoning quality matters too, so you reward both the answer and the logical steps taken.</p>
@@ -260,14 +257,14 @@ gtag('config', 'G-EKSMXY3E8G', { 'anonymize_ip': true});
 <section id="b.-multiturnenv-interactive-conversations" class="level4">
 <h4 class="anchored" data-anchor-id="b.-multiturnenv-interactive-conversations">b. <strong>MultiTurnEnv</strong>: Interactive Conversations</h4>
 <p>When agents need to maintain context across multiple interactions, you use MultiTurnEnv. Unlike SingleTurnEnv where everything happens in one shot, here the agent and environment have a back-and-forth conversation. State persists across turns, letting the agent build on previous exchanges.</p>
-<div class="code-copy-outer-scaffold"><div class="sourceCode" id="cb2"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb2-1"><a href="#cb2-1" aria-hidden="true" tabindex="-1"></a><span class="kw">class</span> TutorEnv(vf.MultiTurnEnv):</span>
+<div class="sourceCode" id="cb2"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb2-1"><a href="#cb2-1" aria-hidden="true" tabindex="-1"></a><span class="kw">class</span> TutorEnv(vf.MultiTurnEnv):</span>
 <span id="cb2-2"><a href="#cb2-2" aria-hidden="true" tabindex="-1"></a>    <span class="cf">async</span> <span class="kw">def</span> env_response(<span class="va">self</span>, messages, state):</span>
 <span id="cb2-3"><a href="#cb2-3" aria-hidden="true" tabindex="-1"></a>        <span class="co"># Define how environment responds to model</span></span>
 <span id="cb2-4"><a href="#cb2-4" aria-hidden="true" tabindex="-1"></a>        <span class="cf">return</span> response_messages, updated_state</span>
 <span id="cb2-5"><a href="#cb2-5" aria-hidden="true" tabindex="-1"></a></span>
 <span id="cb2-6"><a href="#cb2-6" aria-hidden="true" tabindex="-1"></a>    <span class="cf">async</span> <span class="kw">def</span> is_completed(<span class="va">self</span>, messages, state):</span>
 <span id="cb2-7"><a href="#cb2-7" aria-hidden="true" tabindex="-1"></a>        <span class="co"># Define when interaction should end</span></span>
-<span id="cb2-8"><a href="#cb2-8" aria-hidden="true" tabindex="-1"></a>        <span class="cf">return</span> completion_condition</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
+<span id="cb2-8"><a href="#cb2-8" aria-hidden="true" tabindex="-1"></a>        <span class="cf">return</span> completion_condition</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 <p><strong>Where you’d use this:</strong></p>
 <p>A <strong>terminal/shell agent</strong> needs to remember what directory it’s in, what commands it ran, and what the file system looks like. Each command builds on the previous state. The agent might <code>cd</code> into a directory, then <code>ls</code> to see files, then <code>cat</code> a specific file - each action depends on where you are and what you’ve done. You evaluate the complete workflow: did the agent set up the development environment correctly?</p>
 <p>Or a <strong>code review agent</strong> that goes back and forth with a developer. It suggests improvements, the developer responds or asks questions, the agent refines its suggestions based on feedback. The conversation continues until the code meets quality standards. State tracks the review history, what issues were found, what’s been addressed.</p>
@@ -276,7 +273,7 @@ gtag('config', 'G-EKSMXY3E8G', { 'anonymize_ip': true});
 <section id="c.-toolenv-agents-with-capabilities" class="level4">
 <h4 class="anchored" data-anchor-id="c.-toolenv-agents-with-capabilities">c.&nbsp;<strong>ToolEnv</strong>: Agents with Capabilities</h4>
 <p>Text generation alone isn’t enough for many tasks. Agents need external tools - search engines, code execution, file systems, APIs. ToolEnv extends agents with these capabilities by converting Python functions into tools the model can call.</p>
-<div class="code-copy-outer-scaffold"><div class="sourceCode" id="cb3"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb3-1"><a href="#cb3-1" aria-hidden="true" tabindex="-1"></a><span class="kw">def</span> search(query: <span class="bu">str</span>) <span class="op">-&gt;</span> <span class="bu">str</span>:</span>
+<div class="sourceCode" id="cb3"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb3-1"><a href="#cb3-1" aria-hidden="true" tabindex="-1"></a><span class="kw">def</span> search(query: <span class="bu">str</span>) <span class="op">-&gt;</span> <span class="bu">str</span>:</span>
 <span id="cb3-2"><a href="#cb3-2" aria-hidden="true" tabindex="-1"></a>    <span class="co">"""Search function automatically becomes a tool"""</span></span>
 <span id="cb3-3"><a href="#cb3-3" aria-hidden="true" tabindex="-1"></a>    <span class="cf">return</span> search_results</span>
 <span id="cb3-4"><a href="#cb3-4" aria-hidden="true" tabindex="-1"></a></span>
@@ -284,7 +281,7 @@ gtag('config', 'G-EKSMXY3E8G', { 'anonymize_ip': true});
 <span id="cb3-6"><a href="#cb3-6" aria-hidden="true" tabindex="-1"></a>    tools<span class="op">=</span>[search, calculate, code_executor],</span>
 <span id="cb3-7"><a href="#cb3-7" aria-hidden="true" tabindex="-1"></a>    dataset<span class="op">=</span>dataset,</span>
 <span id="cb3-8"><a href="#cb3-8" aria-hidden="true" tabindex="-1"></a>    rubric<span class="op">=</span>rubric</span>
-<span id="cb3-9"><a href="#cb3-9" aria-hidden="true" tabindex="-1"></a>)</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
+<span id="cb3-9"><a href="#cb3-9" aria-hidden="true" tabindex="-1"></a>)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 <p><strong>Where you’d use this:</strong></p>
 <p>Think <strong>Cursor-style code agent</strong>. It needs to read files, write code, run tests, check with a linter, commit to git. Each tool is a capability - <code>file_read</code>, <code>file_write</code>, <code>test_runner</code>, <code>git_commit</code>. The agent picks which tool to use and what parameters to pass. You’re evaluating the complete feature: did it implement what was asked, does the code pass tests, is it good quality?</p>
 <p>Or a <strong>data science agent</strong> that loads data, runs statistical analysis, trains models, generates visualizations, writes reports. Each step requires a different tool. The agent decides the analysis strategy, picks tools in the right sequence, and produces insights. You measure insight quality, model accuracy, whether the work is reproducible.</p>
@@ -295,7 +292,7 @@ gtag('config', 'G-EKSMXY3E8G', { 'anonymize_ip': true});
 <i class="callout-icon"></i>
 </div>
 <div class="callout-title-container flex-fill">
-<span class="screen-reader-only">Note</span>RL Environment Design Principles
+RL Environment Design Principles
 </div>
 </div>
 <div class="callout-body-container callout-body">
@@ -315,7 +312,7 @@ gtag('config', 'G-EKSMXY3E8G', { 'anonymize_ip': true});
 <p>Parsers determine what gets rewarded. A lenient parser might reward partial attempts while a strict parser only rewards perfect formatting. This directly impacts learning dynamics - what you parse is what the model learns to produce.</p>
 <p><strong>Example: ThinkParser</strong></p>
 <p>Say you want the model to show its reasoning but you only care about scoring the final answer. ThinkParser lets you separate the two:</p>
-<div class="code-copy-outer-scaffold"><div class="sourceCode" id="cb4"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb4-1"><a href="#cb4-1" aria-hidden="true" tabindex="-1"></a>parser <span class="op">=</span> vf.ThinkParser(extract_fn<span class="op">=</span>extract_math_answer)</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
+<div class="sourceCode" id="cb4"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb4-1"><a href="#cb4-1" aria-hidden="true" tabindex="-1"></a>parser <span class="op">=</span> vf.ThinkParser(extract_fn<span class="op">=</span>extract_math_answer)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 <p><strong>Model output:</strong></p>
 <pre><code>&lt;think&gt;
 Let me work through this step by step.
@@ -344,18 +341,18 @@ Final Answer: 25π</code></pre>
 <p>Binary rubrics create agents that prioritize reliability over creativity. They’re conservative by design: if you can’t guarantee perfection, don’t attempt the task.</p>
 <p><strong>The implementation is simple - loop through all test cases, and the moment one fails, return 0.0:</strong></p>
 <div class="callout callout-style-default callout-note callout-titled" title="Code">
-<div class="callout-header d-flex align-content-center collapsed" data-bs-toggle="collapse" data-bs-target=".callout-3-contents" aria-controls="callout-3" aria-expanded="false" aria-label="Toggle callout">
+<div class="callout-header d-flex align-content-center" data-bs-toggle="collapse" data-bs-target=".callout-3-contents" aria-controls="callout-3" aria-expanded="false" aria-label="Toggle callout">
 <div class="callout-icon-container">
 <i class="callout-icon"></i>
 </div>
 <div class="callout-title-container flex-fill">
-<span class="screen-reader-only">Note</span>Code
+Code
 </div>
 <div class="callout-btn-toggle d-inline-block border-0 py-1 ps-1 pe-0 float-end"><i class="callout-toggle"></i></div>
 </div>
 <div id="callout-3" class="callout-3-contents callout-collapse collapse">
 <div class="callout-body-container callout-body">
-<div class="code-copy-outer-scaffold"><div class="sourceCode" id="cb6"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb6-1"><a href="#cb6-1" aria-hidden="true" tabindex="-1"></a><span class="kw">def</span> exact_correctness(parser, completion, answer, info, <span class="op">**</span>kwargs):</span>
+<div class="sourceCode" id="cb6"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb6-1"><a href="#cb6-1" aria-hidden="true" tabindex="-1"></a><span class="kw">def</span> exact_correctness(parser, completion, answer, info, <span class="op">**</span>kwargs):</span>
 <span id="cb6-2"><a href="#cb6-2" aria-hidden="true" tabindex="-1"></a>    code <span class="op">=</span> parser.parse_answer(completion)</span>
 <span id="cb6-3"><a href="#cb6-3" aria-hidden="true" tabindex="-1"></a>    test_cases <span class="op">=</span> info[<span class="st">"test_cases"</span>]</span>
 <span id="cb6-4"><a href="#cb6-4" aria-hidden="true" tabindex="-1"></a></span>
@@ -369,16 +366,16 @@ Final Answer: 25π</code></pre>
 <span id="cb6-12"><a href="#cb6-12" aria-hidden="true" tabindex="-1"></a></span>
 <span id="cb6-13"><a href="#cb6-13" aria-hidden="true" tabindex="-1"></a>    <span class="cf">return</span> <span class="fl">1.0</span>  <span class="co"># Only return 1.0 if ALL tests pass</span></span>
 <span id="cb6-14"><a href="#cb6-14" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb6-15"><a href="#cb6-15" aria-hidden="true" tabindex="-1"></a>rubric <span class="op">=</span> vf.Rubric(funcs<span class="op">=</span>[exact_correctness])</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
+<span id="cb6-15"><a href="#cb6-15" aria-hidden="true" tabindex="-1"></a>rubric <span class="op">=</span> vf.Rubric(funcs<span class="op">=</span>[exact_correctness])</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 </div>
 </div>
 </div>
 <p><strong>See how this plays out:</strong></p>
-<div class="code-copy-outer-scaffold"><div class="sourceCode" id="cb7"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb7-1"><a href="#cb7-1" aria-hidden="true" tabindex="-1"></a><span class="kw">def</span> find_max(lst):</span>
-<span id="cb7-2"><a href="#cb7-2" aria-hidden="true" tabindex="-1"></a>    <span class="cf">return</span> <span class="bu">max</span>(lst)</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
+<div class="sourceCode" id="cb7"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb7-1"><a href="#cb7-1" aria-hidden="true" tabindex="-1"></a><span class="kw">def</span> find_max(lst):</span>
+<span id="cb7-2"><a href="#cb7-2" aria-hidden="true" tabindex="-1"></a>    <span class="cf">return</span> <span class="bu">max</span>(lst)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 <p><strong>Reward</strong>: <code>1.0</code> ✅ - Passes all tests including edge cases</p>
-<div class="code-copy-outer-scaffold"><div class="sourceCode" id="cb8"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb8-1"><a href="#cb8-1" aria-hidden="true" tabindex="-1"></a><span class="kw">def</span> find_max(lst):</span>
-<span id="cb8-2"><a href="#cb8-2" aria-hidden="true" tabindex="-1"></a>    <span class="cf">return</span> <span class="bu">max</span>(lst) <span class="cf">if</span> lst <span class="cf">else</span> <span class="va">None</span>  <span class="co"># Returns None instead of raising error</span></span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
+<div class="sourceCode" id="cb8"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb8-1"><a href="#cb8-1" aria-hidden="true" tabindex="-1"></a><span class="kw">def</span> find_max(lst):</span>
+<span id="cb8-2"><a href="#cb8-2" aria-hidden="true" tabindex="-1"></a>    <span class="cf">return</span> <span class="bu">max</span>(lst) <span class="cf">if</span> lst <span class="cf">else</span> <span class="va">None</span>  <span class="co"># Returns None instead of raising error</span></span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 <p><strong>Reward</strong>: <code>0.0</code> ❌ - Fails one edge case test, gets zero despite being 90% correct</p>
 <p>One failure = complete failure. This forces agents to be thorough and handle every case, which is exactly what you want for mission-critical tasks where “mostly working” isn’t acceptable.</p>
 </section>
@@ -387,18 +384,18 @@ Final Answer: 25π</code></pre>
 <p>Binary rubrics force agents into an all-or-nothing scenario: pass all test cases or get zero reward. But for many tasks, partial success has real value. An agent that writes a function passing 8 out of 10 test cases has made progress toward the solution. Giving it zero credit wastes useful evaluation signal - you’re not telling the agent “you’re close, just handle these edge cases.”</p>
 <p>Graduated rubrics give partial credit proportional to how much of the task the agent completed successfully. For example, a code refactoring agent that needs to update deprecated API calls across a codebase. If it successfully updates 15 out of 20 files, that’s valuable work even though it’s incomplete. You want to reward the successful updates and encourage the agent to handle the remaining edge cases, not give it zero for not being perfect.</p>
 <div class="callout callout-style-default callout-note callout-titled" title="Code">
-<div class="callout-header d-flex align-content-center collapsed" data-bs-toggle="collapse" data-bs-target=".callout-4-contents" aria-controls="callout-4" aria-expanded="false" aria-label="Toggle callout">
+<div class="callout-header d-flex align-content-center" data-bs-toggle="collapse" data-bs-target=".callout-4-contents" aria-controls="callout-4" aria-expanded="false" aria-label="Toggle callout">
 <div class="callout-icon-container">
 <i class="callout-icon"></i>
 </div>
 <div class="callout-title-container flex-fill">
-<span class="screen-reader-only">Note</span>Code
+Code
 </div>
 <div class="callout-btn-toggle d-inline-block border-0 py-1 ps-1 pe-0 float-end"><i class="callout-toggle"></i></div>
 </div>
 <div id="callout-4" class="callout-4-contents callout-collapse collapse">
 <div class="callout-body-container callout-body">
-<div class="code-copy-outer-scaffold"><div class="sourceCode" id="cb9"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb9-1"><a href="#cb9-1" aria-hidden="true" tabindex="-1"></a><span class="kw">def</span> test_passage_score(parser, completion, answer, info, <span class="op">**</span>kwargs):</span>
+<div class="sourceCode" id="cb9"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb9-1"><a href="#cb9-1" aria-hidden="true" tabindex="-1"></a><span class="kw">def</span> test_passage_score(parser, completion, answer, info, <span class="op">**</span>kwargs):</span>
 <span id="cb9-2"><a href="#cb9-2" aria-hidden="true" tabindex="-1"></a>    <span class="co">"""Count passing tests, return ratio"""</span></span>
 <span id="cb9-3"><a href="#cb9-3" aria-hidden="true" tabindex="-1"></a>    code <span class="op">=</span> parser.parse_answer(completion)</span>
 <span id="cb9-4"><a href="#cb9-4" aria-hidden="true" tabindex="-1"></a>    passed <span class="op">=</span> <span class="bu">sum</span>(<span class="dv">1</span> <span class="cf">for</span> test_input, expected <span class="kw">in</span> info[<span class="st">"test_cases"</span>]</span>
@@ -418,30 +415,30 @@ Final Answer: 25π</code></pre>
 <span id="cb9-18"><a href="#cb9-18" aria-hidden="true" tabindex="-1"></a>rubric <span class="op">=</span> vf.Rubric(</span>
 <span id="cb9-19"><a href="#cb9-19" aria-hidden="true" tabindex="-1"></a>    funcs<span class="op">=</span>[test_passage_score, code_quality_score],</span>
 <span id="cb9-20"><a href="#cb9-20" aria-hidden="true" tabindex="-1"></a>    weights<span class="op">=</span>[<span class="fl">0.7</span>, <span class="fl">0.3</span>]</span>
-<span id="cb9-21"><a href="#cb9-21" aria-hidden="true" tabindex="-1"></a>)</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
+<span id="cb9-21"><a href="#cb9-21" aria-hidden="true" tabindex="-1"></a>)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 </div>
 </div>
 </div>
 <p><strong>Now watch how different solutions get graded:</strong></p>
 <p><em>Quick-and-Dirty Solution:</em></p>
-<div class="code-copy-outer-scaffold"><div class="sourceCode" id="cb10"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb10-1"><a href="#cb10-1" aria-hidden="true" tabindex="-1"></a><span class="kw">def</span> find_max(lst):</span>
-<span id="cb10-2"><a href="#cb10-2" aria-hidden="true" tabindex="-1"></a>    <span class="cf">return</span> <span class="bu">max</span>(lst)</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
+<div class="sourceCode" id="cb10"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb10-1"><a href="#cb10-1" aria-hidden="true" tabindex="-1"></a><span class="kw">def</span> find_max(lst):</span>
+<span id="cb10-2"><a href="#cb10-2" aria-hidden="true" tabindex="-1"></a>    <span class="cf">return</span> <span class="bu">max</span>(lst)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 <p><strong>Test Score</strong>: <code>0.9</code> (works on 9/10 test cases) <strong>Quality Score</strong>: <code>0.5</code> (efficient but no edge case handling) <strong>Total</strong>: <code>0.7 × 0.9 + 0.3 × 0.5 = 0.78</code> ⭐ - Good foundation, room for improvement</p>
 <p><em>Production-Ready Solution:</em></p>
-<div class="code-copy-outer-scaffold"><div class="sourceCode" id="cb11"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb11-1"><a href="#cb11-1" aria-hidden="true" tabindex="-1"></a><span class="kw">def</span> find_max(lst):</span>
+<div class="sourceCode" id="cb11"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb11-1"><a href="#cb11-1" aria-hidden="true" tabindex="-1"></a><span class="kw">def</span> find_max(lst):</span>
 <span id="cb11-2"><a href="#cb11-2" aria-hidden="true" tabindex="-1"></a>    <span class="cf">if</span> <span class="kw">not</span> lst:</span>
 <span id="cb11-3"><a href="#cb11-3" aria-hidden="true" tabindex="-1"></a>        <span class="cf">return</span> <span class="va">None</span></span>
-<span id="cb11-4"><a href="#cb11-4" aria-hidden="true" tabindex="-1"></a>    <span class="cf">return</span> <span class="bu">max</span>(lst)</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
+<span id="cb11-4"><a href="#cb11-4" aria-hidden="true" tabindex="-1"></a>    <span class="cf">return</span> <span class="bu">max</span>(lst)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 <p><strong>Test Score</strong>: <code>1.0</code> (handles all cases) <strong>Quality Score</strong>: <code>0.8</code> (efficient, concise, robust) <strong>Total</strong>: <code>0.7 × 1.0 + 0.3 × 0.8 = 0.94</code> ⭐⭐⭐ - Excellent balance</p>
 <p><em>Learning-in-Progress Solution:</em></p>
-<div class="code-copy-outer-scaffold"><div class="sourceCode" id="cb12"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb12-1"><a href="#cb12-1" aria-hidden="true" tabindex="-1"></a><span class="kw">def</span> find_max(lst):</span>
+<div class="sourceCode" id="cb12"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb12-1"><a href="#cb12-1" aria-hidden="true" tabindex="-1"></a><span class="kw">def</span> find_max(lst):</span>
 <span id="cb12-2"><a href="#cb12-2" aria-hidden="true" tabindex="-1"></a>    <span class="cf">if</span> <span class="bu">len</span>(lst) <span class="op">==</span> <span class="dv">0</span>:</span>
 <span id="cb12-3"><a href="#cb12-3" aria-hidden="true" tabindex="-1"></a>        <span class="cf">return</span> <span class="va">None</span></span>
 <span id="cb12-4"><a href="#cb12-4" aria-hidden="true" tabindex="-1"></a>    max_val <span class="op">=</span> lst[<span class="dv">0</span>]</span>
 <span id="cb12-5"><a href="#cb12-5" aria-hidden="true" tabindex="-1"></a>    <span class="cf">for</span> i <span class="kw">in</span> <span class="bu">range</span>(<span class="dv">1</span>, <span class="bu">len</span>(lst)):</span>
 <span id="cb12-6"><a href="#cb12-6" aria-hidden="true" tabindex="-1"></a>        <span class="cf">if</span> lst[i] <span class="op">&gt;</span> max_val:</span>
 <span id="cb12-7"><a href="#cb12-7" aria-hidden="true" tabindex="-1"></a>            max_val <span class="op">=</span> lst[i]</span>
-<span id="cb12-8"><a href="#cb12-8" aria-hidden="true" tabindex="-1"></a>    <span class="cf">return</span> max_val</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
+<span id="cb12-8"><a href="#cb12-8" aria-hidden="true" tabindex="-1"></a>    <span class="cf">return</span> max_val</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 <p><strong>Test Score</strong>: <code>1.0</code> (works correctly) <strong>Quality Score</strong>: <code>0.5</code> (handles edge cases but verbose) <strong>Total</strong>: <code>0.7 × 1.0 + 0.3 × 0.5 = 0.85</code> ⭐⭐ - Correct understanding, can improve style</p>
 <p>This approach encourages agents to balance multiple objectives and provides meaningful feedback for partial progress, making it ideal for learning environments where improvement happens gradually.</p>
 </section>
@@ -452,18 +449,18 @@ Final Answer: 25π</code></pre>
 <p>Multi-dimensional rubrics score across these criteria simultaneously - essentially mimicking how a senior developer reviews code. The agent gets separate scores for each dimension, then they’re combined with weights reflecting what matters most for the task.</p>
 <p><strong>Each function scores one dimension - correctness, efficiency, safety, readability:</strong></p>
 <div class="callout callout-style-default callout-note callout-titled" title="Code">
-<div class="callout-header d-flex align-content-center collapsed" data-bs-toggle="collapse" data-bs-target=".callout-5-contents" aria-controls="callout-5" aria-expanded="false" aria-label="Toggle callout">
+<div class="callout-header d-flex align-content-center" data-bs-toggle="collapse" data-bs-target=".callout-5-contents" aria-controls="callout-5" aria-expanded="false" aria-label="Toggle callout">
 <div class="callout-icon-container">
 <i class="callout-icon"></i>
 </div>
 <div class="callout-title-container flex-fill">
-<span class="screen-reader-only">Note</span>Code
+Code
 </div>
 <div class="callout-btn-toggle d-inline-block border-0 py-1 ps-1 pe-0 float-end"><i class="callout-toggle"></i></div>
 </div>
 <div id="callout-5" class="callout-5-contents callout-collapse collapse">
 <div class="callout-body-container callout-body">
-<div class="code-copy-outer-scaffold"><div class="sourceCode" id="cb13"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb13-1"><a href="#cb13-1" aria-hidden="true" tabindex="-1"></a><span class="kw">def</span> correctness_score(parser, completion, info, <span class="op">**</span>kwargs):</span>
+<div class="sourceCode" id="cb13"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb13-1"><a href="#cb13-1" aria-hidden="true" tabindex="-1"></a><span class="kw">def</span> correctness_score(parser, completion, info, <span class="op">**</span>kwargs):</span>
 <span id="cb13-2"><a href="#cb13-2" aria-hidden="true" tabindex="-1"></a>    <span class="co">"""Does it work?"""</span></span>
 <span id="cb13-3"><a href="#cb13-3" aria-hidden="true" tabindex="-1"></a>    code <span class="op">=</span> parser.parse_answer(completion)</span>
 <span id="cb13-4"><a href="#cb13-4" aria-hidden="true" tabindex="-1"></a>    passed <span class="op">=</span> <span class="bu">sum</span>(<span class="dv">1</span> <span class="cf">for</span> test_input, expected <span class="kw">in</span> info[<span class="st">"test_cases"</span>]</span>
@@ -498,22 +495,22 @@ Final Answer: 25π</code></pre>
 <span id="cb13-33"><a href="#cb13-33" aria-hidden="true" tabindex="-1"></a>rubric <span class="op">=</span> vf.Rubric(</span>
 <span id="cb13-34"><a href="#cb13-34" aria-hidden="true" tabindex="-1"></a>    funcs<span class="op">=</span>[correctness_score, efficiency_score, safety_score, readability_score],</span>
 <span id="cb13-35"><a href="#cb13-35" aria-hidden="true" tabindex="-1"></a>    weights<span class="op">=</span>[<span class="fl">0.4</span>, <span class="fl">0.3</span>, <span class="fl">0.2</span>, <span class="fl">0.1</span>]</span>
-<span id="cb13-36"><a href="#cb13-36" aria-hidden="true" tabindex="-1"></a>)</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
+<span id="cb13-36"><a href="#cb13-36" aria-hidden="true" tabindex="-1"></a>)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 </div>
 </div>
 </div>
 <p><strong>Here’s how the scoring combines:</strong></p>
 <p><em>Professional-Quality Solution:</em></p>
-<div class="code-copy-outer-scaffold"><div class="sourceCode" id="cb14"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb14-1"><a href="#cb14-1" aria-hidden="true" tabindex="-1"></a><span class="kw">def</span> find_max(lst):</span>
+<div class="sourceCode" id="cb14"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb14-1"><a href="#cb14-1" aria-hidden="true" tabindex="-1"></a><span class="kw">def</span> find_max(lst):</span>
 <span id="cb14-2"><a href="#cb14-2" aria-hidden="true" tabindex="-1"></a>    <span class="co">"""Find maximum value in a list, handling empty lists."""</span></span>
 <span id="cb14-3"><a href="#cb14-3" aria-hidden="true" tabindex="-1"></a>    <span class="cf">if</span> <span class="kw">not</span> lst:</span>
 <span id="cb14-4"><a href="#cb14-4" aria-hidden="true" tabindex="-1"></a>        <span class="cf">raise</span> <span class="pp">ValueError</span>(<span class="st">"Cannot find max of empty list"</span>)</span>
-<span id="cb14-5"><a href="#cb14-5" aria-hidden="true" tabindex="-1"></a>    <span class="cf">return</span> <span class="bu">max</span>(lst)</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
+<span id="cb14-5"><a href="#cb14-5" aria-hidden="true" tabindex="-1"></a>    <span class="cf">return</span> <span class="bu">max</span>(lst)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 <p><strong>Scores</strong>: Correctness: <code>1.0</code>, Efficiency: <code>1.0</code>, Safety: <code>1.0</code>, Readability: <code>1.0</code></p>
 <p><strong>Total</strong>: <code>0.4×1.0 + 0.3×1.0 + 0.2×1.0 + 0.1×1.0 = 1.0</code> 🌟🌟🌟 - Ready for production</p>
 <p><em>Clever but Problematic Solution:</em></p>
-<div class="code-copy-outer-scaffold"><div class="sourceCode" id="cb15"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb15-1"><a href="#cb15-1" aria-hidden="true" tabindex="-1"></a><span class="kw">def</span> find_max(lst):</span>
-<span id="cb15-2"><a href="#cb15-2" aria-hidden="true" tabindex="-1"></a>    <span class="cf">return</span> lst[<span class="dv">0</span>] <span class="cf">if</span> <span class="bu">len</span>(lst) <span class="op">==</span> <span class="dv">1</span> <span class="cf">else</span> <span class="bu">max</span>(lst[<span class="dv">0</span>], find_max(lst[<span class="dv">1</span>:]))</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
+<div class="sourceCode" id="cb15"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb15-1"><a href="#cb15-1" aria-hidden="true" tabindex="-1"></a><span class="kw">def</span> find_max(lst):</span>
+<span id="cb15-2"><a href="#cb15-2" aria-hidden="true" tabindex="-1"></a>    <span class="cf">return</span> lst[<span class="dv">0</span>] <span class="cf">if</span> <span class="bu">len</span>(lst) <span class="op">==</span> <span class="dv">1</span> <span class="cf">else</span> <span class="bu">max</span>(lst[<span class="dv">0</span>], find_max(lst[<span class="dv">1</span>:]))</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 <p><strong>Scores</strong>: Correctness: <code>0.8</code>, Efficiency: <code>0.3</code>, Safety: <code>0.5</code>, Readability: <code>0.2</code></p>
 <p><strong>Total</strong>: <code>0.4×0.8 + 0.3×0.3 + 0.2×0.5 + 0.1×0.2 = 0.51</code> ⭐ - Works but creates problems</p>
 <p>This comprehensive approach creates agents that think like senior developers, considering not just whether code works, but whether it’s the kind of code you’d want to maintain and extend over time.</p>
@@ -524,18 +521,18 @@ Final Answer: 25π</code></pre>
 <p>Dynamic rubrics adjust expectations based on task difficulty and the agent’s recent performance. For example, an AI coding tutor where tasks vary in complexity. If the agent has been acing complex algorithms, getting basic loops wrong signals regression - the rubric penalizes harder. If the agent has been struggling with basics, any progress on harder problems gets bonus rewards to encourage exploration.</p>
 <p>This enables adaptive evaluation. Harder tasks get more lenient scoring when the agent is still learning them. Easier tasks get stricter scoring as the agent improves. The agent is evaluated fairly based on task context, not just absolute performance.</p>
 <div class="callout callout-style-default callout-note callout-titled" title="Code">
-<div class="callout-header d-flex align-content-center collapsed" data-bs-toggle="collapse" data-bs-target=".callout-6-contents" aria-controls="callout-6" aria-expanded="false" aria-label="Toggle callout">
+<div class="callout-header d-flex align-content-center" data-bs-toggle="collapse" data-bs-target=".callout-6-contents" aria-controls="callout-6" aria-expanded="false" aria-label="Toggle callout">
 <div class="callout-icon-container">
 <i class="callout-icon"></i>
 </div>
 <div class="callout-title-container flex-fill">
-<span class="screen-reader-only">Note</span>Code
+Code
 </div>
 <div class="callout-btn-toggle d-inline-block border-0 py-1 ps-1 pe-0 float-end"><i class="callout-toggle"></i></div>
 </div>
 <div id="callout-6" class="callout-6-contents callout-collapse collapse">
 <div class="callout-body-container callout-body">
-<div class="code-copy-outer-scaffold"><div class="sourceCode" id="cb16"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb16-1"><a href="#cb16-1" aria-hidden="true" tabindex="-1"></a><span class="kw">def</span> adaptive_scoring(parser, completion, info, state, <span class="op">**</span>kwargs):</span>
+<div class="sourceCode" id="cb16"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb16-1"><a href="#cb16-1" aria-hidden="true" tabindex="-1"></a><span class="kw">def</span> adaptive_scoring(parser, completion, info, state, <span class="op">**</span>kwargs):</span>
 <span id="cb16-2"><a href="#cb16-2" aria-hidden="true" tabindex="-1"></a>    <span class="co">"""Adjust scoring based on context and learning trajectory"""</span></span>
 <span id="cb16-3"><a href="#cb16-3" aria-hidden="true" tabindex="-1"></a>    code <span class="op">=</span> parser.parse_answer(completion)</span>
 <span id="cb16-4"><a href="#cb16-4" aria-hidden="true" tabindex="-1"></a>    base_score <span class="op">=</span> get_correctness_score(code, info[<span class="st">"test_cases"</span>])</span>
@@ -562,7 +559,7 @@ Final Answer: 25π</code></pre>
 <span id="cb16-25"><a href="#cb16-25" aria-hidden="true" tabindex="-1"></a></span>
 <span id="cb16-26"><a href="#cb16-26" aria-hidden="true" tabindex="-1"></a>    <span class="cf">return</span> <span class="bu">min</span>(<span class="fl">1.0</span>, base_score)</span>
 <span id="cb16-27"><a href="#cb16-27" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb16-28"><a href="#cb16-28" aria-hidden="true" tabindex="-1"></a>rubric <span class="op">=</span> vf.Rubric(funcs<span class="op">=</span>[adaptive_scoring])</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
+<span id="cb16-28"><a href="#cb16-28" aria-hidden="true" tabindex="-1"></a>rubric <span class="op">=</span> vf.Rubric(funcs<span class="op">=</span>[adaptive_scoring])</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 </div>
 </div>
 </div>
@@ -577,7 +574,7 @@ Final Answer: 25π</code></pre>
 <i class="callout-icon"></i>
 </div>
 <div class="callout-title-container flex-fill">
-<span class="screen-reader-only">Important</span>Rubric Design Patterns
+Rubric Design Patterns
 </div>
 </div>
 <div class="callout-body-container callout-body">
@@ -619,7 +616,7 @@ Final Answer: 25π</code></pre>
 <p>Turn 1: Sort names alphabetically.</p>
 <p>Turn 2+: Integrate new names into the sorted list and mark them with “// new name!”. The agent must maintain context across turns.</p>
 <p>Each dataset item stores ground truth answers for each turn, follow-up prompts, and expected outputs:</p>
-<div class="code-copy-outer-scaffold"><div class="sourceCode" id="cb17"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb17-1"><a href="#cb17-1" aria-hidden="true" tabindex="-1"></a>{</span>
+<div class="sourceCode" id="cb17"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb17-1"><a href="#cb17-1" aria-hidden="true" tabindex="-1"></a>{</span>
 <span id="cb17-2"><a href="#cb17-2" aria-hidden="true" tabindex="-1"></a>    <span class="st">"prompt"</span>: <span class="st">"Sort these names: Alice, Charlie, Bob"</span>,</span>
 <span id="cb17-3"><a href="#cb17-3" aria-hidden="true" tabindex="-1"></a>    <span class="st">"info"</span>: {</span>
 <span id="cb17-4"><a href="#cb17-4" aria-hidden="true" tabindex="-1"></a>        <span class="st">"num_turns"</span>: <span class="dv">2</span>,</span>
@@ -629,14 +626,14 @@ Final Answer: 25π</code></pre>
 <span id="cb17-8"><a href="#cb17-8" aria-hidden="true" tabindex="-1"></a>            [<span class="st">"Alice"</span>, <span class="st">"Bob"</span>, <span class="st">"Charlie"</span>, <span class="st">"Diana // new name!"</span>, <span class="st">"Eve // new name!"</span>]</span>
 <span id="cb17-9"><a href="#cb17-9" aria-hidden="true" tabindex="-1"></a>        ]</span>
 <span id="cb17-10"><a href="#cb17-10" aria-hidden="true" tabindex="-1"></a>    }</span>
-<span id="cb17-11"><a href="#cb17-11" aria-hidden="true" tabindex="-1"></a>}</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
+<span id="cb17-11"><a href="#cb17-11" aria-hidden="true" tabindex="-1"></a>}</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 </section>
 <section id="building-the-environment" class="level3">
 <h3 class="anchored" data-anchor-id="building-the-environment">Building the Environment</h3>
 <p>MultiTurnEnv needs two methods to control the conversation flow:</p>
 <p><strong>1. <code>env_response()</code> - What the environment says after each agent response</strong></p>
 <p>After the agent sorts the initial names, the environment needs to send the next challenge. This method decides what message to send based on how many turns have happened:</p>
-<div class="code-copy-outer-scaffold"><div class="sourceCode" id="cb18"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb18-1"><a href="#cb18-1" aria-hidden="true" tabindex="-1"></a><span class="cf">async</span> <span class="kw">def</span> env_response(<span class="va">self</span>, messages: Messages, state: State, <span class="op">**</span>kwargs):</span>
+<div class="sourceCode" id="cb18"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb18-1"><a href="#cb18-1" aria-hidden="true" tabindex="-1"></a><span class="cf">async</span> <span class="kw">def</span> env_response(<span class="va">self</span>, messages: Messages, state: State, <span class="op">**</span>kwargs):</span>
 <span id="cb18-2"><a href="#cb18-2" aria-hidden="true" tabindex="-1"></a>    <span class="co"># Count how many times the agent has responded</span></span>
 <span id="cb18-3"><a href="#cb18-3" aria-hidden="true" tabindex="-1"></a>    assistant_count <span class="op">=</span> <span class="bu">len</span>([m <span class="cf">for</span> m <span class="kw">in</span> messages <span class="cf">if</span> m[<span class="st">"role"</span>] <span class="op">==</span> <span class="st">"assistant"</span>])</span>
 <span id="cb18-4"><a href="#cb18-4" aria-hidden="true" tabindex="-1"></a></span>
@@ -644,20 +641,20 @@ Final Answer: 25π</code></pre>
 <span id="cb18-6"><a href="#cb18-6" aria-hidden="true" tabindex="-1"></a>    <span class="cf">if</span> assistant_count <span class="op">&lt;</span> state[<span class="st">"info"</span>][<span class="st">"num_turns"</span>]:</span>
 <span id="cb18-7"><a href="#cb18-7" aria-hidden="true" tabindex="-1"></a>        <span class="cf">return</span> [{<span class="st">"role"</span>: <span class="st">"user"</span>, <span class="st">"content"</span>: state[<span class="st">"info"</span>][<span class="st">"follow_ups"</span>][assistant_count <span class="op">-</span> <span class="dv">1</span>]}], state</span>
 <span id="cb18-8"><a href="#cb18-8" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb18-9"><a href="#cb18-9" aria-hidden="true" tabindex="-1"></a>    <span class="cf">return</span> [{<span class="st">"role"</span>: <span class="st">"user"</span>, <span class="st">"content"</span>: <span class="st">"Continue"</span>}], state</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
+<span id="cb18-9"><a href="#cb18-9" aria-hidden="true" tabindex="-1"></a>    <span class="cf">return</span> [{<span class="st">"role"</span>: <span class="st">"user"</span>, <span class="st">"content"</span>: <span class="st">"Continue"</span>}], state</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 <p><strong>2. <code>is_completed()</code> - When to stop the conversation</strong></p>
 <p>The environment needs to know when the episode is done. In AlphabetSort, we stop after the agent has responded N times (where N = num_turns):</p>
-<div class="code-copy-outer-scaffold"><div class="sourceCode" id="cb19"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb19-1"><a href="#cb19-1" aria-hidden="true" tabindex="-1"></a><span class="cf">async</span> <span class="kw">def</span> is_completed(<span class="va">self</span>, messages: Messages, state: State, <span class="op">**</span>kwargs):</span>
+<div class="sourceCode" id="cb19"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb19-1"><a href="#cb19-1" aria-hidden="true" tabindex="-1"></a><span class="cf">async</span> <span class="kw">def</span> is_completed(<span class="va">self</span>, messages: Messages, state: State, <span class="op">**</span>kwargs):</span>
 <span id="cb19-2"><a href="#cb19-2" aria-hidden="true" tabindex="-1"></a>    assistant_count <span class="op">=</span> <span class="bu">len</span>([m <span class="cf">for</span> m <span class="kw">in</span> messages <span class="cf">if</span> m[<span class="st">"role"</span>] <span class="op">==</span> <span class="st">"assistant"</span>])</span>
-<span id="cb19-3"><a href="#cb19-3" aria-hidden="true" tabindex="-1"></a>    <span class="cf">return</span> assistant_count <span class="op">&gt;=</span> state[<span class="st">"info"</span>][<span class="st">"num_turns"</span>]</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
+<span id="cb19-3"><a href="#cb19-3" aria-hidden="true" tabindex="-1"></a>    <span class="cf">return</span> assistant_count <span class="op">&gt;=</span> state[<span class="st">"info"</span>][<span class="st">"num_turns"</span>]</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 <p><strong>3. Parsing</strong></p>
 <p>The agent might add reasoning, explanations, or extra text. XMLParser pulls out just the sorted list. Different XML tags signal different task stages:</p>
-<div class="code-copy-outer-scaffold"><div class="sourceCode" id="cb20"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb20-1"><a href="#cb20-1" aria-hidden="true" tabindex="-1"></a>xml_tag <span class="op">=</span> <span class="st">"alphabetical_sorted"</span> <span class="cf">if</span> turn_num <span class="op">==</span> <span class="dv">1</span> <span class="cf">else</span> <span class="st">"combined_alphabetical_sorted"</span></span>
+<div class="sourceCode" id="cb20"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb20-1"><a href="#cb20-1" aria-hidden="true" tabindex="-1"></a>xml_tag <span class="op">=</span> <span class="st">"alphabetical_sorted"</span> <span class="cf">if</span> turn_num <span class="op">==</span> <span class="dv">1</span> <span class="cf">else</span> <span class="st">"combined_alphabetical_sorted"</span></span>
 <span id="cb20-2"><a href="#cb20-2" aria-hidden="true" tabindex="-1"></a>parser <span class="op">=</span> vf.XMLParser([xml_tag], answer_field<span class="op">=</span>xml_tag)</span>
-<span id="cb20-3"><a href="#cb20-3" aria-hidden="true" tabindex="-1"></a>parsed <span class="op">=</span> parser.parse_answer(agent_response)</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
+<span id="cb20-3"><a href="#cb20-3" aria-hidden="true" tabindex="-1"></a>parsed <span class="op">=</span> parser.parse_answer(agent_response)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 <p><strong>4. Scoring</strong></p>
 <p>Each turn gets scored independently, then averaged. Using sequence similarity with an exponential penalty (^4) means near-perfect matters - 95% similarity scores 0.81, not 0.95:</p>
-<div class="code-copy-outer-scaffold"><div class="sourceCode" id="cb21"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb21-1"><a href="#cb21-1" aria-hidden="true" tabindex="-1"></a><span class="kw">def</span> eval_turn(completion, turn_num, state):</span>
+<div class="sourceCode" id="cb21"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb21-1"><a href="#cb21-1" aria-hidden="true" tabindex="-1"></a><span class="kw">def</span> eval_turn(completion, turn_num, state):</span>
 <span id="cb21-2"><a href="#cb21-2" aria-hidden="true" tabindex="-1"></a>    <span class="co"># Extract agent's answer for this specific turn</span></span>
 <span id="cb21-3"><a href="#cb21-3" aria-hidden="true" tabindex="-1"></a>    assistant_msgs <span class="op">=</span> [m[<span class="st">"content"</span>] <span class="cf">for</span> m <span class="kw">in</span> completion <span class="cf">if</span> m[<span class="st">"role"</span>] <span class="op">==</span> <span class="st">"assistant"</span>]</span>
 <span id="cb21-4"><a href="#cb21-4" aria-hidden="true" tabindex="-1"></a>    xml_tag <span class="op">=</span> <span class="st">"alphabetical_sorted"</span> <span class="cf">if</span> turn_num <span class="op">==</span> <span class="dv">1</span> <span class="cf">else</span> <span class="st">"combined_alphabetical_sorted"</span></span>
@@ -667,10 +664,10 @@ Final Answer: 25π</code></pre>
 <span id="cb21-8"><a href="#cb21-8" aria-hidden="true" tabindex="-1"></a></span>
 <span id="cb21-9"><a href="#cb21-9" aria-hidden="true" tabindex="-1"></a>    <span class="co"># Compare with ground truth using exponential similarity</span></span>
 <span id="cb21-10"><a href="#cb21-10" aria-hidden="true" tabindex="-1"></a>    similarity <span class="op">=</span> difflib.SequenceMatcher(<span class="va">None</span>, parsed, expected).ratio()</span>
-<span id="cb21-11"><a href="#cb21-11" aria-hidden="true" tabindex="-1"></a>    <span class="cf">return</span> similarity <span class="op">**</span> <span class="dv">4</span>  <span class="co"># Penalizes mistakes heavily</span></span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
+<span id="cb21-11"><a href="#cb21-11" aria-hidden="true" tabindex="-1"></a>    <span class="cf">return</span> similarity <span class="op">**</span> <span class="dv">4</span>  <span class="co"># Penalizes mistakes heavily</span></span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 <p><strong>5. Rubric</strong></p>
 <p>The rubric needs to score all turns and average them. We do this by creating a reward function that loops through each turn:</p>
-<div class="code-copy-outer-scaffold"><div class="sourceCode" id="cb22"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb22-1"><a href="#cb22-1" aria-hidden="true" tabindex="-1"></a><span class="kw">def</span> create_weighted_rewards():</span>
+<div class="sourceCode" id="cb22"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb22-1"><a href="#cb22-1" aria-hidden="true" tabindex="-1"></a><span class="kw">def</span> create_weighted_rewards():</span>
 <span id="cb22-2"><a href="#cb22-2" aria-hidden="true" tabindex="-1"></a>    <span class="kw">def</span> weighted_reward(completion, state, <span class="op">**</span>kwargs):</span>
 <span id="cb22-3"><a href="#cb22-3" aria-hidden="true" tabindex="-1"></a>        actual_turns <span class="op">=</span> state[<span class="st">"info"</span>][<span class="st">"num_turns"</span>]</span>
 <span id="cb22-4"><a href="#cb22-4" aria-hidden="true" tabindex="-1"></a>        total_score <span class="op">=</span> <span class="fl">0.0</span></span>
@@ -686,7 +683,7 @@ Final Answer: 25π</code></pre>
 <span id="cb22-14"><a href="#cb22-14" aria-hidden="true" tabindex="-1"></a>    <span class="cf">return</span> weighted_reward</span>
 <span id="cb22-15"><a href="#cb22-15" aria-hidden="true" tabindex="-1"></a></span>
 <span id="cb22-16"><a href="#cb22-16" aria-hidden="true" tabindex="-1"></a><span class="co"># Create the rubric</span></span>
-<span id="cb22-17"><a href="#cb22-17" aria-hidden="true" tabindex="-1"></a>rubric <span class="op">=</span> vf.Rubric(funcs<span class="op">=</span>[create_weighted_rewards()], weights<span class="op">=</span>[<span class="fl">1.0</span>])</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
+<span id="cb22-17"><a href="#cb22-17" aria-hidden="true" tabindex="-1"></a>rubric <span class="op">=</span> vf.Rubric(funcs<span class="op">=</span>[create_weighted_rewards()], weights<span class="op">=</span>[<span class="fl">1.0</span>])</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 </section>
 <section id="key-concepts" class="level3">
 <h3 class="anchored" data-anchor-id="key-concepts">Key Concepts</h3>
@@ -699,18 +696,18 @@ Final Answer: 25π</code></pre>
 <li><strong>Rubric</strong> wraps the scoring logic and gets called during evaluation</li>
 </ul>
 <div class="callout callout-style-default callout-note callout-titled" title="Complete AlphabetSort Environment Code">
-<div class="callout-header d-flex align-content-center collapsed" data-bs-toggle="collapse" data-bs-target=".callout-8-contents" aria-controls="callout-8" aria-expanded="false" aria-label="Toggle callout">
+<div class="callout-header d-flex align-content-center" data-bs-toggle="collapse" data-bs-target=".callout-8-contents" aria-controls="callout-8" aria-expanded="false" aria-label="Toggle callout">
 <div class="callout-icon-container">
 <i class="callout-icon"></i>
 </div>
 <div class="callout-title-container flex-fill">
-<span class="screen-reader-only">Note</span>Complete AlphabetSort Environment Code
+Complete AlphabetSort Environment Code
 </div>
 <div class="callout-btn-toggle d-inline-block border-0 py-1 ps-1 pe-0 float-end"><i class="callout-toggle"></i></div>
 </div>
 <div id="callout-8" class="callout-8-contents callout-collapse collapse">
 <div class="callout-body-container callout-body">
-<div class="code-copy-outer-scaffold"><div class="sourceCode" id="cb23"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb23-1"><a href="#cb23-1" aria-hidden="true" tabindex="-1"></a><span class="im">import</span> difflib</span>
+<div class="sourceCode" id="cb23"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb23-1"><a href="#cb23-1" aria-hidden="true" tabindex="-1"></a><span class="im">import</span> difflib</span>
 <span id="cb23-2"><a href="#cb23-2" aria-hidden="true" tabindex="-1"></a><span class="im">import</span> json</span>
 <span id="cb23-3"><a href="#cb23-3" aria-hidden="true" tabindex="-1"></a><span class="im">import</span> random</span>
 <span id="cb23-4"><a href="#cb23-4" aria-hidden="true" tabindex="-1"></a><span class="im">from</span> typing <span class="im">import</span> List, Tuple</span>
@@ -812,7 +809,7 @@ Final Answer: 25π</code></pre>
 <span id="cb23-100"><a href="#cb23-100" aria-hidden="true" tabindex="-1"></a>    rubric <span class="op">=</span> vf.Rubric(funcs<span class="op">=</span>[create_weighted_rewards()], weights<span class="op">=</span>[<span class="fl">1.0</span>])</span>
 <span id="cb23-101"><a href="#cb23-101" aria-hidden="true" tabindex="-1"></a>    env_instance <span class="op">=</span> SortingEnv(dataset<span class="op">=</span>dataset, rubric<span class="op">=</span>rubric, max_turns<span class="op">=</span>max_turns)</span>
 <span id="cb23-102"><a href="#cb23-102" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb23-103"><a href="#cb23-103" aria-hidden="true" tabindex="-1"></a>    <span class="cf">return</span> env_instance</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
+<span id="cb23-103"><a href="#cb23-103" aria-hidden="true" tabindex="-1"></a>    <span class="cf">return</span> env_instance</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 </div>
 </div>
 </div>
@@ -822,7 +819,7 @@ Final Answer: 25π</code></pre>
 <i class="callout-icon"></i>
 </div>
 <div class="callout-title-container flex-fill">
-<span class="screen-reader-only">Note</span>References
+References
 </div>
 </div>
 <div class="callout-body-container callout-body">
@@ -890,14 +887,13 @@ Final Answer: 25π</code></pre>
       e.clearSelection();
     }
     const getTextToCopy = function(trigger) {
-      const outerScaffold = trigger.parentElement.cloneNode(true);
-      const codeEl = outerScaffold.querySelector('code');
-      for (const childEl of codeEl.children) {
-        if (isCodeAnnotation(childEl)) {
-          childEl.remove();
+        const codeEl = trigger.previousElementSibling.cloneNode(true);
+        for (const childEl of codeEl.children) {
+          if (isCodeAnnotation(childEl)) {
+            childEl.remove();
+          }
         }
-      }
-      return codeEl.innerText;
+        return codeEl.innerText;
     }
     const clipboard = new window.ClipboardJS('.code-copy-button:not([data-in-quarto-modal])', {
       text: getTextToCopy

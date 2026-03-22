@@ -9,7 +9,7 @@
 <link>https://www.heyyanshuman.com/writing.html</link>
 <atom:link href="https://www.heyyanshuman.com/writing.xml" rel="self" type="application/rss+xml"/>
 <description>Machine learning engineer building AI systems, open source software, and essays.</description>
-<generator>quarto-1.9.36</generator>
+<generator>quarto-1.7.31</generator>
 <lastBuildDate>Tue, 10 Feb 2026 00:00:00 GMT</lastBuildDate>
 <item>
   <title>(Thinking Out Loud) On Engineering, Identity, and What Comes Next</title>
@@ -92,7 +92,7 @@
 <i class="callout-icon"></i>
 </div>
 <div class="callout-title-container flex-fill">
-<span class="screen-reader-only">Note</span>What You’ll Learn
+What You’ll Learn
 </div>
 </div>
 <div class="callout-body-container callout-body">
@@ -134,7 +134,7 @@
 <section id="a.-singleturnenv-one-shot-evaluation" class="level4">
 <h4 class="anchored" data-anchor-id="a.-singleturnenv-one-shot-evaluation">a. <strong>SingleTurnEnv</strong>: One-Shot Evaluation</h4>
 <p>Some tasks don’t need interaction - you present a problem, the agent responds, and you evaluate. That’s SingleTurnEnv. Think of it like a contextual bandit problem: each episode is independent, no state carries over.</p>
-<div class="code-copy-outer-scaffold"><div class="sourceCode" id="cb1" style="background: #f1f3f5;"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb1-1"><span class="co" style="color: #5E5E5E;
+<div class="sourceCode" id="cb1" style="background: #f1f3f5;"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb1-1"><span class="co" style="color: #5E5E5E;
 background-color: null;
 font-style: inherit;"># Basic structure</span></span>
 <span id="cb1-2">env <span class="op" style="color: #5E5E5E;
@@ -154,7 +154,7 @@ font-style: inherit;">=</span>your_parser,</span>
 <span id="cb1-6">    rubric<span class="op" style="color: #5E5E5E;
 background-color: null;
 font-style: inherit;">=</span>your_rubric</span>
-<span id="cb1-7">)</span></code></pre></div></div>
+<span id="cb1-7">)</span></code></pre></div>
 <p><strong>Where you’d use this:</strong></p>
 <p>Say you’re building a <strong>code completion agent</strong>. You give it a function signature and docstring, it generates the implementation, you run tests - done. One shot. The state is just the incomplete function and context. The action is the generated code. The reward is whether tests pass and if the code follows good practices.</p>
 <p>Or a <strong>math reasoning agent</strong> - you present a word problem, it works through the solution step-by-step, and you check if the final answer is correct. The reasoning quality matters too, so you reward both the answer and the logical steps taken.</p>
@@ -163,7 +163,7 @@ font-style: inherit;">=</span>your_rubric</span>
 <section id="b.-multiturnenv-interactive-conversations" class="level4">
 <h4 class="anchored" data-anchor-id="b.-multiturnenv-interactive-conversations">b. <strong>MultiTurnEnv</strong>: Interactive Conversations</h4>
 <p>When agents need to maintain context across multiple interactions, you use MultiTurnEnv. Unlike SingleTurnEnv where everything happens in one shot, here the agent and environment have a back-and-forth conversation. State persists across turns, letting the agent build on previous exchanges.</p>
-<div class="code-copy-outer-scaffold"><div class="sourceCode" id="cb2" style="background: #f1f3f5;"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb2-1"><span class="kw" style="color: #003B4F;
+<div class="sourceCode" id="cb2" style="background: #f1f3f5;"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb2-1"><span class="kw" style="color: #003B4F;
 background-color: null;
 font-weight: bold;
 font-style: inherit;">class</span> TutorEnv(vf.MultiTurnEnv):</span>
@@ -199,7 +199,7 @@ font-style: inherit;"># Define when interaction should end</span></span>
 <span id="cb2-8">        <span class="cf" style="color: #003B4F;
 background-color: null;
 font-weight: bold;
-font-style: inherit;">return</span> completion_condition</span></code></pre></div></div>
+font-style: inherit;">return</span> completion_condition</span></code></pre></div>
 <p><strong>Where you’d use this:</strong></p>
 <p>A <strong>terminal/shell agent</strong> needs to remember what directory it’s in, what commands it ran, and what the file system looks like. Each command builds on the previous state. The agent might <code>cd</code> into a directory, then <code>ls</code> to see files, then <code>cat</code> a specific file - each action depends on where you are and what you’ve done. You evaluate the complete workflow: did the agent set up the development environment correctly?</p>
 <p>Or a <strong>code review agent</strong> that goes back and forth with a developer. It suggests improvements, the developer responds or asks questions, the agent refines its suggestions based on feedback. The conversation continues until the code meets quality standards. State tracks the review history, what issues were found, what’s been addressed.</p>
@@ -208,7 +208,7 @@ font-style: inherit;">return</span> completion_condition</span></code></pre></di
 <section id="c.-toolenv-agents-with-capabilities" class="level4">
 <h4 class="anchored" data-anchor-id="c.-toolenv-agents-with-capabilities">c.&nbsp;<strong>ToolEnv</strong>: Agents with Capabilities</h4>
 <p>Text generation alone isn’t enough for many tasks. Agents need external tools - search engines, code execution, file systems, APIs. ToolEnv extends agents with these capabilities by converting Python functions into tools the model can call.</p>
-<div class="code-copy-outer-scaffold"><div class="sourceCode" id="cb3" style="background: #f1f3f5;"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb3-1"><span class="kw" style="color: #003B4F;
+<div class="sourceCode" id="cb3" style="background: #f1f3f5;"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb3-1"><span class="kw" style="color: #003B4F;
 background-color: null;
 font-weight: bold;
 font-style: inherit;">def</span> search(query: <span class="bu" style="color: null;
@@ -238,7 +238,7 @@ font-style: inherit;">=</span>dataset,</span>
 <span id="cb3-8">    rubric<span class="op" style="color: #5E5E5E;
 background-color: null;
 font-style: inherit;">=</span>rubric</span>
-<span id="cb3-9">)</span></code></pre></div></div>
+<span id="cb3-9">)</span></code></pre></div>
 <p><strong>Where you’d use this:</strong></p>
 <p>Think <strong>Cursor-style code agent</strong>. It needs to read files, write code, run tests, check with a linter, commit to git. Each tool is a capability - <code>file_read</code>, <code>file_write</code>, <code>test_runner</code>, <code>git_commit</code>. The agent picks which tool to use and what parameters to pass. You’re evaluating the complete feature: did it implement what was asked, does the code pass tests, is it good quality?</p>
 <p>Or a <strong>data science agent</strong> that loads data, runs statistical analysis, trains models, generates visualizations, writes reports. Each step requires a different tool. The agent decides the analysis strategy, picks tools in the right sequence, and produces insights. You measure insight quality, model accuracy, whether the work is reproducible.</p>
@@ -249,7 +249,7 @@ font-style: inherit;">=</span>rubric</span>
 <i class="callout-icon"></i>
 </div>
 <div class="callout-title-container flex-fill">
-<span class="screen-reader-only">Note</span>RL Environment Design Principles
+RL Environment Design Principles
 </div>
 </div>
 <div class="callout-body-container callout-body">
@@ -269,11 +269,11 @@ font-style: inherit;">=</span>rubric</span>
 <p>Parsers determine what gets rewarded. A lenient parser might reward partial attempts while a strict parser only rewards perfect formatting. This directly impacts learning dynamics - what you parse is what the model learns to produce.</p>
 <p><strong>Example: ThinkParser</strong></p>
 <p>Say you want the model to show its reasoning but you only care about scoring the final answer. ThinkParser lets you separate the two:</p>
-<div class="code-copy-outer-scaffold"><div class="sourceCode" id="cb4" style="background: #f1f3f5;"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb4-1">parser <span class="op" style="color: #5E5E5E;
+<div class="sourceCode" id="cb4" style="background: #f1f3f5;"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb4-1">parser <span class="op" style="color: #5E5E5E;
 background-color: null;
 font-style: inherit;">=</span> vf.ThinkParser(extract_fn<span class="op" style="color: #5E5E5E;
 background-color: null;
-font-style: inherit;">=</span>extract_math_answer)</span></code></pre></div></div>
+font-style: inherit;">=</span>extract_math_answer)</span></code></pre></div>
 <p><strong>Model output:</strong></p>
 <pre><code>&lt;think&gt;
 Let me work through this step by step.
@@ -302,18 +302,18 @@ Final Answer: 25π</code></pre>
 <p>Binary rubrics create agents that prioritize reliability over creativity. They’re conservative by design: if you can’t guarantee perfection, don’t attempt the task.</p>
 <p><strong>The implementation is simple - loop through all test cases, and the moment one fails, return 0.0:</strong></p>
 <div class="callout callout-style-default callout-note callout-titled" title="Code">
-<div class="callout-header d-flex align-content-center collapsed" data-bs-toggle="collapse" data-bs-target=".callout-3-contents" aria-controls="callout-3" aria-expanded="false" aria-label="Toggle callout">
+<div class="callout-header d-flex align-content-center" data-bs-toggle="collapse" data-bs-target=".callout-3-contents" aria-controls="callout-3" aria-expanded="false" aria-label="Toggle callout">
 <div class="callout-icon-container">
 <i class="callout-icon"></i>
 </div>
 <div class="callout-title-container flex-fill">
-<span class="screen-reader-only">Note</span>Code
+Code
 </div>
 <div class="callout-btn-toggle d-inline-block border-0 py-1 ps-1 pe-0 float-end"><i class="callout-toggle"></i></div>
 </div>
 <div id="callout-3" class="callout-3-contents callout-collapse collapse">
 <div class="callout-body-container callout-body">
-<div class="code-copy-outer-scaffold"><div class="sourceCode" id="cb6" style="background: #f1f3f5;"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb6-1"><span class="kw" style="color: #003B4F;
+<div class="sourceCode" id="cb6" style="background: #f1f3f5;"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb6-1"><span class="kw" style="color: #003B4F;
 background-color: null;
 font-weight: bold;
 font-style: inherit;">def</span> exact_correctness(parser, completion, answer, info, <span class="op" style="color: #5E5E5E;
@@ -382,12 +382,12 @@ font-style: inherit;"># Only return 1.0 if ALL tests pass</span></span>
 background-color: null;
 font-style: inherit;">=</span> vf.Rubric(funcs<span class="op" style="color: #5E5E5E;
 background-color: null;
-font-style: inherit;">=</span>[exact_correctness])</span></code></pre></div></div>
+font-style: inherit;">=</span>[exact_correctness])</span></code></pre></div>
 </div>
 </div>
 </div>
 <p><strong>See how this plays out:</strong></p>
-<div class="code-copy-outer-scaffold"><div class="sourceCode" id="cb7" style="background: #f1f3f5;"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb7-1"><span class="kw" style="color: #003B4F;
+<div class="sourceCode" id="cb7" style="background: #f1f3f5;"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb7-1"><span class="kw" style="color: #003B4F;
 background-color: null;
 font-weight: bold;
 font-style: inherit;">def</span> find_max(lst):</span>
@@ -396,9 +396,9 @@ background-color: null;
 font-weight: bold;
 font-style: inherit;">return</span> <span class="bu" style="color: null;
 background-color: null;
-font-style: inherit;">max</span>(lst)</span></code></pre></div></div>
+font-style: inherit;">max</span>(lst)</span></code></pre></div>
 <p><strong>Reward</strong>: <code>1.0</code> ✅ - Passes all tests including edge cases</p>
-<div class="code-copy-outer-scaffold"><div class="sourceCode" id="cb8" style="background: #f1f3f5;"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb8-1"><span class="kw" style="color: #003B4F;
+<div class="sourceCode" id="cb8" style="background: #f1f3f5;"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb8-1"><span class="kw" style="color: #003B4F;
 background-color: null;
 font-weight: bold;
 font-style: inherit;">def</span> find_max(lst):</span>
@@ -417,7 +417,7 @@ font-style: inherit;">else</span> <span class="va" style="color: #111111;
 background-color: null;
 font-style: inherit;">None</span>  <span class="co" style="color: #5E5E5E;
 background-color: null;
-font-style: inherit;"># Returns None instead of raising error</span></span></code></pre></div></div>
+font-style: inherit;"># Returns None instead of raising error</span></span></code></pre></div>
 <p><strong>Reward</strong>: <code>0.0</code> ❌ - Fails one edge case test, gets zero despite being 90% correct</p>
 <p>One failure = complete failure. This forces agents to be thorough and handle every case, which is exactly what you want for mission-critical tasks where “mostly working” isn’t acceptable.</p>
 </section>
@@ -426,18 +426,18 @@ font-style: inherit;"># Returns None instead of raising error</span></span></cod
 <p>Binary rubrics force agents into an all-or-nothing scenario: pass all test cases or get zero reward. But for many tasks, partial success has real value. An agent that writes a function passing 8 out of 10 test cases has made progress toward the solution. Giving it zero credit wastes useful evaluation signal - you’re not telling the agent “you’re close, just handle these edge cases.”</p>
 <p>Graduated rubrics give partial credit proportional to how much of the task the agent completed successfully. For example, a code refactoring agent that needs to update deprecated API calls across a codebase. If it successfully updates 15 out of 20 files, that’s valuable work even though it’s incomplete. You want to reward the successful updates and encourage the agent to handle the remaining edge cases, not give it zero for not being perfect.</p>
 <div class="callout callout-style-default callout-note callout-titled" title="Code">
-<div class="callout-header d-flex align-content-center collapsed" data-bs-toggle="collapse" data-bs-target=".callout-4-contents" aria-controls="callout-4" aria-expanded="false" aria-label="Toggle callout">
+<div class="callout-header d-flex align-content-center" data-bs-toggle="collapse" data-bs-target=".callout-4-contents" aria-controls="callout-4" aria-expanded="false" aria-label="Toggle callout">
 <div class="callout-icon-container">
 <i class="callout-icon"></i>
 </div>
 <div class="callout-title-container flex-fill">
-<span class="screen-reader-only">Note</span>Code
+Code
 </div>
 <div class="callout-btn-toggle d-inline-block border-0 py-1 ps-1 pe-0 float-end"><i class="callout-toggle"></i></div>
 </div>
 <div id="callout-4" class="callout-4-contents callout-collapse collapse">
 <div class="callout-body-container callout-body">
-<div class="code-copy-outer-scaffold"><div class="sourceCode" id="cb9" style="background: #f1f3f5;"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb9-1"><span class="kw" style="color: #003B4F;
+<div class="sourceCode" id="cb9" style="background: #f1f3f5;"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb9-1"><span class="kw" style="color: #003B4F;
 background-color: null;
 font-weight: bold;
 font-style: inherit;">def</span> test_passage_score(parser, completion, answer, info, <span class="op" style="color: #5E5E5E;
@@ -581,13 +581,13 @@ background-color: null;
 font-style: inherit;">0.7</span>, <span class="fl" style="color: #AD0000;
 background-color: null;
 font-style: inherit;">0.3</span>]</span>
-<span id="cb9-21">)</span></code></pre></div></div>
+<span id="cb9-21">)</span></code></pre></div>
 </div>
 </div>
 </div>
 <p><strong>Now watch how different solutions get graded:</strong></p>
 <p><em>Quick-and-Dirty Solution:</em></p>
-<div class="code-copy-outer-scaffold"><div class="sourceCode" id="cb10" style="background: #f1f3f5;"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb10-1"><span class="kw" style="color: #003B4F;
+<div class="sourceCode" id="cb10" style="background: #f1f3f5;"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb10-1"><span class="kw" style="color: #003B4F;
 background-color: null;
 font-weight: bold;
 font-style: inherit;">def</span> find_max(lst):</span>
@@ -596,10 +596,10 @@ background-color: null;
 font-weight: bold;
 font-style: inherit;">return</span> <span class="bu" style="color: null;
 background-color: null;
-font-style: inherit;">max</span>(lst)</span></code></pre></div></div>
+font-style: inherit;">max</span>(lst)</span></code></pre></div>
 <p><strong>Test Score</strong>: <code>0.9</code> (works on 9/10 test cases) <strong>Quality Score</strong>: <code>0.5</code> (efficient but no edge case handling) <strong>Total</strong>: <code>0.7 × 0.9 + 0.3 × 0.5 = 0.78</code> ⭐ - Good foundation, room for improvement</p>
 <p><em>Production-Ready Solution:</em></p>
-<div class="code-copy-outer-scaffold"><div class="sourceCode" id="cb11" style="background: #f1f3f5;"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb11-1"><span class="kw" style="color: #003B4F;
+<div class="sourceCode" id="cb11" style="background: #f1f3f5;"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb11-1"><span class="kw" style="color: #003B4F;
 background-color: null;
 font-weight: bold;
 font-style: inherit;">def</span> find_max(lst):</span>
@@ -621,10 +621,10 @@ background-color: null;
 font-weight: bold;
 font-style: inherit;">return</span> <span class="bu" style="color: null;
 background-color: null;
-font-style: inherit;">max</span>(lst)</span></code></pre></div></div>
+font-style: inherit;">max</span>(lst)</span></code></pre></div>
 <p><strong>Test Score</strong>: <code>1.0</code> (handles all cases) <strong>Quality Score</strong>: <code>0.8</code> (efficient, concise, robust) <strong>Total</strong>: <code>0.7 × 1.0 + 0.3 × 0.8 = 0.94</code> ⭐⭐⭐ - Excellent balance</p>
 <p><em>Learning-in-Progress Solution:</em></p>
-<div class="code-copy-outer-scaffold"><div class="sourceCode" id="cb12" style="background: #f1f3f5;"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb12-1"><span class="kw" style="color: #003B4F;
+<div class="sourceCode" id="cb12" style="background: #f1f3f5;"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb12-1"><span class="kw" style="color: #003B4F;
 background-color: null;
 font-weight: bold;
 font-style: inherit;">def</span> find_max(lst):</span>
@@ -674,7 +674,7 @@ font-style: inherit;">=</span> lst[i]</span>
 <span id="cb12-8">    <span class="cf" style="color: #003B4F;
 background-color: null;
 font-weight: bold;
-font-style: inherit;">return</span> max_val</span></code></pre></div></div>
+font-style: inherit;">return</span> max_val</span></code></pre></div>
 <p><strong>Test Score</strong>: <code>1.0</code> (works correctly) <strong>Quality Score</strong>: <code>0.5</code> (handles edge cases but verbose) <strong>Total</strong>: <code>0.7 × 1.0 + 0.3 × 0.5 = 0.85</code> ⭐⭐ - Correct understanding, can improve style</p>
 <p>This approach encourages agents to balance multiple objectives and provides meaningful feedback for partial progress, making it ideal for learning environments where improvement happens gradually.</p>
 </section>
@@ -685,18 +685,18 @@ font-style: inherit;">return</span> max_val</span></code></pre></div></div>
 <p>Multi-dimensional rubrics score across these criteria simultaneously - essentially mimicking how a senior developer reviews code. The agent gets separate scores for each dimension, then they’re combined with weights reflecting what matters most for the task.</p>
 <p><strong>Each function scores one dimension - correctness, efficiency, safety, readability:</strong></p>
 <div class="callout callout-style-default callout-note callout-titled" title="Code">
-<div class="callout-header d-flex align-content-center collapsed" data-bs-toggle="collapse" data-bs-target=".callout-5-contents" aria-controls="callout-5" aria-expanded="false" aria-label="Toggle callout">
+<div class="callout-header d-flex align-content-center" data-bs-toggle="collapse" data-bs-target=".callout-5-contents" aria-controls="callout-5" aria-expanded="false" aria-label="Toggle callout">
 <div class="callout-icon-container">
 <i class="callout-icon"></i>
 </div>
 <div class="callout-title-container flex-fill">
-<span class="screen-reader-only">Note</span>Code
+Code
 </div>
 <div class="callout-btn-toggle d-inline-block border-0 py-1 ps-1 pe-0 float-end"><i class="callout-toggle"></i></div>
 </div>
 <div id="callout-5" class="callout-5-contents callout-collapse collapse">
 <div class="callout-body-container callout-body">
-<div class="code-copy-outer-scaffold"><div class="sourceCode" id="cb13" style="background: #f1f3f5;"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb13-1"><span class="kw" style="color: #003B4F;
+<div class="sourceCode" id="cb13" style="background: #f1f3f5;"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb13-1"><span class="kw" style="color: #003B4F;
 background-color: null;
 font-weight: bold;
 font-style: inherit;">def</span> correctness_score(parser, completion, info, <span class="op" style="color: #5E5E5E;
@@ -967,13 +967,13 @@ background-color: null;
 font-style: inherit;">0.2</span>, <span class="fl" style="color: #AD0000;
 background-color: null;
 font-style: inherit;">0.1</span>]</span>
-<span id="cb13-36">)</span></code></pre></div></div>
+<span id="cb13-36">)</span></code></pre></div>
 </div>
 </div>
 </div>
 <p><strong>Here’s how the scoring combines:</strong></p>
 <p><em>Professional-Quality Solution:</em></p>
-<div class="code-copy-outer-scaffold"><div class="sourceCode" id="cb14" style="background: #f1f3f5;"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb14-1"><span class="kw" style="color: #003B4F;
+<div class="sourceCode" id="cb14" style="background: #f1f3f5;"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb14-1"><span class="kw" style="color: #003B4F;
 background-color: null;
 font-weight: bold;
 font-style: inherit;">def</span> find_max(lst):</span>
@@ -1000,11 +1000,11 @@ background-color: null;
 font-weight: bold;
 font-style: inherit;">return</span> <span class="bu" style="color: null;
 background-color: null;
-font-style: inherit;">max</span>(lst)</span></code></pre></div></div>
+font-style: inherit;">max</span>(lst)</span></code></pre></div>
 <p><strong>Scores</strong>: Correctness: <code>1.0</code>, Efficiency: <code>1.0</code>, Safety: <code>1.0</code>, Readability: <code>1.0</code></p>
 <p><strong>Total</strong>: <code>0.4×1.0 + 0.3×1.0 + 0.2×1.0 + 0.1×1.0 = 1.0</code> 🌟🌟🌟 - Ready for production</p>
 <p><em>Clever but Problematic Solution:</em></p>
-<div class="code-copy-outer-scaffold"><div class="sourceCode" id="cb15" style="background: #f1f3f5;"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb15-1"><span class="kw" style="color: #003B4F;
+<div class="sourceCode" id="cb15" style="background: #f1f3f5;"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb15-1"><span class="kw" style="color: #003B4F;
 background-color: null;
 font-weight: bold;
 font-style: inherit;">def</span> find_max(lst):</span>
@@ -1031,7 +1031,7 @@ font-style: inherit;">max</span>(lst[<span class="dv" style="color: #AD0000;
 background-color: null;
 font-style: inherit;">0</span>], find_max(lst[<span class="dv" style="color: #AD0000;
 background-color: null;
-font-style: inherit;">1</span>:]))</span></code></pre></div></div>
+font-style: inherit;">1</span>:]))</span></code></pre></div>
 <p><strong>Scores</strong>: Correctness: <code>0.8</code>, Efficiency: <code>0.3</code>, Safety: <code>0.5</code>, Readability: <code>0.2</code></p>
 <p><strong>Total</strong>: <code>0.4×0.8 + 0.3×0.3 + 0.2×0.5 + 0.1×0.2 = 0.51</code> ⭐ - Works but creates problems</p>
 <p>This comprehensive approach creates agents that think like senior developers, considering not just whether code works, but whether it’s the kind of code you’d want to maintain and extend over time.</p>
@@ -1042,18 +1042,18 @@ font-style: inherit;">1</span>:]))</span></code></pre></div></div>
 <p>Dynamic rubrics adjust expectations based on task difficulty and the agent’s recent performance. For example, an AI coding tutor where tasks vary in complexity. If the agent has been acing complex algorithms, getting basic loops wrong signals regression - the rubric penalizes harder. If the agent has been struggling with basics, any progress on harder problems gets bonus rewards to encourage exploration.</p>
 <p>This enables adaptive evaluation. Harder tasks get more lenient scoring when the agent is still learning them. Easier tasks get stricter scoring as the agent improves. The agent is evaluated fairly based on task context, not just absolute performance.</p>
 <div class="callout callout-style-default callout-note callout-titled" title="Code">
-<div class="callout-header d-flex align-content-center collapsed" data-bs-toggle="collapse" data-bs-target=".callout-6-contents" aria-controls="callout-6" aria-expanded="false" aria-label="Toggle callout">
+<div class="callout-header d-flex align-content-center" data-bs-toggle="collapse" data-bs-target=".callout-6-contents" aria-controls="callout-6" aria-expanded="false" aria-label="Toggle callout">
 <div class="callout-icon-container">
 <i class="callout-icon"></i>
 </div>
 <div class="callout-title-container flex-fill">
-<span class="screen-reader-only">Note</span>Code
+Code
 </div>
 <div class="callout-btn-toggle d-inline-block border-0 py-1 ps-1 pe-0 float-end"><i class="callout-toggle"></i></div>
 </div>
 <div id="callout-6" class="callout-6-contents callout-collapse collapse">
 <div class="callout-body-container callout-body">
-<div class="code-copy-outer-scaffold"><div class="sourceCode" id="cb16" style="background: #f1f3f5;"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb16-1"><span class="kw" style="color: #003B4F;
+<div class="sourceCode" id="cb16" style="background: #f1f3f5;"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb16-1"><span class="kw" style="color: #003B4F;
 background-color: null;
 font-weight: bold;
 font-style: inherit;">def</span> adaptive_scoring(parser, completion, info, state, <span class="op" style="color: #5E5E5E;
@@ -1209,7 +1209,7 @@ font-style: inherit;">1.0</span>, base_score)</span>
 background-color: null;
 font-style: inherit;">=</span> vf.Rubric(funcs<span class="op" style="color: #5E5E5E;
 background-color: null;
-font-style: inherit;">=</span>[adaptive_scoring])</span></code></pre></div></div>
+font-style: inherit;">=</span>[adaptive_scoring])</span></code></pre></div>
 </div>
 </div>
 </div>
@@ -1224,7 +1224,7 @@ font-style: inherit;">=</span>[adaptive_scoring])</span></code></pre></div></div
 <i class="callout-icon"></i>
 </div>
 <div class="callout-title-container flex-fill">
-<span class="screen-reader-only">Important</span>Rubric Design Patterns
+Rubric Design Patterns
 </div>
 </div>
 <div class="callout-body-container callout-body">
@@ -1266,7 +1266,7 @@ font-style: inherit;">=</span>[adaptive_scoring])</span></code></pre></div></div
 <p>Turn 1: Sort names alphabetically.</p>
 <p>Turn 2+: Integrate new names into the sorted list and mark them with “// new name!”. The agent must maintain context across turns.</p>
 <p>Each dataset item stores ground truth answers for each turn, follow-up prompts, and expected outputs:</p>
-<div class="code-copy-outer-scaffold"><div class="sourceCode" id="cb17" style="background: #f1f3f5;"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb17-1">{</span>
+<div class="sourceCode" id="cb17" style="background: #f1f3f5;"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb17-1">{</span>
 <span id="cb17-2">    <span class="st" style="color: #20794D;
 background-color: null;
 font-style: inherit;">"prompt"</span>: <span class="st" style="color: #20794D;
@@ -1308,14 +1308,14 @@ background-color: null;
 font-style: inherit;">"Eve // new name!"</span>]</span>
 <span id="cb17-9">        ]</span>
 <span id="cb17-10">    }</span>
-<span id="cb17-11">}</span></code></pre></div></div>
+<span id="cb17-11">}</span></code></pre></div>
 </section>
 <section id="building-the-environment" class="level3">
 <h3 class="anchored" data-anchor-id="building-the-environment">Building the Environment</h3>
 <p>MultiTurnEnv needs two methods to control the conversation flow:</p>
 <p><strong>1. <code>env_response()</code> - What the environment says after each agent response</strong></p>
 <p>After the agent sorts the initial names, the environment needs to send the next challenge. This method decides what message to send based on how many turns have happened:</p>
-<div class="code-copy-outer-scaffold"><div class="sourceCode" id="cb18" style="background: #f1f3f5;"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb18-1"><span class="cf" style="color: #003B4F;
+<div class="sourceCode" id="cb18" style="background: #f1f3f5;"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb18-1"><span class="cf" style="color: #003B4F;
 background-color: null;
 font-weight: bold;
 font-style: inherit;">async</span> <span class="kw" style="color: #003B4F;
@@ -1393,10 +1393,10 @@ font-style: inherit;">"user"</span>, <span class="st" style="color: #20794D;
 background-color: null;
 font-style: inherit;">"content"</span>: <span class="st" style="color: #20794D;
 background-color: null;
-font-style: inherit;">"Continue"</span>}], state</span></code></pre></div></div>
+font-style: inherit;">"Continue"</span>}], state</span></code></pre></div>
 <p><strong>2. <code>is_completed()</code> - When to stop the conversation</strong></p>
 <p>The environment needs to know when the episode is done. In AlphabetSort, we stop after the agent has responded N times (where N = num_turns):</p>
-<div class="code-copy-outer-scaffold"><div class="sourceCode" id="cb19" style="background: #f1f3f5;"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb19-1"><span class="cf" style="color: #003B4F;
+<div class="sourceCode" id="cb19" style="background: #f1f3f5;"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb19-1"><span class="cf" style="color: #003B4F;
 background-color: null;
 font-weight: bold;
 font-style: inherit;">async</span> <span class="kw" style="color: #003B4F;
@@ -1436,10 +1436,10 @@ font-style: inherit;">&gt;=</span> state[<span class="st" style="color: #20794D;
 background-color: null;
 font-style: inherit;">"info"</span>][<span class="st" style="color: #20794D;
 background-color: null;
-font-style: inherit;">"num_turns"</span>]</span></code></pre></div></div>
+font-style: inherit;">"num_turns"</span>]</span></code></pre></div>
 <p><strong>3. Parsing</strong></p>
 <p>The agent might add reasoning, explanations, or extra text. XMLParser pulls out just the sorted list. Different XML tags signal different task stages:</p>
-<div class="code-copy-outer-scaffold"><div class="sourceCode" id="cb20" style="background: #f1f3f5;"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb20-1">xml_tag <span class="op" style="color: #5E5E5E;
+<div class="sourceCode" id="cb20" style="background: #f1f3f5;"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb20-1">xml_tag <span class="op" style="color: #5E5E5E;
 background-color: null;
 font-style: inherit;">=</span> <span class="st" style="color: #20794D;
 background-color: null;
@@ -1463,10 +1463,10 @@ background-color: null;
 font-style: inherit;">=</span>xml_tag)</span>
 <span id="cb20-3">parsed <span class="op" style="color: #5E5E5E;
 background-color: null;
-font-style: inherit;">=</span> parser.parse_answer(agent_response)</span></code></pre></div></div>
+font-style: inherit;">=</span> parser.parse_answer(agent_response)</span></code></pre></div>
 <p><strong>4. Scoring</strong></p>
 <p>Each turn gets scored independently, then averaged. Using sequence similarity with an exponential penalty (^4) means near-perfect matters - 95% similarity scores 0.81, not 0.95:</p>
-<div class="code-copy-outer-scaffold"><div class="sourceCode" id="cb21" style="background: #f1f3f5;"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb21-1"><span class="kw" style="color: #003B4F;
+<div class="sourceCode" id="cb21" style="background: #f1f3f5;"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb21-1"><span class="kw" style="color: #003B4F;
 background-color: null;
 font-weight: bold;
 font-style: inherit;">def</span> eval_turn(completion, turn_num, state):</span>
@@ -1541,10 +1541,10 @@ font-style: inherit;">**</span> <span class="dv" style="color: #AD0000;
 background-color: null;
 font-style: inherit;">4</span>  <span class="co" style="color: #5E5E5E;
 background-color: null;
-font-style: inherit;"># Penalizes mistakes heavily</span></span></code></pre></div></div>
+font-style: inherit;"># Penalizes mistakes heavily</span></span></code></pre></div>
 <p><strong>5. Rubric</strong></p>
 <p>The rubric needs to score all turns and average them. We do this by creating a reward function that loops through each turn:</p>
-<div class="code-copy-outer-scaffold"><div class="sourceCode" id="cb22" style="background: #f1f3f5;"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb22-1"><span class="kw" style="color: #003B4F;
+<div class="sourceCode" id="cb22" style="background: #f1f3f5;"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb22-1"><span class="kw" style="color: #003B4F;
 background-color: null;
 font-weight: bold;
 font-style: inherit;">def</span> create_weighted_rewards():</span>
@@ -1630,7 +1630,7 @@ font-style: inherit;">=</span>[create_weighted_rewards()], weights<span class="o
 background-color: null;
 font-style: inherit;">=</span>[<span class="fl" style="color: #AD0000;
 background-color: null;
-font-style: inherit;">1.0</span>])</span></code></pre></div></div>
+font-style: inherit;">1.0</span>])</span></code></pre></div>
 </section>
 <section id="key-concepts" class="level3">
 <h3 class="anchored" data-anchor-id="key-concepts">Key Concepts</h3>
@@ -1643,18 +1643,18 @@ font-style: inherit;">1.0</span>])</span></code></pre></div></div>
 <li><strong>Rubric</strong> wraps the scoring logic and gets called during evaluation</li>
 </ul>
 <div class="callout callout-style-default callout-note callout-titled" title="Complete AlphabetSort Environment Code">
-<div class="callout-header d-flex align-content-center collapsed" data-bs-toggle="collapse" data-bs-target=".callout-8-contents" aria-controls="callout-8" aria-expanded="false" aria-label="Toggle callout">
+<div class="callout-header d-flex align-content-center" data-bs-toggle="collapse" data-bs-target=".callout-8-contents" aria-controls="callout-8" aria-expanded="false" aria-label="Toggle callout">
 <div class="callout-icon-container">
 <i class="callout-icon"></i>
 </div>
 <div class="callout-title-container flex-fill">
-<span class="screen-reader-only">Note</span>Complete AlphabetSort Environment Code
+Complete AlphabetSort Environment Code
 </div>
 <div class="callout-btn-toggle d-inline-block border-0 py-1 ps-1 pe-0 float-end"><i class="callout-toggle"></i></div>
 </div>
 <div id="callout-8" class="callout-8-contents callout-collapse collapse">
 <div class="callout-body-container callout-body">
-<div class="code-copy-outer-scaffold"><div class="sourceCode" id="cb23" style="background: #f1f3f5;"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb23-1"><span class="im" style="color: #00769E;
+<div class="sourceCode" id="cb23" style="background: #f1f3f5;"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb23-1"><span class="im" style="color: #00769E;
 background-color: null;
 font-style: inherit;">import</span> difflib</span>
 <span id="cb23-2"><span class="im" style="color: #00769E;
@@ -2277,7 +2277,7 @@ font-style: inherit;">=</span>max_turns)</span>
 <span id="cb23-103">    <span class="cf" style="color: #003B4F;
 background-color: null;
 font-weight: bold;
-font-style: inherit;">return</span> env_instance</span></code></pre></div></div>
+font-style: inherit;">return</span> env_instance</span></code></pre></div>
 </div>
 </div>
 </div>
@@ -2287,7 +2287,7 @@ font-style: inherit;">return</span> env_instance</span></code></pre></div></div>
 <i class="callout-icon"></i>
 </div>
 <div class="callout-title-container flex-fill">
-<span class="screen-reader-only">Note</span>References
+References
 </div>
 </div>
 <div class="callout-body-container callout-body">
@@ -2330,7 +2330,7 @@ font-style: inherit;">return</span> env_instance</span></code></pre></div></div>
 <i class="callout-icon"></i>
 </div>
 <div class="callout-title-container flex-fill">
-<span class="screen-reader-only">Note</span>Base Model vs.&nbsp;Chat Model
+Base Model vs.&nbsp;Chat Model
 </div>
 </div>
 <div class="callout-body-container callout-body">
@@ -2353,7 +2353,7 @@ font-style: inherit;">return</span> env_instance</span></code></pre></div></div>
 <i class="callout-icon"></i>
 </div>
 <div class="callout-title-container flex-fill">
-<span class="screen-reader-only">Warning</span>Problem with PPO
+Problem with PPO
 </div>
 </div>
 <div class="callout-body-container callout-body">
@@ -2370,12 +2370,12 @@ font-style: inherit;">return</span> env_instance</span></code></pre></div></div>
 </ol>
 <p>The advantage is calculated with a simple formula that essentially asks, “How good is this response compared to the average of all other responses in this group?”</p>
 <div class="callout callout-style-default callout-tip callout-titled" title="Calculating the Advantage">
-<div class="callout-header d-flex align-content-center collapsed" data-bs-toggle="collapse" data-bs-target=".callout-3-contents" aria-controls="callout-3" aria-expanded="false" aria-label="Toggle callout">
+<div class="callout-header d-flex align-content-center" data-bs-toggle="collapse" data-bs-target=".callout-3-contents" aria-controls="callout-3" aria-expanded="false" aria-label="Toggle callout">
 <div class="callout-icon-container">
 <i class="callout-icon"></i>
 </div>
 <div class="callout-title-container flex-fill">
-<span class="screen-reader-only">Tip</span>Calculating the Advantage
+Calculating the Advantage
 </div>
 <div class="callout-btn-toggle d-inline-block border-0 py-1 ps-1 pe-0 float-end"><i class="callout-toggle"></i></div>
 </div>
@@ -2389,12 +2389,12 @@ font-style: inherit;">return</span> env_instance</span></code></pre></div></div>
 </div>
 </div>
 <div class="callout callout-style-default callout-note callout-titled" title="A Simple Example on Advantage calculation in GRPO">
-<div class="callout-header d-flex align-content-center collapsed" data-bs-toggle="collapse" data-bs-target=".callout-4-contents" aria-controls="callout-4" aria-expanded="false" aria-label="Toggle callout">
+<div class="callout-header d-flex align-content-center" data-bs-toggle="collapse" data-bs-target=".callout-4-contents" aria-controls="callout-4" aria-expanded="false" aria-label="Toggle callout">
 <div class="callout-icon-container">
 <i class="callout-icon"></i>
 </div>
 <div class="callout-title-container flex-fill">
-<span class="screen-reader-only">Note</span>A Simple Example on Advantage calculation in GRPO
+A Simple Example on Advantage calculation in GRPO
 </div>
 <div class="callout-btn-toggle d-inline-block border-0 py-1 ps-1 pe-0 float-end"><i class="callout-toggle"></i></div>
 </div>
@@ -2462,18 +2462,18 @@ font-style: inherit;">return</span> env_instance</span></code></pre></div></div>
 <h3 class="anchored" data-anchor-id="setting-up-the-environment">1. Setting Up the Environment</h3>
 <p>The first step is to install the necessary libraries. The script provides commands for both a standard Python environment and a Google Colab instance.</p>
 <div class="tabset-margin-container"></div><div class="panel-tabset">
-<ul class="nav nav-tabs"><li class="nav-item"><a class="nav-link active" id="tabset-1-1-tab" data-bs-toggle="tab" data-bs-target="#tabset-1-1" aria-controls="tabset-1-1" aria-selected="true" href="">Standard Environment</a></li><li class="nav-item"><a class="nav-link" id="tabset-1-2-tab" data-bs-toggle="tab" data-bs-target="#tabset-1-2" aria-controls="tabset-1-2" aria-selected="false" href="">Google Colab</a></li></ul>
+<ul class="nav nav-tabs"><li class="nav-item"><a class="nav-link active" id="tabset-1-1-tab" data-bs-toggle="tab" data-bs-target="#tabset-1-1" aria-controls="tabset-1-1" aria-selected="true">Standard Environment</a></li><li class="nav-item"><a class="nav-link" id="tabset-1-2-tab" data-bs-toggle="tab" data-bs-target="#tabset-1-2" aria-controls="tabset-1-2" aria-selected="false">Google Colab</a></li></ul>
 <div class="tab-content">
 <div id="tabset-1-1" class="tab-pane active" aria-labelledby="tabset-1-1-tab">
-<div class="code-copy-outer-scaffold"><div class="sourceCode" id="cb1" style="background: #f1f3f5;"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb1-1"><span class="co" style="color: #5E5E5E;
+<div class="sourceCode" id="cb1" style="background: #f1f3f5;"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb1-1"><span class="co" style="color: #5E5E5E;
 background-color: null;
 font-style: inherit;"># For a standard environment</span></span>
 <span id="cb1-2"><span class="op" style="color: #5E5E5E;
 background-color: null;
-font-style: inherit;">!</span>pip install unsloth vllm</span></code></pre></div></div>
+font-style: inherit;">!</span>pip install unsloth vllm</span></code></pre></div>
 </div>
 <div id="tabset-1-2" class="tab-pane" aria-labelledby="tabset-1-2-tab">
-<div class="code-copy-outer-scaffold"><div class="sourceCode" id="cb2" style="background: #f1f3f5;"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb2-1"><span class="op" style="color: #5E5E5E;
+<div class="sourceCode" id="cb2" style="background: #f1f3f5;"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb2-1"><span class="op" style="color: #5E5E5E;
 background-color: null;
 font-style: inherit;">!</span>pip install <span class="op" style="color: #5E5E5E;
 background-color: null;
@@ -2501,7 +2501,7 @@ font-style: inherit;">!</span>pip install sentencepiece protobuf <span class="st
 background-color: null;
 font-style: inherit;">"datasets&gt;=3.4.1,&lt;4.0.0&gt;"</span> <span class="st" style="color: #20794D;
 background-color: null;
-font-style: inherit;">"huggingface_hub&gt;=0.34.0"</span> hf_transfer</span></code></pre></div></div>
+font-style: inherit;">"huggingface_hub&gt;=0.34.0"</span> hf_transfer</span></code></pre></div>
 </div>
 </div>
 </div>
@@ -2510,7 +2510,7 @@ font-style: inherit;">"huggingface_hub&gt;=0.34.0"</span> hf_transfer</span></co
 <section id="loading-the-model-and-preparing-for-peft" class="level3">
 <h3 class="anchored" data-anchor-id="loading-the-model-and-preparing-for-peft">2. Loading the Model and Preparing for PEFT</h3>
 <p>Next, we load the Qwen3-1.7B-Base model using Unsloth’s <code>FastLanguageModel</code>. We also configure it for PEFT using LoRA (Low-Rank Adaptation).</p>
-<div class="code-copy-outer-scaffold"><div class="sourceCode" id="cb3" style="background: #f1f3f5;"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb3-1"><span class="im" style="color: #00769E;
+<div class="sourceCode" id="cb3" style="background: #f1f3f5;"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb3-1"><span class="im" style="color: #00769E;
 background-color: null;
 font-style: inherit;">from</span> unsloth <span class="im" style="color: #00769E;
 background-color: null;
@@ -2617,14 +2617,14 @@ background-color: null;
 font-style: inherit;">=</span> <span class="dv" style="color: #AD0000;
 background-color: null;
 font-style: inherit;">3407</span>,</span>
-<span id="cb3-26">)</span></code></pre></div></div>
+<span id="cb3-26">)</span></code></pre></div>
 <div class="callout callout-style-default callout-note callout-titled" title="Note">
 <div class="callout-header d-flex align-content-center">
 <div class="callout-icon-container">
 <i class="callout-icon"></i>
 </div>
 <div class="callout-title-container flex-fill">
-<span class="screen-reader-only">Note</span>Note
+Note
 </div>
 </div>
 <div class="callout-body-container callout-body">
@@ -2647,7 +2647,7 @@ font-style: inherit;">3407</span>,</span>
 <i class="callout-icon"></i>
 </div>
 <div class="callout-title-container flex-fill">
-<span class="screen-reader-only">Note</span>What is a Chat Template?
+What is a Chat Template?
 </div>
 </div>
 <div class="callout-body-container callout-body">
@@ -2659,7 +2659,7 @@ font-style: inherit;">3407</span>,</span>
 <section id="step-1-define-the-structure-with-special-tokens" class="level4">
 <h4 class="anchored" data-anchor-id="step-1-define-the-structure-with-special-tokens">Step 1 : Define the Structure with Special Tokens</h4>
 <p>First, we’ll define the special tags that will act as dividers in the model’s output. This allows our reward functions to easily parse the response later.</p>
-<div class="code-copy-outer-scaffold"><div class="sourceCode" id="cb4" style="background: #f1f3f5;"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb4-1"><span class="co" style="color: #5E5E5E;
+<div class="sourceCode" id="cb4" style="background: #f1f3f5;"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb4-1"><span class="co" style="color: #5E5E5E;
 background-color: null;
 font-style: inherit;"># Define the special tokens that will structure the output</span></span>
 <span id="cb4-2">reasoning_start <span class="op" style="color: #5E5E5E;
@@ -2681,9 +2681,9 @@ font-style: inherit;">"&lt;SOLUTION&gt;"</span></span>
 background-color: null;
 font-style: inherit;">=</span> <span class="st" style="color: #20794D;
 background-color: null;
-font-style: inherit;">"&lt;/SOLUTION&gt;"</span></span></code></pre></div></div>
+font-style: inherit;">"&lt;/SOLUTION&gt;"</span></span></code></pre></div>
 <p>Our desired output format will look like this:</p>
-<div class="code-copy-outer-scaffold"><div class="sourceCode" id="cb5" style="background: #f1f3f5;"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb5-1"><span class="op" style="color: #5E5E5E;
+<div class="sourceCode" id="cb5" style="background: #f1f3f5;"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb5-1"><span class="op" style="color: #5E5E5E;
 background-color: null;
 font-style: inherit;">&lt;</span>think<span class="op" style="color: #5E5E5E;
 background-color: null;
@@ -2704,12 +2704,12 @@ background-color: null;
 font-style: inherit;">'s final answer goes here...</span></span>
 <span id="cb5-6"><span class="er" style="color: #AD0000;
 background-color: null;
-font-style: inherit;">&lt;/SOLUTION&gt;</span></span></code></pre></div></div>
+font-style: inherit;">&lt;/SOLUTION&gt;</span></span></code></pre></div>
 </section>
 <section id="step-2-create-the-system-prompt-and-jinja-template" class="level4">
 <h4 class="anchored" data-anchor-id="step-2-create-the-system-prompt-and-jinja-template">Step 2 : Create the System Prompt and Jinja Template</h4>
 <p>Next, we create the instructions for the model. This involves two parts: a high-level system prompt telling the model its role, and a Jinja2 template that programmatically assembles the conversation for the model.</p>
-<div class="code-copy-outer-scaffold"><div class="sourceCode" id="cb6" style="background: #f1f3f5;"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb6-1"><span class="co" style="color: #5E5E5E;
+<div class="sourceCode" id="cb6" style="background: #f1f3f5;"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb6-1"><span class="co" style="color: #5E5E5E;
 background-color: null;
 font-style: inherit;"># Create the system prompt that instructs the model on the format</span></span>
 <span id="cb6-2">system_prompt <span class="op" style="color: #5E5E5E;
@@ -2931,13 +2931,13 @@ font-style: inherit;">"{</span><span class="sc" style="color: #5E5E5E;
 background-color: null;
 font-style: inherit;">% e</span><span class="st" style="color: #20794D;
 background-color: null;
-font-style: inherit;">ndif %}"</span></span></code></pre></div></div>
+font-style: inherit;">ndif %}"</span></span></code></pre></div>
 <p>The Jinja template is the core logic. It loops through the conversation history and formats it correctly. The most important line is the last one: <code>{% if add_generation_prompt %}</code>. This tells the tokenizer to automatically add our <code>&lt;think&gt;</code> token whenever it’s the model’s turn to speak, kicking off the required reasoning process.</p>
 </section>
 <section id="step-3-apply-the-template-to-the-tokenizer" class="level4">
 <h4 class="anchored" data-anchor-id="step-3-apply-the-template-to-the-tokenizer">Step 3: Apply the Template to the Tokenizer</h4>
 <p>Finally, we inject our custom system_prompt into the Jinja template and assign the completed template to our tokenizer. This makes our custom format the official rulebook for all future conversations.</p>
-<div class="code-copy-outer-scaffold"><div class="sourceCode" id="cb7" style="background: #f1f3f5;"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb7-1"><span class="co" style="color: #5E5E5E;
+<div class="sourceCode" id="cb7" style="background: #f1f3f5;"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb7-1"><span class="co" style="color: #5E5E5E;
 background-color: null;
 font-style: inherit;"># Inject our custom system prompt and starting token into the template</span></span>
 <span id="cb7-2">chat_template <span class="op" style="color: #5E5E5E;
@@ -2983,7 +2983,7 @@ background-color: null;
 font-style: inherit;"># Finally, apply this template to the tokenizer</span></span>
 <span id="cb7-7">tokenizer.chat_template <span class="op" style="color: #5E5E5E;
 background-color: null;
-font-style: inherit;">=</span> chat_template</span></code></pre></div></div>
+font-style: inherit;">=</span> chat_template</span></code></pre></div>
 <p>By enforcing this structure, we make the process of rewarding the model for good reasoning both programmatic and reliable. It’s the foundation upon which our entire GRPO training strategy is built.</p>
 </section>
 </section>
@@ -2995,7 +2995,7 @@ font-style: inherit;">=</span> chat_template</span></code></pre></div></div>
 <section id="loading-and-formatting-the-sft-dataset" class="level4">
 <h4 class="anchored" data-anchor-id="loading-and-formatting-the-sft-dataset"><strong>Loading and Formatting the SFT Dataset</strong></h4>
 <p>First, we load the dataset using Hugging Face’s <code>datasets</code> library. We’ll filter it to only include problems with numerical answers to keep things simple for this pre-tuning step.</p>
-<div class="code-copy-outer-scaffold"><div class="sourceCode" id="cb8" style="background: #f1f3f5;"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb8-1"><span class="im" style="color: #00769E;
+<div class="sourceCode" id="cb8" style="background: #f1f3f5;"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb8-1"><span class="im" style="color: #00769E;
 background-color: null;
 font-style: inherit;">from</span> datasets <span class="im" style="color: #00769E;
 background-color: null;
@@ -3048,9 +3048,9 @@ font-style: inherit;">"coerce"</span>).notnull()</span>
 background-color: null;
 font-style: inherit;">=</span> dataset.iloc[np.where(is_number)[<span class="dv" style="color: #AD0000;
 background-color: null;
-font-style: inherit;">0</span>]]</span></code></pre></div></div>
+font-style: inherit;">0</span>]]</span></code></pre></div>
 <p>Next, we create a function to reformat each row into the custom chat structure we defined earlier. This function takes the existing reasoning trace and wraps it with our special tokens (<think>, <solution>, etc.).</solution></think></p>
-<div class="code-copy-outer-scaffold"><div class="sourceCode" id="cb9" style="background: #f1f3f5;"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb9-1"><span class="kw" style="color: #003B4F;
+<div class="sourceCode" id="cb9" style="background: #f1f3f5;"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb9-1"><span class="kw" style="color: #003B4F;
 background-color: null;
 font-weight: bold;
 font-style: inherit;">def</span> format_sft_dataset(x):</span>
@@ -3138,9 +3138,9 @@ font-style: inherit;">apply</span>(format_sft_dataset, axis <span class="op" sty
 background-color: null;
 font-style: inherit;">=</span> <span class="dv" style="color: #AD0000;
 background-color: null;
-font-style: inherit;">1</span>)</span></code></pre></div></div>
+font-style: inherit;">1</span>)</span></code></pre></div>
 <p>Finally, we convert our pandas DataFrame back into a Hugging Face Dataset object, which the SFTTrainer expects.</p>
-<div class="code-copy-outer-scaffold"><div class="sourceCode" id="cb10" style="background: #f1f3f5;"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb10-1"><span class="im" style="color: #00769E;
+<div class="sourceCode" id="cb10" style="background: #f1f3f5;"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb10-1"><span class="im" style="color: #00769E;
 background-color: null;
 font-style: inherit;">from</span> datasets <span class="im" style="color: #00769E;
 background-color: null;
@@ -3161,9 +3161,9 @@ font-style: inherit;">False</span></span>
 <span id="cb10-5">)</span>
 <span id="cb10-6">dataset <span class="op" style="color: #5E5E5E;
 background-color: null;
-font-style: inherit;">=</span> Dataset.from_pandas(dataset)</span></code></pre></div></div>
+font-style: inherit;">=</span> Dataset.from_pandas(dataset)</span></code></pre></div>
 <p>Now that our dataset is prepared, we can pass it to the SFTTrainer.</p>
-<div class="code-copy-outer-scaffold"><div class="sourceCode" id="cb11" style="background: #f1f3f5;"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb11-1"><span class="im" style="color: #00769E;
+<div class="sourceCode" id="cb11" style="background: #f1f3f5;"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb11-1"><span class="im" style="color: #00769E;
 background-color: null;
 font-style: inherit;">import</span> numpy <span class="im" style="color: #00769E;
 background-color: null;
@@ -3278,7 +3278,7 @@ font-style: inherit;"># Use "wandb" for Weights &amp; Biases</span></span>
 <span id="cb11-29"><span class="co" style="color: #5E5E5E;
 background-color: null;
 font-style: inherit;"># Start the pre-finetuning</span></span>
-<span id="cb11-30">trainer.train()</span></code></pre></div></div>
+<span id="cb11-30">trainer.train()</span></code></pre></div>
 <p>We map the dataset to create a “prompt” which includes our system message and the user’s question, and an “answer” which is the expected solution.</p>
 </section>
 </section>
@@ -3288,7 +3288,7 @@ font-style: inherit;"># Start the pre-finetuning</span></span>
 <section id="loading-the-grpo-dataset" class="level4">
 <h4 class="anchored" data-anchor-id="loading-the-grpo-dataset"><strong>Loading the GRPO Dataset</strong></h4>
 <p>For the main RL phase, we’ll use the <code>open-r1/DAPO-Math-17k-Processed</code> dataset. We’ll map it to a simple structure containing the <code>prompt</code> and the ground-truth <code>answer</code>.</p>
-<div class="code-copy-outer-scaffold"><div class="sourceCode" id="cb12" style="background: #f1f3f5;"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb12-1"><span class="im" style="color: #00769E;
+<div class="sourceCode" id="cb12" style="background: #f1f3f5;"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb12-1"><span class="im" style="color: #00769E;
 background-color: null;
 font-style: inherit;">from</span> datasets <span class="im" style="color: #00769E;
 background-color: null;
@@ -3345,14 +3345,14 @@ background-color: null;
 font-style: inherit;">"answer"</span>: x[<span class="st" style="color: #20794D;
 background-color: null;
 font-style: inherit;">"solution"</span>],</span>
-<span id="cb12-13">})</span></code></pre></div></div>
+<span id="cb12-13">})</span></code></pre></div>
 <section id="reward-functions" class="level5">
 <h5 class="anchored" data-anchor-id="reward-functions">Reward Functions</h5>
 <p>The core of GRPO is scoring the model’s generated outputs. We’ll use the four reward functions. The GRPOTrainer sums the scores from all of them to get a final reward for each generation.</p>
 <ol type="1">
 <li><code>match_format_exactly</code>: We give a large positive reward to modelif the response perfectly follows our defined structure. We can use a regular expression to check if the <think>, </think>, <solution>, and </solution> tags appear in the correct order.</li>
 </ol>
-<div class="code-copy-outer-scaffold"><div class="sourceCode" id="cb13" style="background: #f1f3f5;"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb13-1"><span class="im" style="color: #00769E;
+<div class="sourceCode" id="cb13" style="background: #f1f3f5;"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb13-1"><span class="im" style="color: #00769E;
 background-color: null;
 font-style: inherit;">import</span> re</span>
 <span id="cb13-2"></span>
@@ -3478,11 +3478,11 @@ font-style: inherit;">3.0</span></span>
 <span id="cb13-18">    <span class="cf" style="color: #003B4F;
 background-color: null;
 font-weight: bold;
-font-style: inherit;">return</span> scores</span></code></pre></div></div>
+font-style: inherit;">return</span> scores</span></code></pre></div>
 <ol start="2" type="1">
 <li><code>match_format_approximately</code>: If the format isn’t perfect, we should gives partial credit to model. To do this, we check for the presence of each required tag (, <solution>, </solution>) and add a small reward for each one found, while penalizing the model if a tag is missing. This encourages the model to at least try to follow the format.</li>
 </ol>
-<div class="code-copy-outer-scaffold"><div class="sourceCode" id="cb14" style="background: #f1f3f5;"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb14-1"><span class="kw" style="color: #003B4F;
+<div class="sourceCode" id="cb14" style="background: #f1f3f5;"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb14-1"><span class="kw" style="color: #003B4F;
 background-color: null;
 font-weight: bold;
 font-style: inherit;">def</span> match_format_approximately(completions, <span class="op" style="color: #5E5E5E;
@@ -3574,11 +3574,11 @@ font-style: inherit;">1.0</span></span>
 <span id="cb14-11">    <span class="cf" style="color: #003B4F;
 background-color: null;
 font-weight: bold;
-font-style: inherit;">return</span> scores</span></code></pre></div></div>
+font-style: inherit;">return</span> scores</span></code></pre></div>
 <ol start="3" type="1">
 <li><code>check_answer</code>: With this reward function assesses the correctness of the answer. We first tries to extract the text within the <solution> tags. If the format is wrong, we assigns a penalty. If the format is correct, we compare the extracted text to the ground-truth answer, giving a high reward for an exact match. We also provides a partial reward if the numerical ratio between the guessed answer and the true answer is close (e.g., within 10% or 20%).</solution></li>
 </ol>
-<div class="code-copy-outer-scaffold"><div class="sourceCode" id="cb15" style="background: #f1f3f5;"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb15-1"></span>
+<div class="sourceCode" id="cb15" style="background: #f1f3f5;"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb15-1"></span>
 <span id="cb15-2"><span class="kw" style="color: #003B4F;
 background-color: null;
 font-weight: bold;
@@ -3795,11 +3795,11 @@ font-style: inherit;"># Penalize</span></span>
 <span id="cb15-35">    <span class="cf" style="color: #003B4F;
 background-color: null;
 font-weight: bold;
-font-style: inherit;">return</span> scores</span></code></pre></div></div>
+font-style: inherit;">return</span> scores</span></code></pre></div>
 <ol start="4" type="1">
 <li><code>check_numbers</code> - We also provide an additional reward specifically for numerical answers. To do this we extract only the numbers from the solution, clean them up (e.g., removes commas), convert them to floats, and give a positive reward for an exact numerical match or a penalty otherwise.</li>
 </ol>
-<div class="code-copy-outer-scaffold"><div class="sourceCode" id="cb16" style="background: #f1f3f5;"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb16-1">match_numbers <span class="op" style="color: #5E5E5E;
+<div class="sourceCode" id="cb16" style="background: #f1f3f5;"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb16-1">match_numbers <span class="op" style="color: #5E5E5E;
 background-color: null;
 font-style: inherit;">=</span> re.<span class="bu" style="color: null;
 background-color: null;
@@ -4073,7 +4073,7 @@ font-style: inherit;">0</span>)</span>
 <span id="cb16-34">    <span class="cf" style="color: #003B4F;
 background-color: null;
 font-weight: bold;
-font-style: inherit;">return</span> scores</span></code></pre></div></div>
+font-style: inherit;">return</span> scores</span></code></pre></div>
 <p>By combining these reward functions, we create a comprehensive scoring system that encourages the model to generate well-structured and accurate responses.</p>
 </section>
 </section>
@@ -4081,7 +4081,7 @@ font-style: inherit;">return</span> scores</span></code></pre></div></div>
 <section id="configuring-and-launching-the-grpo-trainer" class="level3">
 <h3 class="anchored" data-anchor-id="configuring-and-launching-the-grpo-trainer">6. Configuring and Launching the GRPO Trainer</h3>
 <p>Now, we configure the GRPOTrainer with our model, tokenizer, reward functions, and training arguments.</p>
-<div class="code-copy-outer-scaffold"><div class="sourceCode" id="cb17" style="background: #f1f3f5;"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb17-1"><span class="im" style="color: #00769E;
+<div class="sourceCode" id="cb17" style="background: #f1f3f5;"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb17-1"><span class="im" style="color: #00769E;
 background-color: null;
 font-style: inherit;">from</span> trl <span class="im" style="color: #00769E;
 background-color: null;
@@ -4223,14 +4223,14 @@ background-color: null;
 font-style: inherit;">=</span> <span class="st" style="color: #20794D;
 background-color: null;
 font-style: inherit;">"outputs"</span>,</span>
-<span id="cb17-33">)</span></code></pre></div></div>
+<span id="cb17-33">)</span></code></pre></div>
 <div class="callout callout-style-default callout-tip callout-titled" title="Key GRPOConfig Parameters">
 <div class="callout-header d-flex align-content-center">
 <div class="callout-icon-container">
 <i class="callout-icon"></i>
 </div>
 <div class="callout-title-container flex-fill">
-<span class="screen-reader-only">Tip</span>Key GRPOConfig Parameters
+Key GRPOConfig Parameters
 </div>
 </div>
 <div class="callout-body-container callout-body">
@@ -4240,7 +4240,7 @@ font-style: inherit;">"outputs"</span>,</span>
 </ul>
 </div>
 </div>
-<div class="code-copy-outer-scaffold"><div class="sourceCode" id="cb18" style="background: #f1f3f5;"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb18-1"><span class="co" style="color: #5E5E5E;
+<div class="sourceCode" id="cb18" style="background: #f1f3f5;"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb18-1"><span class="co" style="color: #5E5E5E;
 background-color: null;
 font-style: inherit;"># Initialize the trainer</span></span>
 <span id="cb18-2">trainer <span class="op" style="color: #5E5E5E;
@@ -4271,13 +4271,13 @@ font-style: inherit;">=</span> dataset,</span>
 <span id="cb18-15"><span class="co" style="color: #5E5E5E;
 background-color: null;
 font-style: inherit;"># Start training!</span></span>
-<span id="cb18-16">trainer.train()</span></code></pre></div></div>
+<span id="cb18-16">trainer.train()</span></code></pre></div>
 <p>The GRPOTrainer uses the configuration to fine-tune the model. The goal during training is to see the reward column in the training logs increase over time.</p>
 </section>
 <section id="inference-with-the-fine-tuned-model" class="level3">
 <h3 class="anchored" data-anchor-id="inference-with-the-fine-tuned-model">7. Inference with the Fine-tuned Model</h3>
 <p>After training, we can test our fine-tuned model. First, we save the trained LoRA adapter, then load it during inference.</p>
-<div class="code-copy-outer-scaffold"><div class="sourceCode" id="cb19" style="background: #f1f3f5;"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb19-1"><span class="co" style="color: #5E5E5E;
+<div class="sourceCode" id="cb19" style="background: #f1f3f5;"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb19-1"><span class="co" style="color: #5E5E5E;
 background-color: null;
 font-style: inherit;"># Save the LoRA adapter</span></span>
 <span id="cb19-2">model.save_lora(<span class="st" style="color: #20794D;
@@ -4349,17 +4349,17 @@ font-style: inherit;">0</span>].text</span>
 <span id="cb19-22"></span>
 <span id="cb19-23"><span class="bu" style="color: null;
 background-color: null;
-font-style: inherit;">print</span>(output)</span></code></pre></div></div>
+font-style: inherit;">print</span>(output)</span></code></pre></div>
 <p>The lora_request argument tells the model to use our fine-tuned LoRA adapter for this generation. The output should now follow the reasoning format we defined.</p>
 </section>
 <section id="saving-and-sharing-your-model" class="level3">
 <h3 class="anchored" data-anchor-id="saving-and-sharing-your-model">8. Saving and Sharing Your Model</h3>
 <p>Finally, Unsloth provides convenient methods for saving your fine-tuned model in various formats.</p>
 <div class="tabset-margin-container"></div><div class="panel-tabset">
-<ul class="nav nav-tabs"><li class="nav-item"><a class="nav-link active" id="tabset-2-1-tab" data-bs-toggle="tab" data-bs-target="#tabset-2-1" aria-controls="tabset-2-1" aria-selected="true" href="">Saving as a merged model (float16 or 4-bit):</a></li><li class="nav-item"><a class="nav-link" id="tabset-2-2-tab" data-bs-toggle="tab" data-bs-target="#tabset-2-2" aria-controls="tabset-2-2" aria-selected="false" href="">Saving just the LoRA adapters</a></li><li class="nav-item"><a class="nav-link" id="tabset-2-3-tab" data-bs-toggle="tab" data-bs-target="#tabset-2-3" aria-controls="tabset-2-3" aria-selected="false" href="">Converting to GGUF for llama.cpp</a></li></ul>
+<ul class="nav nav-tabs"><li class="nav-item"><a class="nav-link active" id="tabset-2-1-tab" data-bs-toggle="tab" data-bs-target="#tabset-2-1" aria-controls="tabset-2-1" aria-selected="true">Saving as a merged model (float16 or 4-bit):</a></li><li class="nav-item"><a class="nav-link" id="tabset-2-2-tab" data-bs-toggle="tab" data-bs-target="#tabset-2-2" aria-controls="tabset-2-2" aria-selected="false">Saving just the LoRA adapters</a></li><li class="nav-item"><a class="nav-link" id="tabset-2-3-tab" data-bs-toggle="tab" data-bs-target="#tabset-2-3" aria-controls="tabset-2-3" aria-selected="false">Converting to GGUF for llama.cpp</a></li></ul>
 <div class="tab-content">
 <div id="tabset-2-1" class="tab-pane active" aria-labelledby="tabset-2-1-tab">
-<div class="code-copy-outer-scaffold"><div class="sourceCode" id="cb20" style="background: #f1f3f5;"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb20-1"><span class="co" style="color: #5E5E5E;
+<div class="sourceCode" id="cb20" style="background: #f1f3f5;"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb20-1"><span class="co" style="color: #5E5E5E;
 background-color: null;
 font-style: inherit;"># This combines the base model with the LoRA adapter into a single model.</span></span>
 <span id="cb20-2"></span>
@@ -4392,10 +4392,10 @@ background-color: null;
 font-style: inherit;">=</span> <span class="st" style="color: #20794D;
 background-color: null;
 font-style: inherit;">"merged_4bit"</span></span>
-<span id="cb20-16">)</span></code></pre></div></div>
+<span id="cb20-16">)</span></code></pre></div>
 </div>
 <div id="tabset-2-2" class="tab-pane" aria-labelledby="tabset-2-2-tab">
-<div class="code-copy-outer-scaffold"><div class="sourceCode" id="cb21" style="background: #f1f3f5;"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb21-1"><span class="co" style="color: #5E5E5E;
+<div class="sourceCode" id="cb21" style="background: #f1f3f5;"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb21-1"><span class="co" style="color: #5E5E5E;
 background-color: null;
 font-style: inherit;"># Merge to 16-bit</span></span>
 <span id="cb21-2">model.save_pretrained_merged(</span>
@@ -4423,10 +4423,10 @@ background-color: null;
 font-style: inherit;">=</span> <span class="st" style="color: #20794D;
 background-color: null;
 font-style: inherit;">"merged_4bit"</span></span>
-<span id="cb21-13">)</span></code></pre></div></div>
+<span id="cb21-13">)</span></code></pre></div>
 </div>
 <div id="tabset-2-3" class="tab-pane" aria-labelledby="tabset-2-3-tab">
-<div class="code-copy-outer-scaffold"><div class="sourceCode" id="cb22" style="background: #f1f3f5;"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb22-1"><span class="co" style="color: #5E5E5E;
+<div class="sourceCode" id="cb22" style="background: #f1f3f5;"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb22-1"><span class="co" style="color: #5E5E5E;
 background-color: null;
 font-style: inherit;"># Save to 8-bit Q8_0 GGUF</span></span>
 <span id="cb22-2">model.save_pretrained_gguf(<span class="st" style="color: #20794D;
@@ -4442,7 +4442,7 @@ font-style: inherit;">"model"</span>, tokenizer, quantization_method <span class
 background-color: null;
 font-style: inherit;">=</span> <span class="st" style="color: #20794D;
 background-color: null;
-font-style: inherit;">"q4_k_m"</span>)</span></code></pre></div></div>
+font-style: inherit;">"q4_k_m"</span>)</span></code></pre></div>
 </div>
 </div>
 </div>
@@ -4457,7 +4457,7 @@ font-style: inherit;">"q4_k_m"</span>)</span></code></pre></div></div>
 <i class="callout-icon"></i>
 </div>
 <div class="callout-title-container flex-fill">
-<span class="screen-reader-only">Note</span>Key Takeaways
+Key Takeaways
 </div>
 </div>
 <div class="callout-body-container callout-body">
@@ -4499,26 +4499,26 @@ font-style: inherit;">"q4_k_m"</span>)</span></code></pre></div></div>
 <section id="install-dependencies" class="level2">
 <h2 class="anchored" data-anchor-id="install-dependencies">Install dependencies</h2>
 <p>First thing first let’s get the base libraries, and we are going to do this guide in pytorch. To install it:</p>
-<div class="code-copy-outer-scaffold"><div class="sourceCode" id="cb1" style="background: #f1f3f5;"><pre class="sourceCode bash code-with-copy"><code class="sourceCode bash"><span id="cb1-1"><span class="ex" style="color: null;
+<div class="sourceCode" id="cb1" style="background: #f1f3f5;"><pre class="sourceCode bash code-with-copy"><code class="sourceCode bash"><span id="cb1-1"><span class="ex" style="color: null;
 background-color: null;
 font-style: inherit;">!pip</span> install <span class="at" style="color: #657422;
 background-color: null;
-font-style: inherit;">-qq</span> torch torchvision torchaudio</span></code></pre></div></div>
+font-style: inherit;">-qq</span> torch torchvision torchaudio</span></code></pre></div>
 <p>Next, we’ll need transformers for our models, datasets for data handling, bitsandbytes for quantization, peft for efficient fine-tuning, and accelerate to optimize it all.</p>
-<div class="code-copy-outer-scaffold"><div class="sourceCode" id="cb2" style="background: #f1f3f5;"><pre class="sourceCode bash code-with-copy"><code class="sourceCode bash"><span id="cb2-1"><span class="ex" style="color: null;
+<div class="sourceCode" id="cb2" style="background: #f1f3f5;"><pre class="sourceCode bash code-with-copy"><code class="sourceCode bash"><span id="cb2-1"><span class="ex" style="color: null;
 background-color: null;
 font-style: inherit;">!pip</span> install <span class="at" style="color: #657422;
 background-color: null;
 font-style: inherit;">-U</span> <span class="at" style="color: #657422;
 background-color: null;
-font-style: inherit;">-qq</span> transformers trl datasets bitsandbytes peft accelerate</span></code></pre></div></div>
+font-style: inherit;">-qq</span> transformers trl datasets bitsandbytes peft accelerate</span></code></pre></div>
 <div class="callout callout-style-default callout-tip callout-titled" title="Key Libraries">
 <div class="callout-header d-flex align-content-center">
 <div class="callout-icon-container">
 <i class="callout-icon"></i>
 </div>
 <div class="callout-title-container flex-fill">
-<span class="screen-reader-only">Tip</span>Key Libraries
+Key Libraries
 </div>
 </div>
 <div class="callout-body-container callout-body">
@@ -4536,7 +4536,7 @@ font-style: inherit;">-qq</span> transformers trl datasets bitsandbytes peft acc
 <h2 class="anchored" data-anchor-id="load-and-prepare-the-dataset">Load and Prepare the Dataset</h2>
 <p>With our environment set up, it’s time to load our data. The <a href="https://huggingface.co/datasets/HuggingFaceM4/ChartQA">ChartQA dataset</a> is available on the Hugging Face Hub and is perfect for our task. It contains a wide variety of graphs along with corresponding question-answer pairs, presenting a solid challenge for a model’s VQA capabilities.</p>
 <p>Since our goal is to build a conversational model, we need to format the dataset into a chat-like structure. I’ve crafted a system prompt to guide the model’s behavior:</p>
-<div class="code-copy-outer-scaffold"><div class="sourceCode" id="cb3" style="background: #f1f3f5;"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb3-1">system_prompt<span class="op" style="color: #5E5E5E;
+<div class="sourceCode" id="cb3" style="background: #f1f3f5;"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb3-1">system_prompt<span class="op" style="color: #5E5E5E;
 background-color: null;
 font-style: inherit;">=</span><span class="st" style="color: #20794D;
 background-color: null;
@@ -4561,9 +4561,9 @@ background-color: null;
 font-style: inherit;">Do not explain your answer unless the question needs it to make sense.</span></span>
 <span id="cb3-8"><span class="st" style="color: #20794D;
 background-color: null;
-font-style: inherit;">"""</span></span></code></pre></div></div>
+font-style: inherit;">"""</span></span></code></pre></div>
 <p>Referring to the chat template described in the <a href="https://huggingface.co/google/gemma-3-4b-it">Gemma 3 model card</a>, we can create a formatting function that structures each sample into a conversation with <code>system</code>, <code>user</code>, and <code>assistant</code> roles.</p>
-<div class="code-copy-outer-scaffold"><div class="sourceCode" id="cb4" style="background: #f1f3f5;"><pre class="sourceCode javascript code-with-copy"><code class="sourceCode javascript"><span id="cb4-1">def <span class="fu" style="color: #4758AB;
+<div class="sourceCode" id="cb4" style="background: #f1f3f5;"><pre class="sourceCode javascript code-with-copy"><code class="sourceCode javascript"><span id="cb4-1">def <span class="fu" style="color: #4758AB;
 background-color: null;
 font-style: inherit;">format_data</span>(sample)<span class="op" style="color: #5E5E5E;
 background-color: null;
@@ -4706,21 +4706,21 @@ font-style: inherit;">return</span> [system_message<span class="op" style="color
 background-color: null;
 font-style: inherit;">,</span> user_message<span class="op" style="color: #5E5E5E;
 background-color: null;
-font-style: inherit;">,</span> assistant_message]</span></code></pre></div></div>
+font-style: inherit;">,</span> assistant_message]</span></code></pre></div>
 <div class="callout callout-style-default callout-note callout-titled" title="Note">
 <div class="callout-header d-flex align-content-center">
 <div class="callout-icon-container">
 <i class="callout-icon"></i>
 </div>
 <div class="callout-title-container flex-fill">
-<span class="screen-reader-only">Note</span>Note
+Note
 </div>
 </div>
 <div class="callout-body-container callout-body">
 <p>This guide is compute-intensive, so we’ll only use a small fraction (10%) of the dataset for demonstration. For a production model, you would want to fine-tune on the full dataset.</p>
 </div>
 </div>
-<div class="code-copy-outer-scaffold"><div class="sourceCode" id="cb5" style="background: #f1f3f5;"><pre class="sourceCode javascript code-with-copy"><code class="sourceCode javascript"><span id="cb5-1"><span class="im" style="color: #00769E;
+<div class="sourceCode" id="cb5" style="background: #f1f3f5;"><pre class="sourceCode javascript code-with-copy"><code class="sourceCode javascript"><span id="cb5-1"><span class="im" style="color: #00769E;
 background-color: null;
 font-style: inherit;">from</span> datasets <span class="im" style="color: #00769E;
 background-color: null;
@@ -4753,9 +4753,9 @@ background-color: null;
 font-style: inherit;">,</span> <span class="st" style="color: #20794D;
 background-color: null;
 font-style: inherit;">"test[:10%]"</span>]</span>
-<span id="cb5-6">)</span></code></pre></div></div>
+<span id="cb5-6">)</span></code></pre></div>
 <p>Now, let’s format the data using the chatbot structure.</p>
-<div class="code-copy-outer-scaffold"><div class="sourceCode" id="cb6" style="background: #f1f3f5;"><pre class="sourceCode javascript code-with-copy"><code class="sourceCode javascript"><span id="cb6-1">train_dataset <span class="op" style="color: #5E5E5E;
+<div class="sourceCode" id="cb6" style="background: #f1f3f5;"><pre class="sourceCode javascript code-with-copy"><code class="sourceCode javascript"><span id="cb6-1">train_dataset <span class="op" style="color: #5E5E5E;
 background-color: null;
 font-style: inherit;">=</span> [<span class="fu" style="color: #4758AB;
 background-color: null;
@@ -4787,7 +4787,7 @@ font-weight: bold;
 font-style: inherit;">for</span> sample <span class="kw" style="color: #003B4F;
 background-color: null;
 font-weight: bold;
-font-style: inherit;">in</span> test_dataset]</span></code></pre></div></div>
+font-style: inherit;">in</span> test_dataset]</span></code></pre></div>
 </section>
 <section id="establish-a-baseline" class="level2">
 <h2 class="anchored" data-anchor-id="establish-a-baseline">Establish a Baseline</h2>
@@ -4799,7 +4799,7 @@ font-style: inherit;">in</span> test_dataset]</span></code></pre></div></div>
 <figcaption><a href="https://miro.medium.com/v2/resize:fit:1400/format:webp/1*Fd6h5380Ca7myTcfUYNlgA.png">Gemma 3 Architrecture</a></figcaption>
 </figure>
 </div>
-<div class="code-copy-outer-scaffold"><div class="sourceCode" id="cb7" style="background: #f1f3f5;"><pre class="sourceCode javascript code-with-copy"><code class="sourceCode javascript"><span id="cb7-1"><span class="im" style="color: #00769E;
+<div class="sourceCode" id="cb7" style="background: #f1f3f5;"><pre class="sourceCode javascript code-with-copy"><code class="sourceCode javascript"><span id="cb7-1"><span class="im" style="color: #00769E;
 background-color: null;
 font-style: inherit;">import</span> torch</span>
 <span id="cb7-2"><span class="im" style="color: #00769E;
@@ -4845,9 +4845,9 @@ font-style: inherit;">.</span><span class="fu" style="color: #4758AB;
 background-color: null;
 font-style: inherit;">from_pretrained</span>(<span class="st" style="color: #20794D;
 background-color: null;
-font-style: inherit;">"google/gemma-3-4b-it"</span>)</span></code></pre></div></div>
+font-style: inherit;">"google/gemma-3-4b-it"</span>)</span></code></pre></div>
 <p>Next, let’s create a helper function to streamline inference. This function will take a data sample, process it, and generate the model’s response.</p>
-<div class="code-copy-outer-scaffold"><div class="sourceCode" id="cb8" style="background: #f1f3f5;"><pre class="sourceCode javascript code-with-copy"><code class="sourceCode javascript"><span id="cb8-1"></span>
+<div class="sourceCode" id="cb8" style="background: #f1f3f5;"><pre class="sourceCode javascript code-with-copy"><code class="sourceCode javascript"><span id="cb8-1"></span>
 <span id="cb8-2">def <span class="fu" style="color: #4758AB;
 background-color: null;
 font-style: inherit;">generate_text_from_sample</span>(model<span class="op" style="color: #5E5E5E;
@@ -5017,23 +5017,23 @@ background-color: null;
 font-weight: bold;
 font-style: inherit;">return</span> output_text[<span class="dv" style="color: #AD0000;
 background-color: null;
-font-style: inherit;">0</span>]</span></code></pre></div></div>
+font-style: inherit;">0</span>]</span></code></pre></div>
 <p>Let’s test the base model on a sample from our training set.</p>
-<div class="code-copy-outer-scaffold"><div class="sourceCode" id="cb9" style="background: #f1f3f5;"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb9-1">output <span class="op" style="color: #5E5E5E;
+<div class="sourceCode" id="cb9" style="background: #f1f3f5;"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb9-1">output <span class="op" style="color: #5E5E5E;
 background-color: null;
 font-style: inherit;">=</span> generate_text_from_sample(model, processor, train_dataset[<span class="dv" style="color: #AD0000;
 background-color: null;
 font-style: inherit;">0</span>])</span>
 <span id="cb9-2"><span class="bu" style="color: null;
 background-color: null;
-font-style: inherit;">print</span>(output)</span></code></pre></div></div>
+font-style: inherit;">print</span>(output)</span></code></pre></div>
 <div class="callout callout-style-default callout-note callout-titled" title="Note">
 <div class="callout-header d-flex align-content-center">
 <div class="callout-icon-container">
 <i class="callout-icon"></i>
 </div>
 <div class="callout-title-container flex-fill">
-<span class="screen-reader-only">Note</span>Note
+Note
 </div>
 </div>
 <div class="callout-body-container callout-body">
@@ -5054,7 +5054,7 @@ font-style: inherit;">print</span>(output)</span></code></pre></div></div>
 <section id="loading-the-quantized-model" class="level3">
 <h3 class="anchored" data-anchor-id="loading-the-quantized-model">Loading the Quantized Model</h3>
 <p>First, we’ll create a <code>BitsAndBytesConfig</code> to tell the <code>transformers</code> library to load our model in 4-bit precision.</p>
-<div class="code-copy-outer-scaffold"><div class="sourceCode" id="cb10" style="background: #f1f3f5;"><pre class="sourceCode javascript code-with-copy"><code class="sourceCode javascript"><span id="cb10-1"><span class="im" style="color: #00769E;
+<div class="sourceCode" id="cb10" style="background: #f1f3f5;"><pre class="sourceCode javascript code-with-copy"><code class="sourceCode javascript"><span id="cb10-1"><span class="im" style="color: #00769E;
 background-color: null;
 font-style: inherit;">from</span> transformers <span class="im" style="color: #00769E;
 background-color: null;
@@ -5131,14 +5131,14 @@ font-style: inherit;">.</span><span class="fu" style="color: #4758AB;
 background-color: null;
 font-style: inherit;">from_pretrained</span>(<span class="st" style="color: #20794D;
 background-color: null;
-font-style: inherit;">"google/gemma-3-4b-it"</span>)</span></code></pre></div></div>
+font-style: inherit;">"google/gemma-3-4b-it"</span>)</span></code></pre></div>
 <div class="callout callout-style-default callout-tip callout-titled" title="Key Parameters in `BitsAndBytesConfig`">
 <div class="callout-header d-flex align-content-center">
 <div class="callout-icon-container">
 <i class="callout-icon"></i>
 </div>
 <div class="callout-title-container flex-fill">
-<span class="screen-reader-only">Tip</span>Key Parameters in <code>BitsAndBytesConfig</code>
+Key Parameters in <code>BitsAndBytesConfig</code>
 </div>
 </div>
 <div class="callout-body-container callout-body">
@@ -5154,7 +5154,7 @@ font-style: inherit;">"google/gemma-3-4b-it"</span>)</span></code></pre></div></
 <section id="setting-up-the-lora-configuration" class="level3">
 <h3 class="anchored" data-anchor-id="setting-up-the-lora-configuration">Setting Up the LoRA Configuration</h3>
 <p>Next, we define our <code>LoraConfig</code>. This tells PEFT where to inject the adapter layers and how to configure them.</p>
-<div class="code-copy-outer-scaffold"><div class="sourceCode" id="cb11" style="background: #f1f3f5;"><pre class="sourceCode javascript code-with-copy"><code class="sourceCode javascript"><span id="cb11-1"></span>
+<div class="sourceCode" id="cb11" style="background: #f1f3f5;"><pre class="sourceCode javascript code-with-copy"><code class="sourceCode javascript"><span id="cb11-1"></span>
 <span id="cb11-2"><span class="im" style="color: #00769E;
 background-color: null;
 font-style: inherit;">from</span> peft <span class="im" style="color: #00769E;
@@ -5220,14 +5220,14 @@ font-style: inherit;">=</span> <span class="fu" style="color: #4758AB;
 background-color: null;
 font-style: inherit;">get_peft_model</span>(model<span class="op" style="color: #5E5E5E;
 background-color: null;
-font-style: inherit;">,</span> peft_config)</span></code></pre></div></div>
+font-style: inherit;">,</span> peft_config)</span></code></pre></div>
 <div class="callout callout-style-default callout-tip callout-titled" title="Key Parameters in `LoraConfig`">
 <div class="callout-header d-flex align-content-center">
 <div class="callout-icon-container">
 <i class="callout-icon"></i>
 </div>
 <div class="callout-title-container flex-fill">
-<span class="screen-reader-only">Tip</span>Key Parameters in <code>LoraConfig</code>
+Key Parameters in <code>LoraConfig</code>
 </div>
 </div>
 <div class="callout-body-container callout-body">
@@ -5243,7 +5243,7 @@ font-style: inherit;">,</span> peft_config)</span></code></pre></div></div>
 <section id="configuring-the-trainer" class="level3">
 <h3 class="anchored" data-anchor-id="configuring-the-trainer">Configuring the Trainer</h3>
 <p>Now, we configure the training process using <code>SFTConfig</code> from the TRL library. This class holds all the hyperparameters for our supervised fine-tuning run.</p>
-<div class="code-copy-outer-scaffold"><div class="sourceCode" id="cb12" style="background: #f1f3f5;"><pre class="sourceCode javascript code-with-copy"><code class="sourceCode javascript"><span id="cb12-1"></span>
+<div class="sourceCode" id="cb12" style="background: #f1f3f5;"><pre class="sourceCode javascript code-with-copy"><code class="sourceCode javascript"><span id="cb12-1"></span>
 <span id="cb12-2"><span class="im" style="color: #00769E;
 background-color: null;
 font-style: inherit;">from</span> trl <span class="im" style="color: #00769E;
@@ -5456,14 +5456,14 @@ font-style: inherit;">.</span><span class="at" style="color: #657422;
 background-color: null;
 font-style: inherit;">remove_unused_columns</span> <span class="op" style="color: #5E5E5E;
 background-color: null;
-font-style: inherit;">=</span> False</span></code></pre></div></div>
+font-style: inherit;">=</span> False</span></code></pre></div>
 <div class="callout callout-style-default callout-tip callout-titled" title="Key Parameters in `SFTConfig`">
 <div class="callout-header d-flex align-content-center">
 <div class="callout-icon-container">
 <i class="callout-icon"></i>
 </div>
 <div class="callout-title-container flex-fill">
-<span class="screen-reader-only">Tip</span>Key Parameters in <code>SFTConfig</code>
+Key Parameters in <code>SFTConfig</code>
 </div>
 </div>
 <div class="callout-body-container callout-body">
@@ -5482,7 +5482,7 @@ font-style: inherit;">=</span> False</span></code></pre></div></div>
 <section id="creating-a-data-collator" class="level3">
 <h3 class="anchored" data-anchor-id="creating-a-data-collator">Creating a Data Collator</h3>
 <p>We need one final piece before training: a data collator. This function takes a list of samples from our dataset and batches them together, ensuring they are correctly padded and formatted for the model. It’s also responsible for creating the <code>labels</code> for our language modeling task.</p>
-<div class="code-copy-outer-scaffold"><div class="sourceCode" id="cb13" style="background: #f1f3f5;"><pre class="sourceCode javascript code-with-copy"><code class="sourceCode javascript"><span id="cb13-1">image_token_id <span class="op" style="color: #5E5E5E;
+<div class="sourceCode" id="cb13" style="background: #f1f3f5;"><pre class="sourceCode javascript code-with-copy"><code class="sourceCode javascript"><span id="cb13-1">image_token_id <span class="op" style="color: #5E5E5E;
 background-color: null;
 font-style: inherit;">=</span> processor<span class="op" style="color: #5E5E5E;
 background-color: null;
@@ -5638,14 +5638,14 @@ font-style: inherit;">=</span> labels</span>
 <span id="cb13-21">    <span class="cf" style="color: #003B4F;
 background-color: null;
 font-weight: bold;
-font-style: inherit;">return</span> batch</span></code></pre></div></div>
+font-style: inherit;">return</span> batch</span></code></pre></div>
 <div class="callout callout-style-default callout-tip callout-titled" title="What is a Data Collator?">
 <div class="callout-header d-flex align-content-center">
 <div class="callout-icon-container">
 <i class="callout-icon"></i>
 </div>
 <div class="callout-title-container flex-fill">
-<span class="screen-reader-only">Tip</span>What is a Data Collator?
+What is a Data Collator?
 </div>
 </div>
 <div class="callout-body-container callout-body">
@@ -5661,7 +5661,7 @@ font-style: inherit;">return</span> batch</span></code></pre></div></div>
 <section id="launching-the-training" class="level3">
 <h3 class="anchored" data-anchor-id="launching-the-training">Launching the Training</h3>
 <p>Now, we can instantiate the <code>SFTTrainer</code> from TRL. It elegantly wraps the entire training loop, handling everything from data collation to model saving.</p>
-<div class="code-copy-outer-scaffold"><div class="sourceCode" id="cb14" style="background: #f1f3f5;"><pre class="sourceCode javascript code-with-copy"><code class="sourceCode javascript"><span id="cb14-1"></span>
+<div class="sourceCode" id="cb14" style="background: #f1f3f5;"><pre class="sourceCode javascript code-with-copy"><code class="sourceCode javascript"><span id="cb14-1"></span>
 <span id="cb14-2"><span class="im" style="color: #00769E;
 background-color: null;
 font-style: inherit;">from</span> trl <span class="im" style="color: #00769E;
@@ -5712,14 +5712,14 @@ background-color: null;
 font-style: inherit;">tokenizer</span><span class="op" style="color: #5E5E5E;
 background-color: null;
 font-style: inherit;">,</span></span>
-<span id="cb14-12">)</span></code></pre></div></div>
+<span id="cb14-12">)</span></code></pre></div>
 <div class="callout callout-style-default callout-tip callout-titled" title="Why pass `model` and `peft_config` separately?">
 <div class="callout-header d-flex align-content-center">
 <div class="callout-icon-container">
 <i class="callout-icon"></i>
 </div>
 <div class="callout-title-container flex-fill">
-<span class="screen-reader-only">Tip</span>Why pass <code>model</code> and <code>peft_config</code> separately?
+Why pass <code>model</code> and <code>peft_config</code> separately?
 </div>
 </div>
 <div class="callout-body-container callout-body">
@@ -5727,7 +5727,7 @@ font-style: inherit;">,</span></span>
 </div>
 </div>
 <p>To start training, all we need to do is call one method:</p>
-<div class="code-copy-outer-scaffold"><div class="sourceCode" id="cb15" style="background: #f1f3f5;"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb15-1">trainer.train()</span></code></pre></div></div>
+<div class="sourceCode" id="cb15" style="background: #f1f3f5;"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb15-1">trainer.train()</span></code></pre></div>
 <p>This will kick off the training process, and once training is complete, the best adapter checkpoint will be saved in the <code>output_dir</code> we specified.</p>
 </section>
 </section>
@@ -5735,7 +5735,7 @@ font-style: inherit;">,</span></span>
 <h2 class="anchored" data-anchor-id="test-the-fine-tuned-model">Test the Fine-Tuned Model</h2>
 <p>We’re done! Now for the moment of truth. Let’s load our fine-tuned adapter and see if the model’s performance has improved.</p>
 <p>First, we reload the original 4-bit quantized model. Then, we use the <code>load_adapter</code> method to attach our trained LoRA weights.</p>
-<div class="code-copy-outer-scaffold"><div class="sourceCode" id="cb16" style="background: #f1f3f5;"><pre class="sourceCode javascript code-with-copy"><code class="sourceCode javascript"><span id="cb16-1">model <span class="op" style="color: #5E5E5E;
+<div class="sourceCode" id="cb16" style="background: #f1f3f5;"><pre class="sourceCode javascript code-with-copy"><code class="sourceCode javascript"><span id="cb16-1">model <span class="op" style="color: #5E5E5E;
 background-color: null;
 font-style: inherit;">=</span> Gemma3ForConditionalGeneration<span class="op" style="color: #5E5E5E;
 background-color: null;
@@ -5774,9 +5774,9 @@ font-style: inherit;">.</span><span class="fu" style="color: #4758AB;
 background-color: null;
 font-style: inherit;">load_adapter</span>(<span class="st" style="color: #20794D;
 background-color: null;
-font-style: inherit;">"gemma3-vqa-finetuned"</span>)</span></code></pre></div></div>
+font-style: inherit;">"gemma3-vqa-finetuned"</span>)</span></code></pre></div>
 <p>Let’s pick a sample from the test set that the model hasn’t seen before.</p>
-<div class="code-copy-outer-scaffold"><div class="sourceCode" id="cb17" style="background: #f1f3f5;"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb17-1">test_sample <span class="op" style="color: #5E5E5E;
+<div class="sourceCode" id="cb17" style="background: #f1f3f5;"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb17-1">test_sample <span class="op" style="color: #5E5E5E;
 background-color: null;
 font-style: inherit;">=</span> test_dataset[<span class="dv" style="color: #AD0000;
 background-color: null;
@@ -5802,17 +5802,17 @@ font-style: inherit;">'content'</span>][<span class="dv" style="color: #AD0000;
 background-color: null;
 font-style: inherit;">0</span>][<span class="st" style="color: #20794D;
 background-color: null;
-font-style: inherit;">'image'</span>]</span></code></pre></div></div>
+font-style: inherit;">'image'</span>]</span></code></pre></div>
 <p><img src="https://www.heyyanshuman.com/posts/assets/finetune_vlm/chart.jpg" class="img-fluid"></p>
 <p>And now, let’s generate an answer with our fine-tuned model.</p>
-<div class="code-copy-outer-scaffold"><div class="sourceCode" id="cb18" style="background: #f1f3f5;"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb18-1">output <span class="op" style="color: #5E5E5E;
+<div class="sourceCode" id="cb18" style="background: #f1f3f5;"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb18-1">output <span class="op" style="color: #5E5E5E;
 background-color: null;
 font-style: inherit;">=</span> generate_text_from_sample(model, processor, test_sample)</span>
 <span id="cb18-2"><span class="bu" style="color: null;
 background-color: null;
 font-style: inherit;">print</span>(<span class="st" style="color: #20794D;
 background-color: null;
-font-style: inherit;">"Model Answer:"</span>, output)</span></code></pre></div></div>
+font-style: inherit;">"Model Answer:"</span>, output)</span></code></pre></div>
 <p>You should now see a much more accurate and direct answer to the question, demonstrating the power of fine-tuning. We’ve successfully taught the model a new skill—interpreting charts—without the prohibitive cost of a full fine-tune.</p>
 </section>
 <section id="references" class="level2">
@@ -5860,7 +5860,7 @@ font-style: inherit;">"Model Answer:"</span>, output)</span></code></pre></div><
 <i class="callout-icon"></i>
 </div>
 <div class="callout-title-container flex-fill">
-<span class="screen-reader-only">Note</span>Analogy
+Analogy
 </div>
 </div>
 <div class="callout-body-container callout-body">
@@ -5882,7 +5882,7 @@ font-style: inherit;">"Model Answer:"</span>, output)</span></code></pre></div><
 <i class="callout-icon"></i>
 </div>
 <div class="callout-title-container flex-fill">
-<span class="screen-reader-only">Note</span>Analogy
+Analogy
 </div>
 </div>
 <div class="callout-body-container callout-body">
@@ -6002,7 +6002,7 @@ font-style: inherit;">"Model Answer:"</span>, output)</span></code></pre></div><
 <p>Now let’s make our agent! Since the goal of our repository is to build several different kinds of agents from scratch, we need a clean, reusable structure.</p>
 <p><strong>Why a Base Class?</strong> We use a base class to define a common “contract” or interface. This ensures all our agents, whether for Text-to-SQL or another task, have a consistent design. It’s like saying every vehicle must have a run method, even if a car and a motorcycle implement it differently. This makes our project scalable and easy to understand.</p>
 <p>We’ll define a simple Agent base class in agents/base_agent.py that requires every agent to have a run method.</p>
-<div class="code-copy-outer-scaffold"><div class="sourceCode" id="cb1" style="background: #f1f3f5;"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb1-1"><span class="co" style="color: #5E5E5E;
+<div class="sourceCode" id="cb1" style="background: #f1f3f5;"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb1-1"><span class="co" style="color: #5E5E5E;
 background-color: null;
 font-style: inherit;"># agents/base_agent.py</span></span>
 <span id="cb1-2"><span class="im" style="color: #00769E;
@@ -6081,7 +6081,7 @@ background-color: null;
 font-weight: bold;
 font-style: inherit;">return</span> <span class="va" style="color: #111111;
 background-color: null;
-font-style: inherit;">self</span>._internal_name</span></code></pre></div></div>
+font-style: inherit;">self</span>._internal_name</span></code></pre></div>
 <p>Our <strong>Text2SQLAgent</strong> will inherit from this, guaranteeing it fits into our agent framework.</p>
 </section>
 <section id="the-core-logic-of-our-text2sql-agent" class="level2">
@@ -6099,7 +6099,7 @@ font-style: inherit;">self</span>._internal_name</span></code></pre></div></div>
 <li><p>The Constraints: “Output ONLY the SQL query. No extra text or markdown.”</p></li>
 </ul>
 <p>We then wrap this prompt and send it to the Gemini API using Google’s Python SDK.</p>
-<div class="code-copy-outer-scaffold"><div class="sourceCode" id="cb2" style="background: #f1f3f5;"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb2-1"><span class="co" style="color: #5E5E5E;
+<div class="sourceCode" id="cb2" style="background: #f1f3f5;"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb2-1"><span class="co" style="color: #5E5E5E;
 background-color: null;
 font-style: inherit;"># A conceptual look at the prompt structure inside the _generate_sql_with_gemini method</span></span>
 <span id="cb2-2"></span>
@@ -6176,7 +6176,7 @@ font-style: inherit;">"</span></span>
 background-color: null;
 font-style: inherit;">=</span> <span class="va" style="color: #111111;
 background-color: null;
-font-style: inherit;">self</span>.gemini_model.generate_content(full_prompt_for_gemini, ...)</span></code></pre></div></div>
+font-style: inherit;">self</span>.gemini_model.generate_content(full_prompt_for_gemini, ...)</span></code></pre></div>
 <p>Full code can be found <a href="https://github.com/kanpuriyanawab/awesome-ai-agents/blob/main/agents/text2sql/agent.py">here</a>.</p>
 <ol start="3" type="1">
 <li><strong>Executing the Query</strong> Once Gemini returns what we hope is a valid SQL query, our agent needs to run it. A method _execute_sql_query connects to the database, executes the string, and fetches the results.</li>
@@ -6509,7 +6509,7 @@ font-style: inherit;">self</span>.gemini_model.generate_content(full_prompt_for_
 <p><span class="hidden quarto-markdown-envelope-contents" data-render-id="cXVhcnRvLWludC1zaWRlYmFyLXRpdGxl">Anshuman Mishra</span> <span class="hidden quarto-markdown-envelope-contents" data-render-id="cXVhcnRvLWludC1uYXZiYXItdGl0bGU=">Anshuman Mishra</span></p>
 </div>
 <div id="quarto-meta-markdown" class="hidden">
-<p><span class="hidden quarto-markdown-envelope-contents" data-render-id="cXVhcnRvLW1ldGF0aXRsZQ==">Generating High-quality Images with SD.Next, HuggingFace Diffusers and W&amp;B – Anshuman Mishra</span> <span class="hidden quarto-markdown-envelope-contents" data-render-id="cXVhcnRvLXR3aXR0ZXJjYXJkdGl0bGU=">Generating High-quality Images with SD.Next, HuggingFace Diffusers and W&amp;B – Anshuman Mishra</span> <span class="hidden quarto-markdown-envelope-contents" data-render-id="cXVhcnRvLW9nY2FyZHRpdGxl">Generating High-quality Images with SD.Next, HuggingFace Diffusers and W&amp;B – Anshuman Mishra</span> <span class="hidden quarto-markdown-envelope-contents" data-render-id="cXVhcnRvLW1ldGFzaXRlbmFtZQ==">Anshuman Mishra</span> <span class="hidden quarto-markdown-envelope-contents" data-render-id="cXVhcnRvLXR3aXR0ZXJjYXJkZGVzYw==">A walkthrough of using SD.Next (Advanced webUI for Stable Diffusion) for generating high-quality images using HuggingFace Diffusers and managing experiments with W&amp;B.</span> <span class="hidden quarto-markdown-envelope-contents" data-render-id="cXVhcnRvLW9nY2FyZGRkZXNj">A walkthrough of using SD.Next (Advanced webUI for Stable Diffusion) for generating high-quality images using HuggingFace Diffusers and managing experiments with W&amp;B.</span> <span class="hidden quarto-markdown-envelope-contents" data-render-id="cXVhcnRvLW1ldGFzaXRlZGVzYw==">Machine learning engineer building AI systems, open source software, and essays.</span></p>
+<p><span class="hidden quarto-markdown-envelope-contents" data-render-id="cXVhcnRvLW1ldGF0aXRsZQ==">Generating High-quality Images with SD.Next, HuggingFace Diffusers and W&amp;B – Anshuman Mishra</span> <span class="hidden quarto-markdown-envelope-contents" data-render-id="cXVhcnRvLXR3aXR0ZXJjYXJkdGl0bGU=">Generating High-quality Images with SD.Next, HuggingFace Diffusers and W&amp;B – Anshuman Mishra</span> <span class="hidden quarto-markdown-envelope-contents" data-render-id="cXVhcnRvLW9nY2FyZHRpdGxl">Generating High-quality Images with SD.Next, HuggingFace Diffusers and W&amp;B – Anshuman Mishra</span> <span class="hidden quarto-markdown-envelope-contents" data-render-id="cXVhcnRvLW1ldGFzaXRlbmFtZQ==">Anshuman Mishra</span> <span class="hidden quarto-markdown-envelope-contents" data-render-id="cXVhcnRvLXR3aXR0ZXJjYXJkZGVzYw==">A walkthrough of using SD.Next (Advanced webUI for Stable Diffusion) for generating high-quality images using HuggingFace Diffusers and managing experiments with W&amp;B.</span> <span class="hidden quarto-markdown-envelope-contents" data-render-id="cXVhcnRvLW9nY2FyZGRkZXNj">A walkthrough of using SD.Next (Advanced webUI for Stable Diffusion) for generating high-quality images using HuggingFace Diffusers and managing experiments with W&amp;B.</span></p>
 </div>
 
 </main> <!-- /main -->
@@ -6564,14 +6564,13 @@ font-style: inherit;">self</span>.gemini_model.generate_content(full_prompt_for_
       e.clearSelection();
     }
     const getTextToCopy = function(trigger) {
-      const outerScaffold = trigger.parentElement.cloneNode(true);
-      const codeEl = outerScaffold.querySelector('code');
-      for (const childEl of codeEl.children) {
-        if (isCodeAnnotation(childEl)) {
-          childEl.remove();
+        const codeEl = trigger.previousElementSibling.cloneNode(true);
+        for (const childEl of codeEl.children) {
+          if (isCodeAnnotation(childEl)) {
+            childEl.remove();
+          }
         }
-      }
-      return codeEl.innerText;
+        return codeEl.innerText;
     }
     const clipboard = new window.ClipboardJS('.code-copy-button:not([data-in-quarto-modal])', {
       text: getTextToCopy
@@ -6938,7 +6937,7 @@ font-style: inherit;">self</span>.gemini_model.generate_content(full_prompt_for_
 <p><span class="hidden quarto-markdown-envelope-contents" data-render-id="cXVhcnRvLWludC1zaWRlYmFyLXRpdGxl">Anshuman Mishra</span> <span class="hidden quarto-markdown-envelope-contents" data-render-id="cXVhcnRvLWludC1uYXZiYXItdGl0bGU=">Anshuman Mishra</span></p>
 </div>
 <div id="quarto-meta-markdown" class="hidden">
-<p><span class="hidden quarto-markdown-envelope-contents" data-render-id="cXVhcnRvLW1ldGF0aXRsZQ==">Predicting Semantic Similarity using KerasNLP – Anshuman Mishra</span> <span class="hidden quarto-markdown-envelope-contents" data-render-id="cXVhcnRvLXR3aXR0ZXJjYXJkdGl0bGU=">Predicting Semantic Similarity using KerasNLP – Anshuman Mishra</span> <span class="hidden quarto-markdown-envelope-contents" data-render-id="cXVhcnRvLW9nY2FyZHRpdGxl">Predicting Semantic Similarity using KerasNLP – Anshuman Mishra</span> <span class="hidden quarto-markdown-envelope-contents" data-render-id="cXVhcnRvLW1ldGFzaXRlbmFtZQ==">Anshuman Mishra</span> <span class="hidden quarto-markdown-envelope-contents" data-render-id="cXVhcnRvLXR3aXR0ZXJjYXJkZGVzYw==">This report demonstrates how to use the Weights&amp;Biases to speedup experiments with Keras</span> <span class="hidden quarto-markdown-envelope-contents" data-render-id="cXVhcnRvLW9nY2FyZGRkZXNj">This report demonstrates how to use the Weights&amp;Biases to speedup experiments with Keras</span> <span class="hidden quarto-markdown-envelope-contents" data-render-id="cXVhcnRvLW1ldGFzaXRlZGVzYw==">Machine learning engineer building AI systems, open source software, and essays.</span></p>
+<p><span class="hidden quarto-markdown-envelope-contents" data-render-id="cXVhcnRvLW1ldGF0aXRsZQ==">Predicting Semantic Similarity using KerasNLP – Anshuman Mishra</span> <span class="hidden quarto-markdown-envelope-contents" data-render-id="cXVhcnRvLXR3aXR0ZXJjYXJkdGl0bGU=">Predicting Semantic Similarity using KerasNLP – Anshuman Mishra</span> <span class="hidden quarto-markdown-envelope-contents" data-render-id="cXVhcnRvLW9nY2FyZHRpdGxl">Predicting Semantic Similarity using KerasNLP – Anshuman Mishra</span> <span class="hidden quarto-markdown-envelope-contents" data-render-id="cXVhcnRvLW1ldGFzaXRlbmFtZQ==">Anshuman Mishra</span> <span class="hidden quarto-markdown-envelope-contents" data-render-id="cXVhcnRvLXR3aXR0ZXJjYXJkZGVzYw==">This report demonstrates how to use the Weights&amp;Biases to speedup experiments with Keras</span> <span class="hidden quarto-markdown-envelope-contents" data-render-id="cXVhcnRvLW9nY2FyZGRkZXNj">This report demonstrates how to use the Weights&amp;Biases to speedup experiments with Keras</span></p>
 </div>
 
 </main> <!-- /main -->
@@ -6993,14 +6992,13 @@ font-style: inherit;">self</span>.gemini_model.generate_content(full_prompt_for_
       e.clearSelection();
     }
     const getTextToCopy = function(trigger) {
-      const outerScaffold = trigger.parentElement.cloneNode(true);
-      const codeEl = outerScaffold.querySelector('code');
-      for (const childEl of codeEl.children) {
-        if (isCodeAnnotation(childEl)) {
-          childEl.remove();
+        const codeEl = trigger.previousElementSibling.cloneNode(true);
+        for (const childEl of codeEl.children) {
+          if (isCodeAnnotation(childEl)) {
+            childEl.remove();
+          }
         }
-      }
-      return codeEl.innerText;
+        return codeEl.innerText;
     }
     const clipboard = new window.ClipboardJS('.code-copy-button:not([data-in-quarto-modal])', {
       text: getTextToCopy
