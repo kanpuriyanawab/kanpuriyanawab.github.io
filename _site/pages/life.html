@@ -338,6 +338,7 @@ pre, .sourceCode {
   align-items: start;
   padding: 1.5rem 0 1.1rem;
   border-top: 1px solid var(--rule);
+  border-bottom: none !important;
 }
 
 .quarto-listing .quarto-post .thumbnail,
@@ -351,14 +352,25 @@ pre, .sourceCode {
   margin: 0;
 }
 
+.quarto-listing .quarto-post a {
+  border-bottom: none;
+}
+
+.quarto-listing .quarto-post a:hover {
+  border-bottom: none;
+}
+
 .quarto-listing .quarto-post .metadata {
   font-size: 17px;
   color: var(--ink);
   white-space: nowrap;
+  font-family: Times, serif;
 }
 
-.quarto-listing .quarto-post .listing-title {
+.quarto-listing .quarto-post .listing-title,
+.quarto-listing .quarto-post .listing-title a {
   font-size: 17px;
+  font-weight: 700 !important;
   line-height: 1.45;
   margin: 0 0 0.55rem;
 }
