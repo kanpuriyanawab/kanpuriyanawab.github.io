@@ -4,6 +4,7 @@ aliases:
   - /building
   - /projects
   - /pages/building
+  - /pages/projects
 toc: false
 ---
 

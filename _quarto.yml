@@ -5,7 +5,7 @@ project:
     - "*.qmd"
     - "archive/*.qmd"
     - "notes/*.qmd"
-    - "pages/*.qmd"
+    - "pages/life.qmd"
     - "posts/*.qmd"
 
 format:

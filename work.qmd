@@ -4,6 +4,7 @@ aliases:
   - /work
   - /ml
   - /pages/ml
+  - /pages/work
 toc: false
 ---
 

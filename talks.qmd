@@ -2,6 +2,7 @@
 title: "Talks"
 aliases:
   - /talks
+  - /pages/talks
 toc: false
 ---
 
