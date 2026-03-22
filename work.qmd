@@ -1,7 +1,6 @@
 ---
 title: "Work"
 aliases:
-  - /work
   - /ml
   - /pages/ml
   - /pages/work
