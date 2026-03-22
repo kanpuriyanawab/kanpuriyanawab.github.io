@@ -6,14 +6,14 @@
       version="2.0">
 <channel>
 <title>Anshuman Mishra</title>
-<link>https://www.heyyanshuman.com/writing.html</link>
-<atom:link href="https://www.heyyanshuman.com/writing.xml" rel="self" type="application/rss+xml"/>
+<link>https://heyyanshuman.com/writing.html</link>
+<atom:link href="https://heyyanshuman.com/writing.xml" rel="self" type="application/rss+xml"/>
 <description>Machine learning engineer building AI systems, open source software, and essays.</description>
 <generator>quarto-1.7.31</generator>
 <lastBuildDate>Tue, 10 Feb 2026 00:00:00 GMT</lastBuildDate>
 <item>
   <title>(Thinking Out Loud) On Engineering, Identity, and What Comes Next</title>
-  <link>https://www.heyyanshuman.com/notes/thinking_out_loud.html</link>
+  <link>https://heyyanshuman.com/notes/thinking_out_loud.html</link>
   <description><![CDATA[ 
 
 
@@ -36,7 +36,7 @@
 <p>AI does the easy stuff now.</p>
 <p>So juniors are being asked to orchestrate AI agents before they’ve developed the intuitions needed to evaluate what the agent is producing. The AI is confident. It doesn’t flag its own subtle wrongness. And the junior without taste doesn’t know what they don’t know.</p>
 <p>The output looks fine. The learning isn’t happening.</p>
-<p><img src="https://www.heyyanshuman.com/notes/assets/thinking_out_loud/img1.png" class="img-fluid"></p>
+<p><img src="https://heyyanshuman.com/notes/assets/thinking_out_loud/img1.png" class="img-fluid"></p>
 <p>In five to ten years we may have a generation of engineers who are excellent at operating AI tools but genuinely cannot diagnose a hard problem without them. They won’t know that about themselves until a moment arrives where the tools fail.</p>
 <hr>
 <p>I was two years into my career when I saw this coming. Not perfectly, but clearly enough to act. I left my job. I spent four months trying to build a SaaS. It failed — not because I couldn’t build, but because I didn’t know how to market. Four months after that, I joined Zomato, where I’m now building and leading an AI evaluation platform and SDK.</p>
@@ -66,13 +66,13 @@
  ]]></description>
   <category>Personal</category>
   <category>Reflections</category>
-  <guid>https://www.heyyanshuman.com/notes/thinking_out_loud.html</guid>
+  <guid>https://heyyanshuman.com/notes/thinking_out_loud.html</guid>
   <pubDate>Tue, 10 Feb 2026 00:00:00 GMT</pubDate>
 </item>
 <item>
   <title>Evals are dead. Long live evals!</title>
   <dc:creator>Anshuman Mishra</dc:creator>
-  <link>https://www.heyyanshuman.com/posts/building_ai_environments_with_verifiers.html</link>
+  <link>https://heyyanshuman.com/posts/building_ai_environments_with_verifiers.html</link>
   <description><![CDATA[ 
 
 
@@ -2309,12 +2309,12 @@ References
   <category>Reinforcement Learning</category>
   <category>Eval</category>
   <category>Agents</category>
-  <guid>https://www.heyyanshuman.com/posts/building_ai_environments_with_verifiers.html</guid>
+  <guid>https://heyyanshuman.com/posts/building_ai_environments_with_verifiers.html</guid>
   <pubDate>Sun, 05 Oct 2025 00:00:00 GMT</pubDate>
 </item>
 <item>
   <title>Training LLMs to Think</title>
-  <link>https://www.heyyanshuman.com/posts/post_training_reasoning_model.html</link>
+  <link>https://heyyanshuman.com/posts/post_training_reasoning_model.html</link>
   <description><![CDATA[ 
 
 
@@ -2360,7 +2360,7 @@ Problem with PPO
 <p>Traditional RL fine-tuning with PPO is notoriously expensive because it requires loading four large models into GPU memory: a <strong>Policy Model</strong> (the one being trained), a <strong>Reference Model</strong>, a <strong>Reward Model</strong>, and a <strong>Value Model</strong>. The Value Model, which is also trainable, estimates the potential for long-term rewards but adds significant complexity and memory overhead.</p>
 </div>
 </div>
-<p><img src="https://www.heyyanshuman.com/posts/assets/rl_fine_tuning/grpo_vs_ppo.png" class="img-fluid"></p>
+<p><img src="https://heyyanshuman.com/posts/assets/rl_fine_tuning/grpo_vs_ppo.png" class="img-fluid"></p>
 <p>GRPO <strong>completely removes the need for the Value Model</strong>. This single change significantly cuts down computational requirements, making advanced RL fine-tuning more accessible.</p>
 <p>It simply replaces the complex value estimation with a clever, three-step process based on group statistics:</p>
 <ol type="1">
@@ -2446,7 +2446,7 @@ A Simple Example on Advantage calculation in GRPO
 </section>
 <section id="why-use-unsloth" class="level2">
 <h2 class="anchored" data-anchor-id="why-use-unsloth">Why Use Unsloth?</h2>
-<p><img src="https://www.heyyanshuman.com/posts/assets/rl_fine_tuning/unsloth.png" class="img-fluid"></p>
+<p><img src="https://heyyanshuman.com/posts/assets/rl_fine_tuning/unsloth.png" class="img-fluid"></p>
 <p><strong><a href="https://unsloth.ai/">Unsloth</a></strong> is a powerful library designed to make fine-tuning LLMs faster and more memory-efficient. It achieves this through several optimizations, including:</p>
 <ul>
 <li><strong>Faster training:</strong> Unsloth can significantly speed up the training process, in some cases by a factor of 2x or more.</li>
@@ -4481,12 +4481,12 @@ Key Takeaways
 
  ]]></description>
   <category>LLMs</category>
-  <guid>https://www.heyyanshuman.com/posts/post_training_reasoning_model.html</guid>
+  <guid>https://heyyanshuman.com/posts/post_training_reasoning_model.html</guid>
   <pubDate>Mon, 04 Aug 2025 00:00:00 GMT</pubDate>
 </item>
 <item>
   <title>Fine-Tuning a Vision Language Model in 2025</title>
-  <link>https://www.heyyanshuman.com/posts/fine-tuning-vlm.html</link>
+  <link>https://heyyanshuman.com/posts/fine-tuning-vlm.html</link>
   <description><![CDATA[ 
 
 
@@ -4795,7 +4795,7 @@ font-style: inherit;">in</span> test_dataset]</span></code></pre></div>
 <p>We’ll load the <code>gemma-3-4b-it</code> model, which is the instruction-tuned version of Gemma 3 with 4 billion parameters.</p>
 <div class="quarto-figure quarto-figure-center">
 <figure class="figure">
-<p><img src="https://www.heyyanshuman.com/posts/assets/finetune_vlm/gemma3_arch.png" class="img-fluid figure-img"></p>
+<p><img src="https://heyyanshuman.com/posts/assets/finetune_vlm/gemma3_arch.png" class="img-fluid figure-img"></p>
 <figcaption><a href="https://miro.medium.com/v2/resize:fit:1400/format:webp/1*Fd6h5380Ca7myTcfUYNlgA.png">Gemma 3 Architrecture</a></figcaption>
 </figure>
 </div>
@@ -5049,7 +5049,7 @@ Note
 <li><strong>Low-Rank Adaptation (LoRA)</strong>: Instead of training all the model’s billions of parameters, we only train a small number of “adapter” matrices that are injected into the model’s architecture.</li>
 </ol>
 <p>This combination allows us to fine-tune massive models on a single GPU without sacrificing much performance.</p>
-<p><img src="https://www.heyyanshuman.com/posts/assets/finetune_vlm/qlora.webp" class="img-fluid"></p>
+<p><img src="https://heyyanshuman.com/posts/assets/finetune_vlm/qlora.webp" class="img-fluid"></p>
 </section>
 <section id="loading-the-quantized-model" class="level3">
 <h3 class="anchored" data-anchor-id="loading-the-quantized-model">Loading the Quantized Model</h3>
@@ -5803,7 +5803,7 @@ background-color: null;
 font-style: inherit;">0</span>][<span class="st" style="color: #20794D;
 background-color: null;
 font-style: inherit;">'image'</span>]</span></code></pre></div>
-<p><img src="https://www.heyyanshuman.com/posts/assets/finetune_vlm/chart.jpg" class="img-fluid"></p>
+<p><img src="https://heyyanshuman.com/posts/assets/finetune_vlm/chart.jpg" class="img-fluid"></p>
 <p>And now, let’s generate an answer with our fine-tuned model.</p>
 <div class="sourceCode" id="cb18" style="background: #f1f3f5;"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb18-1">output <span class="op" style="color: #5E5E5E;
 background-color: null;
@@ -5828,12 +5828,12 @@ font-style: inherit;">"Model Answer:"</span>, output)</span></code></pre></div>
  ]]></description>
   <category>VLMs</category>
   <category>Fine-tuning</category>
-  <guid>https://www.heyyanshuman.com/posts/fine-tuning-vlm.html</guid>
+  <guid>https://heyyanshuman.com/posts/fine-tuning-vlm.html</guid>
   <pubDate>Sun, 27 Jul 2025 00:00:00 GMT</pubDate>
 </item>
 <item>
   <title>What is GSPO?</title>
-  <link>https://www.heyyanshuman.com/posts/what_is_gspo.html</link>
+  <link>https://heyyanshuman.com/posts/what_is_gspo.html</link>
   <description><![CDATA[ 
 
 
@@ -5929,14 +5929,14 @@ Analogy
 <section id="so-how-good-it-is" class="level2">
 <h2 class="anchored" data-anchor-id="so-how-good-it-is">So, how good it is?</h2>
 <p>Qwen ran a head-to-head comparison between GSPO and a carefully tuned GRPO. The results, shown in Figure 1 from their paper, are unambiguous: GSPO is not only more stable but also significantly more efficient.</p>
-<p><img src="https://www.heyyanshuman.com/posts/assets/what_is_gspo/grpo_1.png" class="img-fluid"></p>
+<p><img src="https://heyyanshuman.com/posts/assets/what_is_gspo/grpo_1.png" class="img-fluid"></p>
 <p>GSPO’s reward curve climbing steadily while GRPO’s is far more volatile. On difficult math and coding benchmarks, GSPO achieves significantly better results with the same amount of training compute.</p>
 <p>But <strong>why is it so much better?</strong> The paper offers two fascinating insights that explain the performance gap.</p>
 <p>First, GSPO it seemed to be doing better at identifying high-quality training data. During training, RL algorithms “clip” (ignore) data that is too different from what the model already knows to prevent instability. I used to think that using more data is better, but GSPO turns that assumption on its head. The paper reveals that GSPO clips over 100 times more data than GRPO.</p>
-<p><img src="https://www.heyyanshuman.com/posts/assets/what_is_gspo/grpo_2.png" class="img-fluid"></p>
+<p><img src="https://heyyanshuman.com/posts/assets/what_is_gspo/grpo_2.png" class="img-fluid"></p>
 <p>This counter-intuitive result shows that GRPO’s token-level view is so noisy it can’t tell good data from bad. GSPO, with its holistic sequence-level view, can effectively identify and focus only on the most useful learning examples, making it vastly more efficient.</p>
 <p>Second, GSPO inherently solves a major stability problem for powerful but notoriously difficult-to-train Mixture-of-Experts (MoE) models. With GRPO, the underlying “experts” being used can shift dramatically from one training step to the next, causing training to fail. The old solution was a complex workaround called “Routing Replay.” GSPO makes this obsolete.</p>
-<p><img src="https://www.heyyanshuman.com/posts/assets/what_is_gspo/grpo_3.png" class="img-fluid"></p>
+<p><img src="https://heyyanshuman.com/posts/assets/what_is_gspo/grpo_3.png" class="img-fluid"></p>
 <p>Because GSPO cares about the final sequence, it isn’t thrown off by small changes in which experts are used for which tokens. This inherent robustness fundamentally solves the MoE stability problem.</p>
 </section>
 <section id="qwen-cooked" class="level2">
@@ -5955,12 +5955,12 @@ Analogy
 
  ]]></description>
   <category>LLMs</category>
-  <guid>https://www.heyyanshuman.com/posts/what_is_gspo.html</guid>
+  <guid>https://heyyanshuman.com/posts/what_is_gspo.html</guid>
   <pubDate>Sun, 27 Jul 2025 00:00:00 GMT</pubDate>
 </item>
 <item>
   <title>Building Production Ready Text-to-SQL Agent from Scratch</title>
-  <link>https://www.heyyanshuman.com/posts/text2sql_agent.html</link>
+  <link>https://heyyanshuman.com/posts/text2sql_agent.html</link>
   <description><![CDATA[ 
 
 
@@ -5980,7 +5980,7 @@ Analogy
 <section id="the-big-picture-our-agents-workflow" class="level2">
 <h2 class="anchored" data-anchor-id="the-big-picture-our-agents-workflow">The Big Picture: Our Agent’s Workflow</h2>
 <p>Before we dive into code, let’s look at the overall flow of our system. It’s a simple, logical sequence: a user’s question comes in one end, and an answer from the database comes out the other.</p>
-<p><img src="https://www.heyyanshuman.com/posts/assets/text2sql_agent/db_schema.png" class="img-fluid"></p>
+<p><img src="https://heyyanshuman.com/posts/assets/text2sql_agent/db_schema.png" class="img-fluid"></p>
 </section>
 <section id="setting-the-stage---our-database" class="level2">
 <h2 class="anchored" data-anchor-id="setting-the-stage---our-database">Setting the Stage - Our Database</h2>
@@ -5991,7 +5991,7 @@ Analogy
 <li><p>employees: Stores information about employees and which department they belong to.</p></li>
 </ul>
 <p>Here’s the structure (schema) we’ll aim for:</p>
-<p><img src="https://www.heyyanshuman.com/posts/assets/text2sql_agent/workflow.webp" class="img-fluid"></p>
+<p><img src="https://heyyanshuman.com/posts/assets/text2sql_agent/workflow.webp" class="img-fluid"></p>
 <p>This setup allows us to ask interesting questions like “Which employees work in Engineering?” or “What’s the average salary in the HR department?”.</p>
 <p>To bring this to life, we need a script to create and populate this database. This ensures our agent always has a consistent environment to work in.</p>
 <p>For those who want to see exactly how the database is created, you can check out the <a href="https://github.com/kanpuriyanawab/awesome-ai-agents/blob/main/agents/text2sql/setup_db.py">database_setup.py</a> file in the GitHub repo. It’s a straightforward Python script using the sqlite3 library.</p>
@@ -6255,12 +6255,12 @@ font-style: inherit;">self</span>.gemini_model.generate_content(full_prompt_for_
  ]]></description>
   <category>LLMs</category>
   <category>Agents</category>
-  <guid>https://www.heyyanshuman.com/posts/text2sql_agent.html</guid>
+  <guid>https://heyyanshuman.com/posts/text2sql_agent.html</guid>
   <pubDate>Fri, 06 Jun 2025 00:00:00 GMT</pubDate>
 </item>
 <item>
   <title>The AI Memory Layer Will Change Everything</title>
-  <link>https://www.heyyanshuman.com/posts/agent_memory_101.html</link>
+  <link>https://heyyanshuman.com/posts/agent_memory_101.html</link>
   <description><![CDATA[ 
 
 
@@ -6295,7 +6295,7 @@ font-style: inherit;">self</span>.gemini_model.generate_content(full_prompt_for_
 <li><p>However, performance can significantly <strong>degrade</strong> when they need to access and use information located somewhere in the <strong>middle</strong> of a long context.</p></li>
 </ul>
 <p><em>Imagine feeding an AI 20 documents to answer a question, and the key document is the 10th one. The AI might struggle to find or correctly use that key document more than if it were the 1st or the 20th. In some cases, performance when information is in the middle can be worse than if the AI had no documents at all and was just relying on its pre-trained knowledge! This phenomenon is seen even in models specifically designed for long contexts.</em></p>
-<p><img src="https://www.heyyanshuman.com/posts/assets/agent_memory_101/memory_1.jpg" class="img-fluid"></p>
+<p><img src="https://heyyanshuman.com/posts/assets/agent_memory_101/memory_1.jpg" class="img-fluid"></p>
 <p>The consequence of these limitations is that many AI agents today are essentially stateless. Each interaction is largely isolated, leading to a lack of true personalization, repeated questions, and inconsistent behavior. It’s like having a brilliant personal assistant who, unfortunately, gets their memory wiped clean every morning.</p>
 </section>
 </section>
@@ -6328,7 +6328,7 @@ font-style: inherit;">self</span>.gemini_model.generate_content(full_prompt_for_
 <p>→ <strong>Groundhog Day Problem-Solving</strong>: You’re working through a multi-step problem with an AI. It helps you with step 1. When you move to step 2, it seems to have forgotten the conclusions or data from step 1, forcing you to re-explain or re-feed information.</p>
 <p>→ <strong>The Dietary Déjà Vu</strong>: You tell your AI assistant, “I’m a vegetarian.” It acknowledges this. The next day, you ask for dinner ideas, and it enthusiastically suggests a steakhouse. The “Mem0” paper has a great illustration of this exact problem (Figure 1 in their paper). Frustrating, right? That’s a stateless agent forgetting a critical piece of information once it falls out of the immediate context.</p>
 <p>This statelessness is the arch-nemesis of hyper-personalization. It leads to inefficient interactions, repeated explanations, and a feeling that the AI, despite its power, doesn’t really “get” you or your ongoing needs. It’s like having that brilliant assistant I mentioned earlier, but one who gets their memory wiped clean every single morning.</p>
-<p><img src="https://www.heyyanshuman.com/posts/assets/agent_memory_101/memory_2.jpg" class="img-fluid"></p>
+<p><img src="https://heyyanshuman.com/posts/assets/agent_memory_101/memory_2.jpg" class="img-fluid"></p>
 </section>
 <section id="stateful-agents" class="level2">
 <h2 class="anchored" data-anchor-id="stateful-agents">Stateful Agents</h2>
@@ -6391,11 +6391,11 @@ font-style: inherit;">self</span>.gemini_model.generate_content(full_prompt_for_
 <ul>
 <li><strong>MemGPT (now part of LettaAI)’s LlmOS-Inspired Approach:</strong> The <a href="https://arxiv.org/abs/2310.08560">MemGPT: Towards LLMs as Operating Systems</a> paper introduces “virtual context management,” where the LLM itself acts like an operating system for its memory. It intelligently manages a hierarchical memory system, with a limited “main context” (like RAM) for active processing and a larger “external context” (like disk storage, including archival and recall storage) for long-term information. The LLM uses function calls to page data between these tiers, effectively giving it an extended memory to handle tasks like large document analysis and multi-session chats where context far exceeds its physical window</li>
 </ul>
-<p><img src="https://www.heyyanshuman.com/posts/assets/agent_memory_101/memory_3.png" class="img-fluid"></p>
+<p><img src="https://heyyanshuman.com/posts/assets/agent_memory_101/memory_3.png" class="img-fluid"></p>
 <ul>
 <li><strong>Mem0’s Approach to Dynamic Memory:</strong> The <a href="https://arxiv.org/abs/2504.19413">Mem0: Building Production-Ready AI Agents with Scalable Long-Term Memory</a> paper outlines a scalable, memory-centric architecture designed for real-world applications. Memo’s system dynamically extracts salient information from conversations in an extraction phase (using historical context like summaries and recent messages) and then, in an update phase, uses an LLM with tool-calling capabilities to evaluate these new “candidate memories” against existing ones, deciding whether to ADD, UPDATE, DELETE, or take NOOP (no operation) to maintain a coherent knowledge base.</li>
 </ul>
-<p><img src="https://www.heyyanshuman.com/posts/assets/agent_memory_101/memory_4.jpg" class="img-fluid"></p>
+<p><img src="https://heyyanshuman.com/posts/assets/agent_memory_101/memory_4.jpg" class="img-fluid"></p>
 </section>
 <section id="the-human-element-feeling-understood" class="level2">
 <h2 class="anchored" data-anchor-id="the-human-element-feeling-understood">The Human Element: Feeling Understood</h2>
@@ -6417,12 +6417,12 @@ font-style: inherit;">self</span>.gemini_model.generate_content(full_prompt_for_
  ]]></description>
   <category>LLMs</category>
   <category>Agents</category>
-  <guid>https://www.heyyanshuman.com/posts/agent_memory_101.html</guid>
+  <guid>https://heyyanshuman.com/posts/agent_memory_101.html</guid>
   <pubDate>Tue, 03 Jun 2025 00:00:00 GMT</pubDate>
 </item>
 <item>
   <title>Illustrated LLM OS</title>
-  <link>https://www.heyyanshuman.com/posts/illustrated_llmos.html</link>
+  <link>https://heyyanshuman.com/posts/illustrated_llmos.html</link>
   <description><![CDATA[ 
 
 
@@ -6430,7 +6430,7 @@ font-style: inherit;">self</span>.gemini_model.generate_content(full_prompt_for_
 
 
 <p>This blog post explores the implementation of large language models (LLMs) as operating systems, inspired by <a href="https://twitter.com/karpathy">Andrej Karpathy’s</a> vision of AI resembling an OS, akin to Jarvis from Iron Man. The focus is on practical considerations, proposing an application-level integration for LLMs within a terminal session. A novel approach involves injecting state machines into the decoding process, enabling real-time code execution and interaction. Additionally, this post proposes <strong>Reinforcement Learning by System Feedback (RLSF)</strong>,” a reinforcement learning technique applied to code generation tasks. This method leverages a reward model to evaluate code correctness through Python subprocess execution, enhancing LLM performance. The findings contribute insights into the dynamic control of LLMs and their potential applications beyond coding tasks.</p>
-<p><img src="https://www.heyyanshuman.com/posts/assets/illustrated_llmos/karpathy_ss.png" class="img-fluid"></p>
+<p><img src="https://heyyanshuman.com/posts/assets/illustrated_llmos/karpathy_ss.png" class="img-fluid"></p>
 <p><em>Image source: <a href="assets/illustrated_llmos/karpathy_ss.png">[1hr Talk] Intro to Large Language Models by Andrej Karpathy</a></em></p>
 <section id="preliminaries" class="level2">
 <h2 class="anchored" data-anchor-id="preliminaries">Preliminaries:</h2>
@@ -6449,7 +6449,7 @@ font-style: inherit;">self</span>.gemini_model.generate_content(full_prompt_for_
 <section id="towards-implementation-injecting-a-state-machine-in-decoder" class="level2">
 <h2 class="anchored" data-anchor-id="towards-implementation-injecting-a-state-machine-in-decoder">Towards Implementation: Injecting a State Machine in Decoder</h2>
 <p>Following is the illustration of how the generation process works in decoder-like models source.</p>
-<p><img src="https://www.heyyanshuman.com/posts/assets/illustrated_llmos/illustrated_gpt2.gif" class="img-fluid"></p>
+<p><img src="https://heyyanshuman.com/posts/assets/illustrated_llmos/illustrated_gpt2.gif" class="img-fluid"></p>
 <p><em>Image source: <a href="https://jalammar.github.io/illustrated-gpt2/">The Illustrated GPT-2 by Jay Alammar</a></em></p>
 <p>The seamless interaction of a Large Language Model (LLM) with an operating system (OS) can be achieved through the strategic injection of a State Machine. By utilizing this approach, the model’s behavior can be dynamically controlled, enhancing its capability to engage with the OS. In particular, the injection of special tokens acts as triggers, facilitating interaction with the Python interpreter through subprocesses.</p>
 <p>To illustrate this concept, consider the scenario where the LLM is tasked with generating the sum of the first N natural numbers. Here, I request the model to encapsulate the generated code within designated special tokens, [CODE] and [/CODE], during its response. The State Machine is activated upon the generation of the [CODE] token, initiating the collection of the generated code in a buffer.</p>
@@ -6457,14 +6457,14 @@ font-style: inherit;">self</span>.gemini_model.generate_content(full_prompt_for_
 <p>In the following sections of this blog, we delve deeper into how this innovative technique empowers the model to adapt and refine its program execution understanding on the fly.</p>
 <div class="quarto-figure quarto-figure-center">
 <figure class="figure">
-<p><img src="https://www.heyyanshuman.com/posts/assets/illustrated_llmos/chatgpt_response.png" class="img-fluid figure-img"></p>
+<p><img src="https://heyyanshuman.com/posts/assets/illustrated_llmos/chatgpt_response.png" class="img-fluid figure-img"></p>
 <figcaption>image/png</figcaption>
 </figure>
 </div>
 <p>Following is an illustration of a state machine to do various operations like db queries, accessing file systems, and even internet searches through Python subprocesses.</p>
 <div class="quarto-figure quarto-figure-center">
 <figure class="figure">
-<p><img src="https://www.heyyanshuman.com/posts/assets/illustrated_llmos/llmos_flow_diag.png" class="img-fluid figure-img"></p>
+<p><img src="https://heyyanshuman.com/posts/assets/illustrated_llmos/llmos_flow_diag.png" class="img-fluid figure-img"></p>
 <figcaption>image/png</figcaption>
 </figure>
 </div>
@@ -6492,12 +6492,12 @@ font-style: inherit;">self</span>.gemini_model.generate_content(full_prompt_for_
  ]]></description>
   <category>LLMs</category>
   <category>Operating-system</category>
-  <guid>https://www.heyyanshuman.com/posts/illustrated_llmos.html</guid>
+  <guid>https://heyyanshuman.com/posts/illustrated_llmos.html</guid>
   <pubDate>Sun, 03 Dec 2023 00:00:00 GMT</pubDate>
 </item>
 <item>
   <title>Generating High-quality Images with SD.Next, HuggingFace Diffusers and W&amp;B</title>
-  <link>https://www.heyyanshuman.com/posts/sd_next.html</link>
+  <link>https://heyyanshuman.com/posts/sd_next.html</link>
   <description><![CDATA[ 
 
 
@@ -6585,7 +6585,7 @@ font-style: inherit;">self</span>.gemini_model.generate_content(full_prompt_for_
     }
       var localhostRegex = new RegExp(/^(?:http|https):\/\/localhost\:?[0-9]*\//);
       var mailtoRegex = new RegExp(/^mailto:/);
-        var filterRegex = new RegExp("https:\/\/www\.heyyanshuman\.com");
+        var filterRegex = new RegExp("https:\/\/heyyanshuman\.com");
       var isInternal = (href) => {
           return filterRegex.test(href) || localhostRegex.test(href) || mailtoRegex.test(href);
       }
@@ -6920,12 +6920,12 @@ font-style: inherit;">self</span>.gemini_model.generate_content(full_prompt_for_
 </iframe> ]]></description>
   <category>Diffusion</category>
   <category>Wandb</category>
-  <guid>https://www.heyyanshuman.com/posts/sd_next.html</guid>
+  <guid>https://heyyanshuman.com/posts/sd_next.html</guid>
   <pubDate>Mon, 02 Oct 2023 00:00:00 GMT</pubDate>
 </item>
 <item>
   <title>Predicting Semantic Similarity using KerasNLP</title>
-  <link>https://www.heyyanshuman.com/posts/semantic_sim_kerasnlp.html</link>
+  <link>https://heyyanshuman.com/posts/semantic_sim_kerasnlp.html</link>
   <description><![CDATA[ 
 
 
@@ -7013,7 +7013,7 @@ font-style: inherit;">self</span>.gemini_model.generate_content(full_prompt_for_
     }
       var localhostRegex = new RegExp(/^(?:http|https):\/\/localhost\:?[0-9]*\//);
       var mailtoRegex = new RegExp(/^mailto:/);
-        var filterRegex = new RegExp("https:\/\/www\.heyyanshuman\.com");
+        var filterRegex = new RegExp("https:\/\/heyyanshuman\.com");
       var isInternal = (href) => {
           return filterRegex.test(href) || localhostRegex.test(href) || mailtoRegex.test(href);
       }
@@ -7349,12 +7349,12 @@ font-style: inherit;">self</span>.gemini_model.generate_content(full_prompt_for_
   <category>KerasHub</category>
   <category>LLMs</category>
   <category>Wandb</category>
-  <guid>https://www.heyyanshuman.com/posts/semantic_sim_kerasnlp.html</guid>
+  <guid>https://heyyanshuman.com/posts/semantic_sim_kerasnlp.html</guid>
   <pubDate>Sat, 02 Sep 2023 00:00:00 GMT</pubDate>
 </item>
 <item>
   <title>Deep Learning in Julia</title>
-  <link>https://www.heyyanshuman.com/posts/flux_is_so_flexible.html</link>
+  <link>https://heyyanshuman.com/posts/flux_is_so_flexible.html</link>
   <description><![CDATA[ 
 
 
@@ -7374,7 +7374,7 @@ font-style: inherit;">self</span>.gemini_model.generate_content(full_prompt_for_
 <p>UNet is a deep learning model which was released in the paper <a href="https://arxiv.org/pdf/1505.04597v1">U-Net: Convolutional Networks for Biomedical Image Segmentation</a>. The architecture of the network looks like&nbsp;: Fig. 1 ( Source: UNet&nbsp;Paper)We’ll not go into detail about UNet theory, as the paper explains it in best way, and explaination here would be redundant anyway.</p>
 <div class="quarto-figure quarto-figure-center">
 <figure class="figure">
-<p><img src="https://www.heyyanshuman.com/posts/assets/flux_is_flexible/unet_full.png" class="img-fluid figure-img"></p>
+<p><img src="https://heyyanshuman.com/posts/assets/flux_is_flexible/unet_full.png" class="img-fluid figure-img"></p>
 <figcaption>Source: UNet Paper</figcaption>
 </figure>
 </div>
@@ -7397,7 +7397,7 @@ torch.Size([1, 5, 8, 8])</code></pre>
 <p>The author of original implementation (hereon referred just as “author”) created a helper method to create a convolutional block&nbsp;. This is a good practise called as DRY ( Do not Repeat Yourself).</p>
 <div class="quarto-figure quarto-figure-center">
 <figure class="figure">
-<p><img src="https://www.heyyanshuman.com/posts/assets/flux_is_flexible/unet.png" class="img-fluid figure-img"></p>
+<p><img src="https://heyyanshuman.com/posts/assets/flux_is_flexible/unet.png" class="img-fluid figure-img"></p>
 <figcaption>Source: UNet Paper</figcaption>
 </figure>
 </div>
@@ -7433,7 +7433,7 @@ torch.Size([1, 5, 8, 8])</code></pre>
  ]]></description>
   <category>Model Architecture</category>
   <category>Julia</category>
-  <guid>https://www.heyyanshuman.com/posts/flux_is_so_flexible.html</guid>
+  <guid>https://heyyanshuman.com/posts/flux_is_so_flexible.html</guid>
   <pubDate>Sat, 31 Dec 2022 00:00:00 GMT</pubDate>
 </item>
 </channel>
