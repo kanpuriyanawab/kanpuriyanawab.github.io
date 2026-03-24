@@ -8,13 +8,15 @@ page-layout: full
 
 I build AI systems for a living and tinker with them for fun.
 
-I lead AI evaluation work at **Zomato**. What started as a bunch of scripts I wrote to solve my own eval problems turned into **Gavel** — an internal platform I pitched to the VP, got approved, and now serves both AI teams and ops teams across the company. Before Zomato, I consulted with **Google** on KerasHub, integrating model families like Qwen and Mixtral into the framework, and worked with **Weights & Biases**.
+I lead evals at **Zomato**. What started as a bunch of scripts I wrote to solve my own eval problems turned into **Gavel** — an internal platform I pitched to the VP, got approved, and now serves both AI teams and ops teams across the company. Before Zomato, I consulted with **Google** on KerasHub, integrating model families like Qwen and Mixtral into the framework, and worked with **Weights & Biases**.
 
 I got into ML through open source. My first PR was a small fix to DeepMind's Optax library — I didn't really know what I was doing. That led to a Google Summer of Code with TensorFlow, where I ended up shipping GPT-NeoX and Llama 2 for KerasNLP, and eventually co-authoring a [paper in JMLR](http://jmlr.org/papers/v25/24-0404.html). Somewhere along the way, Google made me a **Developer Expert in Machine Learning**.
 
 After GSoC I gave talks in 11 cities across India. I still speak at conferences when I have something worth saying.
 
-On weekends I build things — an [agentic browser](https://github.com/kanpuriyanawab/nebula), a [Claude Cowork alternative](https://github.com/kanpuriyanawab/sidekick), a Figma plugin I made without ever having used Figma. Most of these don't go anywhere. Some do. I've been writing about it in [The Conductor](https://conductorbyam.substack.com/), though lately I'm figuring out what comes next.
+On weekends I build things — an [agentic browser](https://github.com/kanpuriyanawab/nebula), a [Claude Cowork alternative](https://github.com/kanpuriyanawab/sidekick), a Figma plugin I made without ever having used Figma. Most of these don't go anywhere. Some do. 
+
+I've been writing about it in [The Conductor](https://conductorbyam.substack.com/), though lately I'm figuring out what comes next.
 
 ---
 
