@@ -1,0 +1,1098 @@
+---
+aliases:
+- /rlvr
+permalink: /rlvr
+badges: false
+toc: true
+categories:
+- LLMs
+- RLHF
+- RLVR
+date: '2026-05-08'
+description: RLVR workflow 
+hide: false
+output-file: rlvr.html
+search_exclude: false
+title: 'Illustrated RLVR'
+---
+
+# Building a Tool-Using Agent From Scratch: Environment, Teacher Trajectories, SFT, and RL
+
+Most tutorials about training agents start too high up the stack.
+
+They say: install a framework, plug in a reward function, run a trainer, watch a chart go up. That is useful when you already know what is happening. It is less useful when you are trying to understand the shape of the whole system.
+
+This post takes the opposite route. We will build a small agent-training pipeline from first principles:
+
+1. Define an environment without using `verifiers`, Prime-RL, Gymnasium, LangChain, or any agent framework.
+2. Generate teacher trajectories with a strong model such as Gemini.
+3. Filter those trajectories into an SFT dataset.
+4. Supervised fine-tune a smaller model to imitate the teacher.
+5. Train the model with reinforcement learning.
+6. Show how the same ideas map onto TRL or Unsloth once the concepts are clear.
+
+The example environment is deliberately simple: a text-to-diagram agent. The user asks for a small diagram, and the model must output structured JSON actions that create shapes on a canvas. This is the same pattern behind a tldraw-style agent, except we will start with a tiny pure-Python canvas so the mechanics are visible.
+
+The point of this tutorial is not to create the world's best diagram agent. The point is to understand the whole loop:
+
+```text
+prompt -> model action -> environment -> reward -> gradient update
+```
+
+Once that loop is clear, bigger systems like PRIME-RL, TRL, OpenRLHF, Verl, or custom distributed trainers become much less mysterious.
+
+## The Core Idea
+
+An LLM agent is just a policy.
+
+Given an observation, it emits an action. In a chat model, the observation is text. In a tool-using model, the action is often a JSON object. In a browser agent, the action might be a click, a keypress, or a DOM operation. In a tldraw agent, the action might be "create a rectangle at `(x=100, y=100)` with label `Database`".
+
+In ordinary supervised fine-tuning, we show the model examples of good behavior:
+
+```text
+user: Draw a three-step pipeline
+assistant: {"actions": [...]}
+```
+
+The model learns to imitate the assistant output.
+
+In reinforcement learning, we stop pretending that we always know the best answer. Instead, we let the model try things, score the outcomes, and move probability mass toward completions that receive higher reward.
+
+For a diagram agent, reward might mean:
+
+- Did the output parse as JSON?
+- Did the actions match the allowed schema?
+- Did the canvas renderer accept the actions?
+- Did the final diagram contain the requested objects?
+- Were labels readable?
+- Were arrows connected correctly?
+- Was the layout visually clean?
+
+The first few are easy to check with code. The later ones may need heuristics or a judge model.
+
+## Step 1: Build the Environment Without a Framework
+
+An environment needs only three ideas:
+
+- an input prompt
+- an action format
+- a reward function
+
+Here is a minimal canvas environment. It has rectangles, text labels, and arrows. The model must return JSON like this:
+
+```json
+{
+  "actions": [
+    {
+      "type": "create_shape",
+      "id": "frontend",
+      "shape": "rectangle",
+      "x": 80,
+      "y": 100,
+      "w": 180,
+      "h": 80,
+      "text": "Frontend"
+    },
+    {
+      "type": "create_shape",
+      "id": "api",
+      "shape": "rectangle",
+      "x": 340,
+      "y": 100,
+      "w": 180,
+      "h": 80,
+      "text": "API"
+    },
+    {
+      "type": "connect",
+      "from": "frontend",
+      "to": "api",
+      "text": "request"
+    }
+  ]
+}
+```
+
+Now the environment:
+
+```python
+# env.py
+from __future__ import annotations
+
+import json
+import math
+from dataclasses import dataclass, field
+from typing import Any
+
+
+ALLOWED_SHAPES = {"rectangle", "ellipse", "diamond", "text"}
+
+
+@dataclass
+class Shape:
+    id: str
+    shape: str
+    x: float
+    y: float
+    w: float
+    h: float
+    text: str = ""
+
+
+@dataclass
+class Arrow:
+    source: str
+    target: str
+    text: str = ""
+
+
+@dataclass
+class Canvas:
+    shapes: dict[str, Shape] = field(default_factory=dict)
+    arrows: list[Arrow] = field(default_factory=list)
+
+    def create_shape(self, action: dict[str, Any]) -> None:
+        shape_id = require_str(action, "id")
+        shape_type = require_str(action, "shape")
+        if shape_type not in ALLOWED_SHAPES:
+            raise ValueError(f"unknown shape type: {shape_type}")
+        if shape_id in self.shapes:
+            raise ValueError(f"duplicate shape id: {shape_id}")
+
+        x = require_number(action, "x")
+        y = require_number(action, "y")
+        w = require_number(action, "w")
+        h = require_number(action, "h")
+        if w <= 0 or h <= 0:
+            raise ValueError("shape width and height must be positive")
+        if w > 1000 or h > 1000:
+            raise ValueError("shape too large")
+
+        self.shapes[shape_id] = Shape(
+            id=shape_id,
+            shape=shape_type,
+            x=x,
+            y=y,
+            w=w,
+            h=h,
+            text=str(action.get("text", "")),
+        )
+
+    def connect(self, action: dict[str, Any]) -> None:
+        source = require_str(action, "from")
+        target = require_str(action, "to")
+        if source not in self.shapes:
+            raise ValueError(f"arrow source does not exist: {source}")
+        if target not in self.shapes:
+            raise ValueError(f"arrow target does not exist: {target}")
+        if source == target:
+            raise ValueError("arrow cannot connect a shape to itself")
+        self.arrows.append(Arrow(source=source, target=target, text=str(action.get("text", ""))))
+
+    def apply(self, action: dict[str, Any]) -> None:
+        action_type = require_str(action, "type")
+        if action_type == "create_shape":
+            self.create_shape(action)
+        elif action_type == "connect":
+            self.connect(action)
+        else:
+            raise ValueError(f"unknown action type: {action_type}")
+
+
+def require_str(obj: dict[str, Any], key: str) -> str:
+    value = obj.get(key)
+    if not isinstance(value, str) or not value:
+        raise ValueError(f"{key} must be a non-empty string")
+    return value
+
+
+def require_number(obj: dict[str, Any], key: str) -> float:
+    value = obj.get(key)
+    if not isinstance(value, int | float) or not math.isfinite(value):
+        raise ValueError(f"{key} must be a finite number")
+    return float(value)
+
+
+def parse_actions(text: str) -> list[dict[str, Any]]:
+    try:
+        data = json.loads(text)
+    except json.JSONDecodeError:
+        start = text.find("{")
+        end = text.rfind("}")
+        if start == -1 or end == -1 or end <= start:
+            raise ValueError("model output does not contain JSON")
+        data = json.loads(text[start : end + 1])
+
+    actions = data.get("actions")
+    if not isinstance(actions, list):
+        raise ValueError("missing actions array")
+    if not actions:
+        raise ValueError("actions array is empty")
+    if len(actions) > 40:
+        raise ValueError("too many actions")
+    if not all(isinstance(action, dict) for action in actions):
+        raise ValueError("each action must be an object")
+    return actions
+
+
+def validate_completion(text: str) -> tuple[Canvas | None, list[str]]:
+    errors: list[str] = []
+    canvas = Canvas()
+
+    try:
+        actions = parse_actions(text)
+    except Exception as exc:
+        return None, [str(exc)]
+
+    for i, action in enumerate(actions):
+        try:
+            canvas.apply(action)
+        except Exception as exc:
+            errors.append(f"action {i}: {exc}")
+
+    return canvas, errors
+```
+
+This already gives us an environment. It is not fancy, but it has the property that matters: it can deterministically accept or reject model output.
+
+Now add a reward function:
+
+```python
+# reward.py
+from __future__ import annotations
+
+import re
+
+from env import Canvas, validate_completion
+
+
+def score_layout(canvas: Canvas) -> float:
+    if not canvas.shapes:
+        return 0.0
+
+    score = 1.0
+
+    # Penalize overlapping boxes.
+    shapes = list(canvas.shapes.values())
+    for i, a in enumerate(shapes):
+        for b in shapes[i + 1 :]:
+            ax2, ay2 = a.x + a.w, a.y + a.h
+            bx2, by2 = b.x + b.w, b.y + b.h
+            overlap = not (ax2 < b.x or bx2 < a.x or ay2 < b.y or by2 < a.y)
+            if overlap:
+                score -= 0.15
+
+    # Reward labels.
+    labeled = sum(1 for shape in shapes if shape.text.strip())
+    score += 0.1 * min(labeled, 5)
+
+    # Reward connected diagrams.
+    score += 0.1 * min(len(canvas.arrows), 5)
+
+    return max(0.0, min(1.0, score))
+
+
+def score_semantics(prompt: str, canvas: Canvas) -> float:
+    """A tiny heuristic semantic scorer.
+
+    This is intentionally simple. For a real tldraw agent you would replace
+    this with stronger structural checks or a VLM judge.
+    """
+
+    prompt_words = set(re.findall(r"[a-zA-Z][a-zA-Z0-9_-]+", prompt.lower()))
+    label_words: set[str] = set()
+    for shape in canvas.shapes.values():
+        label_words.update(re.findall(r"[a-zA-Z][a-zA-Z0-9_-]+", shape.text.lower()))
+
+    important = {w for w in prompt_words if len(w) >= 4}
+    if not important:
+        return 0.5
+
+    coverage = len(important & label_words) / max(1, len(important))
+    return max(0.0, min(1.0, coverage))
+
+
+def reward(prompt: str, completion: str) -> float:
+    canvas, errors = validate_completion(completion)
+    if errors or canvas is None:
+        return 0.0
+
+    validity = 1.0
+    layout = score_layout(canvas)
+    semantics = score_semantics(prompt, canvas)
+
+    return 0.4 * validity + 0.3 * layout + 0.3 * semantics
+```
+
+This is the whole idea behind verifier-style environments. You do not need a framework to understand it. A framework mainly gives you process management, batching, remote inference, logging, reproducibility, and scale.
+
+For educational purposes, this tiny environment is enough.
+
+## Step 2: Generate Teacher Trajectories With Gemini
+
+The next problem is data.
+
+If we start RL from a model that cannot produce valid JSON actions, almost every rollout receives zero reward. The model does not get useful learning signal. This is why SFT is useful before RL.
+
+SFT teaches the model the basic action language:
+
+- output a JSON object
+- include an `actions` array
+- use valid action types
+- create shapes before connecting them
+- use stable IDs
+- avoid impossible coordinates
+
+We can generate these examples with a stronger teacher model.
+
+Google's Gemini API supports text generation and structured output. The current Python SDK uses `google-genai`, a `genai.Client`, and `client.models.generate_content(...)`. For structured JSON, Gemini can be configured with `response_mime_type="application/json"` and a JSON schema. See Google's Gemini text generation and structured output docs for the current API details.
+
+Install:
+
+```bash
+pip install google-genai pydantic datasets
+export GEMINI_API_KEY=...
+```
+
+Define the action schema:
+
+```python
+# teacher_generate.py
+from __future__ import annotations
+
+import json
+from pathlib import Path
+from typing import Literal
+
+from google import genai
+from pydantic import BaseModel, Field
+
+from reward import reward
+from env import validate_completion
+
+
+class CreateShape(BaseModel):
+    type: Literal["create_shape"]
+    id: str
+    shape: Literal["rectangle", "ellipse", "diamond", "text"]
+    x: float
+    y: float
+    w: float
+    h: float
+    text: str = ""
+
+
+class Connect(BaseModel):
+    type: Literal["connect"]
+    from_: str = Field(alias="from")
+    to: str
+    text: str = ""
+
+
+class AgentResponse(BaseModel):
+    actions: list[CreateShape | Connect]
+
+
+SYSTEM_PROMPT = """You are a diagramming agent.
+
+The user will ask for a small diagram. Return only JSON with an `actions`
+array. You can create shapes and connect them.
+
+Rules:
+- Create every shape before connecting it.
+- Use stable, meaningful shape ids.
+- Prefer simple left-to-right or top-to-bottom layouts.
+- Avoid overlaps.
+- Put short readable labels inside shapes.
+- Return only JSON. No markdown.
+"""
+
+
+PROMPTS = [
+    "Draw a three step data pipeline: client, API, database.",
+    "Draw a login flow with user, auth service, token, and dashboard.",
+    "Draw a simple RAG system with documents, embeddings, vector DB, retriever, and LLM.",
+    "Draw a CI pipeline with commit, tests, build, deploy.",
+    "Draw a checkout flow with cart, payment, fraud check, and receipt.",
+]
+
+
+def generate_one(client: genai.Client, model: str, prompt: str) -> str:
+    response = client.models.generate_content(
+        model=model,
+        contents=f"{SYSTEM_PROMPT}\n\nUser request: {prompt}",
+        config={
+            "response_mime_type": "application/json",
+            "response_json_schema": AgentResponse.model_json_schema(),
+        },
+    )
+    return response.text
+
+
+def main() -> None:
+    client = genai.Client()
+    model = "gemini-2.5-flash"
+
+    out_dir = Path("data/diagram_teacher")
+    out_dir.mkdir(parents=True, exist_ok=True)
+    accepted = out_dir / "train.jsonl"
+    rejected = out_dir / "rejected.jsonl"
+
+    with accepted.open("w") as good, rejected.open("w") as bad:
+        for prompt in PROMPTS:
+            for attempt in range(4):
+                completion = generate_one(client, model, prompt)
+                canvas, errors = validate_completion(completion)
+                score = reward(prompt, completion)
+
+                row = {
+                    "prompt": prompt,
+                    "completion": completion,
+                    "reward": score,
+                    "errors": errors,
+                }
+
+                if canvas is not None and not errors and score >= 0.6:
+                    # Chat-format SFT row.
+                    good.write(
+                        json.dumps(
+                            {
+                                "messages": [
+                                    {"role": "system", "content": SYSTEM_PROMPT},
+                                    {"role": "user", "content": prompt},
+                                    {"role": "assistant", "content": completion},
+                                ],
+                                "reward": score,
+                            }
+                        )
+                        + "\n"
+                    )
+                else:
+                    bad.write(json.dumps(row) + "\n")
+
+
+if __name__ == "__main__":
+    main()
+```
+
+This is teacher trajectory generation.
+
+For a single-turn environment, a trajectory is simply:
+
+```text
+observation: user prompt
+action: JSON actions
+reward: validation score
+```
+
+For a multi-turn environment, a trajectory contains several observations and actions:
+
+```text
+obs_0 -> action_0 -> obs_1 -> action_1 -> obs_2 -> reward
+```
+
+For tldraw, a richer trajectory might include:
+
+- the user request
+- visible canvas state
+- current selected shapes
+- model action batch
+- validator output
+- screenshot of final canvas
+- reward
+
+The important thing is that teacher generation is not magic. It is just sampling from a strong model, validating, and keeping the good traces.
+
+## Step 3: SFT the Student
+
+SFT is imitation learning.
+
+We are not asking whether the output is better than another output. We are saying: "given this prompt, copy this teacher action."
+
+For a chat model, each row looks like:
+
+```json
+{
+  "messages": [
+    {"role": "system", "content": "..."},
+    {"role": "user", "content": "Draw a three step data pipeline."},
+    {"role": "assistant", "content": "{\"actions\": [...]}"}
+  ]
+}
+```
+
+You can train this with any SFT stack. With TRL:
+
+```python
+# train_sft.py
+from datasets import load_dataset
+from trl import SFTConfig, SFTTrainer
+
+
+dataset = load_dataset("json", data_files="data/diagram_teacher/train.jsonl", split="train")
+
+args = SFTConfig(
+    output_dir="outputs/diagram-sft",
+    per_device_train_batch_size=2,
+    gradient_accumulation_steps=8,
+    learning_rate=2e-5,
+    num_train_epochs=3,
+    max_length=4096,
+    logging_steps=10,
+    save_steps=100,
+)
+
+trainer = SFTTrainer(
+    model="Qwen/Qwen3-4B-Instruct-2507",
+    args=args,
+    train_dataset=dataset,
+)
+
+trainer.train()
+trainer.save_model("outputs/diagram-sft/final")
+```
+
+Run:
+
+```bash
+accelerate launch train_sft.py
+```
+
+If you want to use LoRA or QLoRA, add PEFT. The educational idea does not change:
+
+```text
+maximize log probability of teacher actions
+```
+
+The model after SFT should be able to produce syntactically valid actions most of the time. That is enough to make RL meaningful.
+
+## Step 4: Why RL Is Needed After SFT
+
+If SFT teaches imitation, why do RL at all?
+
+Because teacher traces are static. They teach what the teacher did on the prompts we generated. They do not directly optimize the metric we care about.
+
+SFT says:
+
+```text
+"Make the student more likely to produce this teacher answer."
+```
+
+RL says:
+
+```text
+"Make the student more likely to produce answers that score well."
+```
+
+That difference matters.
+
+Suppose the teacher creates a valid diagram, but the layout is cramped. SFT will copy it. RL can discover a cleaner layout if the reward function values spacing. Suppose the teacher labels a node "DB" but the reward gives higher semantic coverage for "Database". RL can move toward "Database". Suppose there are multiple good diagrams. SFT collapses toward teacher style; RL can explore and reinforce variants that score better.
+
+In practice, the pipeline usually looks like:
+
+```text
+base model -> SFT on teacher traces -> RL on environment reward
+```
+
+SFT gets you into the action space. RL improves behavior inside that space.
+
+## Step 5: RL From First Principles
+
+Let us build the RL loop without hiding behind a framework.
+
+The simplest online RL loop for LLMs is:
+
+1. Sample a batch of prompts.
+2. Generate multiple completions per prompt.
+3. Score each completion with the environment.
+4. Convert scores into advantages.
+5. Increase the log probability of above-average completions.
+6. Decrease or ignore below-average completions.
+
+GRPO, which is used in many recent LLM RL pipelines, follows this group-relative idea. For each prompt, generate a group of completions. Reward each completion. Normalize rewards within the group. Use those normalized rewards as advantages.
+
+For prompt `x`, sample completions:
+
+```text
+y_1, y_2, ..., y_G
+```
+
+Score them:
+
+```text
+r_1, r_2, ..., r_G
+```
+
+Compute group-relative advantage:
+
+```text
+A_i = (r_i - mean(r)) / (std(r) + eps)
+```
+
+If a completion is better than its siblings, advantage is positive. If worse, advantage is negative.
+
+The model loss is roughly:
+
+```text
+loss = - advantage * logprob(completion tokens)
+```
+
+Real implementations add clipping, KL penalties, reference models, masking, distributed generation, vLLM, and a dozen stability tricks. But the core is that simple.
+
+Here is a tiny trainer sketch. This is not production code, but it exposes the mechanism.
+
+```python
+# train_rl_minimal.py
+from __future__ import annotations
+
+import json
+import random
+
+import torch
+from transformers import AutoModelForCausalLM, AutoTokenizer
+
+from reward import reward
+
+
+SYSTEM_PROMPT = """You are a diagramming agent. Return only JSON with an actions array."""
+
+
+PROMPTS = [
+    "Draw a three step data pipeline: client, API, database.",
+    "Draw a login flow with user, auth service, token, and dashboard.",
+    "Draw a simple RAG system with documents, embeddings, vector DB, retriever, and LLM.",
+    "Draw a CI pipeline with commit, tests, build, deploy.",
+    "Draw a checkout flow with cart, payment, fraud check, and receipt.",
+]
+
+
+def format_prompt(tokenizer, user_prompt: str) -> str:
+    messages = [
+        {"role": "system", "content": SYSTEM_PROMPT},
+        {"role": "user", "content": user_prompt},
+    ]
+    return tokenizer.apply_chat_template(messages, tokenize=False, add_generation_prompt=True)
+
+
+def generate_group(model, tokenizer, prompt: str, group_size: int, max_new_tokens: int) -> list[str]:
+    encoded = tokenizer(prompt, return_tensors="pt").to(model.device)
+    outputs = model.generate(
+        **encoded,
+        do_sample=True,
+        temperature=0.8,
+        top_p=0.95,
+        max_new_tokens=max_new_tokens,
+        num_return_sequences=group_size,
+        pad_token_id=tokenizer.eos_token_id,
+    )
+
+    completions = []
+    prompt_len = encoded["input_ids"].shape[1]
+    for output in outputs:
+        completion_ids = output[prompt_len:]
+        completions.append(tokenizer.decode(completion_ids, skip_special_tokens=True))
+    return completions
+
+
+def completion_logprob(model, tokenizer, prompt: str, completion: str) -> torch.Tensor:
+    full_text = prompt + completion
+    full = tokenizer(full_text, return_tensors="pt").to(model.device)
+    prompt_ids = tokenizer(prompt, return_tensors="pt").to(model.device)["input_ids"]
+    prompt_len = prompt_ids.shape[1]
+
+    input_ids = full["input_ids"]
+    attention_mask = full["attention_mask"]
+
+    logits = model(input_ids=input_ids, attention_mask=attention_mask).logits
+    logprobs = torch.log_softmax(logits[:, :-1, :], dim=-1)
+    target_ids = input_ids[:, 1:]
+
+    token_logprobs = logprobs.gather(-1, target_ids.unsqueeze(-1)).squeeze(-1)
+
+    # Only train on completion tokens.
+    completion_token_logprobs = token_logprobs[:, prompt_len - 1 :]
+    return completion_token_logprobs.mean()
+
+
+def main() -> None:
+    model_name = "outputs/diagram-sft/final"
+    tokenizer = AutoTokenizer.from_pretrained(model_name)
+    model = AutoModelForCausalLM.from_pretrained(
+        model_name,
+        torch_dtype=torch.bfloat16,
+        device_map="cuda",
+    )
+    model.train()
+
+    optimizer = torch.optim.AdamW(model.parameters(), lr=1e-6)
+
+    group_size = 4
+    max_new_tokens = 1024
+
+    for step in range(500):
+        user_prompt = random.choice(PROMPTS)
+        prompt = format_prompt(tokenizer, user_prompt)
+        completions = generate_group(model, tokenizer, prompt, group_size, max_new_tokens)
+        rewards = torch.tensor([reward(user_prompt, c) for c in completions], device=model.device)
+
+        if rewards.std() < 1e-6:
+            print(f"step={step} skipped zero-variance rewards={rewards.tolist()}")
+            continue
+
+        advantages = (rewards - rewards.mean()) / (rewards.std() + 1e-6)
+
+        losses = []
+        for completion, advantage in zip(completions, advantages, strict=True):
+            logp = completion_logprob(model, tokenizer, prompt, completion)
+            losses.append(-advantage.detach() * logp)
+
+        loss = torch.stack(losses).mean()
+        optimizer.zero_grad()
+        loss.backward()
+        torch.nn.utils.clip_grad_norm_(model.parameters(), 1.0)
+        optimizer.step()
+
+        print(
+            json.dumps(
+                {
+                    "step": step,
+                    "loss": float(loss.detach().cpu()),
+                    "reward_mean": float(rewards.mean().cpu()),
+                    "reward_max": float(rewards.max().cpu()),
+                    "rewards": [float(r) for r in rewards.cpu()],
+                }
+            )
+        )
+
+        if step and step % 100 == 0:
+            model.save_pretrained(f"outputs/diagram-rl/step-{step}")
+            tokenizer.save_pretrained(f"outputs/diagram-rl/step-{step}")
+
+
+if __name__ == "__main__":
+    main()
+```
+
+This trainer is intentionally bare. It has serious limitations:
+
+- it computes logprobs inefficiently
+- it does not use a reference model
+- it does not use PPO/GRPO clipping
+- it updates on generated samples from the same model without careful caching
+- it does not handle distributed training
+- it does not separate generation from training
+- it uses mean logprob instead of a careful token-level objective
+
+But it is enough to understand the mechanics.
+
+The model samples multiple possible diagrams for the same prompt. The reward function chooses which ones are better. The loss nudges the model toward better completions.
+
+That is RL for LLMs.
+
+## Step 6: Add Clipping and a Reference Model
+
+The naive loss can move too aggressively. A completion that gets a high reward might get reinforced even if the model only produced it by luck. A negative completion might be punished too strongly. The model can also drift away from language quality.
+
+Modern RL trainers add guardrails.
+
+The most common guardrails are:
+
+- a frozen reference model
+- a KL penalty against the reference model
+- ratio clipping
+- reward normalization
+- length masking
+- truncated completion masking
+
+The reference model is usually the SFT checkpoint before RL. The policy model is the one being updated. If the policy starts assigning much higher probability to a completion than the reference did, the update can be clipped or penalized.
+
+The PPO-style ratio is:
+
+```text
+ratio = exp(logprob_policy - logprob_old)
+```
+
+Then the clipped objective prevents updates that move too far:
+
+```text
+min(ratio * advantage, clip(ratio, 1 - eps, 1 + eps) * advantage)
+```
+
+GRPO adapts this idea to group-relative rewards and avoids needing a learned value model. That is why it is popular for verifiable tasks like math, code, and structured tool use.
+
+For an educational trainer, the next step would be storing the logprobs from the model that generated the completions:
+
+```python
+old_logp = completion_logprob(model, tokenizer, prompt, completion).detach()
+```
+
+Then, during the optimization pass:
+
+```python
+new_logp = completion_logprob(model, tokenizer, prompt, completion)
+ratio = torch.exp(new_logp - old_logp)
+unclipped = ratio * advantage
+clipped = torch.clamp(ratio, 0.8, 1.2) * advantage
+loss = -torch.minimum(unclipped, clipped)
+```
+
+You can also add a KL term:
+
+```python
+policy_logp = completion_logprob(policy, tokenizer, prompt, completion)
+ref_logp = completion_logprob(reference, tokenizer, prompt, completion).detach()
+kl_estimate = policy_logp - ref_logp
+loss = rl_loss + beta * kl_estimate
+```
+
+This is still simplified, but it introduces the reason PPO/GRPO trainers look more complicated than SFT trainers: generation and optimization are now coupled.
+
+SFT data is fixed. RL data is produced by the model during training.
+
+## Step 7: Use TRL When You Want the Trainer, Not the Mystery
+
+Once you understand the loop, TRL becomes much easier to read.
+
+TRL is Hugging Face's post-training library. Its docs describe trainers for SFT, GRPO, DPO, reward modeling, RLOO, and more. `GRPOTrainer` accepts a model, a dataset of prompts, and reward functions. The trainer handles generation, reward computation, advantage computation, and the optimization step.
+
+The same diagram task with TRL looks like this:
+
+```python
+# train_grpo_trl.py
+from datasets import Dataset
+from trl import GRPOConfig, GRPOTrainer
+
+from reward import reward
+
+
+prompts = [
+    "Draw a three step data pipeline: client, API, database.",
+    "Draw a login flow with user, auth service, token, and dashboard.",
+    "Draw a simple RAG system with documents, embeddings, vector DB, retriever, and LLM.",
+    "Draw a CI pipeline with commit, tests, build, deploy.",
+]
+
+dataset = Dataset.from_list([{"prompt": prompt} for prompt in prompts])
+
+
+def diagram_reward_func(prompts, completions, **kwargs):
+    scores = []
+    for prompt, completion in zip(prompts, completions, strict=True):
+        # Depending on model/template, completion may be a string or message-like object.
+        text = completion if isinstance(completion, str) else completion[0]["content"]
+        scores.append(reward(prompt, text))
+    return scores
+
+
+args = GRPOConfig(
+    output_dir="outputs/diagram-grpo",
+    learning_rate=1e-6,
+    per_device_train_batch_size=2,
+    gradient_accumulation_steps=4,
+    num_generations=4,
+    max_prompt_length=1024,
+    max_completion_length=1024,
+    logging_steps=1,
+)
+
+trainer = GRPOTrainer(
+    model="outputs/diagram-sft/final",
+    reward_funcs=diagram_reward_func,
+    args=args,
+    train_dataset=dataset,
+)
+
+trainer.train()
+```
+
+This is the same loop:
+
+```text
+prompt batch -> generate completions -> reward_func -> GRPO update
+```
+
+The difference is that TRL gives you the trainer implementation, accelerator integration, logging, PEFT integration, and optional vLLM generation paths.
+
+For many projects, that is the right level of abstraction.
+
+## Step 8: What Makes the Environment Good?
+
+The hard part is not writing the trainer. The hard part is writing the reward.
+
+A bad reward creates a bad agent.
+
+For the diagram agent, a weak reward is:
+
+```text
+1 if JSON parses, else 0
+```
+
+This teaches the model to be valid, but not useful.
+
+A better reward combines several signals:
+
+```text
+reward =
+  0.25 * parses_as_json
+  0.20 * schema_valid
+  0.20 * renderer_accepts
+  0.15 * requested_entities_present
+  0.10 * arrows_connect_expected_entities
+  0.10 * layout_quality
+```
+
+For a tldraw-like environment, you can implement some of these with code:
+
+- parse JSON
+- validate schema
+- execute actions in the real editor
+- inspect final shapes
+- count overlaps
+- check arrow bindings
+- check text bounds
+
+Then use a judge model for the parts that are hard to encode:
+
+- "Does this look like a RAG diagram?"
+- "Is this visually clear?"
+- "Did it satisfy the user's intent?"
+
+The important thing is to keep the judge grounded. Give it the prompt, the shape list, and a screenshot. Ask for a numeric score and a short reason. Log every judgment. Sample failures manually.
+
+Do not trust a judge blindly. Treat it as another noisy reward function.
+
+## Step 9: The Full Pipeline
+
+The complete educational pipeline is:
+
+```text
+1. Write environment
+   - action schema
+   - parser
+   - validator
+   - renderer or simulator
+   - reward function
+
+2. Generate prompts
+   - hand-written seed prompts
+   - synthetic prompt generator
+   - curriculum from easy to hard
+
+3. Generate teacher trajectories
+   - call Gemini with structured output
+   - sample multiple attempts per prompt
+   - validate each attempt
+   - keep only passing traces
+
+4. SFT
+   - train student on accepted teacher traces
+   - measure valid-action rate
+   - measure reward before RL
+
+5. RL
+   - sample prompts
+   - generate multiple completions per prompt
+   - score each completion
+   - compute group-relative advantages
+   - update policy
+
+6. Evaluate
+   - held-out prompts
+   - pass rate
+   - reward distribution
+   - semantic judge score
+   - human review of screenshots
+
+7. Iterate
+   - improve reward
+   - add harder prompts
+   - refresh teacher traces
+   - tune RL hyperparameters
+```
+
+A useful mental model:
+
+```text
+SFT buys you syntax.
+RL buys you optimization.
+Evaluation tells you whether you optimized the right thing.
+```
+
+## Common Failure Modes
+
+The model never gets reward.
+
+This usually means you skipped SFT or the action schema is too strict. Generate teacher traces first. Make the action space smaller. Add partial rewards.
+
+The model learns to emit tiny trivial diagrams.
+
+Your reward probably overvalues validity and undervalues task satisfaction. Add entity coverage, minimum shape count, and semantic reward.
+
+The model emits valid JSON but ignores the prompt.
+
+Your reward is mostly syntactic. Add prompt-conditioned checks.
+
+The model overfits the teacher style.
+
+Add more teacher diversity. Sample more attempts per prompt. Use multiple teacher models. Make prompts more varied.
+
+The RL run is unstable.
+
+Lower the learning rate. Reduce completion length. Add KL/reference penalty. Use clipping. Increase batch size. Check reward variance.
+
+Reward goes up but human quality does not.
+
+Your reward is being gamed. Inspect examples. Add negative tests. Penalize the exploit directly. Avoid a single scalar reward from one brittle heuristic.
+
+## What Changes for Real tldraw?
+
+The pure-Python canvas is educational. A real tldraw environment changes the validator, not the loop.
+
+Instead of applying actions to a toy `Canvas`, you:
+
+1. Start a tldraw app or validator page.
+2. Send the JSON actions into the real editor.
+3. Let tldraw sanitize/apply them.
+4. Read final shapes and bindings.
+5. Export a screenshot.
+6. Compute reward from validation errors, shape state, and screenshot.
+
+The model still sees a prompt and emits JSON actions. The trainer still samples completions and receives rewards.
+
+This is why environment design is so powerful. Once the environment exposes:
+
+```python
+reward(prompt, completion) -> float
+```
+
+you can plug it into a minimal trainer, TRL, Unsloth, Prime-RL, or a custom distributed system.
+
+## Closing
+
+The magic of agent training is not in the framework. The framework helps, especially at scale, but the core ideas are small:
+
+- define the action space
+- define success
+- generate traces
+- imitate good traces
+- sample new attempts
+- reward good attempts
+- update the model
+
+Teacher trajectories solve the cold-start problem. SFT teaches the model how to speak the environment's action language. RL turns the environment into an optimizer.
+
+If you understand that, a tldraw agent is not a special case. A browser agent, coding agent, spreadsheet agent, robotics planner, or math solver is the same shape:
+
+```text
+state -> action -> validation -> reward -> learning
+```
+
+The rest is engineering.
+
+## References
+
+- Gemini text generation docs: https://ai.google.dev/gemini-api/docs/text-generation
+- Gemini structured output docs: https://ai.google.dev/gemini-api/docs/structured-output
+- TRL documentation: https://huggingface.co/docs/trl/index
+- TRL GRPOTrainer docs: https://huggingface.co/docs/trl/grpo_trainer
+- Unsloth RL guide: https://docs.unsloth.ai/get-started/reinforcement-learning-rl-guide
