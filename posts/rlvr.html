@@ -1,0 +1,1867 @@
+<!DOCTYPE html>
+<html xmlns="http://www.w3.org/1999/xhtml" lang="en" xml:lang="en"><head>
+
+<meta charset="utf-8">
+<meta name="generator" content="quarto-1.7.31">
+
+<meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=yes">
+
+<meta name="dcterms.date" content="2026-05-08">
+<meta name="description" content="RLVR workflow">
+
+<title>Illustrated RLVR – Anshuman Mishra</title>
+<style>
+code{white-space: pre-wrap;}
+span.smallcaps{font-variant: small-caps;}
+div.columns{display: flex; gap: min(4vw, 1.5em);}
+div.column{flex: auto; overflow-x: auto;}
+div.hanging-indent{margin-left: 1.5em; text-indent: -1.5em;}
+ul.task-list{list-style: none;}
+ul.task-list li input[type="checkbox"] {
+  width: 0.8em;
+  margin: 0 0.8em 0.2em -1em; /* quarto-specific, see https://github.com/quarto-dev/quarto-cli/issues/4556 */ 
+  vertical-align: middle;
+}
+/* CSS for syntax highlighting */
+html { -webkit-text-size-adjust: 100%; }
+pre > code.sourceCode { white-space: pre; position: relative; }
+pre > code.sourceCode > span { display: inline-block; line-height: 1.25; }
+pre > code.sourceCode > span:empty { height: 1.2em; }
+.sourceCode { overflow: visible; }
+code.sourceCode > span { color: inherit; text-decoration: inherit; }
+div.sourceCode { margin: 1em 0; }
+pre.sourceCode { margin: 0; }
+@media screen {
+div.sourceCode { overflow: auto; }
+}
+@media print {
+pre > code.sourceCode { white-space: pre-wrap; }
+pre > code.sourceCode > span { text-indent: -5em; padding-left: 5em; }
+}
+pre.numberSource code
+  { counter-reset: source-line 0; }
+pre.numberSource code > span
+  { position: relative; left: -4em; counter-increment: source-line; }
+pre.numberSource code > span > a:first-child::before
+  { content: counter(source-line);
+    position: relative; left: -1em; text-align: right; vertical-align: baseline;
+    border: none; display: inline-block;
+    -webkit-touch-callout: none; -webkit-user-select: none;
+    -khtml-user-select: none; -moz-user-select: none;
+    -ms-user-select: none; user-select: none;
+    padding: 0 4px; width: 4em;
+  }
+pre.numberSource { margin-left: 3em;  padding-left: 4px; }
+div.sourceCode
+  {   }
+@media screen {
+pre > code.sourceCode > span > a:first-child::before { text-decoration: underline; }
+}
+</style>
+
+
+<script src="../site_libs/quarto-nav/quarto-nav.js"></script>
+<link href="../assets/images/favicon.png" rel="icon" type="image/png">
+<script src="../site_libs/clipboard/clipboard.min.js"></script>
+<script src="../site_libs/quarto-html/quarto.js" type="module"></script>
+<script src="../site_libs/quarto-html/tabsets/tabsets.js" type="module"></script>
+<script src="../site_libs/quarto-html/popper.min.js"></script>
+<script src="../site_libs/quarto-html/tippy.umd.min.js"></script>
+<script src="../site_libs/quarto-html/anchor.min.js"></script>
+<link href="../site_libs/quarto-html/tippy.css" rel="stylesheet">
+<link href="../site_libs/quarto-html/quarto-syntax-highlighting-46f4cc9626f044588a66931b604fc9c8.css" rel="stylesheet" id="quarto-text-highlighting-styles">
+<script src="../site_libs/bootstrap/bootstrap.min.js"></script>
+<link href="../site_libs/bootstrap/bootstrap-icons.css" rel="stylesheet">
+<link href="../site_libs/bootstrap/bootstrap-6503c58d7f5df94207bfde43fd79c124.min.css" rel="stylesheet" append-hash="true" id="quarto-bootstrap" data-mode="light">
+<script id="quarto-search-options" type="application/json">{
+  "language": {
+    "search-no-results-text": "No results",
+    "search-matching-documents-text": "matching documents",
+    "search-copy-link-title": "Copy link to search",
+    "search-hide-matches-text": "Hide additional matches",
+    "search-more-match-text": "more match in this document",
+    "search-more-matches-text": "more matches in this document",
+    "search-clear-button-title": "Clear",
+    "search-text-placeholder": "",
+    "search-detached-cancel-button-title": "Cancel",
+    "search-submit-button-title": "Submit",
+    "search-label": "Search"
+  }
+}</script>
+<script async="" src="https://www.googletagmanager.com/gtag/js?id=G-EKSMXY3E8G"></script>
+
+<script type="text/javascript">
+
+window.dataLayer = window.dataLayer || [];
+function gtag(){dataLayer.push(arguments);}
+gtag('js', new Date());
+gtag('config', 'G-EKSMXY3E8G', { 'anonymize_ip': true});
+</script>
+<style>
+:root {
+  --paper: #f5f1e9;
+  --ink: #111111;
+  --muted: #666666;
+  --rule: #bdb7ac;
+  --content-width: 600px;
+}
+
+html {
+  font-size: 16px;
+}
+
+body {
+  background: var(--paper);
+  color: var(--ink);
+  font-family: Times, serif;
+  line-height: 1.8;
+  margin: 0;
+  display: flex;
+  justify-content: center;
+  min-height: 100vh;
+}
+
+#quarto-content {
+  width: 100%;
+  padding-top: 60px;
+}
+
+#quarto-header,
+.navbar,
+#quarto-sidebar,
+#quarto-margin-sidebar,
+.quarto-secondary-nav,
+.page-navigation,
+.nav-page,
+.toc-actions,
+.quarto-color-scheme-toggle,
+.quarto-listing-category-title,
+.quarto-listing-category,
+.quarto-title-meta {
+  display: none !important;
+}
+
+#title-block-header.quarto-title-block .quarto-title-banner,
+.quarto-title-banner {
+  background: transparent !important;
+  color: var(--ink) !important;
+  border: 0 !important;
+  margin: 0 !important;
+  padding: 0 !important;
+}
+
+#title-block-header {
+  margin: 0 0 2.5rem;
+  padding: 0;
+}
+
+#title-block-header:empty {
+  display: none;
+  margin: 0;
+}
+
+#title-block-header .title {
+  font-size: 25px;
+  font-weight: 700;
+  line-height: 1.25;
+  margin: 0;
+}
+
+#title-block-header .subtitle,
+#title-block-header .description,
+#title-block-header .quarto-categories {
+  color: var(--muted);
+}
+
+main.content {
+  max-width: var(--content-width);
+  width: 100%;
+  margin: 0 auto;
+  padding: 50px 20px 80px;
+}
+
+.site-nav {
+  position: fixed;
+  top: 0;
+  left: 0;
+  right: 0;
+  background: var(--paper);
+  padding: 16px 20px;
+  z-index: 1000;
+  text-align: center;
+}
+
+.site-nav a {
+  color: var(--ink);
+  border-bottom: none;
+  padding: 0 10px;
+}
+
+.site-nav a:hover {
+  color: #2563eb;
+  border-bottom: none;
+}
+
+h1, h2, h3, h4, h5, h6 {
+  color: var(--ink);
+  font-weight: 700;
+}
+
+h1 {
+  font-size: 25px;
+  line-height: 1.25;
+  margin: 0 0 2.5rem;
+}
+
+h2 {
+  font-size: 19px;
+  line-height: 1.4;
+  margin-top: 2.75rem;
+  margin-bottom: 0.9rem;
+}
+
+h3 {
+  font-size: 17px;
+  line-height: 1.5;
+  margin-top: 1.6rem;
+  margin-bottom: 0.35rem;
+}
+
+p, ul, ol, blockquote, table, iframe {
+  margin-bottom: 1.2rem;
+}
+
+a {
+  color: var(--ink);
+  text-decoration: none;
+  border-bottom: 1px solid var(--rule);
+  padding-bottom: 1px;
+}
+
+a:hover {
+  color: #2563eb;
+  border-bottom-color: #2563eb;
+}
+
+hr {
+  border: 0;
+  border-top: 1px solid var(--rule);
+  margin: 2.8rem 0 2rem;
+  opacity: 1;
+}
+
+strong, b {
+  font-weight: 600;
+}
+
+ul, ol {
+  padding-left: 1.2rem;
+}
+
+li + li {
+  margin-top: 0.45rem;
+}
+
+blockquote {
+  padding-left: 1rem;
+  border-left: 1px solid var(--rule);
+  color: var(--muted);
+}
+
+iframe {
+  width: 100%;
+  max-width: 100%;
+  aspect-ratio: 16 / 9;
+  height: auto;
+  border: 1px solid var(--rule);
+}
+
+img {
+  max-width: 100%;
+  height: auto;
+}
+
+table {
+  width: 100%;
+}
+
+code, pre, .sourceCode {
+  font-family: "SFMono-Regular", "SF Mono", Consolas, "Liberation Mono", Menlo, monospace;
+  font-size: 0.92rem;
+}
+
+:not(pre) > code {
+  background: transparent;
+  color: var(--ink);
+  padding: 0;
+  border-radius: 0;
+}
+
+pre, .sourceCode {
+  background: #1f1f1f !important;
+  color: #d4d4d4 !important;
+  border: none;
+  border-radius: 6px;
+  padding: 1rem;
+  overflow-x: auto;
+  max-width: 100%;
+  box-sizing: border-box;
+}
+
+.cell {
+  margin-bottom: 1rem;
+}
+
+.cell > .sourceCode {
+  margin-bottom: 0;
+}
+
+.cell-output > pre,
+.cell-output > .sourceCode > pre,
+.cell-output-stdout > pre {
+  margin-left: 0.8rem;
+  margin-top: 0;
+  background: none;
+  border: 0;
+  border-left: 2px solid var(--rule);
+  border-radius: 0;
+  padding-left: 1rem;
+}
+
+.cell-output > .sourceCode {
+  border: none;
+  background: none;
+  margin-top: 0;
+}
+
+.underline {
+  text-decoration: underline;
+  text-underline-offset: 4px;
+}
+
+.home h1 {
+  font-size: 20px;
+  margin-bottom: 40px;
+}
+
+.home-links {
+  font-size: 1rem;
+  font-weight: 700;
+  margin-bottom: 0.4rem;
+}
+
+.secondary-links {
+  font-weight: 400;
+  color: var(--muted);
+}
+
+.secondary-links a {
+  color: inherit;
+  border-bottom-color: #c8c0b5;
+}
+
+.quarto-listing .listing-actions-group {
+  display: none !important;
+}
+
+.quarto-listing .list {
+  margin-top: 1.5rem;
+}
+
+.quarto-listing .quarto-post {
+  display: grid;
+  grid-template-columns: minmax(0, 1fr) auto;
+  gap: 1rem 1.5rem;
+  align-items: start;
+  padding: 1.5rem 0 1.1rem;
+  border-top: 1px solid var(--rule);
+  border-bottom: none !important;
+}
+
+.quarto-listing .quarto-post .thumbnail,
+.quarto-listing .quarto-post .listing-categories,
+.quarto-listing .quarto-post .listing-author {
+  display: none !important;
+}
+
+.quarto-listing .quarto-post .body,
+.quarto-listing .quarto-post .metadata {
+  margin: 0;
+}
+
+.quarto-listing .quarto-post a {
+  border-bottom: none;
+}
+
+.quarto-listing .quarto-post a:hover {
+  border-bottom: none;
+}
+
+.quarto-listing .quarto-post .metadata {
+  font-size: 17px;
+  color: var(--ink);
+  white-space: nowrap;
+  font-family: Times, serif;
+}
+
+.quarto-listing .quarto-post .listing-title,
+.quarto-listing .quarto-post .listing-title a {
+  font-size: 17px;
+  font-weight: 700 !important;
+  line-height: 1.45;
+  margin: 0 0 0.55rem;
+}
+
+.quarto-listing .quarto-post .listing-description,
+.quarto-listing .quarto-post .listing-description p {
+  color: var(--muted);
+  margin: 0;
+}
+
+#quarto-content.page-columns {
+  display: block !important;
+}
+
+.quarto-categories {
+  display: flex !important;
+  flex-wrap: wrap;
+  gap: 0.4rem;
+  padding: 0;
+  margin-top: 0.5rem;
+}
+
+.quarto-categories .quarto-category {
+  font-size: 0.85rem;
+  color: var(--muted);
+  border: 1px solid var(--rule);
+  border-radius: 999px;
+  padding: 0.1rem 0.5rem;
+  background: transparent;
+}
+
+span[style*="background-color"] {
+  background: transparent !important;
+  color: var(--ink) !important;
+  border: 1px solid var(--rule) !important;
+  border-radius: 999px !important;
+  padding: 0.12rem 0.45rem !important;
+}
+
+@media (max-width: 720px) {
+  body {
+    font-size: 17px;
+  }
+
+  main.content {
+    padding: 40px 15px 30px;
+  }
+
+  .home h1 {
+    font-size: 30px;
+  }
+
+  #title-block-header .title,
+  h1 {
+    font-size: 30px;
+  }
+
+  .quarto-listing .quarto-post {
+    grid-template-columns: 1fr;
+    gap: 0.35rem;
+  }
+
+  .quarto-listing .quarto-post .metadata {
+    white-space: normal;
+  }
+}
+</style>
+
+
+<link rel="stylesheet" href="../site.css">
+<meta property="og:title" content="Illustrated RLVR – Anshuman Mishra">
+<meta property="og:description" content="RLVR workflow">
+<meta property="og:site_name" content="Anshuman Mishra">
+<meta name="twitter:title" content="Illustrated RLVR – Anshuman Mishra">
+<meta name="twitter:description" content="RLVR workflow">
+<meta name="twitter:creator" content="@athleticKoder">
+<meta name="twitter:card" content="summary">
+</head>
+
+<body class="quarto-light">
+
+<div id="quarto-search-results"></div>
+<!-- content -->
+<div id="quarto-content" class="quarto-container page-columns page-rows-contents page-layout-article">
+<!-- sidebar -->
+<!-- margin-sidebar -->
+    <div id="quarto-margin-sidebar" class="sidebar margin-sidebar">
+        <nav id="TOC" role="doc-toc" class="toc-active">
+    <h2 id="toc-title">On this page</h2>
+   
+  <ul>
+  <li><a href="#building-a-tool-using-agent-from-scratch-environment-teacher-trajectories-sft-and-rl" id="toc-building-a-tool-using-agent-from-scratch-environment-teacher-trajectories-sft-and-rl" class="nav-link active" data-scroll-target="#building-a-tool-using-agent-from-scratch-environment-teacher-trajectories-sft-and-rl">Building a Tool-Using Agent From Scratch: Environment, Teacher Trajectories, SFT, and RL</a>
+  <ul class="collapse">
+  <li><a href="#the-core-idea" id="toc-the-core-idea" class="nav-link" data-scroll-target="#the-core-idea">The Core Idea</a></li>
+  <li><a href="#step-1-build-the-environment-without-a-framework" id="toc-step-1-build-the-environment-without-a-framework" class="nav-link" data-scroll-target="#step-1-build-the-environment-without-a-framework">Step 1: Build the Environment Without a Framework</a></li>
+  <li><a href="#step-2-generate-teacher-trajectories-with-gemini" id="toc-step-2-generate-teacher-trajectories-with-gemini" class="nav-link" data-scroll-target="#step-2-generate-teacher-trajectories-with-gemini">Step 2: Generate Teacher Trajectories With Gemini</a></li>
+  <li><a href="#step-3-sft-the-student" id="toc-step-3-sft-the-student" class="nav-link" data-scroll-target="#step-3-sft-the-student">Step 3: SFT the Student</a></li>
+  <li><a href="#step-4-why-rl-is-needed-after-sft" id="toc-step-4-why-rl-is-needed-after-sft" class="nav-link" data-scroll-target="#step-4-why-rl-is-needed-after-sft">Step 4: Why RL Is Needed After SFT</a></li>
+  <li><a href="#step-5-rl-from-first-principles" id="toc-step-5-rl-from-first-principles" class="nav-link" data-scroll-target="#step-5-rl-from-first-principles">Step 5: RL From First Principles</a></li>
+  <li><a href="#step-6-add-clipping-and-a-reference-model" id="toc-step-6-add-clipping-and-a-reference-model" class="nav-link" data-scroll-target="#step-6-add-clipping-and-a-reference-model">Step 6: Add Clipping and a Reference Model</a></li>
+  <li><a href="#step-7-use-trl-when-you-want-the-trainer-not-the-mystery" id="toc-step-7-use-trl-when-you-want-the-trainer-not-the-mystery" class="nav-link" data-scroll-target="#step-7-use-trl-when-you-want-the-trainer-not-the-mystery">Step 7: Use TRL When You Want the Trainer, Not the Mystery</a></li>
+  <li><a href="#step-8-what-makes-the-environment-good" id="toc-step-8-what-makes-the-environment-good" class="nav-link" data-scroll-target="#step-8-what-makes-the-environment-good">Step 8: What Makes the Environment Good?</a></li>
+  <li><a href="#step-9-the-full-pipeline" id="toc-step-9-the-full-pipeline" class="nav-link" data-scroll-target="#step-9-the-full-pipeline">Step 9: The Full Pipeline</a></li>
+  <li><a href="#common-failure-modes" id="toc-common-failure-modes" class="nav-link" data-scroll-target="#common-failure-modes">Common Failure Modes</a></li>
+  <li><a href="#what-changes-for-real-tldraw" id="toc-what-changes-for-real-tldraw" class="nav-link" data-scroll-target="#what-changes-for-real-tldraw">What Changes for Real tldraw?</a></li>
+  <li><a href="#closing" id="toc-closing" class="nav-link" data-scroll-target="#closing">Closing</a></li>
+  <li><a href="#references" id="toc-references" class="nav-link" data-scroll-target="#references">References</a></li>
+  </ul></li>
+  </ul>
+</nav>
+    </div>
+<!-- main -->
+<main class="content" id="quarto-document-content">
+<nav class="site-nav">
+  <a href="../">Intro</a> | <a href="../writing.html">Writing</a> | <a href="../work.html">Work</a> | <a href="../projects.html">Projects</a> | <a href="../talks.html">Talks</a>
+</nav>
+
+<header id="title-block-header" class="quarto-title-block default">
+<div class="quarto-title">
+<h1 class="title">Illustrated RLVR</h1>
+  <div class="quarto-categories">
+    <div class="quarto-category">LLMs</div>
+    <div class="quarto-category">RLHF</div>
+    <div class="quarto-category">RLVR</div>
+  </div>
+  </div>
+
+<div>
+  <div class="description">
+    RLVR workflow
+  </div>
+</div>
+
+
+<div class="quarto-title-meta">
+
+    
+    <div>
+    <div class="quarto-title-meta-heading">Published</div>
+    <div class="quarto-title-meta-contents">
+      <p class="date">May 8, 2026</p>
+    </div>
+  </div>
+  
+    
+  </div>
+  
+
+
+</header>
+
+
+<section id="building-a-tool-using-agent-from-scratch-environment-teacher-trajectories-sft-and-rl" class="level1">
+<h1>Building a Tool-Using Agent From Scratch: Environment, Teacher Trajectories, SFT, and RL</h1>
+<p>Most tutorials about training agents start too high up the stack.</p>
+<p>They say: install a framework, plug in a reward function, run a trainer, watch a chart go up. That is useful when you already know what is happening. It is less useful when you are trying to understand the shape of the whole system.</p>
+<p>This post takes the opposite route. We will build a small agent-training pipeline from first principles:</p>
+<ol type="1">
+<li>Define an environment without using <code>verifiers</code>, Prime-RL, Gymnasium, LangChain, or any agent framework.</li>
+<li>Generate teacher trajectories with a strong model such as Gemini.</li>
+<li>Filter those trajectories into an SFT dataset.</li>
+<li>Supervised fine-tune a smaller model to imitate the teacher.</li>
+<li>Train the model with reinforcement learning.</li>
+<li>Show how the same ideas map onto TRL or Unsloth once the concepts are clear.</li>
+</ol>
+<p>The example environment is deliberately simple: a text-to-diagram agent. The user asks for a small diagram, and the model must output structured JSON actions that create shapes on a canvas. This is the same pattern behind a tldraw-style agent, except we will start with a tiny pure-Python canvas so the mechanics are visible.</p>
+<p>The point of this tutorial is not to create the world’s best diagram agent. The point is to understand the whole loop:</p>
+<pre class="text"><code>prompt -&gt; model action -&gt; environment -&gt; reward -&gt; gradient update</code></pre>
+<p>Once that loop is clear, bigger systems like PRIME-RL, TRL, OpenRLHF, Verl, or custom distributed trainers become much less mysterious.</p>
+<section id="the-core-idea" class="level2">
+<h2 class="anchored" data-anchor-id="the-core-idea">The Core Idea</h2>
+<p>An LLM agent is just a policy.</p>
+<p>Given an observation, it emits an action. In a chat model, the observation is text. In a tool-using model, the action is often a JSON object. In a browser agent, the action might be a click, a keypress, or a DOM operation. In a tldraw agent, the action might be “create a rectangle at <code>(x=100, y=100)</code> with label <code>Database</code>”.</p>
+<p>In ordinary supervised fine-tuning, we show the model examples of good behavior:</p>
+<pre class="text"><code>user: Draw a three-step pipeline
+assistant: {"actions": [...]}</code></pre>
+<p>The model learns to imitate the assistant output.</p>
+<p>In reinforcement learning, we stop pretending that we always know the best answer. Instead, we let the model try things, score the outcomes, and move probability mass toward completions that receive higher reward.</p>
+<p>For a diagram agent, reward might mean:</p>
+<ul>
+<li>Did the output parse as JSON?</li>
+<li>Did the actions match the allowed schema?</li>
+<li>Did the canvas renderer accept the actions?</li>
+<li>Did the final diagram contain the requested objects?</li>
+<li>Were labels readable?</li>
+<li>Were arrows connected correctly?</li>
+<li>Was the layout visually clean?</li>
+</ul>
+<p>The first few are easy to check with code. The later ones may need heuristics or a judge model.</p>
+</section>
+<section id="step-1-build-the-environment-without-a-framework" class="level2">
+<h2 class="anchored" data-anchor-id="step-1-build-the-environment-without-a-framework">Step 1: Build the Environment Without a Framework</h2>
+<p>An environment needs only three ideas:</p>
+<ul>
+<li>an input prompt</li>
+<li>an action format</li>
+<li>a reward function</li>
+</ul>
+<p>Here is a minimal canvas environment. It has rectangles, text labels, and arrows. The model must return JSON like this:</p>
+<div class="sourceCode" id="cb3"><pre class="sourceCode json code-with-copy"><code class="sourceCode json"><span id="cb3-1"><a href="#cb3-1" aria-hidden="true" tabindex="-1"></a><span class="fu">{</span></span>
+<span id="cb3-2"><a href="#cb3-2" aria-hidden="true" tabindex="-1"></a>  <span class="dt">"actions"</span><span class="fu">:</span> <span class="ot">[</span></span>
+<span id="cb3-3"><a href="#cb3-3" aria-hidden="true" tabindex="-1"></a>    <span class="fu">{</span></span>
+<span id="cb3-4"><a href="#cb3-4" aria-hidden="true" tabindex="-1"></a>      <span class="dt">"type"</span><span class="fu">:</span> <span class="st">"create_shape"</span><span class="fu">,</span></span>
+<span id="cb3-5"><a href="#cb3-5" aria-hidden="true" tabindex="-1"></a>      <span class="dt">"id"</span><span class="fu">:</span> <span class="st">"frontend"</span><span class="fu">,</span></span>
+<span id="cb3-6"><a href="#cb3-6" aria-hidden="true" tabindex="-1"></a>      <span class="dt">"shape"</span><span class="fu">:</span> <span class="st">"rectangle"</span><span class="fu">,</span></span>
+<span id="cb3-7"><a href="#cb3-7" aria-hidden="true" tabindex="-1"></a>      <span class="dt">"x"</span><span class="fu">:</span> <span class="dv">80</span><span class="fu">,</span></span>
+<span id="cb3-8"><a href="#cb3-8" aria-hidden="true" tabindex="-1"></a>      <span class="dt">"y"</span><span class="fu">:</span> <span class="dv">100</span><span class="fu">,</span></span>
+<span id="cb3-9"><a href="#cb3-9" aria-hidden="true" tabindex="-1"></a>      <span class="dt">"w"</span><span class="fu">:</span> <span class="dv">180</span><span class="fu">,</span></span>
+<span id="cb3-10"><a href="#cb3-10" aria-hidden="true" tabindex="-1"></a>      <span class="dt">"h"</span><span class="fu">:</span> <span class="dv">80</span><span class="fu">,</span></span>
+<span id="cb3-11"><a href="#cb3-11" aria-hidden="true" tabindex="-1"></a>      <span class="dt">"text"</span><span class="fu">:</span> <span class="st">"Frontend"</span></span>
+<span id="cb3-12"><a href="#cb3-12" aria-hidden="true" tabindex="-1"></a>    <span class="fu">}</span><span class="ot">,</span></span>
+<span id="cb3-13"><a href="#cb3-13" aria-hidden="true" tabindex="-1"></a>    <span class="fu">{</span></span>
+<span id="cb3-14"><a href="#cb3-14" aria-hidden="true" tabindex="-1"></a>      <span class="dt">"type"</span><span class="fu">:</span> <span class="st">"create_shape"</span><span class="fu">,</span></span>
+<span id="cb3-15"><a href="#cb3-15" aria-hidden="true" tabindex="-1"></a>      <span class="dt">"id"</span><span class="fu">:</span> <span class="st">"api"</span><span class="fu">,</span></span>
+<span id="cb3-16"><a href="#cb3-16" aria-hidden="true" tabindex="-1"></a>      <span class="dt">"shape"</span><span class="fu">:</span> <span class="st">"rectangle"</span><span class="fu">,</span></span>
+<span id="cb3-17"><a href="#cb3-17" aria-hidden="true" tabindex="-1"></a>      <span class="dt">"x"</span><span class="fu">:</span> <span class="dv">340</span><span class="fu">,</span></span>
+<span id="cb3-18"><a href="#cb3-18" aria-hidden="true" tabindex="-1"></a>      <span class="dt">"y"</span><span class="fu">:</span> <span class="dv">100</span><span class="fu">,</span></span>
+<span id="cb3-19"><a href="#cb3-19" aria-hidden="true" tabindex="-1"></a>      <span class="dt">"w"</span><span class="fu">:</span> <span class="dv">180</span><span class="fu">,</span></span>
+<span id="cb3-20"><a href="#cb3-20" aria-hidden="true" tabindex="-1"></a>      <span class="dt">"h"</span><span class="fu">:</span> <span class="dv">80</span><span class="fu">,</span></span>
+<span id="cb3-21"><a href="#cb3-21" aria-hidden="true" tabindex="-1"></a>      <span class="dt">"text"</span><span class="fu">:</span> <span class="st">"API"</span></span>
+<span id="cb3-22"><a href="#cb3-22" aria-hidden="true" tabindex="-1"></a>    <span class="fu">}</span><span class="ot">,</span></span>
+<span id="cb3-23"><a href="#cb3-23" aria-hidden="true" tabindex="-1"></a>    <span class="fu">{</span></span>
+<span id="cb3-24"><a href="#cb3-24" aria-hidden="true" tabindex="-1"></a>      <span class="dt">"type"</span><span class="fu">:</span> <span class="st">"connect"</span><span class="fu">,</span></span>
+<span id="cb3-25"><a href="#cb3-25" aria-hidden="true" tabindex="-1"></a>      <span class="dt">"from"</span><span class="fu">:</span> <span class="st">"frontend"</span><span class="fu">,</span></span>
+<span id="cb3-26"><a href="#cb3-26" aria-hidden="true" tabindex="-1"></a>      <span class="dt">"to"</span><span class="fu">:</span> <span class="st">"api"</span><span class="fu">,</span></span>
+<span id="cb3-27"><a href="#cb3-27" aria-hidden="true" tabindex="-1"></a>      <span class="dt">"text"</span><span class="fu">:</span> <span class="st">"request"</span></span>
+<span id="cb3-28"><a href="#cb3-28" aria-hidden="true" tabindex="-1"></a>    <span class="fu">}</span></span>
+<span id="cb3-29"><a href="#cb3-29" aria-hidden="true" tabindex="-1"></a>  <span class="ot">]</span></span>
+<span id="cb3-30"><a href="#cb3-30" aria-hidden="true" tabindex="-1"></a><span class="fu">}</span></span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<p>Now the environment:</p>
+<div class="sourceCode" id="cb4"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb4-1"><a href="#cb4-1" aria-hidden="true" tabindex="-1"></a><span class="co"># env.py</span></span>
+<span id="cb4-2"><a href="#cb4-2" aria-hidden="true" tabindex="-1"></a><span class="im">from</span> __future__ <span class="im">import</span> annotations</span>
+<span id="cb4-3"><a href="#cb4-3" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb4-4"><a href="#cb4-4" aria-hidden="true" tabindex="-1"></a><span class="im">import</span> json</span>
+<span id="cb4-5"><a href="#cb4-5" aria-hidden="true" tabindex="-1"></a><span class="im">import</span> math</span>
+<span id="cb4-6"><a href="#cb4-6" aria-hidden="true" tabindex="-1"></a><span class="im">from</span> dataclasses <span class="im">import</span> dataclass, field</span>
+<span id="cb4-7"><a href="#cb4-7" aria-hidden="true" tabindex="-1"></a><span class="im">from</span> typing <span class="im">import</span> Any</span>
+<span id="cb4-8"><a href="#cb4-8" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb4-9"><a href="#cb4-9" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb4-10"><a href="#cb4-10" aria-hidden="true" tabindex="-1"></a>ALLOWED_SHAPES <span class="op">=</span> {<span class="st">"rectangle"</span>, <span class="st">"ellipse"</span>, <span class="st">"diamond"</span>, <span class="st">"text"</span>}</span>
+<span id="cb4-11"><a href="#cb4-11" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb4-12"><a href="#cb4-12" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb4-13"><a href="#cb4-13" aria-hidden="true" tabindex="-1"></a><span class="at">@dataclass</span></span>
+<span id="cb4-14"><a href="#cb4-14" aria-hidden="true" tabindex="-1"></a><span class="kw">class</span> Shape:</span>
+<span id="cb4-15"><a href="#cb4-15" aria-hidden="true" tabindex="-1"></a>    <span class="bu">id</span>: <span class="bu">str</span></span>
+<span id="cb4-16"><a href="#cb4-16" aria-hidden="true" tabindex="-1"></a>    shape: <span class="bu">str</span></span>
+<span id="cb4-17"><a href="#cb4-17" aria-hidden="true" tabindex="-1"></a>    x: <span class="bu">float</span></span>
+<span id="cb4-18"><a href="#cb4-18" aria-hidden="true" tabindex="-1"></a>    y: <span class="bu">float</span></span>
+<span id="cb4-19"><a href="#cb4-19" aria-hidden="true" tabindex="-1"></a>    w: <span class="bu">float</span></span>
+<span id="cb4-20"><a href="#cb4-20" aria-hidden="true" tabindex="-1"></a>    h: <span class="bu">float</span></span>
+<span id="cb4-21"><a href="#cb4-21" aria-hidden="true" tabindex="-1"></a>    text: <span class="bu">str</span> <span class="op">=</span> <span class="st">""</span></span>
+<span id="cb4-22"><a href="#cb4-22" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb4-23"><a href="#cb4-23" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb4-24"><a href="#cb4-24" aria-hidden="true" tabindex="-1"></a><span class="at">@dataclass</span></span>
+<span id="cb4-25"><a href="#cb4-25" aria-hidden="true" tabindex="-1"></a><span class="kw">class</span> Arrow:</span>
+<span id="cb4-26"><a href="#cb4-26" aria-hidden="true" tabindex="-1"></a>    source: <span class="bu">str</span></span>
+<span id="cb4-27"><a href="#cb4-27" aria-hidden="true" tabindex="-1"></a>    target: <span class="bu">str</span></span>
+<span id="cb4-28"><a href="#cb4-28" aria-hidden="true" tabindex="-1"></a>    text: <span class="bu">str</span> <span class="op">=</span> <span class="st">""</span></span>
+<span id="cb4-29"><a href="#cb4-29" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb4-30"><a href="#cb4-30" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb4-31"><a href="#cb4-31" aria-hidden="true" tabindex="-1"></a><span class="at">@dataclass</span></span>
+<span id="cb4-32"><a href="#cb4-32" aria-hidden="true" tabindex="-1"></a><span class="kw">class</span> Canvas:</span>
+<span id="cb4-33"><a href="#cb4-33" aria-hidden="true" tabindex="-1"></a>    shapes: <span class="bu">dict</span>[<span class="bu">str</span>, Shape] <span class="op">=</span> field(default_factory<span class="op">=</span><span class="bu">dict</span>)</span>
+<span id="cb4-34"><a href="#cb4-34" aria-hidden="true" tabindex="-1"></a>    arrows: <span class="bu">list</span>[Arrow] <span class="op">=</span> field(default_factory<span class="op">=</span><span class="bu">list</span>)</span>
+<span id="cb4-35"><a href="#cb4-35" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb4-36"><a href="#cb4-36" aria-hidden="true" tabindex="-1"></a>    <span class="kw">def</span> create_shape(<span class="va">self</span>, action: <span class="bu">dict</span>[<span class="bu">str</span>, Any]) <span class="op">-&gt;</span> <span class="va">None</span>:</span>
+<span id="cb4-37"><a href="#cb4-37" aria-hidden="true" tabindex="-1"></a>        shape_id <span class="op">=</span> require_str(action, <span class="st">"id"</span>)</span>
+<span id="cb4-38"><a href="#cb4-38" aria-hidden="true" tabindex="-1"></a>        shape_type <span class="op">=</span> require_str(action, <span class="st">"shape"</span>)</span>
+<span id="cb4-39"><a href="#cb4-39" aria-hidden="true" tabindex="-1"></a>        <span class="cf">if</span> shape_type <span class="kw">not</span> <span class="kw">in</span> ALLOWED_SHAPES:</span>
+<span id="cb4-40"><a href="#cb4-40" aria-hidden="true" tabindex="-1"></a>            <span class="cf">raise</span> <span class="pp">ValueError</span>(<span class="ss">f"unknown shape type: </span><span class="sc">{</span>shape_type<span class="sc">}</span><span class="ss">"</span>)</span>
+<span id="cb4-41"><a href="#cb4-41" aria-hidden="true" tabindex="-1"></a>        <span class="cf">if</span> shape_id <span class="kw">in</span> <span class="va">self</span>.shapes:</span>
+<span id="cb4-42"><a href="#cb4-42" aria-hidden="true" tabindex="-1"></a>            <span class="cf">raise</span> <span class="pp">ValueError</span>(<span class="ss">f"duplicate shape id: </span><span class="sc">{</span>shape_id<span class="sc">}</span><span class="ss">"</span>)</span>
+<span id="cb4-43"><a href="#cb4-43" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb4-44"><a href="#cb4-44" aria-hidden="true" tabindex="-1"></a>        x <span class="op">=</span> require_number(action, <span class="st">"x"</span>)</span>
+<span id="cb4-45"><a href="#cb4-45" aria-hidden="true" tabindex="-1"></a>        y <span class="op">=</span> require_number(action, <span class="st">"y"</span>)</span>
+<span id="cb4-46"><a href="#cb4-46" aria-hidden="true" tabindex="-1"></a>        w <span class="op">=</span> require_number(action, <span class="st">"w"</span>)</span>
+<span id="cb4-47"><a href="#cb4-47" aria-hidden="true" tabindex="-1"></a>        h <span class="op">=</span> require_number(action, <span class="st">"h"</span>)</span>
+<span id="cb4-48"><a href="#cb4-48" aria-hidden="true" tabindex="-1"></a>        <span class="cf">if</span> w <span class="op">&lt;=</span> <span class="dv">0</span> <span class="kw">or</span> h <span class="op">&lt;=</span> <span class="dv">0</span>:</span>
+<span id="cb4-49"><a href="#cb4-49" aria-hidden="true" tabindex="-1"></a>            <span class="cf">raise</span> <span class="pp">ValueError</span>(<span class="st">"shape width and height must be positive"</span>)</span>
+<span id="cb4-50"><a href="#cb4-50" aria-hidden="true" tabindex="-1"></a>        <span class="cf">if</span> w <span class="op">&gt;</span> <span class="dv">1000</span> <span class="kw">or</span> h <span class="op">&gt;</span> <span class="dv">1000</span>:</span>
+<span id="cb4-51"><a href="#cb4-51" aria-hidden="true" tabindex="-1"></a>            <span class="cf">raise</span> <span class="pp">ValueError</span>(<span class="st">"shape too large"</span>)</span>
+<span id="cb4-52"><a href="#cb4-52" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb4-53"><a href="#cb4-53" aria-hidden="true" tabindex="-1"></a>        <span class="va">self</span>.shapes[shape_id] <span class="op">=</span> Shape(</span>
+<span id="cb4-54"><a href="#cb4-54" aria-hidden="true" tabindex="-1"></a>            <span class="bu">id</span><span class="op">=</span>shape_id,</span>
+<span id="cb4-55"><a href="#cb4-55" aria-hidden="true" tabindex="-1"></a>            shape<span class="op">=</span>shape_type,</span>
+<span id="cb4-56"><a href="#cb4-56" aria-hidden="true" tabindex="-1"></a>            x<span class="op">=</span>x,</span>
+<span id="cb4-57"><a href="#cb4-57" aria-hidden="true" tabindex="-1"></a>            y<span class="op">=</span>y,</span>
+<span id="cb4-58"><a href="#cb4-58" aria-hidden="true" tabindex="-1"></a>            w<span class="op">=</span>w,</span>
+<span id="cb4-59"><a href="#cb4-59" aria-hidden="true" tabindex="-1"></a>            h<span class="op">=</span>h,</span>
+<span id="cb4-60"><a href="#cb4-60" aria-hidden="true" tabindex="-1"></a>            text<span class="op">=</span><span class="bu">str</span>(action.get(<span class="st">"text"</span>, <span class="st">""</span>)),</span>
+<span id="cb4-61"><a href="#cb4-61" aria-hidden="true" tabindex="-1"></a>        )</span>
+<span id="cb4-62"><a href="#cb4-62" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb4-63"><a href="#cb4-63" aria-hidden="true" tabindex="-1"></a>    <span class="kw">def</span> <span class="ex">connect</span>(<span class="va">self</span>, action: <span class="bu">dict</span>[<span class="bu">str</span>, Any]) <span class="op">-&gt;</span> <span class="va">None</span>:</span>
+<span id="cb4-64"><a href="#cb4-64" aria-hidden="true" tabindex="-1"></a>        source <span class="op">=</span> require_str(action, <span class="st">"from"</span>)</span>
+<span id="cb4-65"><a href="#cb4-65" aria-hidden="true" tabindex="-1"></a>        target <span class="op">=</span> require_str(action, <span class="st">"to"</span>)</span>
+<span id="cb4-66"><a href="#cb4-66" aria-hidden="true" tabindex="-1"></a>        <span class="cf">if</span> source <span class="kw">not</span> <span class="kw">in</span> <span class="va">self</span>.shapes:</span>
+<span id="cb4-67"><a href="#cb4-67" aria-hidden="true" tabindex="-1"></a>            <span class="cf">raise</span> <span class="pp">ValueError</span>(<span class="ss">f"arrow source does not exist: </span><span class="sc">{</span>source<span class="sc">}</span><span class="ss">"</span>)</span>
+<span id="cb4-68"><a href="#cb4-68" aria-hidden="true" tabindex="-1"></a>        <span class="cf">if</span> target <span class="kw">not</span> <span class="kw">in</span> <span class="va">self</span>.shapes:</span>
+<span id="cb4-69"><a href="#cb4-69" aria-hidden="true" tabindex="-1"></a>            <span class="cf">raise</span> <span class="pp">ValueError</span>(<span class="ss">f"arrow target does not exist: </span><span class="sc">{</span>target<span class="sc">}</span><span class="ss">"</span>)</span>
+<span id="cb4-70"><a href="#cb4-70" aria-hidden="true" tabindex="-1"></a>        <span class="cf">if</span> source <span class="op">==</span> target:</span>
+<span id="cb4-71"><a href="#cb4-71" aria-hidden="true" tabindex="-1"></a>            <span class="cf">raise</span> <span class="pp">ValueError</span>(<span class="st">"arrow cannot connect a shape to itself"</span>)</span>
+<span id="cb4-72"><a href="#cb4-72" aria-hidden="true" tabindex="-1"></a>        <span class="va">self</span>.arrows.append(Arrow(source<span class="op">=</span>source, target<span class="op">=</span>target, text<span class="op">=</span><span class="bu">str</span>(action.get(<span class="st">"text"</span>, <span class="st">""</span>))))</span>
+<span id="cb4-73"><a href="#cb4-73" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb4-74"><a href="#cb4-74" aria-hidden="true" tabindex="-1"></a>    <span class="kw">def</span> <span class="bu">apply</span>(<span class="va">self</span>, action: <span class="bu">dict</span>[<span class="bu">str</span>, Any]) <span class="op">-&gt;</span> <span class="va">None</span>:</span>
+<span id="cb4-75"><a href="#cb4-75" aria-hidden="true" tabindex="-1"></a>        action_type <span class="op">=</span> require_str(action, <span class="st">"type"</span>)</span>
+<span id="cb4-76"><a href="#cb4-76" aria-hidden="true" tabindex="-1"></a>        <span class="cf">if</span> action_type <span class="op">==</span> <span class="st">"create_shape"</span>:</span>
+<span id="cb4-77"><a href="#cb4-77" aria-hidden="true" tabindex="-1"></a>            <span class="va">self</span>.create_shape(action)</span>
+<span id="cb4-78"><a href="#cb4-78" aria-hidden="true" tabindex="-1"></a>        <span class="cf">elif</span> action_type <span class="op">==</span> <span class="st">"connect"</span>:</span>
+<span id="cb4-79"><a href="#cb4-79" aria-hidden="true" tabindex="-1"></a>            <span class="va">self</span>.<span class="ex">connect</span>(action)</span>
+<span id="cb4-80"><a href="#cb4-80" aria-hidden="true" tabindex="-1"></a>        <span class="cf">else</span>:</span>
+<span id="cb4-81"><a href="#cb4-81" aria-hidden="true" tabindex="-1"></a>            <span class="cf">raise</span> <span class="pp">ValueError</span>(<span class="ss">f"unknown action type: </span><span class="sc">{</span>action_type<span class="sc">}</span><span class="ss">"</span>)</span>
+<span id="cb4-82"><a href="#cb4-82" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb4-83"><a href="#cb4-83" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb4-84"><a href="#cb4-84" aria-hidden="true" tabindex="-1"></a><span class="kw">def</span> require_str(obj: <span class="bu">dict</span>[<span class="bu">str</span>, Any], key: <span class="bu">str</span>) <span class="op">-&gt;</span> <span class="bu">str</span>:</span>
+<span id="cb4-85"><a href="#cb4-85" aria-hidden="true" tabindex="-1"></a>    value <span class="op">=</span> obj.get(key)</span>
+<span id="cb4-86"><a href="#cb4-86" aria-hidden="true" tabindex="-1"></a>    <span class="cf">if</span> <span class="kw">not</span> <span class="bu">isinstance</span>(value, <span class="bu">str</span>) <span class="kw">or</span> <span class="kw">not</span> value:</span>
+<span id="cb4-87"><a href="#cb4-87" aria-hidden="true" tabindex="-1"></a>        <span class="cf">raise</span> <span class="pp">ValueError</span>(<span class="ss">f"</span><span class="sc">{</span>key<span class="sc">}</span><span class="ss"> must be a non-empty string"</span>)</span>
+<span id="cb4-88"><a href="#cb4-88" aria-hidden="true" tabindex="-1"></a>    <span class="cf">return</span> value</span>
+<span id="cb4-89"><a href="#cb4-89" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb4-90"><a href="#cb4-90" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb4-91"><a href="#cb4-91" aria-hidden="true" tabindex="-1"></a><span class="kw">def</span> require_number(obj: <span class="bu">dict</span>[<span class="bu">str</span>, Any], key: <span class="bu">str</span>) <span class="op">-&gt;</span> <span class="bu">float</span>:</span>
+<span id="cb4-92"><a href="#cb4-92" aria-hidden="true" tabindex="-1"></a>    value <span class="op">=</span> obj.get(key)</span>
+<span id="cb4-93"><a href="#cb4-93" aria-hidden="true" tabindex="-1"></a>    <span class="cf">if</span> <span class="kw">not</span> <span class="bu">isinstance</span>(value, <span class="bu">int</span> <span class="op">|</span> <span class="bu">float</span>) <span class="kw">or</span> <span class="kw">not</span> math.isfinite(value):</span>
+<span id="cb4-94"><a href="#cb4-94" aria-hidden="true" tabindex="-1"></a>        <span class="cf">raise</span> <span class="pp">ValueError</span>(<span class="ss">f"</span><span class="sc">{</span>key<span class="sc">}</span><span class="ss"> must be a finite number"</span>)</span>
+<span id="cb4-95"><a href="#cb4-95" aria-hidden="true" tabindex="-1"></a>    <span class="cf">return</span> <span class="bu">float</span>(value)</span>
+<span id="cb4-96"><a href="#cb4-96" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb4-97"><a href="#cb4-97" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb4-98"><a href="#cb4-98" aria-hidden="true" tabindex="-1"></a><span class="kw">def</span> parse_actions(text: <span class="bu">str</span>) <span class="op">-&gt;</span> <span class="bu">list</span>[<span class="bu">dict</span>[<span class="bu">str</span>, Any]]:</span>
+<span id="cb4-99"><a href="#cb4-99" aria-hidden="true" tabindex="-1"></a>    <span class="cf">try</span>:</span>
+<span id="cb4-100"><a href="#cb4-100" aria-hidden="true" tabindex="-1"></a>        data <span class="op">=</span> json.loads(text)</span>
+<span id="cb4-101"><a href="#cb4-101" aria-hidden="true" tabindex="-1"></a>    <span class="cf">except</span> json.JSONDecodeError:</span>
+<span id="cb4-102"><a href="#cb4-102" aria-hidden="true" tabindex="-1"></a>        start <span class="op">=</span> text.find(<span class="st">"{"</span>)</span>
+<span id="cb4-103"><a href="#cb4-103" aria-hidden="true" tabindex="-1"></a>        end <span class="op">=</span> text.rfind(<span class="st">"}"</span>)</span>
+<span id="cb4-104"><a href="#cb4-104" aria-hidden="true" tabindex="-1"></a>        <span class="cf">if</span> start <span class="op">==</span> <span class="op">-</span><span class="dv">1</span> <span class="kw">or</span> end <span class="op">==</span> <span class="op">-</span><span class="dv">1</span> <span class="kw">or</span> end <span class="op">&lt;=</span> start:</span>
+<span id="cb4-105"><a href="#cb4-105" aria-hidden="true" tabindex="-1"></a>            <span class="cf">raise</span> <span class="pp">ValueError</span>(<span class="st">"model output does not contain JSON"</span>)</span>
+<span id="cb4-106"><a href="#cb4-106" aria-hidden="true" tabindex="-1"></a>        data <span class="op">=</span> json.loads(text[start : end <span class="op">+</span> <span class="dv">1</span>])</span>
+<span id="cb4-107"><a href="#cb4-107" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb4-108"><a href="#cb4-108" aria-hidden="true" tabindex="-1"></a>    actions <span class="op">=</span> data.get(<span class="st">"actions"</span>)</span>
+<span id="cb4-109"><a href="#cb4-109" aria-hidden="true" tabindex="-1"></a>    <span class="cf">if</span> <span class="kw">not</span> <span class="bu">isinstance</span>(actions, <span class="bu">list</span>):</span>
+<span id="cb4-110"><a href="#cb4-110" aria-hidden="true" tabindex="-1"></a>        <span class="cf">raise</span> <span class="pp">ValueError</span>(<span class="st">"missing actions array"</span>)</span>
+<span id="cb4-111"><a href="#cb4-111" aria-hidden="true" tabindex="-1"></a>    <span class="cf">if</span> <span class="kw">not</span> actions:</span>
+<span id="cb4-112"><a href="#cb4-112" aria-hidden="true" tabindex="-1"></a>        <span class="cf">raise</span> <span class="pp">ValueError</span>(<span class="st">"actions array is empty"</span>)</span>
+<span id="cb4-113"><a href="#cb4-113" aria-hidden="true" tabindex="-1"></a>    <span class="cf">if</span> <span class="bu">len</span>(actions) <span class="op">&gt;</span> <span class="dv">40</span>:</span>
+<span id="cb4-114"><a href="#cb4-114" aria-hidden="true" tabindex="-1"></a>        <span class="cf">raise</span> <span class="pp">ValueError</span>(<span class="st">"too many actions"</span>)</span>
+<span id="cb4-115"><a href="#cb4-115" aria-hidden="true" tabindex="-1"></a>    <span class="cf">if</span> <span class="kw">not</span> <span class="bu">all</span>(<span class="bu">isinstance</span>(action, <span class="bu">dict</span>) <span class="cf">for</span> action <span class="kw">in</span> actions):</span>
+<span id="cb4-116"><a href="#cb4-116" aria-hidden="true" tabindex="-1"></a>        <span class="cf">raise</span> <span class="pp">ValueError</span>(<span class="st">"each action must be an object"</span>)</span>
+<span id="cb4-117"><a href="#cb4-117" aria-hidden="true" tabindex="-1"></a>    <span class="cf">return</span> actions</span>
+<span id="cb4-118"><a href="#cb4-118" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb4-119"><a href="#cb4-119" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb4-120"><a href="#cb4-120" aria-hidden="true" tabindex="-1"></a><span class="kw">def</span> validate_completion(text: <span class="bu">str</span>) <span class="op">-&gt;</span> <span class="bu">tuple</span>[Canvas <span class="op">|</span> <span class="va">None</span>, <span class="bu">list</span>[<span class="bu">str</span>]]:</span>
+<span id="cb4-121"><a href="#cb4-121" aria-hidden="true" tabindex="-1"></a>    errors: <span class="bu">list</span>[<span class="bu">str</span>] <span class="op">=</span> []</span>
+<span id="cb4-122"><a href="#cb4-122" aria-hidden="true" tabindex="-1"></a>    canvas <span class="op">=</span> Canvas()</span>
+<span id="cb4-123"><a href="#cb4-123" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb4-124"><a href="#cb4-124" aria-hidden="true" tabindex="-1"></a>    <span class="cf">try</span>:</span>
+<span id="cb4-125"><a href="#cb4-125" aria-hidden="true" tabindex="-1"></a>        actions <span class="op">=</span> parse_actions(text)</span>
+<span id="cb4-126"><a href="#cb4-126" aria-hidden="true" tabindex="-1"></a>    <span class="cf">except</span> <span class="pp">Exception</span> <span class="im">as</span> exc:</span>
+<span id="cb4-127"><a href="#cb4-127" aria-hidden="true" tabindex="-1"></a>        <span class="cf">return</span> <span class="va">None</span>, [<span class="bu">str</span>(exc)]</span>
+<span id="cb4-128"><a href="#cb4-128" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb4-129"><a href="#cb4-129" aria-hidden="true" tabindex="-1"></a>    <span class="cf">for</span> i, action <span class="kw">in</span> <span class="bu">enumerate</span>(actions):</span>
+<span id="cb4-130"><a href="#cb4-130" aria-hidden="true" tabindex="-1"></a>        <span class="cf">try</span>:</span>
+<span id="cb4-131"><a href="#cb4-131" aria-hidden="true" tabindex="-1"></a>            canvas.<span class="bu">apply</span>(action)</span>
+<span id="cb4-132"><a href="#cb4-132" aria-hidden="true" tabindex="-1"></a>        <span class="cf">except</span> <span class="pp">Exception</span> <span class="im">as</span> exc:</span>
+<span id="cb4-133"><a href="#cb4-133" aria-hidden="true" tabindex="-1"></a>            errors.append(<span class="ss">f"action </span><span class="sc">{</span>i<span class="sc">}</span><span class="ss">: </span><span class="sc">{</span>exc<span class="sc">}</span><span class="ss">"</span>)</span>
+<span id="cb4-134"><a href="#cb4-134" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb4-135"><a href="#cb4-135" aria-hidden="true" tabindex="-1"></a>    <span class="cf">return</span> canvas, errors</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<p>This already gives us an environment. It is not fancy, but it has the property that matters: it can deterministically accept or reject model output.</p>
+<p>Now add a reward function:</p>
+<div class="sourceCode" id="cb5"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb5-1"><a href="#cb5-1" aria-hidden="true" tabindex="-1"></a><span class="co"># reward.py</span></span>
+<span id="cb5-2"><a href="#cb5-2" aria-hidden="true" tabindex="-1"></a><span class="im">from</span> __future__ <span class="im">import</span> annotations</span>
+<span id="cb5-3"><a href="#cb5-3" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb5-4"><a href="#cb5-4" aria-hidden="true" tabindex="-1"></a><span class="im">import</span> re</span>
+<span id="cb5-5"><a href="#cb5-5" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb5-6"><a href="#cb5-6" aria-hidden="true" tabindex="-1"></a><span class="im">from</span> env <span class="im">import</span> Canvas, validate_completion</span>
+<span id="cb5-7"><a href="#cb5-7" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb5-8"><a href="#cb5-8" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb5-9"><a href="#cb5-9" aria-hidden="true" tabindex="-1"></a><span class="kw">def</span> score_layout(canvas: Canvas) <span class="op">-&gt;</span> <span class="bu">float</span>:</span>
+<span id="cb5-10"><a href="#cb5-10" aria-hidden="true" tabindex="-1"></a>    <span class="cf">if</span> <span class="kw">not</span> canvas.shapes:</span>
+<span id="cb5-11"><a href="#cb5-11" aria-hidden="true" tabindex="-1"></a>        <span class="cf">return</span> <span class="fl">0.0</span></span>
+<span id="cb5-12"><a href="#cb5-12" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb5-13"><a href="#cb5-13" aria-hidden="true" tabindex="-1"></a>    score <span class="op">=</span> <span class="fl">1.0</span></span>
+<span id="cb5-14"><a href="#cb5-14" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb5-15"><a href="#cb5-15" aria-hidden="true" tabindex="-1"></a>    <span class="co"># Penalize overlapping boxes.</span></span>
+<span id="cb5-16"><a href="#cb5-16" aria-hidden="true" tabindex="-1"></a>    shapes <span class="op">=</span> <span class="bu">list</span>(canvas.shapes.values())</span>
+<span id="cb5-17"><a href="#cb5-17" aria-hidden="true" tabindex="-1"></a>    <span class="cf">for</span> i, a <span class="kw">in</span> <span class="bu">enumerate</span>(shapes):</span>
+<span id="cb5-18"><a href="#cb5-18" aria-hidden="true" tabindex="-1"></a>        <span class="cf">for</span> b <span class="kw">in</span> shapes[i <span class="op">+</span> <span class="dv">1</span> :]:</span>
+<span id="cb5-19"><a href="#cb5-19" aria-hidden="true" tabindex="-1"></a>            ax2, ay2 <span class="op">=</span> a.x <span class="op">+</span> a.w, a.y <span class="op">+</span> a.h</span>
+<span id="cb5-20"><a href="#cb5-20" aria-hidden="true" tabindex="-1"></a>            bx2, by2 <span class="op">=</span> b.x <span class="op">+</span> b.w, b.y <span class="op">+</span> b.h</span>
+<span id="cb5-21"><a href="#cb5-21" aria-hidden="true" tabindex="-1"></a>            overlap <span class="op">=</span> <span class="kw">not</span> (ax2 <span class="op">&lt;</span> b.x <span class="kw">or</span> bx2 <span class="op">&lt;</span> a.x <span class="kw">or</span> ay2 <span class="op">&lt;</span> b.y <span class="kw">or</span> by2 <span class="op">&lt;</span> a.y)</span>
+<span id="cb5-22"><a href="#cb5-22" aria-hidden="true" tabindex="-1"></a>            <span class="cf">if</span> overlap:</span>
+<span id="cb5-23"><a href="#cb5-23" aria-hidden="true" tabindex="-1"></a>                score <span class="op">-=</span> <span class="fl">0.15</span></span>
+<span id="cb5-24"><a href="#cb5-24" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb5-25"><a href="#cb5-25" aria-hidden="true" tabindex="-1"></a>    <span class="co"># Reward labels.</span></span>
+<span id="cb5-26"><a href="#cb5-26" aria-hidden="true" tabindex="-1"></a>    labeled <span class="op">=</span> <span class="bu">sum</span>(<span class="dv">1</span> <span class="cf">for</span> shape <span class="kw">in</span> shapes <span class="cf">if</span> shape.text.strip())</span>
+<span id="cb5-27"><a href="#cb5-27" aria-hidden="true" tabindex="-1"></a>    score <span class="op">+=</span> <span class="fl">0.1</span> <span class="op">*</span> <span class="bu">min</span>(labeled, <span class="dv">5</span>)</span>
+<span id="cb5-28"><a href="#cb5-28" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb5-29"><a href="#cb5-29" aria-hidden="true" tabindex="-1"></a>    <span class="co"># Reward connected diagrams.</span></span>
+<span id="cb5-30"><a href="#cb5-30" aria-hidden="true" tabindex="-1"></a>    score <span class="op">+=</span> <span class="fl">0.1</span> <span class="op">*</span> <span class="bu">min</span>(<span class="bu">len</span>(canvas.arrows), <span class="dv">5</span>)</span>
+<span id="cb5-31"><a href="#cb5-31" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb5-32"><a href="#cb5-32" aria-hidden="true" tabindex="-1"></a>    <span class="cf">return</span> <span class="bu">max</span>(<span class="fl">0.0</span>, <span class="bu">min</span>(<span class="fl">1.0</span>, score))</span>
+<span id="cb5-33"><a href="#cb5-33" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb5-34"><a href="#cb5-34" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb5-35"><a href="#cb5-35" aria-hidden="true" tabindex="-1"></a><span class="kw">def</span> score_semantics(prompt: <span class="bu">str</span>, canvas: Canvas) <span class="op">-&gt;</span> <span class="bu">float</span>:</span>
+<span id="cb5-36"><a href="#cb5-36" aria-hidden="true" tabindex="-1"></a>    <span class="co">"""A tiny heuristic semantic scorer.</span></span>
+<span id="cb5-37"><a href="#cb5-37" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb5-38"><a href="#cb5-38" aria-hidden="true" tabindex="-1"></a><span class="co">    This is intentionally simple. For a real tldraw agent you would replace</span></span>
+<span id="cb5-39"><a href="#cb5-39" aria-hidden="true" tabindex="-1"></a><span class="co">    this with stronger structural checks or a VLM judge.</span></span>
+<span id="cb5-40"><a href="#cb5-40" aria-hidden="true" tabindex="-1"></a><span class="co">    """</span></span>
+<span id="cb5-41"><a href="#cb5-41" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb5-42"><a href="#cb5-42" aria-hidden="true" tabindex="-1"></a>    prompt_words <span class="op">=</span> <span class="bu">set</span>(re.findall(<span class="vs">r"</span><span class="pp">[a-zA-Z][a-zA-Z0-9_-]</span><span class="op">+</span><span class="vs">"</span>, prompt.lower()))</span>
+<span id="cb5-43"><a href="#cb5-43" aria-hidden="true" tabindex="-1"></a>    label_words: <span class="bu">set</span>[<span class="bu">str</span>] <span class="op">=</span> <span class="bu">set</span>()</span>
+<span id="cb5-44"><a href="#cb5-44" aria-hidden="true" tabindex="-1"></a>    <span class="cf">for</span> shape <span class="kw">in</span> canvas.shapes.values():</span>
+<span id="cb5-45"><a href="#cb5-45" aria-hidden="true" tabindex="-1"></a>        label_words.update(re.findall(<span class="vs">r"</span><span class="pp">[a-zA-Z][a-zA-Z0-9_-]</span><span class="op">+</span><span class="vs">"</span>, shape.text.lower()))</span>
+<span id="cb5-46"><a href="#cb5-46" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb5-47"><a href="#cb5-47" aria-hidden="true" tabindex="-1"></a>    important <span class="op">=</span> {w <span class="cf">for</span> w <span class="kw">in</span> prompt_words <span class="cf">if</span> <span class="bu">len</span>(w) <span class="op">&gt;=</span> <span class="dv">4</span>}</span>
+<span id="cb5-48"><a href="#cb5-48" aria-hidden="true" tabindex="-1"></a>    <span class="cf">if</span> <span class="kw">not</span> important:</span>
+<span id="cb5-49"><a href="#cb5-49" aria-hidden="true" tabindex="-1"></a>        <span class="cf">return</span> <span class="fl">0.5</span></span>
+<span id="cb5-50"><a href="#cb5-50" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb5-51"><a href="#cb5-51" aria-hidden="true" tabindex="-1"></a>    coverage <span class="op">=</span> <span class="bu">len</span>(important <span class="op">&amp;</span> label_words) <span class="op">/</span> <span class="bu">max</span>(<span class="dv">1</span>, <span class="bu">len</span>(important))</span>
+<span id="cb5-52"><a href="#cb5-52" aria-hidden="true" tabindex="-1"></a>    <span class="cf">return</span> <span class="bu">max</span>(<span class="fl">0.0</span>, <span class="bu">min</span>(<span class="fl">1.0</span>, coverage))</span>
+<span id="cb5-53"><a href="#cb5-53" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb5-54"><a href="#cb5-54" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb5-55"><a href="#cb5-55" aria-hidden="true" tabindex="-1"></a><span class="kw">def</span> reward(prompt: <span class="bu">str</span>, completion: <span class="bu">str</span>) <span class="op">-&gt;</span> <span class="bu">float</span>:</span>
+<span id="cb5-56"><a href="#cb5-56" aria-hidden="true" tabindex="-1"></a>    canvas, errors <span class="op">=</span> validate_completion(completion)</span>
+<span id="cb5-57"><a href="#cb5-57" aria-hidden="true" tabindex="-1"></a>    <span class="cf">if</span> errors <span class="kw">or</span> canvas <span class="kw">is</span> <span class="va">None</span>:</span>
+<span id="cb5-58"><a href="#cb5-58" aria-hidden="true" tabindex="-1"></a>        <span class="cf">return</span> <span class="fl">0.0</span></span>
+<span id="cb5-59"><a href="#cb5-59" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb5-60"><a href="#cb5-60" aria-hidden="true" tabindex="-1"></a>    validity <span class="op">=</span> <span class="fl">1.0</span></span>
+<span id="cb5-61"><a href="#cb5-61" aria-hidden="true" tabindex="-1"></a>    layout <span class="op">=</span> score_layout(canvas)</span>
+<span id="cb5-62"><a href="#cb5-62" aria-hidden="true" tabindex="-1"></a>    semantics <span class="op">=</span> score_semantics(prompt, canvas)</span>
+<span id="cb5-63"><a href="#cb5-63" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb5-64"><a href="#cb5-64" aria-hidden="true" tabindex="-1"></a>    <span class="cf">return</span> <span class="fl">0.4</span> <span class="op">*</span> validity <span class="op">+</span> <span class="fl">0.3</span> <span class="op">*</span> layout <span class="op">+</span> <span class="fl">0.3</span> <span class="op">*</span> semantics</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<p>This is the whole idea behind verifier-style environments. You do not need a framework to understand it. A framework mainly gives you process management, batching, remote inference, logging, reproducibility, and scale.</p>
+<p>For educational purposes, this tiny environment is enough.</p>
+</section>
+<section id="step-2-generate-teacher-trajectories-with-gemini" class="level2">
+<h2 class="anchored" data-anchor-id="step-2-generate-teacher-trajectories-with-gemini">Step 2: Generate Teacher Trajectories With Gemini</h2>
+<p>The next problem is data.</p>
+<p>If we start RL from a model that cannot produce valid JSON actions, almost every rollout receives zero reward. The model does not get useful learning signal. This is why SFT is useful before RL.</p>
+<p>SFT teaches the model the basic action language:</p>
+<ul>
+<li>output a JSON object</li>
+<li>include an <code>actions</code> array</li>
+<li>use valid action types</li>
+<li>create shapes before connecting them</li>
+<li>use stable IDs</li>
+<li>avoid impossible coordinates</li>
+</ul>
+<p>We can generate these examples with a stronger teacher model.</p>
+<p>Google’s Gemini API supports text generation and structured output. The current Python SDK uses <code>google-genai</code>, a <code>genai.Client</code>, and <code>client.models.generate_content(...)</code>. For structured JSON, Gemini can be configured with <code>response_mime_type="application/json"</code> and a JSON schema. See Google’s Gemini text generation and structured output docs for the current API details.</p>
+<p>Install:</p>
+<div class="sourceCode" id="cb6"><pre class="sourceCode bash code-with-copy"><code class="sourceCode bash"><span id="cb6-1"><a href="#cb6-1" aria-hidden="true" tabindex="-1"></a><span class="ex">pip</span> install google-genai pydantic datasets</span>
+<span id="cb6-2"><a href="#cb6-2" aria-hidden="true" tabindex="-1"></a><span class="bu">export</span> <span class="va">GEMINI_API_KEY</span><span class="op">=</span>...</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<p>Define the action schema:</p>
+<div class="sourceCode" id="cb7"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb7-1"><a href="#cb7-1" aria-hidden="true" tabindex="-1"></a><span class="co"># teacher_generate.py</span></span>
+<span id="cb7-2"><a href="#cb7-2" aria-hidden="true" tabindex="-1"></a><span class="im">from</span> __future__ <span class="im">import</span> annotations</span>
+<span id="cb7-3"><a href="#cb7-3" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb7-4"><a href="#cb7-4" aria-hidden="true" tabindex="-1"></a><span class="im">import</span> json</span>
+<span id="cb7-5"><a href="#cb7-5" aria-hidden="true" tabindex="-1"></a><span class="im">from</span> pathlib <span class="im">import</span> Path</span>
+<span id="cb7-6"><a href="#cb7-6" aria-hidden="true" tabindex="-1"></a><span class="im">from</span> typing <span class="im">import</span> Literal</span>
+<span id="cb7-7"><a href="#cb7-7" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb7-8"><a href="#cb7-8" aria-hidden="true" tabindex="-1"></a><span class="im">from</span> google <span class="im">import</span> genai</span>
+<span id="cb7-9"><a href="#cb7-9" aria-hidden="true" tabindex="-1"></a><span class="im">from</span> pydantic <span class="im">import</span> BaseModel, Field</span>
+<span id="cb7-10"><a href="#cb7-10" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb7-11"><a href="#cb7-11" aria-hidden="true" tabindex="-1"></a><span class="im">from</span> reward <span class="im">import</span> reward</span>
+<span id="cb7-12"><a href="#cb7-12" aria-hidden="true" tabindex="-1"></a><span class="im">from</span> env <span class="im">import</span> validate_completion</span>
+<span id="cb7-13"><a href="#cb7-13" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb7-14"><a href="#cb7-14" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb7-15"><a href="#cb7-15" aria-hidden="true" tabindex="-1"></a><span class="kw">class</span> CreateShape(BaseModel):</span>
+<span id="cb7-16"><a href="#cb7-16" aria-hidden="true" tabindex="-1"></a>    <span class="bu">type</span>: Literal[<span class="st">"create_shape"</span>]</span>
+<span id="cb7-17"><a href="#cb7-17" aria-hidden="true" tabindex="-1"></a>    <span class="bu">id</span>: <span class="bu">str</span></span>
+<span id="cb7-18"><a href="#cb7-18" aria-hidden="true" tabindex="-1"></a>    shape: Literal[<span class="st">"rectangle"</span>, <span class="st">"ellipse"</span>, <span class="st">"diamond"</span>, <span class="st">"text"</span>]</span>
+<span id="cb7-19"><a href="#cb7-19" aria-hidden="true" tabindex="-1"></a>    x: <span class="bu">float</span></span>
+<span id="cb7-20"><a href="#cb7-20" aria-hidden="true" tabindex="-1"></a>    y: <span class="bu">float</span></span>
+<span id="cb7-21"><a href="#cb7-21" aria-hidden="true" tabindex="-1"></a>    w: <span class="bu">float</span></span>
+<span id="cb7-22"><a href="#cb7-22" aria-hidden="true" tabindex="-1"></a>    h: <span class="bu">float</span></span>
+<span id="cb7-23"><a href="#cb7-23" aria-hidden="true" tabindex="-1"></a>    text: <span class="bu">str</span> <span class="op">=</span> <span class="st">""</span></span>
+<span id="cb7-24"><a href="#cb7-24" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb7-25"><a href="#cb7-25" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb7-26"><a href="#cb7-26" aria-hidden="true" tabindex="-1"></a><span class="kw">class</span> Connect(BaseModel):</span>
+<span id="cb7-27"><a href="#cb7-27" aria-hidden="true" tabindex="-1"></a>    <span class="bu">type</span>: Literal[<span class="st">"connect"</span>]</span>
+<span id="cb7-28"><a href="#cb7-28" aria-hidden="true" tabindex="-1"></a>    from_: <span class="bu">str</span> <span class="op">=</span> Field(alias<span class="op">=</span><span class="st">"from"</span>)</span>
+<span id="cb7-29"><a href="#cb7-29" aria-hidden="true" tabindex="-1"></a>    to: <span class="bu">str</span></span>
+<span id="cb7-30"><a href="#cb7-30" aria-hidden="true" tabindex="-1"></a>    text: <span class="bu">str</span> <span class="op">=</span> <span class="st">""</span></span>
+<span id="cb7-31"><a href="#cb7-31" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb7-32"><a href="#cb7-32" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb7-33"><a href="#cb7-33" aria-hidden="true" tabindex="-1"></a><span class="kw">class</span> AgentResponse(BaseModel):</span>
+<span id="cb7-34"><a href="#cb7-34" aria-hidden="true" tabindex="-1"></a>    actions: <span class="bu">list</span>[CreateShape <span class="op">|</span> Connect]</span>
+<span id="cb7-35"><a href="#cb7-35" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb7-36"><a href="#cb7-36" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb7-37"><a href="#cb7-37" aria-hidden="true" tabindex="-1"></a>SYSTEM_PROMPT <span class="op">=</span> <span class="st">"""You are a diagramming agent.</span></span>
+<span id="cb7-38"><a href="#cb7-38" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb7-39"><a href="#cb7-39" aria-hidden="true" tabindex="-1"></a><span class="st">The user will ask for a small diagram. Return only JSON with an `actions`</span></span>
+<span id="cb7-40"><a href="#cb7-40" aria-hidden="true" tabindex="-1"></a><span class="st">array. You can create shapes and connect them.</span></span>
+<span id="cb7-41"><a href="#cb7-41" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb7-42"><a href="#cb7-42" aria-hidden="true" tabindex="-1"></a><span class="st">Rules:</span></span>
+<span id="cb7-43"><a href="#cb7-43" aria-hidden="true" tabindex="-1"></a><span class="st">- Create every shape before connecting it.</span></span>
+<span id="cb7-44"><a href="#cb7-44" aria-hidden="true" tabindex="-1"></a><span class="st">- Use stable, meaningful shape ids.</span></span>
+<span id="cb7-45"><a href="#cb7-45" aria-hidden="true" tabindex="-1"></a><span class="st">- Prefer simple left-to-right or top-to-bottom layouts.</span></span>
+<span id="cb7-46"><a href="#cb7-46" aria-hidden="true" tabindex="-1"></a><span class="st">- Avoid overlaps.</span></span>
+<span id="cb7-47"><a href="#cb7-47" aria-hidden="true" tabindex="-1"></a><span class="st">- Put short readable labels inside shapes.</span></span>
+<span id="cb7-48"><a href="#cb7-48" aria-hidden="true" tabindex="-1"></a><span class="st">- Return only JSON. No markdown.</span></span>
+<span id="cb7-49"><a href="#cb7-49" aria-hidden="true" tabindex="-1"></a><span class="st">"""</span></span>
+<span id="cb7-50"><a href="#cb7-50" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb7-51"><a href="#cb7-51" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb7-52"><a href="#cb7-52" aria-hidden="true" tabindex="-1"></a>PROMPTS <span class="op">=</span> [</span>
+<span id="cb7-53"><a href="#cb7-53" aria-hidden="true" tabindex="-1"></a>    <span class="st">"Draw a three step data pipeline: client, API, database."</span>,</span>
+<span id="cb7-54"><a href="#cb7-54" aria-hidden="true" tabindex="-1"></a>    <span class="st">"Draw a login flow with user, auth service, token, and dashboard."</span>,</span>
+<span id="cb7-55"><a href="#cb7-55" aria-hidden="true" tabindex="-1"></a>    <span class="st">"Draw a simple RAG system with documents, embeddings, vector DB, retriever, and LLM."</span>,</span>
+<span id="cb7-56"><a href="#cb7-56" aria-hidden="true" tabindex="-1"></a>    <span class="st">"Draw a CI pipeline with commit, tests, build, deploy."</span>,</span>
+<span id="cb7-57"><a href="#cb7-57" aria-hidden="true" tabindex="-1"></a>    <span class="st">"Draw a checkout flow with cart, payment, fraud check, and receipt."</span>,</span>
+<span id="cb7-58"><a href="#cb7-58" aria-hidden="true" tabindex="-1"></a>]</span>
+<span id="cb7-59"><a href="#cb7-59" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb7-60"><a href="#cb7-60" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb7-61"><a href="#cb7-61" aria-hidden="true" tabindex="-1"></a><span class="kw">def</span> generate_one(client: genai.Client, model: <span class="bu">str</span>, prompt: <span class="bu">str</span>) <span class="op">-&gt;</span> <span class="bu">str</span>:</span>
+<span id="cb7-62"><a href="#cb7-62" aria-hidden="true" tabindex="-1"></a>    response <span class="op">=</span> client.models.generate_content(</span>
+<span id="cb7-63"><a href="#cb7-63" aria-hidden="true" tabindex="-1"></a>        model<span class="op">=</span>model,</span>
+<span id="cb7-64"><a href="#cb7-64" aria-hidden="true" tabindex="-1"></a>        contents<span class="op">=</span><span class="ss">f"</span><span class="sc">{</span>SYSTEM_PROMPT<span class="sc">}</span><span class="ch">\n\n</span><span class="ss">User request: </span><span class="sc">{</span>prompt<span class="sc">}</span><span class="ss">"</span>,</span>
+<span id="cb7-65"><a href="#cb7-65" aria-hidden="true" tabindex="-1"></a>        config<span class="op">=</span>{</span>
+<span id="cb7-66"><a href="#cb7-66" aria-hidden="true" tabindex="-1"></a>            <span class="st">"response_mime_type"</span>: <span class="st">"application/json"</span>,</span>
+<span id="cb7-67"><a href="#cb7-67" aria-hidden="true" tabindex="-1"></a>            <span class="st">"response_json_schema"</span>: AgentResponse.model_json_schema(),</span>
+<span id="cb7-68"><a href="#cb7-68" aria-hidden="true" tabindex="-1"></a>        },</span>
+<span id="cb7-69"><a href="#cb7-69" aria-hidden="true" tabindex="-1"></a>    )</span>
+<span id="cb7-70"><a href="#cb7-70" aria-hidden="true" tabindex="-1"></a>    <span class="cf">return</span> response.text</span>
+<span id="cb7-71"><a href="#cb7-71" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb7-72"><a href="#cb7-72" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb7-73"><a href="#cb7-73" aria-hidden="true" tabindex="-1"></a><span class="kw">def</span> main() <span class="op">-&gt;</span> <span class="va">None</span>:</span>
+<span id="cb7-74"><a href="#cb7-74" aria-hidden="true" tabindex="-1"></a>    client <span class="op">=</span> genai.Client()</span>
+<span id="cb7-75"><a href="#cb7-75" aria-hidden="true" tabindex="-1"></a>    model <span class="op">=</span> <span class="st">"gemini-2.5-flash"</span></span>
+<span id="cb7-76"><a href="#cb7-76" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb7-77"><a href="#cb7-77" aria-hidden="true" tabindex="-1"></a>    out_dir <span class="op">=</span> Path(<span class="st">"data/diagram_teacher"</span>)</span>
+<span id="cb7-78"><a href="#cb7-78" aria-hidden="true" tabindex="-1"></a>    out_dir.mkdir(parents<span class="op">=</span><span class="va">True</span>, exist_ok<span class="op">=</span><span class="va">True</span>)</span>
+<span id="cb7-79"><a href="#cb7-79" aria-hidden="true" tabindex="-1"></a>    accepted <span class="op">=</span> out_dir <span class="op">/</span> <span class="st">"train.jsonl"</span></span>
+<span id="cb7-80"><a href="#cb7-80" aria-hidden="true" tabindex="-1"></a>    rejected <span class="op">=</span> out_dir <span class="op">/</span> <span class="st">"rejected.jsonl"</span></span>
+<span id="cb7-81"><a href="#cb7-81" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb7-82"><a href="#cb7-82" aria-hidden="true" tabindex="-1"></a>    <span class="cf">with</span> accepted.<span class="bu">open</span>(<span class="st">"w"</span>) <span class="im">as</span> good, rejected.<span class="bu">open</span>(<span class="st">"w"</span>) <span class="im">as</span> bad:</span>
+<span id="cb7-83"><a href="#cb7-83" aria-hidden="true" tabindex="-1"></a>        <span class="cf">for</span> prompt <span class="kw">in</span> PROMPTS:</span>
+<span id="cb7-84"><a href="#cb7-84" aria-hidden="true" tabindex="-1"></a>            <span class="cf">for</span> attempt <span class="kw">in</span> <span class="bu">range</span>(<span class="dv">4</span>):</span>
+<span id="cb7-85"><a href="#cb7-85" aria-hidden="true" tabindex="-1"></a>                completion <span class="op">=</span> generate_one(client, model, prompt)</span>
+<span id="cb7-86"><a href="#cb7-86" aria-hidden="true" tabindex="-1"></a>                canvas, errors <span class="op">=</span> validate_completion(completion)</span>
+<span id="cb7-87"><a href="#cb7-87" aria-hidden="true" tabindex="-1"></a>                score <span class="op">=</span> reward(prompt, completion)</span>
+<span id="cb7-88"><a href="#cb7-88" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb7-89"><a href="#cb7-89" aria-hidden="true" tabindex="-1"></a>                row <span class="op">=</span> {</span>
+<span id="cb7-90"><a href="#cb7-90" aria-hidden="true" tabindex="-1"></a>                    <span class="st">"prompt"</span>: prompt,</span>
+<span id="cb7-91"><a href="#cb7-91" aria-hidden="true" tabindex="-1"></a>                    <span class="st">"completion"</span>: completion,</span>
+<span id="cb7-92"><a href="#cb7-92" aria-hidden="true" tabindex="-1"></a>                    <span class="st">"reward"</span>: score,</span>
+<span id="cb7-93"><a href="#cb7-93" aria-hidden="true" tabindex="-1"></a>                    <span class="st">"errors"</span>: errors,</span>
+<span id="cb7-94"><a href="#cb7-94" aria-hidden="true" tabindex="-1"></a>                }</span>
+<span id="cb7-95"><a href="#cb7-95" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb7-96"><a href="#cb7-96" aria-hidden="true" tabindex="-1"></a>                <span class="cf">if</span> canvas <span class="kw">is</span> <span class="kw">not</span> <span class="va">None</span> <span class="kw">and</span> <span class="kw">not</span> errors <span class="kw">and</span> score <span class="op">&gt;=</span> <span class="fl">0.6</span>:</span>
+<span id="cb7-97"><a href="#cb7-97" aria-hidden="true" tabindex="-1"></a>                    <span class="co"># Chat-format SFT row.</span></span>
+<span id="cb7-98"><a href="#cb7-98" aria-hidden="true" tabindex="-1"></a>                    good.write(</span>
+<span id="cb7-99"><a href="#cb7-99" aria-hidden="true" tabindex="-1"></a>                        json.dumps(</span>
+<span id="cb7-100"><a href="#cb7-100" aria-hidden="true" tabindex="-1"></a>                            {</span>
+<span id="cb7-101"><a href="#cb7-101" aria-hidden="true" tabindex="-1"></a>                                <span class="st">"messages"</span>: [</span>
+<span id="cb7-102"><a href="#cb7-102" aria-hidden="true" tabindex="-1"></a>                                    {<span class="st">"role"</span>: <span class="st">"system"</span>, <span class="st">"content"</span>: SYSTEM_PROMPT},</span>
+<span id="cb7-103"><a href="#cb7-103" aria-hidden="true" tabindex="-1"></a>                                    {<span class="st">"role"</span>: <span class="st">"user"</span>, <span class="st">"content"</span>: prompt},</span>
+<span id="cb7-104"><a href="#cb7-104" aria-hidden="true" tabindex="-1"></a>                                    {<span class="st">"role"</span>: <span class="st">"assistant"</span>, <span class="st">"content"</span>: completion},</span>
+<span id="cb7-105"><a href="#cb7-105" aria-hidden="true" tabindex="-1"></a>                                ],</span>
+<span id="cb7-106"><a href="#cb7-106" aria-hidden="true" tabindex="-1"></a>                                <span class="st">"reward"</span>: score,</span>
+<span id="cb7-107"><a href="#cb7-107" aria-hidden="true" tabindex="-1"></a>                            }</span>
+<span id="cb7-108"><a href="#cb7-108" aria-hidden="true" tabindex="-1"></a>                        )</span>
+<span id="cb7-109"><a href="#cb7-109" aria-hidden="true" tabindex="-1"></a>                        <span class="op">+</span> <span class="st">"</span><span class="ch">\n</span><span class="st">"</span></span>
+<span id="cb7-110"><a href="#cb7-110" aria-hidden="true" tabindex="-1"></a>                    )</span>
+<span id="cb7-111"><a href="#cb7-111" aria-hidden="true" tabindex="-1"></a>                <span class="cf">else</span>:</span>
+<span id="cb7-112"><a href="#cb7-112" aria-hidden="true" tabindex="-1"></a>                    bad.write(json.dumps(row) <span class="op">+</span> <span class="st">"</span><span class="ch">\n</span><span class="st">"</span>)</span>
+<span id="cb7-113"><a href="#cb7-113" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb7-114"><a href="#cb7-114" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb7-115"><a href="#cb7-115" aria-hidden="true" tabindex="-1"></a><span class="cf">if</span> <span class="va">__name__</span> <span class="op">==</span> <span class="st">"__main__"</span>:</span>
+<span id="cb7-116"><a href="#cb7-116" aria-hidden="true" tabindex="-1"></a>    main()</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<p>This is teacher trajectory generation.</p>
+<p>For a single-turn environment, a trajectory is simply:</p>
+<pre class="text"><code>observation: user prompt
+action: JSON actions
+reward: validation score</code></pre>
+<p>For a multi-turn environment, a trajectory contains several observations and actions:</p>
+<pre class="text"><code>obs_0 -&gt; action_0 -&gt; obs_1 -&gt; action_1 -&gt; obs_2 -&gt; reward</code></pre>
+<p>For tldraw, a richer trajectory might include:</p>
+<ul>
+<li>the user request</li>
+<li>visible canvas state</li>
+<li>current selected shapes</li>
+<li>model action batch</li>
+<li>validator output</li>
+<li>screenshot of final canvas</li>
+<li>reward</li>
+</ul>
+<p>The important thing is that teacher generation is not magic. It is just sampling from a strong model, validating, and keeping the good traces.</p>
+</section>
+<section id="step-3-sft-the-student" class="level2">
+<h2 class="anchored" data-anchor-id="step-3-sft-the-student">Step 3: SFT the Student</h2>
+<p>SFT is imitation learning.</p>
+<p>We are not asking whether the output is better than another output. We are saying: “given this prompt, copy this teacher action.”</p>
+<p>For a chat model, each row looks like:</p>
+<div class="sourceCode" id="cb10"><pre class="sourceCode json code-with-copy"><code class="sourceCode json"><span id="cb10-1"><a href="#cb10-1" aria-hidden="true" tabindex="-1"></a><span class="fu">{</span></span>
+<span id="cb10-2"><a href="#cb10-2" aria-hidden="true" tabindex="-1"></a>  <span class="dt">"messages"</span><span class="fu">:</span> <span class="ot">[</span></span>
+<span id="cb10-3"><a href="#cb10-3" aria-hidden="true" tabindex="-1"></a>    <span class="fu">{</span><span class="dt">"role"</span><span class="fu">:</span> <span class="st">"system"</span><span class="fu">,</span> <span class="dt">"content"</span><span class="fu">:</span> <span class="st">"..."</span><span class="fu">}</span><span class="ot">,</span></span>
+<span id="cb10-4"><a href="#cb10-4" aria-hidden="true" tabindex="-1"></a>    <span class="fu">{</span><span class="dt">"role"</span><span class="fu">:</span> <span class="st">"user"</span><span class="fu">,</span> <span class="dt">"content"</span><span class="fu">:</span> <span class="st">"Draw a three step data pipeline."</span><span class="fu">}</span><span class="ot">,</span></span>
+<span id="cb10-5"><a href="#cb10-5" aria-hidden="true" tabindex="-1"></a>    <span class="fu">{</span><span class="dt">"role"</span><span class="fu">:</span> <span class="st">"assistant"</span><span class="fu">,</span> <span class="dt">"content"</span><span class="fu">:</span> <span class="st">"{</span><span class="ch">\"</span><span class="st">actions</span><span class="ch">\"</span><span class="st">: [...]}"</span><span class="fu">}</span></span>
+<span id="cb10-6"><a href="#cb10-6" aria-hidden="true" tabindex="-1"></a>  <span class="ot">]</span></span>
+<span id="cb10-7"><a href="#cb10-7" aria-hidden="true" tabindex="-1"></a><span class="fu">}</span></span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<p>You can train this with any SFT stack. With TRL:</p>
+<div class="sourceCode" id="cb11"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb11-1"><a href="#cb11-1" aria-hidden="true" tabindex="-1"></a><span class="co"># train_sft.py</span></span>
+<span id="cb11-2"><a href="#cb11-2" aria-hidden="true" tabindex="-1"></a><span class="im">from</span> datasets <span class="im">import</span> load_dataset</span>
+<span id="cb11-3"><a href="#cb11-3" aria-hidden="true" tabindex="-1"></a><span class="im">from</span> trl <span class="im">import</span> SFTConfig, SFTTrainer</span>
+<span id="cb11-4"><a href="#cb11-4" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb11-5"><a href="#cb11-5" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb11-6"><a href="#cb11-6" aria-hidden="true" tabindex="-1"></a>dataset <span class="op">=</span> load_dataset(<span class="st">"json"</span>, data_files<span class="op">=</span><span class="st">"data/diagram_teacher/train.jsonl"</span>, split<span class="op">=</span><span class="st">"train"</span>)</span>
+<span id="cb11-7"><a href="#cb11-7" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb11-8"><a href="#cb11-8" aria-hidden="true" tabindex="-1"></a>args <span class="op">=</span> SFTConfig(</span>
+<span id="cb11-9"><a href="#cb11-9" aria-hidden="true" tabindex="-1"></a>    output_dir<span class="op">=</span><span class="st">"outputs/diagram-sft"</span>,</span>
+<span id="cb11-10"><a href="#cb11-10" aria-hidden="true" tabindex="-1"></a>    per_device_train_batch_size<span class="op">=</span><span class="dv">2</span>,</span>
+<span id="cb11-11"><a href="#cb11-11" aria-hidden="true" tabindex="-1"></a>    gradient_accumulation_steps<span class="op">=</span><span class="dv">8</span>,</span>
+<span id="cb11-12"><a href="#cb11-12" aria-hidden="true" tabindex="-1"></a>    learning_rate<span class="op">=</span><span class="fl">2e-5</span>,</span>
+<span id="cb11-13"><a href="#cb11-13" aria-hidden="true" tabindex="-1"></a>    num_train_epochs<span class="op">=</span><span class="dv">3</span>,</span>
+<span id="cb11-14"><a href="#cb11-14" aria-hidden="true" tabindex="-1"></a>    max_length<span class="op">=</span><span class="dv">4096</span>,</span>
+<span id="cb11-15"><a href="#cb11-15" aria-hidden="true" tabindex="-1"></a>    logging_steps<span class="op">=</span><span class="dv">10</span>,</span>
+<span id="cb11-16"><a href="#cb11-16" aria-hidden="true" tabindex="-1"></a>    save_steps<span class="op">=</span><span class="dv">100</span>,</span>
+<span id="cb11-17"><a href="#cb11-17" aria-hidden="true" tabindex="-1"></a>)</span>
+<span id="cb11-18"><a href="#cb11-18" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb11-19"><a href="#cb11-19" aria-hidden="true" tabindex="-1"></a>trainer <span class="op">=</span> SFTTrainer(</span>
+<span id="cb11-20"><a href="#cb11-20" aria-hidden="true" tabindex="-1"></a>    model<span class="op">=</span><span class="st">"Qwen/Qwen3-4B-Instruct-2507"</span>,</span>
+<span id="cb11-21"><a href="#cb11-21" aria-hidden="true" tabindex="-1"></a>    args<span class="op">=</span>args,</span>
+<span id="cb11-22"><a href="#cb11-22" aria-hidden="true" tabindex="-1"></a>    train_dataset<span class="op">=</span>dataset,</span>
+<span id="cb11-23"><a href="#cb11-23" aria-hidden="true" tabindex="-1"></a>)</span>
+<span id="cb11-24"><a href="#cb11-24" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb11-25"><a href="#cb11-25" aria-hidden="true" tabindex="-1"></a>trainer.train()</span>
+<span id="cb11-26"><a href="#cb11-26" aria-hidden="true" tabindex="-1"></a>trainer.save_model(<span class="st">"outputs/diagram-sft/final"</span>)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<p>Run:</p>
+<div class="sourceCode" id="cb12"><pre class="sourceCode bash code-with-copy"><code class="sourceCode bash"><span id="cb12-1"><a href="#cb12-1" aria-hidden="true" tabindex="-1"></a><span class="ex">accelerate</span> launch train_sft.py</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<p>If you want to use LoRA or QLoRA, add PEFT. The educational idea does not change:</p>
+<pre class="text"><code>maximize log probability of teacher actions</code></pre>
+<p>The model after SFT should be able to produce syntactically valid actions most of the time. That is enough to make RL meaningful.</p>
+</section>
+<section id="step-4-why-rl-is-needed-after-sft" class="level2">
+<h2 class="anchored" data-anchor-id="step-4-why-rl-is-needed-after-sft">Step 4: Why RL Is Needed After SFT</h2>
+<p>If SFT teaches imitation, why do RL at all?</p>
+<p>Because teacher traces are static. They teach what the teacher did on the prompts we generated. They do not directly optimize the metric we care about.</p>
+<p>SFT says:</p>
+<pre class="text"><code>"Make the student more likely to produce this teacher answer."</code></pre>
+<p>RL says:</p>
+<pre class="text"><code>"Make the student more likely to produce answers that score well."</code></pre>
+<p>That difference matters.</p>
+<p>Suppose the teacher creates a valid diagram, but the layout is cramped. SFT will copy it. RL can discover a cleaner layout if the reward function values spacing. Suppose the teacher labels a node “DB” but the reward gives higher semantic coverage for “Database”. RL can move toward “Database”. Suppose there are multiple good diagrams. SFT collapses toward teacher style; RL can explore and reinforce variants that score better.</p>
+<p>In practice, the pipeline usually looks like:</p>
+<pre class="text"><code>base model -&gt; SFT on teacher traces -&gt; RL on environment reward</code></pre>
+<p>SFT gets you into the action space. RL improves behavior inside that space.</p>
+</section>
+<section id="step-5-rl-from-first-principles" class="level2">
+<h2 class="anchored" data-anchor-id="step-5-rl-from-first-principles">Step 5: RL From First Principles</h2>
+<p>Let us build the RL loop without hiding behind a framework.</p>
+<p>The simplest online RL loop for LLMs is:</p>
+<ol type="1">
+<li>Sample a batch of prompts.</li>
+<li>Generate multiple completions per prompt.</li>
+<li>Score each completion with the environment.</li>
+<li>Convert scores into advantages.</li>
+<li>Increase the log probability of above-average completions.</li>
+<li>Decrease or ignore below-average completions.</li>
+</ol>
+<p>GRPO, which is used in many recent LLM RL pipelines, follows this group-relative idea. For each prompt, generate a group of completions. Reward each completion. Normalize rewards within the group. Use those normalized rewards as advantages.</p>
+<p>For prompt <code>x</code>, sample completions:</p>
+<pre class="text"><code>y_1, y_2, ..., y_G</code></pre>
+<p>Score them:</p>
+<pre class="text"><code>r_1, r_2, ..., r_G</code></pre>
+<p>Compute group-relative advantage:</p>
+<pre class="text"><code>A_i = (r_i - mean(r)) / (std(r) + eps)</code></pre>
+<p>If a completion is better than its siblings, advantage is positive. If worse, advantage is negative.</p>
+<p>The model loss is roughly:</p>
+<pre class="text"><code>loss = - advantage * logprob(completion tokens)</code></pre>
+<p>Real implementations add clipping, KL penalties, reference models, masking, distributed generation, vLLM, and a dozen stability tricks. But the core is that simple.</p>
+<p>Here is a tiny trainer sketch. This is not production code, but it exposes the mechanism.</p>
+<div class="sourceCode" id="cb21"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb21-1"><a href="#cb21-1" aria-hidden="true" tabindex="-1"></a><span class="co"># train_rl_minimal.py</span></span>
+<span id="cb21-2"><a href="#cb21-2" aria-hidden="true" tabindex="-1"></a><span class="im">from</span> __future__ <span class="im">import</span> annotations</span>
+<span id="cb21-3"><a href="#cb21-3" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb21-4"><a href="#cb21-4" aria-hidden="true" tabindex="-1"></a><span class="im">import</span> json</span>
+<span id="cb21-5"><a href="#cb21-5" aria-hidden="true" tabindex="-1"></a><span class="im">import</span> random</span>
+<span id="cb21-6"><a href="#cb21-6" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb21-7"><a href="#cb21-7" aria-hidden="true" tabindex="-1"></a><span class="im">import</span> torch</span>
+<span id="cb21-8"><a href="#cb21-8" aria-hidden="true" tabindex="-1"></a><span class="im">from</span> transformers <span class="im">import</span> AutoModelForCausalLM, AutoTokenizer</span>
+<span id="cb21-9"><a href="#cb21-9" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb21-10"><a href="#cb21-10" aria-hidden="true" tabindex="-1"></a><span class="im">from</span> reward <span class="im">import</span> reward</span>
+<span id="cb21-11"><a href="#cb21-11" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb21-12"><a href="#cb21-12" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb21-13"><a href="#cb21-13" aria-hidden="true" tabindex="-1"></a>SYSTEM_PROMPT <span class="op">=</span> <span class="st">"""You are a diagramming agent. Return only JSON with an actions array."""</span></span>
+<span id="cb21-14"><a href="#cb21-14" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb21-15"><a href="#cb21-15" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb21-16"><a href="#cb21-16" aria-hidden="true" tabindex="-1"></a>PROMPTS <span class="op">=</span> [</span>
+<span id="cb21-17"><a href="#cb21-17" aria-hidden="true" tabindex="-1"></a>    <span class="st">"Draw a three step data pipeline: client, API, database."</span>,</span>
+<span id="cb21-18"><a href="#cb21-18" aria-hidden="true" tabindex="-1"></a>    <span class="st">"Draw a login flow with user, auth service, token, and dashboard."</span>,</span>
+<span id="cb21-19"><a href="#cb21-19" aria-hidden="true" tabindex="-1"></a>    <span class="st">"Draw a simple RAG system with documents, embeddings, vector DB, retriever, and LLM."</span>,</span>
+<span id="cb21-20"><a href="#cb21-20" aria-hidden="true" tabindex="-1"></a>    <span class="st">"Draw a CI pipeline with commit, tests, build, deploy."</span>,</span>
+<span id="cb21-21"><a href="#cb21-21" aria-hidden="true" tabindex="-1"></a>    <span class="st">"Draw a checkout flow with cart, payment, fraud check, and receipt."</span>,</span>
+<span id="cb21-22"><a href="#cb21-22" aria-hidden="true" tabindex="-1"></a>]</span>
+<span id="cb21-23"><a href="#cb21-23" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb21-24"><a href="#cb21-24" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb21-25"><a href="#cb21-25" aria-hidden="true" tabindex="-1"></a><span class="kw">def</span> format_prompt(tokenizer, user_prompt: <span class="bu">str</span>) <span class="op">-&gt;</span> <span class="bu">str</span>:</span>
+<span id="cb21-26"><a href="#cb21-26" aria-hidden="true" tabindex="-1"></a>    messages <span class="op">=</span> [</span>
+<span id="cb21-27"><a href="#cb21-27" aria-hidden="true" tabindex="-1"></a>        {<span class="st">"role"</span>: <span class="st">"system"</span>, <span class="st">"content"</span>: SYSTEM_PROMPT},</span>
+<span id="cb21-28"><a href="#cb21-28" aria-hidden="true" tabindex="-1"></a>        {<span class="st">"role"</span>: <span class="st">"user"</span>, <span class="st">"content"</span>: user_prompt},</span>
+<span id="cb21-29"><a href="#cb21-29" aria-hidden="true" tabindex="-1"></a>    ]</span>
+<span id="cb21-30"><a href="#cb21-30" aria-hidden="true" tabindex="-1"></a>    <span class="cf">return</span> tokenizer.apply_chat_template(messages, tokenize<span class="op">=</span><span class="va">False</span>, add_generation_prompt<span class="op">=</span><span class="va">True</span>)</span>
+<span id="cb21-31"><a href="#cb21-31" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb21-32"><a href="#cb21-32" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb21-33"><a href="#cb21-33" aria-hidden="true" tabindex="-1"></a><span class="kw">def</span> generate_group(model, tokenizer, prompt: <span class="bu">str</span>, group_size: <span class="bu">int</span>, max_new_tokens: <span class="bu">int</span>) <span class="op">-&gt;</span> <span class="bu">list</span>[<span class="bu">str</span>]:</span>
+<span id="cb21-34"><a href="#cb21-34" aria-hidden="true" tabindex="-1"></a>    encoded <span class="op">=</span> tokenizer(prompt, return_tensors<span class="op">=</span><span class="st">"pt"</span>).to(model.device)</span>
+<span id="cb21-35"><a href="#cb21-35" aria-hidden="true" tabindex="-1"></a>    outputs <span class="op">=</span> model.generate(</span>
+<span id="cb21-36"><a href="#cb21-36" aria-hidden="true" tabindex="-1"></a>        <span class="op">**</span>encoded,</span>
+<span id="cb21-37"><a href="#cb21-37" aria-hidden="true" tabindex="-1"></a>        do_sample<span class="op">=</span><span class="va">True</span>,</span>
+<span id="cb21-38"><a href="#cb21-38" aria-hidden="true" tabindex="-1"></a>        temperature<span class="op">=</span><span class="fl">0.8</span>,</span>
+<span id="cb21-39"><a href="#cb21-39" aria-hidden="true" tabindex="-1"></a>        top_p<span class="op">=</span><span class="fl">0.95</span>,</span>
+<span id="cb21-40"><a href="#cb21-40" aria-hidden="true" tabindex="-1"></a>        max_new_tokens<span class="op">=</span>max_new_tokens,</span>
+<span id="cb21-41"><a href="#cb21-41" aria-hidden="true" tabindex="-1"></a>        num_return_sequences<span class="op">=</span>group_size,</span>
+<span id="cb21-42"><a href="#cb21-42" aria-hidden="true" tabindex="-1"></a>        pad_token_id<span class="op">=</span>tokenizer.eos_token_id,</span>
+<span id="cb21-43"><a href="#cb21-43" aria-hidden="true" tabindex="-1"></a>    )</span>
+<span id="cb21-44"><a href="#cb21-44" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb21-45"><a href="#cb21-45" aria-hidden="true" tabindex="-1"></a>    completions <span class="op">=</span> []</span>
+<span id="cb21-46"><a href="#cb21-46" aria-hidden="true" tabindex="-1"></a>    prompt_len <span class="op">=</span> encoded[<span class="st">"input_ids"</span>].shape[<span class="dv">1</span>]</span>
+<span id="cb21-47"><a href="#cb21-47" aria-hidden="true" tabindex="-1"></a>    <span class="cf">for</span> output <span class="kw">in</span> outputs:</span>
+<span id="cb21-48"><a href="#cb21-48" aria-hidden="true" tabindex="-1"></a>        completion_ids <span class="op">=</span> output[prompt_len:]</span>
+<span id="cb21-49"><a href="#cb21-49" aria-hidden="true" tabindex="-1"></a>        completions.append(tokenizer.decode(completion_ids, skip_special_tokens<span class="op">=</span><span class="va">True</span>))</span>
+<span id="cb21-50"><a href="#cb21-50" aria-hidden="true" tabindex="-1"></a>    <span class="cf">return</span> completions</span>
+<span id="cb21-51"><a href="#cb21-51" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb21-52"><a href="#cb21-52" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb21-53"><a href="#cb21-53" aria-hidden="true" tabindex="-1"></a><span class="kw">def</span> completion_logprob(model, tokenizer, prompt: <span class="bu">str</span>, completion: <span class="bu">str</span>) <span class="op">-&gt;</span> torch.Tensor:</span>
+<span id="cb21-54"><a href="#cb21-54" aria-hidden="true" tabindex="-1"></a>    full_text <span class="op">=</span> prompt <span class="op">+</span> completion</span>
+<span id="cb21-55"><a href="#cb21-55" aria-hidden="true" tabindex="-1"></a>    full <span class="op">=</span> tokenizer(full_text, return_tensors<span class="op">=</span><span class="st">"pt"</span>).to(model.device)</span>
+<span id="cb21-56"><a href="#cb21-56" aria-hidden="true" tabindex="-1"></a>    prompt_ids <span class="op">=</span> tokenizer(prompt, return_tensors<span class="op">=</span><span class="st">"pt"</span>).to(model.device)[<span class="st">"input_ids"</span>]</span>
+<span id="cb21-57"><a href="#cb21-57" aria-hidden="true" tabindex="-1"></a>    prompt_len <span class="op">=</span> prompt_ids.shape[<span class="dv">1</span>]</span>
+<span id="cb21-58"><a href="#cb21-58" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb21-59"><a href="#cb21-59" aria-hidden="true" tabindex="-1"></a>    input_ids <span class="op">=</span> full[<span class="st">"input_ids"</span>]</span>
+<span id="cb21-60"><a href="#cb21-60" aria-hidden="true" tabindex="-1"></a>    attention_mask <span class="op">=</span> full[<span class="st">"attention_mask"</span>]</span>
+<span id="cb21-61"><a href="#cb21-61" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb21-62"><a href="#cb21-62" aria-hidden="true" tabindex="-1"></a>    logits <span class="op">=</span> model(input_ids<span class="op">=</span>input_ids, attention_mask<span class="op">=</span>attention_mask).logits</span>
+<span id="cb21-63"><a href="#cb21-63" aria-hidden="true" tabindex="-1"></a>    logprobs <span class="op">=</span> torch.log_softmax(logits[:, :<span class="op">-</span><span class="dv">1</span>, :], dim<span class="op">=-</span><span class="dv">1</span>)</span>
+<span id="cb21-64"><a href="#cb21-64" aria-hidden="true" tabindex="-1"></a>    target_ids <span class="op">=</span> input_ids[:, <span class="dv">1</span>:]</span>
+<span id="cb21-65"><a href="#cb21-65" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb21-66"><a href="#cb21-66" aria-hidden="true" tabindex="-1"></a>    token_logprobs <span class="op">=</span> logprobs.gather(<span class="op">-</span><span class="dv">1</span>, target_ids.unsqueeze(<span class="op">-</span><span class="dv">1</span>)).squeeze(<span class="op">-</span><span class="dv">1</span>)</span>
+<span id="cb21-67"><a href="#cb21-67" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb21-68"><a href="#cb21-68" aria-hidden="true" tabindex="-1"></a>    <span class="co"># Only train on completion tokens.</span></span>
+<span id="cb21-69"><a href="#cb21-69" aria-hidden="true" tabindex="-1"></a>    completion_token_logprobs <span class="op">=</span> token_logprobs[:, prompt_len <span class="op">-</span> <span class="dv">1</span> :]</span>
+<span id="cb21-70"><a href="#cb21-70" aria-hidden="true" tabindex="-1"></a>    <span class="cf">return</span> completion_token_logprobs.mean()</span>
+<span id="cb21-71"><a href="#cb21-71" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb21-72"><a href="#cb21-72" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb21-73"><a href="#cb21-73" aria-hidden="true" tabindex="-1"></a><span class="kw">def</span> main() <span class="op">-&gt;</span> <span class="va">None</span>:</span>
+<span id="cb21-74"><a href="#cb21-74" aria-hidden="true" tabindex="-1"></a>    model_name <span class="op">=</span> <span class="st">"outputs/diagram-sft/final"</span></span>
+<span id="cb21-75"><a href="#cb21-75" aria-hidden="true" tabindex="-1"></a>    tokenizer <span class="op">=</span> AutoTokenizer.from_pretrained(model_name)</span>
+<span id="cb21-76"><a href="#cb21-76" aria-hidden="true" tabindex="-1"></a>    model <span class="op">=</span> AutoModelForCausalLM.from_pretrained(</span>
+<span id="cb21-77"><a href="#cb21-77" aria-hidden="true" tabindex="-1"></a>        model_name,</span>
+<span id="cb21-78"><a href="#cb21-78" aria-hidden="true" tabindex="-1"></a>        torch_dtype<span class="op">=</span>torch.bfloat16,</span>
+<span id="cb21-79"><a href="#cb21-79" aria-hidden="true" tabindex="-1"></a>        device_map<span class="op">=</span><span class="st">"cuda"</span>,</span>
+<span id="cb21-80"><a href="#cb21-80" aria-hidden="true" tabindex="-1"></a>    )</span>
+<span id="cb21-81"><a href="#cb21-81" aria-hidden="true" tabindex="-1"></a>    model.train()</span>
+<span id="cb21-82"><a href="#cb21-82" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb21-83"><a href="#cb21-83" aria-hidden="true" tabindex="-1"></a>    optimizer <span class="op">=</span> torch.optim.AdamW(model.parameters(), lr<span class="op">=</span><span class="fl">1e-6</span>)</span>
+<span id="cb21-84"><a href="#cb21-84" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb21-85"><a href="#cb21-85" aria-hidden="true" tabindex="-1"></a>    group_size <span class="op">=</span> <span class="dv">4</span></span>
+<span id="cb21-86"><a href="#cb21-86" aria-hidden="true" tabindex="-1"></a>    max_new_tokens <span class="op">=</span> <span class="dv">1024</span></span>
+<span id="cb21-87"><a href="#cb21-87" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb21-88"><a href="#cb21-88" aria-hidden="true" tabindex="-1"></a>    <span class="cf">for</span> step <span class="kw">in</span> <span class="bu">range</span>(<span class="dv">500</span>):</span>
+<span id="cb21-89"><a href="#cb21-89" aria-hidden="true" tabindex="-1"></a>        user_prompt <span class="op">=</span> random.choice(PROMPTS)</span>
+<span id="cb21-90"><a href="#cb21-90" aria-hidden="true" tabindex="-1"></a>        prompt <span class="op">=</span> format_prompt(tokenizer, user_prompt)</span>
+<span id="cb21-91"><a href="#cb21-91" aria-hidden="true" tabindex="-1"></a>        completions <span class="op">=</span> generate_group(model, tokenizer, prompt, group_size, max_new_tokens)</span>
+<span id="cb21-92"><a href="#cb21-92" aria-hidden="true" tabindex="-1"></a>        rewards <span class="op">=</span> torch.tensor([reward(user_prompt, c) <span class="cf">for</span> c <span class="kw">in</span> completions], device<span class="op">=</span>model.device)</span>
+<span id="cb21-93"><a href="#cb21-93" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb21-94"><a href="#cb21-94" aria-hidden="true" tabindex="-1"></a>        <span class="cf">if</span> rewards.std() <span class="op">&lt;</span> <span class="fl">1e-6</span>:</span>
+<span id="cb21-95"><a href="#cb21-95" aria-hidden="true" tabindex="-1"></a>            <span class="bu">print</span>(<span class="ss">f"step=</span><span class="sc">{</span>step<span class="sc">}</span><span class="ss"> skipped zero-variance rewards=</span><span class="sc">{</span>rewards<span class="sc">.</span>tolist()<span class="sc">}</span><span class="ss">"</span>)</span>
+<span id="cb21-96"><a href="#cb21-96" aria-hidden="true" tabindex="-1"></a>            <span class="cf">continue</span></span>
+<span id="cb21-97"><a href="#cb21-97" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb21-98"><a href="#cb21-98" aria-hidden="true" tabindex="-1"></a>        advantages <span class="op">=</span> (rewards <span class="op">-</span> rewards.mean()) <span class="op">/</span> (rewards.std() <span class="op">+</span> <span class="fl">1e-6</span>)</span>
+<span id="cb21-99"><a href="#cb21-99" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb21-100"><a href="#cb21-100" aria-hidden="true" tabindex="-1"></a>        losses <span class="op">=</span> []</span>
+<span id="cb21-101"><a href="#cb21-101" aria-hidden="true" tabindex="-1"></a>        <span class="cf">for</span> completion, advantage <span class="kw">in</span> <span class="bu">zip</span>(completions, advantages, strict<span class="op">=</span><span class="va">True</span>):</span>
+<span id="cb21-102"><a href="#cb21-102" aria-hidden="true" tabindex="-1"></a>            logp <span class="op">=</span> completion_logprob(model, tokenizer, prompt, completion)</span>
+<span id="cb21-103"><a href="#cb21-103" aria-hidden="true" tabindex="-1"></a>            losses.append(<span class="op">-</span>advantage.detach() <span class="op">*</span> logp)</span>
+<span id="cb21-104"><a href="#cb21-104" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb21-105"><a href="#cb21-105" aria-hidden="true" tabindex="-1"></a>        loss <span class="op">=</span> torch.stack(losses).mean()</span>
+<span id="cb21-106"><a href="#cb21-106" aria-hidden="true" tabindex="-1"></a>        optimizer.zero_grad()</span>
+<span id="cb21-107"><a href="#cb21-107" aria-hidden="true" tabindex="-1"></a>        loss.backward()</span>
+<span id="cb21-108"><a href="#cb21-108" aria-hidden="true" tabindex="-1"></a>        torch.nn.utils.clip_grad_norm_(model.parameters(), <span class="fl">1.0</span>)</span>
+<span id="cb21-109"><a href="#cb21-109" aria-hidden="true" tabindex="-1"></a>        optimizer.step()</span>
+<span id="cb21-110"><a href="#cb21-110" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb21-111"><a href="#cb21-111" aria-hidden="true" tabindex="-1"></a>        <span class="bu">print</span>(</span>
+<span id="cb21-112"><a href="#cb21-112" aria-hidden="true" tabindex="-1"></a>            json.dumps(</span>
+<span id="cb21-113"><a href="#cb21-113" aria-hidden="true" tabindex="-1"></a>                {</span>
+<span id="cb21-114"><a href="#cb21-114" aria-hidden="true" tabindex="-1"></a>                    <span class="st">"step"</span>: step,</span>
+<span id="cb21-115"><a href="#cb21-115" aria-hidden="true" tabindex="-1"></a>                    <span class="st">"loss"</span>: <span class="bu">float</span>(loss.detach().cpu()),</span>
+<span id="cb21-116"><a href="#cb21-116" aria-hidden="true" tabindex="-1"></a>                    <span class="st">"reward_mean"</span>: <span class="bu">float</span>(rewards.mean().cpu()),</span>
+<span id="cb21-117"><a href="#cb21-117" aria-hidden="true" tabindex="-1"></a>                    <span class="st">"reward_max"</span>: <span class="bu">float</span>(rewards.<span class="bu">max</span>().cpu()),</span>
+<span id="cb21-118"><a href="#cb21-118" aria-hidden="true" tabindex="-1"></a>                    <span class="st">"rewards"</span>: [<span class="bu">float</span>(r) <span class="cf">for</span> r <span class="kw">in</span> rewards.cpu()],</span>
+<span id="cb21-119"><a href="#cb21-119" aria-hidden="true" tabindex="-1"></a>                }</span>
+<span id="cb21-120"><a href="#cb21-120" aria-hidden="true" tabindex="-1"></a>            )</span>
+<span id="cb21-121"><a href="#cb21-121" aria-hidden="true" tabindex="-1"></a>        )</span>
+<span id="cb21-122"><a href="#cb21-122" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb21-123"><a href="#cb21-123" aria-hidden="true" tabindex="-1"></a>        <span class="cf">if</span> step <span class="kw">and</span> step <span class="op">%</span> <span class="dv">100</span> <span class="op">==</span> <span class="dv">0</span>:</span>
+<span id="cb21-124"><a href="#cb21-124" aria-hidden="true" tabindex="-1"></a>            model.save_pretrained(<span class="ss">f"outputs/diagram-rl/step-</span><span class="sc">{</span>step<span class="sc">}</span><span class="ss">"</span>)</span>
+<span id="cb21-125"><a href="#cb21-125" aria-hidden="true" tabindex="-1"></a>            tokenizer.save_pretrained(<span class="ss">f"outputs/diagram-rl/step-</span><span class="sc">{</span>step<span class="sc">}</span><span class="ss">"</span>)</span>
+<span id="cb21-126"><a href="#cb21-126" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb21-127"><a href="#cb21-127" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb21-128"><a href="#cb21-128" aria-hidden="true" tabindex="-1"></a><span class="cf">if</span> <span class="va">__name__</span> <span class="op">==</span> <span class="st">"__main__"</span>:</span>
+<span id="cb21-129"><a href="#cb21-129" aria-hidden="true" tabindex="-1"></a>    main()</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<p>This trainer is intentionally bare. It has serious limitations:</p>
+<ul>
+<li>it computes logprobs inefficiently</li>
+<li>it does not use a reference model</li>
+<li>it does not use PPO/GRPO clipping</li>
+<li>it updates on generated samples from the same model without careful caching</li>
+<li>it does not handle distributed training</li>
+<li>it does not separate generation from training</li>
+<li>it uses mean logprob instead of a careful token-level objective</li>
+</ul>
+<p>But it is enough to understand the mechanics.</p>
+<p>The model samples multiple possible diagrams for the same prompt. The reward function chooses which ones are better. The loss nudges the model toward better completions.</p>
+<p>That is RL for LLMs.</p>
+</section>
+<section id="step-6-add-clipping-and-a-reference-model" class="level2">
+<h2 class="anchored" data-anchor-id="step-6-add-clipping-and-a-reference-model">Step 6: Add Clipping and a Reference Model</h2>
+<p>The naive loss can move too aggressively. A completion that gets a high reward might get reinforced even if the model only produced it by luck. A negative completion might be punished too strongly. The model can also drift away from language quality.</p>
+<p>Modern RL trainers add guardrails.</p>
+<p>The most common guardrails are:</p>
+<ul>
+<li>a frozen reference model</li>
+<li>a KL penalty against the reference model</li>
+<li>ratio clipping</li>
+<li>reward normalization</li>
+<li>length masking</li>
+<li>truncated completion masking</li>
+</ul>
+<p>The reference model is usually the SFT checkpoint before RL. The policy model is the one being updated. If the policy starts assigning much higher probability to a completion than the reference did, the update can be clipped or penalized.</p>
+<p>The PPO-style ratio is:</p>
+<pre class="text"><code>ratio = exp(logprob_policy - logprob_old)</code></pre>
+<p>Then the clipped objective prevents updates that move too far:</p>
+<pre class="text"><code>min(ratio * advantage, clip(ratio, 1 - eps, 1 + eps) * advantage)</code></pre>
+<p>GRPO adapts this idea to group-relative rewards and avoids needing a learned value model. That is why it is popular for verifiable tasks like math, code, and structured tool use.</p>
+<p>For an educational trainer, the next step would be storing the logprobs from the model that generated the completions:</p>
+<div class="sourceCode" id="cb24"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb24-1"><a href="#cb24-1" aria-hidden="true" tabindex="-1"></a>old_logp <span class="op">=</span> completion_logprob(model, tokenizer, prompt, completion).detach()</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<p>Then, during the optimization pass:</p>
+<div class="sourceCode" id="cb25"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb25-1"><a href="#cb25-1" aria-hidden="true" tabindex="-1"></a>new_logp <span class="op">=</span> completion_logprob(model, tokenizer, prompt, completion)</span>
+<span id="cb25-2"><a href="#cb25-2" aria-hidden="true" tabindex="-1"></a>ratio <span class="op">=</span> torch.exp(new_logp <span class="op">-</span> old_logp)</span>
+<span id="cb25-3"><a href="#cb25-3" aria-hidden="true" tabindex="-1"></a>unclipped <span class="op">=</span> ratio <span class="op">*</span> advantage</span>
+<span id="cb25-4"><a href="#cb25-4" aria-hidden="true" tabindex="-1"></a>clipped <span class="op">=</span> torch.clamp(ratio, <span class="fl">0.8</span>, <span class="fl">1.2</span>) <span class="op">*</span> advantage</span>
+<span id="cb25-5"><a href="#cb25-5" aria-hidden="true" tabindex="-1"></a>loss <span class="op">=</span> <span class="op">-</span>torch.minimum(unclipped, clipped)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<p>You can also add a KL term:</p>
+<div class="sourceCode" id="cb26"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb26-1"><a href="#cb26-1" aria-hidden="true" tabindex="-1"></a>policy_logp <span class="op">=</span> completion_logprob(policy, tokenizer, prompt, completion)</span>
+<span id="cb26-2"><a href="#cb26-2" aria-hidden="true" tabindex="-1"></a>ref_logp <span class="op">=</span> completion_logprob(reference, tokenizer, prompt, completion).detach()</span>
+<span id="cb26-3"><a href="#cb26-3" aria-hidden="true" tabindex="-1"></a>kl_estimate <span class="op">=</span> policy_logp <span class="op">-</span> ref_logp</span>
+<span id="cb26-4"><a href="#cb26-4" aria-hidden="true" tabindex="-1"></a>loss <span class="op">=</span> rl_loss <span class="op">+</span> beta <span class="op">*</span> kl_estimate</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<p>This is still simplified, but it introduces the reason PPO/GRPO trainers look more complicated than SFT trainers: generation and optimization are now coupled.</p>
+<p>SFT data is fixed. RL data is produced by the model during training.</p>
+</section>
+<section id="step-7-use-trl-when-you-want-the-trainer-not-the-mystery" class="level2">
+<h2 class="anchored" data-anchor-id="step-7-use-trl-when-you-want-the-trainer-not-the-mystery">Step 7: Use TRL When You Want the Trainer, Not the Mystery</h2>
+<p>Once you understand the loop, TRL becomes much easier to read.</p>
+<p>TRL is Hugging Face’s post-training library. Its docs describe trainers for SFT, GRPO, DPO, reward modeling, RLOO, and more. <code>GRPOTrainer</code> accepts a model, a dataset of prompts, and reward functions. The trainer handles generation, reward computation, advantage computation, and the optimization step.</p>
+<p>The same diagram task with TRL looks like this:</p>
+<div class="sourceCode" id="cb27"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb27-1"><a href="#cb27-1" aria-hidden="true" tabindex="-1"></a><span class="co"># train_grpo_trl.py</span></span>
+<span id="cb27-2"><a href="#cb27-2" aria-hidden="true" tabindex="-1"></a><span class="im">from</span> datasets <span class="im">import</span> Dataset</span>
+<span id="cb27-3"><a href="#cb27-3" aria-hidden="true" tabindex="-1"></a><span class="im">from</span> trl <span class="im">import</span> GRPOConfig, GRPOTrainer</span>
+<span id="cb27-4"><a href="#cb27-4" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb27-5"><a href="#cb27-5" aria-hidden="true" tabindex="-1"></a><span class="im">from</span> reward <span class="im">import</span> reward</span>
+<span id="cb27-6"><a href="#cb27-6" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb27-7"><a href="#cb27-7" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb27-8"><a href="#cb27-8" aria-hidden="true" tabindex="-1"></a>prompts <span class="op">=</span> [</span>
+<span id="cb27-9"><a href="#cb27-9" aria-hidden="true" tabindex="-1"></a>    <span class="st">"Draw a three step data pipeline: client, API, database."</span>,</span>
+<span id="cb27-10"><a href="#cb27-10" aria-hidden="true" tabindex="-1"></a>    <span class="st">"Draw a login flow with user, auth service, token, and dashboard."</span>,</span>
+<span id="cb27-11"><a href="#cb27-11" aria-hidden="true" tabindex="-1"></a>    <span class="st">"Draw a simple RAG system with documents, embeddings, vector DB, retriever, and LLM."</span>,</span>
+<span id="cb27-12"><a href="#cb27-12" aria-hidden="true" tabindex="-1"></a>    <span class="st">"Draw a CI pipeline with commit, tests, build, deploy."</span>,</span>
+<span id="cb27-13"><a href="#cb27-13" aria-hidden="true" tabindex="-1"></a>]</span>
+<span id="cb27-14"><a href="#cb27-14" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb27-15"><a href="#cb27-15" aria-hidden="true" tabindex="-1"></a>dataset <span class="op">=</span> Dataset.from_list([{<span class="st">"prompt"</span>: prompt} <span class="cf">for</span> prompt <span class="kw">in</span> prompts])</span>
+<span id="cb27-16"><a href="#cb27-16" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb27-17"><a href="#cb27-17" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb27-18"><a href="#cb27-18" aria-hidden="true" tabindex="-1"></a><span class="kw">def</span> diagram_reward_func(prompts, completions, <span class="op">**</span>kwargs):</span>
+<span id="cb27-19"><a href="#cb27-19" aria-hidden="true" tabindex="-1"></a>    scores <span class="op">=</span> []</span>
+<span id="cb27-20"><a href="#cb27-20" aria-hidden="true" tabindex="-1"></a>    <span class="cf">for</span> prompt, completion <span class="kw">in</span> <span class="bu">zip</span>(prompts, completions, strict<span class="op">=</span><span class="va">True</span>):</span>
+<span id="cb27-21"><a href="#cb27-21" aria-hidden="true" tabindex="-1"></a>        <span class="co"># Depending on model/template, completion may be a string or message-like object.</span></span>
+<span id="cb27-22"><a href="#cb27-22" aria-hidden="true" tabindex="-1"></a>        text <span class="op">=</span> completion <span class="cf">if</span> <span class="bu">isinstance</span>(completion, <span class="bu">str</span>) <span class="cf">else</span> completion[<span class="dv">0</span>][<span class="st">"content"</span>]</span>
+<span id="cb27-23"><a href="#cb27-23" aria-hidden="true" tabindex="-1"></a>        scores.append(reward(prompt, text))</span>
+<span id="cb27-24"><a href="#cb27-24" aria-hidden="true" tabindex="-1"></a>    <span class="cf">return</span> scores</span>
+<span id="cb27-25"><a href="#cb27-25" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb27-26"><a href="#cb27-26" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb27-27"><a href="#cb27-27" aria-hidden="true" tabindex="-1"></a>args <span class="op">=</span> GRPOConfig(</span>
+<span id="cb27-28"><a href="#cb27-28" aria-hidden="true" tabindex="-1"></a>    output_dir<span class="op">=</span><span class="st">"outputs/diagram-grpo"</span>,</span>
+<span id="cb27-29"><a href="#cb27-29" aria-hidden="true" tabindex="-1"></a>    learning_rate<span class="op">=</span><span class="fl">1e-6</span>,</span>
+<span id="cb27-30"><a href="#cb27-30" aria-hidden="true" tabindex="-1"></a>    per_device_train_batch_size<span class="op">=</span><span class="dv">2</span>,</span>
+<span id="cb27-31"><a href="#cb27-31" aria-hidden="true" tabindex="-1"></a>    gradient_accumulation_steps<span class="op">=</span><span class="dv">4</span>,</span>
+<span id="cb27-32"><a href="#cb27-32" aria-hidden="true" tabindex="-1"></a>    num_generations<span class="op">=</span><span class="dv">4</span>,</span>
+<span id="cb27-33"><a href="#cb27-33" aria-hidden="true" tabindex="-1"></a>    max_prompt_length<span class="op">=</span><span class="dv">1024</span>,</span>
+<span id="cb27-34"><a href="#cb27-34" aria-hidden="true" tabindex="-1"></a>    max_completion_length<span class="op">=</span><span class="dv">1024</span>,</span>
+<span id="cb27-35"><a href="#cb27-35" aria-hidden="true" tabindex="-1"></a>    logging_steps<span class="op">=</span><span class="dv">1</span>,</span>
+<span id="cb27-36"><a href="#cb27-36" aria-hidden="true" tabindex="-1"></a>)</span>
+<span id="cb27-37"><a href="#cb27-37" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb27-38"><a href="#cb27-38" aria-hidden="true" tabindex="-1"></a>trainer <span class="op">=</span> GRPOTrainer(</span>
+<span id="cb27-39"><a href="#cb27-39" aria-hidden="true" tabindex="-1"></a>    model<span class="op">=</span><span class="st">"outputs/diagram-sft/final"</span>,</span>
+<span id="cb27-40"><a href="#cb27-40" aria-hidden="true" tabindex="-1"></a>    reward_funcs<span class="op">=</span>diagram_reward_func,</span>
+<span id="cb27-41"><a href="#cb27-41" aria-hidden="true" tabindex="-1"></a>    args<span class="op">=</span>args,</span>
+<span id="cb27-42"><a href="#cb27-42" aria-hidden="true" tabindex="-1"></a>    train_dataset<span class="op">=</span>dataset,</span>
+<span id="cb27-43"><a href="#cb27-43" aria-hidden="true" tabindex="-1"></a>)</span>
+<span id="cb27-44"><a href="#cb27-44" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb27-45"><a href="#cb27-45" aria-hidden="true" tabindex="-1"></a>trainer.train()</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<p>This is the same loop:</p>
+<pre class="text"><code>prompt batch -&gt; generate completions -&gt; reward_func -&gt; GRPO update</code></pre>
+<p>The difference is that TRL gives you the trainer implementation, accelerator integration, logging, PEFT integration, and optional vLLM generation paths.</p>
+<p>For many projects, that is the right level of abstraction.</p>
+</section>
+<section id="step-8-what-makes-the-environment-good" class="level2">
+<h2 class="anchored" data-anchor-id="step-8-what-makes-the-environment-good">Step 8: What Makes the Environment Good?</h2>
+<p>The hard part is not writing the trainer. The hard part is writing the reward.</p>
+<p>A bad reward creates a bad agent.</p>
+<p>For the diagram agent, a weak reward is:</p>
+<pre class="text"><code>1 if JSON parses, else 0</code></pre>
+<p>This teaches the model to be valid, but not useful.</p>
+<p>A better reward combines several signals:</p>
+<pre class="text"><code>reward =
+  0.25 * parses_as_json
+  0.20 * schema_valid
+  0.20 * renderer_accepts
+  0.15 * requested_entities_present
+  0.10 * arrows_connect_expected_entities
+  0.10 * layout_quality</code></pre>
+<p>For a tldraw-like environment, you can implement some of these with code:</p>
+<ul>
+<li>parse JSON</li>
+<li>validate schema</li>
+<li>execute actions in the real editor</li>
+<li>inspect final shapes</li>
+<li>count overlaps</li>
+<li>check arrow bindings</li>
+<li>check text bounds</li>
+</ul>
+<p>Then use a judge model for the parts that are hard to encode:</p>
+<ul>
+<li>“Does this look like a RAG diagram?”</li>
+<li>“Is this visually clear?”</li>
+<li>“Did it satisfy the user’s intent?”</li>
+</ul>
+<p>The important thing is to keep the judge grounded. Give it the prompt, the shape list, and a screenshot. Ask for a numeric score and a short reason. Log every judgment. Sample failures manually.</p>
+<p>Do not trust a judge blindly. Treat it as another noisy reward function.</p>
+</section>
+<section id="step-9-the-full-pipeline" class="level2">
+<h2 class="anchored" data-anchor-id="step-9-the-full-pipeline">Step 9: The Full Pipeline</h2>
+<p>The complete educational pipeline is:</p>
+<pre class="text"><code>1. Write environment
+   - action schema
+   - parser
+   - validator
+   - renderer or simulator
+   - reward function
+
+2. Generate prompts
+   - hand-written seed prompts
+   - synthetic prompt generator
+   - curriculum from easy to hard
+
+3. Generate teacher trajectories
+   - call Gemini with structured output
+   - sample multiple attempts per prompt
+   - validate each attempt
+   - keep only passing traces
+
+4. SFT
+   - train student on accepted teacher traces
+   - measure valid-action rate
+   - measure reward before RL
+
+5. RL
+   - sample prompts
+   - generate multiple completions per prompt
+   - score each completion
+   - compute group-relative advantages
+   - update policy
+
+6. Evaluate
+   - held-out prompts
+   - pass rate
+   - reward distribution
+   - semantic judge score
+   - human review of screenshots
+
+7. Iterate
+   - improve reward
+   - add harder prompts
+   - refresh teacher traces
+   - tune RL hyperparameters</code></pre>
+<p>A useful mental model:</p>
+<pre class="text"><code>SFT buys you syntax.
+RL buys you optimization.
+Evaluation tells you whether you optimized the right thing.</code></pre>
+</section>
+<section id="common-failure-modes" class="level2">
+<h2 class="anchored" data-anchor-id="common-failure-modes">Common Failure Modes</h2>
+<p>The model never gets reward.</p>
+<p>This usually means you skipped SFT or the action schema is too strict. Generate teacher traces first. Make the action space smaller. Add partial rewards.</p>
+<p>The model learns to emit tiny trivial diagrams.</p>
+<p>Your reward probably overvalues validity and undervalues task satisfaction. Add entity coverage, minimum shape count, and semantic reward.</p>
+<p>The model emits valid JSON but ignores the prompt.</p>
+<p>Your reward is mostly syntactic. Add prompt-conditioned checks.</p>
+<p>The model overfits the teacher style.</p>
+<p>Add more teacher diversity. Sample more attempts per prompt. Use multiple teacher models. Make prompts more varied.</p>
+<p>The RL run is unstable.</p>
+<p>Lower the learning rate. Reduce completion length. Add KL/reference penalty. Use clipping. Increase batch size. Check reward variance.</p>
+<p>Reward goes up but human quality does not.</p>
+<p>Your reward is being gamed. Inspect examples. Add negative tests. Penalize the exploit directly. Avoid a single scalar reward from one brittle heuristic.</p>
+</section>
+<section id="what-changes-for-real-tldraw" class="level2">
+<h2 class="anchored" data-anchor-id="what-changes-for-real-tldraw">What Changes for Real tldraw?</h2>
+<p>The pure-Python canvas is educational. A real tldraw environment changes the validator, not the loop.</p>
+<p>Instead of applying actions to a toy <code>Canvas</code>, you:</p>
+<ol type="1">
+<li>Start a tldraw app or validator page.</li>
+<li>Send the JSON actions into the real editor.</li>
+<li>Let tldraw sanitize/apply them.</li>
+<li>Read final shapes and bindings.</li>
+<li>Export a screenshot.</li>
+<li>Compute reward from validation errors, shape state, and screenshot.</li>
+</ol>
+<p>The model still sees a prompt and emits JSON actions. The trainer still samples completions and receives rewards.</p>
+<p>This is why environment design is so powerful. Once the environment exposes:</p>
+<div class="sourceCode" id="cb33"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb33-1"><a href="#cb33-1" aria-hidden="true" tabindex="-1"></a>reward(prompt, completion) <span class="op">-&gt;</span> <span class="bu">float</span></span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<p>you can plug it into a minimal trainer, TRL, Unsloth, Prime-RL, or a custom distributed system.</p>
+</section>
+<section id="closing" class="level2">
+<h2 class="anchored" data-anchor-id="closing">Closing</h2>
+<p>The magic of agent training is not in the framework. The framework helps, especially at scale, but the core ideas are small:</p>
+<ul>
+<li>define the action space</li>
+<li>define success</li>
+<li>generate traces</li>
+<li>imitate good traces</li>
+<li>sample new attempts</li>
+<li>reward good attempts</li>
+<li>update the model</li>
+</ul>
+<p>Teacher trajectories solve the cold-start problem. SFT teaches the model how to speak the environment’s action language. RL turns the environment into an optimizer.</p>
+<p>If you understand that, a tldraw agent is not a special case. A browser agent, coding agent, spreadsheet agent, robotics planner, or math solver is the same shape:</p>
+<pre class="text"><code>state -&gt; action -&gt; validation -&gt; reward -&gt; learning</code></pre>
+<p>The rest is engineering.</p>
+</section>
+<section id="references" class="level2">
+<h2 class="anchored" data-anchor-id="references">References</h2>
+<ul>
+<li>Gemini text generation docs: https://ai.google.dev/gemini-api/docs/text-generation</li>
+<li>Gemini structured output docs: https://ai.google.dev/gemini-api/docs/structured-output</li>
+<li>TRL documentation: https://huggingface.co/docs/trl/index</li>
+<li>TRL GRPOTrainer docs: https://huggingface.co/docs/trl/grpo_trainer</li>
+<li>Unsloth RL guide: https://docs.unsloth.ai/get-started/reinforcement-learning-rl-guide</li>
+</ul>
+
+
+</section>
+</section>
+
+</main> <!-- /main -->
+<script id="quarto-html-after-body" type="application/javascript">
+  window.document.addEventListener("DOMContentLoaded", function (event) {
+    const icon = "";
+    const anchorJS = new window.AnchorJS();
+    anchorJS.options = {
+      placement: 'right',
+      icon: icon
+    };
+    anchorJS.add('.anchored');
+    const isCodeAnnotation = (el) => {
+      for (const clz of el.classList) {
+        if (clz.startsWith('code-annotation-')) {                     
+          return true;
+        }
+      }
+      return false;
+    }
+    const onCopySuccess = function(e) {
+      // button target
+      const button = e.trigger;
+      // don't keep focus
+      button.blur();
+      // flash "checked"
+      button.classList.add('code-copy-button-checked');
+      var currentTitle = button.getAttribute("title");
+      button.setAttribute("title", "Copied!");
+      let tooltip;
+      if (window.bootstrap) {
+        button.setAttribute("data-bs-toggle", "tooltip");
+        button.setAttribute("data-bs-placement", "left");
+        button.setAttribute("data-bs-title", "Copied!");
+        tooltip = new bootstrap.Tooltip(button, 
+          { trigger: "manual", 
+            customClass: "code-copy-button-tooltip",
+            offset: [0, -8]});
+        tooltip.show();    
+      }
+      setTimeout(function() {
+        if (tooltip) {
+          tooltip.hide();
+          button.removeAttribute("data-bs-title");
+          button.removeAttribute("data-bs-toggle");
+          button.removeAttribute("data-bs-placement");
+        }
+        button.setAttribute("title", currentTitle);
+        button.classList.remove('code-copy-button-checked');
+      }, 1000);
+      // clear code selection
+      e.clearSelection();
+    }
+    const getTextToCopy = function(trigger) {
+        const codeEl = trigger.previousElementSibling.cloneNode(true);
+        for (const childEl of codeEl.children) {
+          if (isCodeAnnotation(childEl)) {
+            childEl.remove();
+          }
+        }
+        return codeEl.innerText;
+    }
+    const clipboard = new window.ClipboardJS('.code-copy-button:not([data-in-quarto-modal])', {
+      text: getTextToCopy
+    });
+    clipboard.on('success', onCopySuccess);
+    if (window.document.getElementById('quarto-embedded-source-code-modal')) {
+      const clipboardModal = new window.ClipboardJS('.code-copy-button[data-in-quarto-modal]', {
+        text: getTextToCopy,
+        container: window.document.getElementById('quarto-embedded-source-code-modal')
+      });
+      clipboardModal.on('success', onCopySuccess);
+    }
+      var localhostRegex = new RegExp(/^(?:http|https):\/\/localhost\:?[0-9]*\//);
+      var mailtoRegex = new RegExp(/^mailto:/);
+        var filterRegex = new RegExp("https:\/\/heyyanshuman\.com");
+      var isInternal = (href) => {
+          return filterRegex.test(href) || localhostRegex.test(href) || mailtoRegex.test(href);
+      }
+      // Inspect non-navigation links and adorn them if external
+     var links = window.document.querySelectorAll('a[href]:not(.nav-link):not(.navbar-brand):not(.toc-action):not(.sidebar-link):not(.sidebar-item-toggle):not(.pagination-link):not(.no-external):not([aria-hidden]):not(.dropdown-item):not(.quarto-navigation-tool):not(.about-link)');
+      for (var i=0; i<links.length; i++) {
+        const link = links[i];
+        if (!isInternal(link.href)) {
+          // undo the damage that might have been done by quarto-nav.js in the case of
+          // links that we want to consider external
+          if (link.dataset.originalHref !== undefined) {
+            link.href = link.dataset.originalHref;
+          }
+        }
+      }
+    function tippyHover(el, contentFn, onTriggerFn, onUntriggerFn) {
+      const config = {
+        allowHTML: true,
+        maxWidth: 500,
+        delay: 100,
+        arrow: false,
+        appendTo: function(el) {
+            return el.parentElement;
+        },
+        interactive: true,
+        interactiveBorder: 10,
+        theme: 'quarto',
+        placement: 'bottom-start',
+      };
+      if (contentFn) {
+        config.content = contentFn;
+      }
+      if (onTriggerFn) {
+        config.onTrigger = onTriggerFn;
+      }
+      if (onUntriggerFn) {
+        config.onUntrigger = onUntriggerFn;
+      }
+      window.tippy(el, config); 
+    }
+    const noterefs = window.document.querySelectorAll('a[role="doc-noteref"]');
+    for (var i=0; i<noterefs.length; i++) {
+      const ref = noterefs[i];
+      tippyHover(ref, function() {
+        // use id or data attribute instead here
+        let href = ref.getAttribute('data-footnote-href') || ref.getAttribute('href');
+        try { href = new URL(href).hash; } catch {}
+        const id = href.replace(/^#\/?/, "");
+        const note = window.document.getElementById(id);
+        if (note) {
+          return note.innerHTML;
+        } else {
+          return "";
+        }
+      });
+    }
+    const xrefs = window.document.querySelectorAll('a.quarto-xref');
+    const processXRef = (id, note) => {
+      // Strip column container classes
+      const stripColumnClz = (el) => {
+        el.classList.remove("page-full", "page-columns");
+        if (el.children) {
+          for (const child of el.children) {
+            stripColumnClz(child);
+          }
+        }
+      }
+      stripColumnClz(note)
+      if (id === null || id.startsWith('sec-')) {
+        // Special case sections, only their first couple elements
+        const container = document.createElement("div");
+        if (note.children && note.children.length > 2) {
+          container.appendChild(note.children[0].cloneNode(true));
+          for (let i = 1; i < note.children.length; i++) {
+            const child = note.children[i];
+            if (child.tagName === "P" && child.innerText === "") {
+              continue;
+            } else {
+              container.appendChild(child.cloneNode(true));
+              break;
+            }
+          }
+          if (window.Quarto?.typesetMath) {
+            window.Quarto.typesetMath(container);
+          }
+          return container.innerHTML
+        } else {
+          if (window.Quarto?.typesetMath) {
+            window.Quarto.typesetMath(note);
+          }
+          return note.innerHTML;
+        }
+      } else {
+        // Remove any anchor links if they are present
+        const anchorLink = note.querySelector('a.anchorjs-link');
+        if (anchorLink) {
+          anchorLink.remove();
+        }
+        if (window.Quarto?.typesetMath) {
+          window.Quarto.typesetMath(note);
+        }
+        if (note.classList.contains("callout")) {
+          return note.outerHTML;
+        } else {
+          return note.innerHTML;
+        }
+      }
+    }
+    for (var i=0; i<xrefs.length; i++) {
+      const xref = xrefs[i];
+      tippyHover(xref, undefined, function(instance) {
+        instance.disable();
+        let url = xref.getAttribute('href');
+        let hash = undefined; 
+        if (url.startsWith('#')) {
+          hash = url;
+        } else {
+          try { hash = new URL(url).hash; } catch {}
+        }
+        if (hash) {
+          const id = hash.replace(/^#\/?/, "");
+          const note = window.document.getElementById(id);
+          if (note !== null) {
+            try {
+              const html = processXRef(id, note.cloneNode(true));
+              instance.setContent(html);
+            } finally {
+              instance.enable();
+              instance.show();
+            }
+          } else {
+            // See if we can fetch this
+            fetch(url.split('#')[0])
+            .then(res => res.text())
+            .then(html => {
+              const parser = new DOMParser();
+              const htmlDoc = parser.parseFromString(html, "text/html");
+              const note = htmlDoc.getElementById(id);
+              if (note !== null) {
+                const html = processXRef(id, note);
+                instance.setContent(html);
+              } 
+            }).finally(() => {
+              instance.enable();
+              instance.show();
+            });
+          }
+        } else {
+          // See if we can fetch a full url (with no hash to target)
+          // This is a special case and we should probably do some content thinning / targeting
+          fetch(url)
+          .then(res => res.text())
+          .then(html => {
+            const parser = new DOMParser();
+            const htmlDoc = parser.parseFromString(html, "text/html");
+            const note = htmlDoc.querySelector('main.content');
+            if (note !== null) {
+              // This should only happen for chapter cross references
+              // (since there is no id in the URL)
+              // remove the first header
+              if (note.children.length > 0 && note.children[0].tagName === "HEADER") {
+                note.children[0].remove();
+              }
+              const html = processXRef(null, note);
+              instance.setContent(html);
+            } 
+          }).finally(() => {
+            instance.enable();
+            instance.show();
+          });
+        }
+      }, function(instance) {
+      });
+    }
+        let selectedAnnoteEl;
+        const selectorForAnnotation = ( cell, annotation) => {
+          let cellAttr = 'data-code-cell="' + cell + '"';
+          let lineAttr = 'data-code-annotation="' +  annotation + '"';
+          const selector = 'span[' + cellAttr + '][' + lineAttr + ']';
+          return selector;
+        }
+        const selectCodeLines = (annoteEl) => {
+          const doc = window.document;
+          const targetCell = annoteEl.getAttribute("data-target-cell");
+          const targetAnnotation = annoteEl.getAttribute("data-target-annotation");
+          const annoteSpan = window.document.querySelector(selectorForAnnotation(targetCell, targetAnnotation));
+          const lines = annoteSpan.getAttribute("data-code-lines").split(",");
+          const lineIds = lines.map((line) => {
+            return targetCell + "-" + line;
+          })
+          let top = null;
+          let height = null;
+          let parent = null;
+          if (lineIds.length > 0) {
+              //compute the position of the single el (top and bottom and make a div)
+              const el = window.document.getElementById(lineIds[0]);
+              top = el.offsetTop;
+              height = el.offsetHeight;
+              parent = el.parentElement.parentElement;
+            if (lineIds.length > 1) {
+              const lastEl = window.document.getElementById(lineIds[lineIds.length - 1]);
+              const bottom = lastEl.offsetTop + lastEl.offsetHeight;
+              height = bottom - top;
+            }
+            if (top !== null && height !== null && parent !== null) {
+              // cook up a div (if necessary) and position it 
+              let div = window.document.getElementById("code-annotation-line-highlight");
+              if (div === null) {
+                div = window.document.createElement("div");
+                div.setAttribute("id", "code-annotation-line-highlight");
+                div.style.position = 'absolute';
+                parent.appendChild(div);
+              }
+              div.style.top = top - 2 + "px";
+              div.style.height = height + 4 + "px";
+              div.style.left = 0;
+              let gutterDiv = window.document.getElementById("code-annotation-line-highlight-gutter");
+              if (gutterDiv === null) {
+                gutterDiv = window.document.createElement("div");
+                gutterDiv.setAttribute("id", "code-annotation-line-highlight-gutter");
+                gutterDiv.style.position = 'absolute';
+                const codeCell = window.document.getElementById(targetCell);
+                const gutter = codeCell.querySelector('.code-annotation-gutter');
+                gutter.appendChild(gutterDiv);
+              }
+              gutterDiv.style.top = top - 2 + "px";
+              gutterDiv.style.height = height + 4 + "px";
+            }
+            selectedAnnoteEl = annoteEl;
+          }
+        };
+        const unselectCodeLines = () => {
+          const elementsIds = ["code-annotation-line-highlight", "code-annotation-line-highlight-gutter"];
+          elementsIds.forEach((elId) => {
+            const div = window.document.getElementById(elId);
+            if (div) {
+              div.remove();
+            }
+          });
+          selectedAnnoteEl = undefined;
+        };
+          // Handle positioning of the toggle
+      window.addEventListener(
+        "resize",
+        throttle(() => {
+          elRect = undefined;
+          if (selectedAnnoteEl) {
+            selectCodeLines(selectedAnnoteEl);
+          }
+        }, 10)
+      );
+      function throttle(fn, ms) {
+      let throttle = false;
+      let timer;
+        return (...args) => {
+          if(!throttle) { // first call gets through
+              fn.apply(this, args);
+              throttle = true;
+          } else { // all the others get throttled
+              if(timer) clearTimeout(timer); // cancel #2
+              timer = setTimeout(() => {
+                fn.apply(this, args);
+                timer = throttle = false;
+              }, ms);
+          }
+        };
+      }
+        // Attach click handler to the DT
+        const annoteDls = window.document.querySelectorAll('dt[data-target-cell]');
+        for (const annoteDlNode of annoteDls) {
+          annoteDlNode.addEventListener('click', (event) => {
+            const clickedEl = event.target;
+            if (clickedEl !== selectedAnnoteEl) {
+              unselectCodeLines();
+              const activeEl = window.document.querySelector('dt[data-target-cell].code-annotation-active');
+              if (activeEl) {
+                activeEl.classList.remove('code-annotation-active');
+              }
+              selectCodeLines(clickedEl);
+              clickedEl.classList.add('code-annotation-active');
+            } else {
+              // Unselect the line
+              unselectCodeLines();
+              clickedEl.classList.remove('code-annotation-active');
+            }
+          });
+        }
+    const findCites = (el) => {
+      const parentEl = el.parentElement;
+      if (parentEl) {
+        const cites = parentEl.dataset.cites;
+        if (cites) {
+          return {
+            el,
+            cites: cites.split(' ')
+          };
+        } else {
+          return findCites(el.parentElement)
+        }
+      } else {
+        return undefined;
+      }
+    };
+    var bibliorefs = window.document.querySelectorAll('a[role="doc-biblioref"]');
+    for (var i=0; i<bibliorefs.length; i++) {
+      const ref = bibliorefs[i];
+      const citeInfo = findCites(ref);
+      if (citeInfo) {
+        tippyHover(citeInfo.el, function() {
+          var popup = window.document.createElement('div');
+          citeInfo.cites.forEach(function(cite) {
+            var citeDiv = window.document.createElement('div');
+            citeDiv.classList.add('hanging-indent');
+            citeDiv.classList.add('csl-entry');
+            var biblioDiv = window.document.getElementById('ref-' + cite);
+            if (biblioDiv) {
+              citeDiv.innerHTML = biblioDiv.innerHTML;
+            }
+            popup.appendChild(citeDiv);
+          });
+          return popup.innerHTML;
+        });
+      }
+    }
+  });
+  </script>
+</div> <!-- /content -->
+
+
+
+
+</body></html>
