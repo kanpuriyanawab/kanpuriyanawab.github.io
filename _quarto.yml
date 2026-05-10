@@ -14,7 +14,6 @@ format:
     css: site.css
     toc: false
     highlight-style: github-dark
-    include-in-header: _styles.html
     include-before-body: _nav.html
 
 website:
